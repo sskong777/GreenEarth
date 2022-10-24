@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/ssafy?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:3306/d206?serverTimezone=Asia/Seoul
     username: root
     password: ssafy
     driver-class-name: com.mysql.jdbc.Driver
