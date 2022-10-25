@@ -1,0 +1,31 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* WelcomPage */
+
+.WelcomPage {
+  @apply flex flex-col justify-center items-center;
+}
+
+/* ProfilePage */
+
+.ProfileHeader {
+  @apply flex justify-center items-center;
+}
+
+.ProfileMenu {
+  @apply flex justify-center items-center;
+}
+
+.ProfileInfo {
+  @apply flex justify-center items-center w-64 h-40 bg-white rounded-md mx-5;
+}
+
+.ChildImage {
+  @apply w-36 h-40 bg-white rounded-md;
+}
+
+.ProfileHeaderButton {
+  @apply w-40 h-40 bg-yellow-300 rounded-md text-lg mx-2;
+}
