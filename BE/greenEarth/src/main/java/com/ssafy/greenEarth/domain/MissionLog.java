@@ -1,6 +1,7 @@
 package com.ssafy.greenEarth.domain;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "mission_logs")
 public class MissionLog {
 
@@ -35,4 +37,12 @@ public class MissionLog {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "child_id")
     private Child child;
+
+    public MissionLog(Child child, Mission mission, boolean isPermitted, LocalDateTime createdAt, String parentNickname){
+        this.child = child;
+        this.mission = mission;
+        this.isPermitted = false;
+        this.createdAt = createdAt;
+        this.parentNickname = "부모 임시";
+    }
 }
