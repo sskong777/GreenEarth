@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
+import WelcomeDescription from "./../components/WelcomePage/WelcomeDescription";
+
 import "./../style/style.css";
 
 const WelcomePage = () => {
@@ -14,6 +16,10 @@ const WelcomePage = () => {
       <section>
         <h1>내가 Green 지구</h1>
         <br />
+      </section>
+
+      <section>
+        <WelcomeDescription></WelcomeDescription>
       </section>
 
       <section>
