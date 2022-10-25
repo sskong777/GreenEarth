@@ -11,21 +11,29 @@
 /* ProfilePage */
 
 .ProfileHeader {
-  @apply flex justify-center items-center;
+  @apply flex justify-center items-start my-7;
 }
 
 .ProfileMenu {
-  @apply flex justify-center items-center;
+  @apply flex justify-center items-center mb-7;
 }
 
 .ProfileInfo {
-  @apply flex justify-center items-center w-64 h-40 bg-white rounded-md mx-5;
+  @apply flex justify-center items-center w-72 h-40 bg-white rounded-md ml-5 mr-9 text-xl text-amber-900 leading-relaxed;
 }
 
 .ChildImage {
-  @apply w-36 h-40 bg-white rounded-md;
+  @apply w-40 h-40 bg-white rounded-md mb-2;
+}
+
+.ChildImageName {
+  @apply text-center text-xl text-amber-900;
 }
 
 .ProfileHeaderButton {
-  @apply w-40 h-40 bg-yellow-300 rounded-md text-lg mx-2;
+  @apply w-40 h-40 bg-stone-400 rounded-md text-2xl mx-2 text-amber-900;
+}
+
+.ProfileMenuButton {
+  @apply w-64 h-16 bg-orange-700 rounded-md text-2xl text-white mx-5;
 }
