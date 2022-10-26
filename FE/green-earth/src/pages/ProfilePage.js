@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+import TodayMissionList from "../components/TodayMissionList";
+
 const ProfilePage = () => {
   const navigate = useNavigate();
 
@@ -7,16 +9,18 @@ const ProfilePage = () => {
     <div className="ProfilePage">
       <section className="ProfileHeader">
         <div>
-          <div className="ChildImage">이미지</div>
+          <div className="ChildImage">
+            <img src="./../assets/images/girl1.svg" />
+          </div>
           <div className="ChildImageName">Lv.7 탄소공주</div>
         </div>
 
         <div className="ProfileInfo">
-          <div>
-            <div>(이름)</div>
-            <div>(생일)</div>
-            <div>(아이디)</div>
-            <div>(마일리지)</div>
+          <div className="text-2xl">
+            <div>이름</div>
+            <div>생일</div>
+            <div>아이디</div>
+            <div>마일리지</div>
           </div>
           <div className="ml-4">
             <div>김싸피 공주님</div>
@@ -39,7 +43,7 @@ const ProfilePage = () => {
       </section>
 
       <section>
-        <div className="text-center text-3xl my-5">10월 26일의 미션 목록</div>
+        <TodayMissionList />
       </section>
     </div>
   );
