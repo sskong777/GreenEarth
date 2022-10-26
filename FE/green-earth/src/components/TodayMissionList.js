@@ -4,6 +4,7 @@ const TodayMissionList = () => {
   return (
     <div>
       <div className="TodayHeader">{today}의 미션 목록</div>
+      <div className="TodayItem">텀블러 사용하기</div>
     </div>
   );
 };
