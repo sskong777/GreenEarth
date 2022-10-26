@@ -21,7 +21,7 @@ fi
 
 sleep 10
 
-# 새로운 컨테이너가 제대로 떴는지 확인
+# 새로운 컨테이너가 제대로 떴는지 확인 
 EXIST_AFTER=$(docker-compose -p ${DOCKER_APP_NAME}-${AFTER_COMPOSE_COLOR} -f docker-compose.${AFTER_COMPOSE_COLOR}.yml ps | grep Up)
 if [ -n "$EXIST_AFTER" ]; then
     # nginx.config를 컨테이너에 맞게 변경해주고 reload 한다
