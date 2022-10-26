@@ -10,23 +10,36 @@ import com.ssafy.greenEarth.repository.MissionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
+@Transactional(readOnly = true)
 public class MissionService {
 
     private final ChildRepository childRepository;
     private final MissionRepository missionRepository;
     private final MissionLogRepository missionLogRepository;
 
+
     @Transactional
-    public void saveTodayMission(Child child, Mission mission) {
-        MissionLog missionLog = new MissionLog(child, mission);
+    public MissionLog saveTodayMission(int child_id, MissionRequestDto missionRequestDto) {
+        int missionId = missionRequestDto.getMissionId();
+        Mission mission = missionRepository.findById(missionId);
 
+//        System.out.println(mission.getId());
+        Child child = childRepository.findById(child_id);
 
+        MissionLog missionlog = new MissionLog(child, mission);
+        return missionlog;
+    }
+
+    @Transactional
+    public List<Mission> getAllMissions(){
+        List<Mission> missions = missionRepository.findAll();
+        return missions;
     }
 }

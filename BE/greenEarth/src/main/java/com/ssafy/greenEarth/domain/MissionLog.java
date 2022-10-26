@@ -8,6 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -43,6 +44,12 @@ public class MissionLog {
         this.mission = mission;
         this.isPermitted = false;
         this.createdAt = createdAt;
+        this.parentNickname = "부모 임시";
+    }
+    public MissionLog(Child child, Mission mission){
+        this.child = child;
+        this.mission = mission;
+        this.isPermitted = false;
         this.parentNickname = "부모 임시";
     }
 }
