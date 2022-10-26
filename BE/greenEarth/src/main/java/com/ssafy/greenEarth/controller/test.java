@@ -20,8 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class test {
 
-    @Autowired
-    TestService testService;
+    private final TestService testService;
 
     @GetMapping
     public ResponseEntity<String> testApi() {
