@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 @RequestMapping("/game")
 public class GameMileageController {
-
-    public static final Logger logger = LoggerFactory.getLogger(GameMileageController.class);
-
-    private static final String SUCCESS = "success";
-    private static final String FAIL = "fail";
-
-    @ApiOperation(value = "게임 마일리지 적립", notes = "게임 마일리지를 적립한다.")
-    @PostMapping
-    public ResponseEntity<String> updateMileage(@RequestBody int mileage) {
-
-    }
+//
+//    public static final Logger logger = LoggerFactory.getLogger(GameMileageController.class);
+//
+//    private static final String SUCCESS = "success";
+//    private static final String FAIL = "fail";
+//
+//    @ApiOperation(value = "게임 마일리지 적립", notes = "게임 마일리지를 적립한다.")
+//    @PostMapping
+//    public ResponseEntity<String> updateMileage(@RequestBody int mileage) {
+//
+//    }
 }
