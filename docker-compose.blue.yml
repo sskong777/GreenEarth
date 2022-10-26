@@ -11,22 +11,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5001:5001"
-    depends_on:
-      -database
     # [인증서 파일 저장 경로]:/root
     volumes:
       - /etc/letsencrypt/live/k7d206.p.ssafy.io/:/root
     environment:
       - TZ=Asia/Seoul
-
-  database:
-    #database 서비스에서 참조할 이미지
-    image: mysql
-    ports:
-      -8888:3306
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: ssafy
-      MYSQL_DATABASE : greenearth
-      MYSQL_USER: root
-      MYSQL_PASSWORD: Ssafyd206@
+```
