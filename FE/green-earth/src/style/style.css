@@ -48,3 +48,8 @@
 .TodayHeader {
   @apply my-5  text-center text-4xl text-rose-900;
 }
+
+.TodayItem {
+  @apply w-[32rem] h-16 mx-5 rounded-md text-2xl text-light 
+  bg-darkRed;
+}
