@@ -18,7 +18,7 @@ else
     BEFORE_COMPOSE_COLOR="blue"
     AFTER_COMPOSE_COLOR="green"
 fi
- 
+
 sleep 10
 
 # 새로운 컨테이너가 제대로 떴는지 확인
