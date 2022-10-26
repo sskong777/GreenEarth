@@ -25,11 +25,15 @@ public class MissionController {
 
     @PostMapping("/child/{child_id}")
     public ResponseDto todayMissionCreate(@PathVariable("child_id") int child_id, @RequestBody MissionRequestDto missionRequestDto){
-//        Child child = childRepository.findById(child_id).orElseThrow(
-//                () -> new CustomErrorException("아이가 존재하지 않습니다")
-//        );
-
+        System.out.println(missionRequestDto);
         MissionLog data = missionService.saveTodayMission(child_id, missionRequestDto);
+
+        return new ResponseDto(data);
+    }
+
+    @GetMapping("/child/{child_id}/log")
+    public ResponseDto  getmissionLogs(@PathVariable("child_id") int child_id){
+        List<MissionLog> data = missionService.getissionLogs(child_id);
 
         return new ResponseDto(data);
     }
