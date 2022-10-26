@@ -1,5 +1,6 @@
 package com.ssafy.greenEarth.dto;
 
+import com.ssafy.greenEarth.domain.Mission;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -12,4 +13,8 @@ public class MissionRequestDto {
     private String description;
     private int mileage;
 
+    public Mission toEntity() {
+        Mission mission = new Mission(getMissionId(), getName(), getDescription(), getMileage());
+        return mission;
+    }
 }

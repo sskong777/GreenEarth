@@ -4,6 +4,7 @@ import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Mission;
 import com.ssafy.greenEarth.domain.MissionLog;
 import com.ssafy.greenEarth.dto.MissionRequestDto;
+import com.ssafy.greenEarth.exception.CustomErrorException;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.MissionLogRepository;
 import com.ssafy.greenEarth.repository.MissionRepository;
@@ -27,15 +28,28 @@ public class MissionService {
 
     @Transactional
     public MissionLog saveTodayMission(int child_id, MissionRequestDto missionRequestDto) {
-        int missionId = missionRequestDto.getMissionId();
-        Mission mission = missionRepository.findById(missionId);
+        Mission mission = missionRequestDto.toEntity();
+        int missionId = mission.getId();
+        System.out.println(missionId);
 
+//        Mission mission = missionRepository.findById(missionId);
 //        System.out.println(mission.getId());
-        Child child = childRepository.findById(child_id);
 
+        Child child = childRepository.findById(child_id);
+        System.out.println("child: " + child);
         MissionLog missionlog = new MissionLog(child, mission);
+        missionLogRepository.save(missionlog);
         return missionlog;
     }
+
+    @Transactional
+    public List<MissionLog> getissionLogs(int child_id){
+        Child child = childRepository.findById(child_id);
+        List<MissionLog> missionLogs = child.getMissionLogList();
+//        List<MissionLog> missionLogs = missionLogRepository.findAll();
+        return missionLogs;
+    }
+
 
     @Transactional
     public List<Mission> getAllMissions(){
