@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ChildRepository extends JpaRepository<Child, Integer> {
 
-    Child findById(Long id);
+    Child findById(int id);
 
 }
