@@ -37,5 +37,5 @@ out/
 .vscode/
 
 ### CYC ###
-application.yml
-message.properties
+#application.yml
+#message.properties
