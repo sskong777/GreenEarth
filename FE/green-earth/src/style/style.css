@@ -19,11 +19,13 @@
 }
 
 .ProfileInfo {
-  @apply flex justify-center items-center w-72 h-40 bg-white rounded-md ml-5 mr-9 text-xl text-amber-900 leading-relaxed;
+  @apply flex justify-center items-center w-72 h-40 ml-5 mr-9 rounded-md text-xl text-amber-900 leading-relaxed 
+  bg-light outline outline-offset-2 outline-1 shadow-lg shadow-light/50;
 }
 
 .ChildImage {
-  @apply w-40 h-40 bg-white rounded-md mb-2;
+  @apply w-40 h-40 mb-2 rounded-md 
+  bg-light outline outline-offset-2 outline-1 shadow-lg shadow-light/50;
 }
 
 .ChildImageName {
@@ -31,9 +33,18 @@
 }
 
 .ProfileHeaderButton {
-  @apply w-40 h-40 bg-stone-400 rounded-md text-2xl mx-2 text-amber-900;
+  @apply w-40 h-40 mx-2 rounded-md text-3xl text-amber-900
+  bg-darkBeige hover:bg-darkBeige-hover active:bg-darkBeige-active
+  outline outline-offset-2 outline-1 shadow-lg shadow-darkBeige/50;
 }
 
 .ProfileMenuButton {
-  @apply w-64 h-16 bg-orange-700 rounded-md text-2xl text-white mx-5;
+  @apply w-64 h-16 mx-5 rounded-md text-2xl text-light 
+  bg-darkRed hover:bg-darkRed-hover active:bg-darkRed-active
+  outline outline-offset-2 outline-1 shadow-lg shadow-darkRed/50;
+}
+
+/* TodayMissonList */
+.TodayHeader {
+  @apply my-5  text-center text-4xl text-rose-900;
 }
