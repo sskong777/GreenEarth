@@ -13,6 +13,7 @@ public interface ChildRepository extends JpaRepository<Child, Integer> {
     Child findById(@Param("id") int id);
 
     @Query("select c from Child c join fetch c.parent p where c.id = :id")
-    Optional<Child> findChildById(int id);
+    Optional<Child> findChildById(@Param("id") int id);
 
+    Optional<Child> findByEmail(String email);
 }
