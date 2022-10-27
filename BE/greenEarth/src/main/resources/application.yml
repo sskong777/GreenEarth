@@ -5,7 +5,7 @@ server:
 
 spring:
   profiles:
-      active: greenearth-set1
+    active: greenearth-set1
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://k7d206.p.ssafy.io:8888/greenearth?serverTimezone=Asia/Seoul
