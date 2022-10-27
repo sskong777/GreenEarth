@@ -35,6 +35,7 @@ public class MissionController {
         return new ResponseDto(data);
     }
 
+    // 미션 상세 조회
     @GetMapping("{mission_id}")
     public ResponseDto getMissionDetail(@PathVariable("mission_id") int mission_id){
         MissionResDto data = missionService.getMissionDetail(mission_id);

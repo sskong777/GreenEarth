@@ -7,6 +7,7 @@ import com.ssafy.greenEarth.dto.MissionLogResDto;
 import com.ssafy.greenEarth.dto.MissionPutDto;
 import com.ssafy.greenEarth.dto.MissionReqDto;
 import com.ssafy.greenEarth.dto.MissionResDto;
+import com.ssafy.greenEarth.exception.CustomErrorException;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.MissionLogRepository;
 import com.ssafy.greenEarth.repository.MissionRepository;
@@ -34,8 +35,12 @@ public class MissionService {
     @Transactional
     public MissionLogResDto saveTodayMission(int child_id, MissionReqDto missionReqDto) {
         int missionId = missionReqDto.getMissionId();
-        Mission mission = missionRepository.findById(missionId);
-        Child child = childRepository.findById(child_id);
+        Mission mission = missionRepository.findMissionById(missionId).orElseThrow(
+                () -> new CustomErrorException("미션이 존재하지 않습니다.")
+        );
+        Child child = childRepository.findChildById(child_id).orElseThrow(
+                () -> new CustomErrorException("아이가 존재하지 않습니다.")
+        );
 
         LocalDateTime now = LocalDateTime.now();
 
@@ -48,7 +53,9 @@ public class MissionService {
     // 아이 미션 로그 조회
     @Transactional
     public List<MissionLogResDto> getMissionLogs(int child_id){
-        Child child = childRepository.findById(child_id);
+        Child child = childRepository.findChildById(child_id).orElseThrow(
+                ()-> new CustomErrorException("아이가 존재하지 않습니다.")
+        );
 
         List<MissionLogResDto> data = new ArrayList<>();
 
@@ -66,7 +73,9 @@ public class MissionService {
     // 오늘의 미션 조회
     @Transactional
     public List<MissionLogResDto> getTodayMissionLogs(int child_id){
-        Child child = childRepository.findById(child_id);
+        Child child = childRepository.findChildById(child_id).orElseThrow(
+                () -> new CustomErrorException("아이가 존재하지 않습니다.")
+        );
 
         List<MissionLogResDto> data = new ArrayList<>();
 
@@ -74,7 +83,6 @@ public class MissionService {
         for (MissionLog missionLog : missionLogs){
             if (missionLog.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
                     .equals(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")))){
-                System.out.println(missionLog.getId());
                 MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
                 data.add(missionLogResDto);
             }
@@ -94,7 +102,9 @@ public class MissionService {
 
     @Transactional
     public MissionResDto getMissionDetail(int mission_id){
-        Mission mission = missionRepository.findById(mission_id);
+        Mission mission = missionRepository.findMissionById(mission_id).orElseThrow(
+                () -> new CustomErrorException("미션이 존재하지 않습니다.")
+        );
         MissionResDto missionResDto = new MissionResDto(mission);
         return missionResDto;
     }
@@ -102,7 +112,9 @@ public class MissionService {
     // 오늘의 미션 승인
     @Transactional
     public MissionLogResDto permitMission(int log_id){
-        MissionLog missionLog = missionLogRepository.findById(log_id);
+        MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
+                ()->new CustomErrorException("미션 로그가 존재하지 않습니다.")
+        );
         missionLog.setPermitted(true);
         int curruentMissionCount = missionLog.getChild().getClearedMission();
         missionLog.getChild().setClearedMission(curruentMissionCount+1);
@@ -116,7 +128,9 @@ public class MissionService {
     // 오늘의 미션 완료
     @Transactional
     public MissionLogResDto clearMission(int log_id){
-        MissionLog missionLog = missionLogRepository.findById(log_id);
+        MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
+                () -> new CustomErrorException("미션 로그가 존재하지 않습니다.")
+        );
         LocalDateTime now = LocalDateTime.now();
         missionLog.setClearedAt(now);
         MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
@@ -128,8 +142,12 @@ public class MissionService {
     @Transactional
     public MissionLogResDto updateTodayMission(int log_id, MissionPutDto missionPutDto){
         int MissionId  = missionPutDto.getMissionId();
-        Mission updatedMission = missionRepository.findById(MissionId);
-        MissionLog missionLog = missionLogRepository.findById(log_id);
+        Mission updatedMission = missionRepository.findMissionById(MissionId).orElseThrow(
+                () -> new CustomErrorException("미션이 존재하지 않습니다.")
+        );
+        MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
+                () -> new CustomErrorException("미션 로그가 존재하지 않습니다.")
+        );
         missionLog.setMission(updatedMission);
         MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
         return missionLogResDto;
@@ -140,7 +158,9 @@ public class MissionService {
 //     오늘의 미션 삭제
     @Transactional
     public void deleteTodayMission(int log_id){
-        MissionLog missionLog = missionLogRepository.findById(log_id);
+        MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
+                () -> new CustomErrorException("미션 로그가 존재하지 않습니다.")
+        );
         System.out.println("삭제" + missionLog.getId());
         missionLogRepository.delete(missionLog);
     }
