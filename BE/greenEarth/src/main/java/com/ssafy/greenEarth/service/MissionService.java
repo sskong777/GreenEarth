@@ -35,7 +35,7 @@ public class MissionService {
     @Transactional
     public MissionLogResDto saveTodayMission(int child_id, MissionReqDto missionReqDto) {
         int missionId = missionReqDto.getMissionId();
-        Mission mission = missionRepository.findByMissionId(missionId).orElseThrow(
+        Mission mission = missionRepository.findMissionById(missionId).orElseThrow(
                 () -> new CustomErrorException("미션이 존재하지 않습니다.")
         );
         Child child = childRepository.findChildById(child_id).orElseThrow(
@@ -83,7 +83,6 @@ public class MissionService {
         for (MissionLog missionLog : missionLogs){
             if (missionLog.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
                     .equals(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")))){
-                System.out.println(missionLog.getId());
                 MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
                 data.add(missionLogResDto);
             }
@@ -103,7 +102,7 @@ public class MissionService {
 
     @Transactional
     public MissionResDto getMissionDetail(int mission_id){
-        Mission mission = missionRepository.findByMissionId(mission_id).orElseThrow(
+        Mission mission = missionRepository.findMissionById(mission_id).orElseThrow(
                 () -> new CustomErrorException("미션이 존재하지 않습니다.")
         );
         MissionResDto missionResDto = new MissionResDto(mission);
@@ -143,7 +142,7 @@ public class MissionService {
     @Transactional
     public MissionLogResDto updateTodayMission(int log_id, MissionPutDto missionPutDto){
         int MissionId  = missionPutDto.getMissionId();
-        Mission updatedMission = missionRepository.findByMissionId(MissionId).orElseThrow(
+        Mission updatedMission = missionRepository.findMissionById(MissionId).orElseThrow(
                 () -> new CustomErrorException("미션이 존재하지 않습니다.")
         );
         MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
