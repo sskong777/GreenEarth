@@ -38,4 +38,11 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+
+	processResources {
+		duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.INCLUDE
+	}
 }
+
+// Default는 dev 로 지정
+ext.profile = (!project.hasProperty('profile') || !profile) ? 'greenearth-set1' : profile
