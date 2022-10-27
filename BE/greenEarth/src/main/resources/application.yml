@@ -48,9 +48,8 @@ server:
   port: 5001
 
 spring:
-  config:
-    activate:
-      on-profile: aws
+  profiles:
+    active: aws
   jpa:
     hibernate:
       ddl-auto: none
