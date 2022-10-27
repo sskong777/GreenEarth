@@ -1,5 +1,5 @@
 package com.ssafy.greenEarth.domain;
 
 public enum Role {
-    PARENT, CHILD, ADMIN
+    ROLE_PARENT, ROLE_CHILD, ROLE_ADMIN
 }
