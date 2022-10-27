@@ -5,8 +5,8 @@ import com.ssafy.greenEarth.domain.Mission;
 import com.ssafy.greenEarth.domain.MissionLog;
 import com.ssafy.greenEarth.dto.MissionLogResDto;
 import com.ssafy.greenEarth.dto.MissionPutDto;
-import com.ssafy.greenEarth.dto.MissionRequestDto;
-import com.ssafy.greenEarth.exception.CustomErrorException;
+import com.ssafy.greenEarth.dto.MissionReqDto;
+import com.ssafy.greenEarth.dto.MissionResDto;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.MissionLogRepository;
 import com.ssafy.greenEarth.repository.MissionRepository;
@@ -32,10 +32,9 @@ public class MissionService {
 
     // 오늘의 미션생성
     @Transactional
-    public MissionLogResDto saveTodayMission(int child_id, MissionRequestDto missionRequestDto) {
-        int missionId = missionRequestDto.getMissionId();
+    public MissionLogResDto saveTodayMission(int child_id, MissionReqDto missionReqDto) {
+        int missionId = missionReqDto.getMissionId();
         Mission mission = missionRepository.findById(missionId);
-        System.out.println(mission.getDescription());
         Child child = childRepository.findById(child_id);
 
         LocalDateTime now = LocalDateTime.now();
@@ -93,14 +92,24 @@ public class MissionService {
         return missions;
     }
 
+    @Transactional
+    public MissionResDto getMissionDetail(int mission_id){
+        Mission mission = missionRepository.findById(mission_id);
+        MissionResDto missionResDto = new MissionResDto(mission);
+        return missionResDto;
+    }
+
     // 오늘의 미션 승인
     @Transactional
     public MissionLogResDto permitMission(int log_id){
         MissionLog missionLog = missionLogRepository.findById(log_id);
         missionLog.setPermitted(true);
+        int curruentMissionCount = missionLog.getChild().getClearedMission();
+        missionLog.getChild().setClearedMission(curruentMissionCount+1);
         MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
 //        System.out.println("오늘의 미션" + missionLogResDto);
 //        missionLogResDto.setPermitted(true);
+
         return missionLogResDto;
     }
 

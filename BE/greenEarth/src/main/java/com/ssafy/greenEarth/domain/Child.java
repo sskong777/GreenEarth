@@ -66,4 +66,8 @@ public class Child {
         this.role = role;
         this.parent = parent;
     }
+
+    public void setClearedMission(int clearedMission) {
+        this.clearedMission = clearedMission;
+    }
 }
