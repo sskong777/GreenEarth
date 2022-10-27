@@ -1,12 +1,11 @@
-```bash
 # 프로젝트 Root 폴더
 # 프로젝트Root/docker-compose.blue.yml
 version: '3.7'
 
 services:
   backend:
-    container_name: "greenearth_backend-blue"
-    image: greenearth_backend:0.1-blue
+    container_name: "greenearth_backend-green"
+    image: greenearth_backend:0.1-green
     build:
       context: BE/greenEarth/
       dockerfile: Dockerfile
@@ -14,6 +13,6 @@ services:
       - "5002:5001"
     # [인증서 파일 저장 경로]:/root
     volumes:
-      - /etc/letsencrypt/live/j7d206.p.ssafy.io/:/root
+      - /etc/letsencrypt/live/k7d206.p.ssafy.io/:/root
     environment:
       - TZ=Asia/Seoul
