@@ -15,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Table(name = "mission_logs")
-public class MissionLog {
+public class MissionLog extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,13 +31,17 @@ public class MissionLog {
 
     private String parentNickname;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "mission_id")
     private Mission mission;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "child_id")
     private Child child;
+
+    public void setPermitted(boolean permitted) {
+        isPermitted = permitted;
+    }
 
     public MissionLog(Child child, Mission mission, boolean isPermitted, LocalDateTime createdAt, String parentNickname){
         this.child = child;
@@ -46,10 +50,11 @@ public class MissionLog {
         this.createdAt = createdAt;
         this.parentNickname = "부모 임시";
     }
-    public MissionLog(Child child, Mission mission){
+    public MissionLog(Child child, Mission mission, LocalDateTime createdAt){
         this.child = child;
         this.mission = mission;
         this.isPermitted = false;
         this.parentNickname = "부모 임시";
+        this.createdAt = createdAt;
     }
 }
