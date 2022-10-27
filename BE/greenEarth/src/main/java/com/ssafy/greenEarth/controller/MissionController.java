@@ -1,10 +1,7 @@
 package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Mission;
-import com.ssafy.greenEarth.dto.MissionLogResDto;
-import com.ssafy.greenEarth.dto.MissionPutDto;
-import com.ssafy.greenEarth.dto.MissionRequestDto;
-import com.ssafy.greenEarth.dto.ResponseDto;
+import com.ssafy.greenEarth.dto.*;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.MissionRepository;
 import com.ssafy.greenEarth.service.MissionService;
@@ -24,9 +21,9 @@ public class MissionController {
 
     // 오늘의 미션생성
     @PostMapping("/child/{child_id}")
-    public ResponseDto todayMissionCreate(@PathVariable("child_id") int child_id, @RequestBody MissionRequestDto missionRequestDto){
-        System.out.println(missionRequestDto);
-        MissionLogResDto data = missionService.saveTodayMission(child_id, missionRequestDto);
+    public ResponseDto todayMissionCreate(@PathVariable("child_id") int child_id, @RequestBody MissionReqDto missionReqDto){
+        System.out.println(missionReqDto);
+        MissionLogResDto data = missionService.saveTodayMission(child_id, missionReqDto);
 
         return new ResponseDto(data);
     }
@@ -35,6 +32,13 @@ public class MissionController {
     @GetMapping("")
     public ResponseDto getAllMissions(){
         List<Mission> data = missionService.getAllMissions();
+        return new ResponseDto(data);
+    }
+
+    @GetMapping("{mission_id}")
+    public ResponseDto getMissionDetail(@PathVariable("mission_id") int mission_id){
+        MissionResDto data = missionService.getMissionDetail(mission_id);
+
         return new ResponseDto(data);
     }
 

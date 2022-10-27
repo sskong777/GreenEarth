@@ -1,5 +1,6 @@
 package com.ssafy.greenEarth.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,9 +34,10 @@ public class MissionLog extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "mission_id")
+    @JsonBackReference
     private Mission mission;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "child_id")
     private Child child;
 
