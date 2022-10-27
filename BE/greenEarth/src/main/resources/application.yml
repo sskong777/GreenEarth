@@ -1,6 +1,6 @@
 #
 server:
-  port: 5001
+  port: 5000
   servlet:
     contextPath: /api
 
@@ -46,7 +46,7 @@ jwt:
 ---
 
 server:
-  port: 5002
+  port: 5001
   servlet:
     contextPath: /api
 
@@ -73,18 +73,29 @@ spring:
     open-in-view: false
     generate-ddl: false
     database: mysql
+---
 
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-    hiddenmethod:
-      filter:
-        enabled: true
+server:
+  port: 5002
+  servlet:
+    contextPath: /api
 
-logging:
-  level:
-    org.hibernate.sql: debug
-    root: info
+spring:
+  config:
+    activate:
+      on-profile: greenearth-set2
 
-jwt:
-  secretKey: ssafyd206pjejjihshpkypcskjmmygreenearth
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      use-new-id-generator-mappings: false
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    generate-ddl: false
+    database: mysql
