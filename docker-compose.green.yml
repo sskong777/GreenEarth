@@ -17,4 +17,3 @@ services:
       - /etc/letsencrypt/live/j7d206.p.ssafy.io/:/root
     environment:
       - TZ=Asia/Seoul
-```
