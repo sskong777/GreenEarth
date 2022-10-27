@@ -3,7 +3,7 @@
 #FROM openjdk:11-jdk-alpine
 FROM adoptopenjdk/openjdk11
 
-# jar 파일 경로는 직접 입력해주세요.
+# jar 파일 경로는 직접 입력해주세요..
 COPY build/libs/greenEarth-0.0.1-SNAPSHOT.jar greenEarth.jar
 
 #properties 실행 명령어
