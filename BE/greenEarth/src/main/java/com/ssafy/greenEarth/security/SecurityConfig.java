@@ -22,6 +22,7 @@ public class SecurityConfig {
     @Bean
     @Order(SecurityProperties.BASIC_AUTH_ORDER)
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         http
                 .authorizeHttpRequests()
                 .anyRequest().permitAll();
