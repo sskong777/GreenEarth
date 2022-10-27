@@ -1,12 +1,11 @@
 server:
-  port: 5001
+  port: 5000
   servlet:
     contextPath: /api
 
 spring:
-  config:
-    activate:
-      on-profile: greenearth-set1
+  profiles:
+      active: greenearth-set1
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://k7d206.p.ssafy.io:8888/greenearth?serverTimezone=Asia/Seoul
@@ -40,6 +39,39 @@ logging:
     org.hibernate.sql: debug
     root: info
 
+jwt:
+  secretKey: ssafyd206pjejjihshpkypcskjmmygreenearth
+
+---
+
+server:
+  port: 5001
+  servlet:
+    contextPath: /api
+
+spring:
+  profiles:
+    active: greenearth-set2
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://k7d206.p.ssafy.io:8888/greenearth?serverTimezone=Asia/Seoul
+    username: root
+    password: Ssafyd206@
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      use-new-id-generator-mappings: false
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    generate-ddl: false
+    database: mysql
 ---
 
 server:
@@ -51,11 +83,6 @@ spring:
   config:
     activate:
       on-profile: greenearth-set2
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://k7d206.p.ssafy.io:8888/greenearth?serverTimezone=Asia/Seoul
-    username: root
-    password: Ssafyd206@
 
   jpa:
     hibernate:
@@ -71,15 +98,3 @@ spring:
     open-in-view: false
     generate-ddl: false
     database: mysql
-
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-    hiddenmethod:
-      filter:
-        enabled: true
-
-logging:
-  level:
-    org.hibernate.sql: debug
-    root: info
