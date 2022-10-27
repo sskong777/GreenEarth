@@ -26,7 +26,6 @@ public class ChildService {
         Parent parent = parentRepository.findById(1)
                 .orElseThrow(() -> new IllegalAccessError(String.format("연결될 보호자 계정을 찾을 수 없습니다.")));
         // 등록
-        Child savedChild = childRepository.save(childDto.toEntity(parent));
-        return savedChild;
+        return childRepository.save(childDto.toEntity(parent));
     }
 }
