@@ -1,0 +1,1 @@
+INSERT INTO PARENTS (EMAIL, NICKNAME, ROLE) VALUES ('parent1@naver.com', 'parent1', 'ROLE_PARENT')
