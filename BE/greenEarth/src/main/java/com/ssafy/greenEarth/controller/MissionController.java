@@ -1,8 +1,8 @@
 package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Mission;
-import com.ssafy.greenEarth.domain.MissionLog;
 import com.ssafy.greenEarth.dto.MissionLogResDto;
+import com.ssafy.greenEarth.dto.MissionPutDto;
 import com.ssafy.greenEarth.dto.MissionRequestDto;
 import com.ssafy.greenEarth.dto.ResponseDto;
 import com.ssafy.greenEarth.repository.ChildRepository;
@@ -26,7 +26,7 @@ public class MissionController {
     @PostMapping("/child/{child_id}")
     public ResponseDto todayMissionCreate(@PathVariable("child_id") int child_id, @RequestBody MissionRequestDto missionRequestDto){
         System.out.println(missionRequestDto);
-        MissionLog data = missionService.saveTodayMission(child_id, missionRequestDto);
+        MissionLogResDto data = missionService.saveTodayMission(child_id, missionRequestDto);
 
         return new ResponseDto(data);
     }
@@ -41,7 +41,7 @@ public class MissionController {
     // 아이 미션 로그 조회
     @GetMapping("/child/{child_id}/log")
     public ResponseDto  getmissionLogs(@PathVariable("child_id") int child_id){
-        List<MissionLog> data = missionService.getMissionLogs(child_id);
+        List<MissionLogResDto> data = missionService.getMissionLogs(child_id);
 
         return new ResponseDto(data);
     }
@@ -49,7 +49,7 @@ public class MissionController {
     // 오늘의 미션 조회
     @GetMapping("/child/{child_id}/today")
     public ResponseDto  getTodaymissionLogs(@PathVariable("child_id") int child_id){
-        List<MissionLog> data = missionService.getTodayMissionLogs(child_id);
+        List<MissionLogResDto> data = missionService.getTodayMissionLogs(child_id);
 
         return new ResponseDto(data);
     }
@@ -67,18 +67,21 @@ public class MissionController {
     @PutMapping("log/{log_id}/clear")
     public ResponseDto clearTodayMission(@PathVariable("log_id") int log_id){
         MissionLogResDto data = missionService.clearMission(log_id);
-//        System.out.println(data);
         return new ResponseDto(data);
 
     }
 
     // 오늘의 미션 수정
-
+    @PutMapping("/log/{log_id}")
+    public ResponseDto putTodayMission(@PathVariable("log_id") int log_id, @RequestBody MissionPutDto missionPutDto ){
+        MissionLogResDto data = missionService.updateTodayMission(log_id, missionPutDto);
+        return new ResponseDto(data);
+    }
 
 
     // 오늘의 미션 삭제
     @DeleteMapping("/log/{log_id}")
-    public ResponseDto delete(@PathVariable("log_id") int log_id) {
+    public ResponseDto deleteTodayMission(@PathVariable("log_id") int log_id) {
         missionService.deleteTodayMission(log_id);
         return new ResponseDto("");
     }
