@@ -4,9 +4,8 @@ server:
     contextPath: /api
 
 spring:
-  config:
-    activate:
-      on-profile: greenearth-dev
+  profiles:
+      active: greenearth-set1
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://k7d206.p.ssafy.io:8888/greenearth?serverTimezone=Asia/Seoul
@@ -51,9 +50,13 @@ server:
     contextPath: /api
 
 spring:
-  config:
-    activate:
-      on-profile: greenearth-set1
+  profiles:
+    active: greenearth-set2
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://k7d206.p.ssafy.io:8888/greenearth?serverTimezone=Asia/Seoul
+    username: root
+    password: Ssafyd206@
 
   jpa:
     hibernate:
