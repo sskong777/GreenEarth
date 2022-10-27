@@ -49,7 +49,7 @@ tasks.named('test') {
 }
 
 // Default는 dev 로 지정
-ext.profile = (!project.hasProperty('profile') || !profile) ? 'set1' : profile
+ext.profile = (!project.hasProperty('profile') || !profile) ? 'set2' : profile
 
 // 리소스 폴더 지정
 sourceSets {
