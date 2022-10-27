@@ -1,5 +1,6 @@
 package com.ssafy.greenEarth.jwt;
 
+import com.ssafy.greenEarth.domain.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -29,10 +30,10 @@ public class TokenProvider {
     }
 
     // 토큰 생성 메소드
-    public String createAccessToken(String subject, String role) {
+    public String createAccessToken(int subject, Role role) {
 
         // Claim : JWT payload 에 저장되는 속성 정보 단위 (java 에서는 Json map 형식의 인터페이스)
-        Claims claims = Jwts.claims().setSubject(subject);     // 토큰 제목 (sub)
+        Claims claims = Jwts.claims().setSubject(Integer.toString(subject));     // 토큰 제목 (sub)
         claims.put("Role", role);
 
         Date now = new Date();
@@ -47,9 +48,9 @@ public class TokenProvider {
                 .compact();
     }
 
-    public String createRefreshToken(String subject, String role) {
+    public String createRefreshToken(int subject, Role role) {
         // Claim : JWT payload 에 저장되는 속성 정보 단위 (java 에서는 Json map 형식의 인터페이스)
-        Claims claims = Jwts.claims().setSubject(subject);     // 토큰 제목 (sub)
+        Claims claims = Jwts.claims().setSubject(Integer.toString(subject));     // 토큰 제목 (sub)
         claims.put("Role", role);
 
         Date now = new Date();
