@@ -9,12 +9,9 @@ import lombok.RequiredArgsConstructor;
 public class MissionRequestDto {
 
     private int missionId;
-    private String name;
-    private String description;
-    private int mileage;
 
     public Mission toEntity() {
-        Mission mission = new Mission(getMissionId(), getName(), getDescription(), getMileage());
+        Mission mission = new Mission(getMissionId());
         return mission;
     }
 }
