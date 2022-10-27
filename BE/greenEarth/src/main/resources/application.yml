@@ -39,6 +39,9 @@ logging:
     org.hibernate.sql: debug
     root: info
 
+jwt:
+  secretKey: ssafyd206pjejjihshpkypcskjmmygreenearth
+
 ---
 
 server:
@@ -81,3 +84,6 @@ logging:
   level:
     org.hibernate.sql: debug
     root: info
+
+jwt:
+  secretKey: ssafyd206pjejjihshpkypcskjmmygreenearth
