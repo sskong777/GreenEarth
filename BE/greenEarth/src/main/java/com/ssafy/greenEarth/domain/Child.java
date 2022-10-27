@@ -55,6 +55,14 @@ public class Child {
     @JsonBackReference
     private List<Reward> rewardList = new ArrayList<>();
 
+    public void setClearedMission(int clearedMission) {
+        this.clearedMission = clearedMission;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
+
     @Builder
     public Child(String realName, String email, String password, Gender gender, String nickname, int mileage, int clearedMission, int earthLevel, Role role, Parent parent) {
         this.realName = realName;
@@ -69,7 +77,4 @@ public class Child {
         this.parent = parent;
     }
 
-    public void setClearedMission(int clearedMission) {
-        this.clearedMission = clearedMission;
-    }
 }
