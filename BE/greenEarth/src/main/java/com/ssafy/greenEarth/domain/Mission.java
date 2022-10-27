@@ -28,5 +28,12 @@ public class Mission {
 
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
-    private List<MissionLog> missionLogList = new ArrayList<>();
+    private List<MissionLog> missionLogList =  new ArrayList<>();
+
+    public Mission(int id, String name, String description, int mileage) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.mileage = mileage;
+    }
 }
