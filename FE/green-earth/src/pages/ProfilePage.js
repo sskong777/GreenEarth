@@ -35,7 +35,7 @@ const ProfilePage = () => {
 
       <section className="ProfileMenu">
         <button className="ProfileMenuButton">과거 미션 목록</button>
-        <button className="ProfileMenuButton">보상 설정하러 가기</button>
+        <button className="ProfileMenuButton mx-6">보상 설정하러 가기</button>
         <button className="ProfileMenuButton">회원 수정하러 가기</button>
       </section>
       <section>
