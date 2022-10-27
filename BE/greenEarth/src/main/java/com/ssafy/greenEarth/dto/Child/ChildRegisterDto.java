@@ -1,4 +1,4 @@
-package com.ssafy.greenEarth.dto;
+package com.ssafy.greenEarth.dto.Child;
 
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Gender;
