@@ -30,7 +30,7 @@ public class Mission {
     @JsonBackReference
     private List<MissionLog> missionLogList =  new ArrayList<>();
 
-    public Mission(int id, String name, String description, int mileage) {
+    public Mission(int id) {
         this.id = id;
         this.name = name;
         this.description = description;
