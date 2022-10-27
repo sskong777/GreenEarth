@@ -23,7 +23,7 @@ public class ChildService {
 
     public ChildProfileDto findChild(int childId) {
         // 아이 프로필 조회
-        Child child = childRepository.findById(childId)
+        Child child = childRepository.findChildById(childId)
                 .orElseThrow(() -> new IllegalArgumentException(String.format("해당 아이 프로필을 찾을 수 없습니다.")));
         return new ChildProfileDto(child);
     }
