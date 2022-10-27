@@ -34,8 +34,19 @@ dependencies {
 
 	// jwt 의존성 추가
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
+	// swagger
+	implementation 'io.springfox:springfox-swagger2:3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+
+	processResources {
+		duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.INCLUDE
+	}
 }
+
+// Default는 dev 로 지정
+ext.profile = (!project.hasProperty('profile') || !profile) ? 'greenearth-set1' : profile
