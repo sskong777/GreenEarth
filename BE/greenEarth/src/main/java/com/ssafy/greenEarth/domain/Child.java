@@ -45,6 +45,8 @@ public class Child {
     @JoinColumn(name = "parent_id")
     private Parent parent;
 
+    private String refreshToken;
+
     @OneToMany(mappedBy = "child", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private List<MissionLog> missionLogList = new ArrayList<>();
