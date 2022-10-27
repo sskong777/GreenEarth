@@ -8,8 +8,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
 public class MissionLogResDto {
 
     private int id;
