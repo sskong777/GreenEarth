@@ -60,55 +60,34 @@
   @apply flex justify-center items-center mb-5;
 }
 
-.TodayItem {
-  @apply flex justify-between items-center w-188 h-16 px-6 rounded-md text-2xl text-light font-medium text-center
-	bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
-}
-
 .TodayItemButtonSingle {
   @apply w-56 h-16 ml-6 rounded-md text-2xl text-light font-medium 
   bg-oceanBlue hover:bg-oceanBlue-hover active:bg-oceanBlue-active
   outline outline-offset-2 outline-1 shadow-lg shadow-oceanBlue/50;
 }
 
-.dropdown {
-  width: 400px;
-  user-select: none;
-  margin: 100px auto;
-  position: relative;
+.TodayItem {
+  @apply flex justify-between items-center w-188 h-16 px-6 rounded-md text-2xl text-light font-medium text-center
+	bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
+  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
 }
 
-.dropdown .dropdown-btn {
-  padding: 15px 20px;
-  background: #fff;
-  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
-  font-weight: bold;
-  color: #333;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  justify-content: space-between;
+.TodayDropdown {
+  @apply w-188 relative select-none;
 }
 
-.dropdown .dropdown-content {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  padding: 10px;
-  background: #fff;
-  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
-  font-weight: 500;
-  color: #333;
-  width: 100%;
+.TodayDropdownButton {
+  @apply flex justify-between items-center h-16 px-6 cursor-pointer rounded-md text-2xl text-light font-medium text-center
+  bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
+  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
 }
 
-.dropdown .dropdown-content .dropdown-item {
-  padding: 10px;
-  cursor: pointer;
-  transition: all 0.2s;
+.TodayDropdownContent {
+  @apply absolute w-full top-1.1 left-0 p-2.5 rounded-md text-xl text-blackBrown font-medium 
+  bg-stoneRed-dropdown shadow-lg shadow-stoneRed-dropdown;
 }
 
-.dropdown .dropdown-content .dropdown-item:hover {
-  background: #f4f4f4;
+.TodayDropdownItem {
+  @apply p-2.5 rounded-md cursor-pointer transition-all delay-75
+  hover:bg-stoneRed-dropdown-hover;
 }

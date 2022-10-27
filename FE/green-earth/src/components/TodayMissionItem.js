@@ -1,8 +1,9 @@
 import { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
-const options = ["React", "Vue", "Angular"];
+const options = ["분리수거 하기", "배달음식 줄이기", "텀블러 사용하기"];
 
 const TodayMissionItem = () => {
   const [isActive, setIsActive] = useState(false);
@@ -12,38 +13,38 @@ const TodayMissionItem = () => {
     <>
       <div className="TodayMissionItem">
         {/* Dropdown */}
-        <div className="TodayItem">미션을 설정해 주세요.</div>
+        <div className="TodayDropdown">
+          <div
+            className="TodayDropdownButton"
+            onClick={(e) => {
+              setIsActive(!isActive);
+            }}
+          >
+            {selected}
+            <span>
+              <FontAwesomeIcon icon={faCaretDown} />
+            </span>
+          </div>
+
+          {isActive && (
+            <div className="TodayDropdownContent">
+              {options.map((option, key) => (
+                <div
+                  key={key}
+                  onClick={(e) => {
+                    setSelected(option);
+                    setIsActive(false);
+                  }}
+                  className="TodayDropdownItem"
+                >
+                  {option}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
 
         <button className="TodayItemButtonSingle">미션 설정</button>
-      </div>
-      <div className="dropdown">
-        <div
-          className="dropdown-btn"
-          onClick={(e) => {
-            setIsActive(!isActive);
-          }}
-        >
-          {selected}
-        </div>
-        <span>
-          <FontAwesomeIcon icon="fa-solid fa-caret-down" />
-        </span>
-        {isActive && (
-          <div className="dropdown-content">
-            {options.map((option, key) => (
-              <div
-                key={key}
-                onClick={(e) => {
-                  setSelected(option);
-                  setIsActive(false);
-                }}
-                className="dropdown-item"
-              >
-                {option}
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </>
   );
