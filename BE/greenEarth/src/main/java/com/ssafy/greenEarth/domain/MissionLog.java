@@ -43,6 +43,14 @@ public class MissionLog extends BaseTimeEntity {
         isPermitted = permitted;
     }
 
+    public void setClearedAt(LocalDateTime clearedAt) {
+        this.clearedAt = clearedAt;
+    }
+
+    public void setMission(Mission mission) {
+        this.mission = mission;
+    }
+
     public MissionLog(Child child, Mission mission, boolean isPermitted, LocalDateTime createdAt, String parentNickname){
         this.child = child;
         this.mission = mission;
