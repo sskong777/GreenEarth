@@ -32,7 +32,7 @@ public class MissionLog extends BaseTimeEntity {
 
     private String parentNickname;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "mission_id")
     @JsonBackReference
     private Mission mission;
