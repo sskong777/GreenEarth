@@ -8,6 +8,6 @@ public class TestService {
 
     @Transactional
     public String getTest() {
-        return "hello, D206! ";
+        return "Please, hello, D206! ";
     }
 }
