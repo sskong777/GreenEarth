@@ -52,8 +52,6 @@ public class Child {
     @OneToMany(mappedBy = "child", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private final List<Reward> rewardList = new ArrayList<>();
-<<<<<<< HEAD
-=======
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
@@ -66,7 +64,6 @@ public class Child {
     public void setClearedMission(int clearedMission) {
         this.clearedMission = clearedMission;
     }
->>>>>>> e7641ae0e49979186a8752ac13233b2c708d748e
 
     @Builder
     public Child(String realName, String email, String password, Gender gender, String nickname, int mileage, int clearedMission, int earthLevel, Role role, Parent parent) {
@@ -79,18 +76,6 @@ public class Child {
         this.clearedMission = clearedMission;
         this.earthLevel = earthLevel;
         this.role = role;
-        this.parent = parent;
-    }
-
-    public void setClearedMission(int clearedMission) {
-        this.clearedMission = clearedMission;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public void setParent(Parent parent) {
         this.parent = parent;
     }
 }
