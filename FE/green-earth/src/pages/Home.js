@@ -1,10 +1,12 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import ChildMainPage from "./ChildMainPage"
+import { Link } from "react-router-dom";
 import "./../style/style.css";
 
-const Home = () => {
+const Home = ({ history }) => {
   return (
     <div className="Home">
       <h1>내가 Green 지구</h1>
@@ -12,6 +14,7 @@ const Home = () => {
       <p className="text-3xl font-bold underline">TailWind Style</p>
       <p>Tailwind Install</p>
       <br />
+
       <Canvas>
         <OrbitControls autoRotate={true} />
         <mesh>
@@ -20,8 +23,11 @@ const Home = () => {
           <boxGeometry args={[1, 1, 1]} />
           <meshStandardMaterial attach="material" color={0xa3b18a} />
         </mesh>
+
       </Canvas>
-      <p>Three.js Install</p>
+
+      <Link to="/child">[child 메인으로 가기 버튼]</Link>
+      <Link to="/parent">[parent 메인으로 가기 버튼]</Link>
     </div>
   );
 };
