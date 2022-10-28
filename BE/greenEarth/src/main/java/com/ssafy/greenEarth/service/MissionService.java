@@ -3,6 +3,7 @@ package com.ssafy.greenEarth.service;
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Mission;
 import com.ssafy.greenEarth.domain.MissionLog;
+import com.ssafy.greenEarth.domain.Parent;
 import com.ssafy.greenEarth.dto.MissionLogResDto;
 import com.ssafy.greenEarth.dto.MissionPutDto;
 import com.ssafy.greenEarth.dto.MissionReqDto;
@@ -11,6 +12,7 @@ import com.ssafy.greenEarth.exception.CustomErrorException;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.MissionLogRepository;
 import com.ssafy.greenEarth.repository.MissionRepository;
+import com.ssafy.greenEarth.repository.ParentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,7 @@ public class MissionService {
     private final ChildRepository childRepository;
     private final MissionRepository missionRepository;
     private final MissionLogRepository missionLogRepository;
+    private final ParentRepository parentRepository;
 
     // 오늘의 미션생성
     @Transactional
@@ -42,9 +45,13 @@ public class MissionService {
                 () -> new CustomErrorException("아이가 존재하지 않습니다.")
         );
 
+        Parent parent = parentRepository.findByNickname("parent1").orElseThrow(
+                () -> new CustomErrorException("부모가 존재하지 않습니다.")
+        );
+
         LocalDateTime now = LocalDateTime.now();
 
-        MissionLog missionlog = new MissionLog(child, mission, now);
+        MissionLog missionlog = new MissionLog(child, mission, parent, now);
         missionLogRepository.save(missionlog);
         MissionLogResDto missionLogResDto = new MissionLogResDto(missionlog);
         return missionLogResDto;
@@ -118,6 +125,11 @@ public class MissionService {
         missionLog.setPermitted(true);
         int curruentMissionCount = missionLog.getChild().getClearedMission();
         missionLog.getChild().setClearedMission(curruentMissionCount+1);
+
+        int currentMileage = missionLog.getChild().getMileage();
+        int missionMileage = missionLog.getMission().getMileage();
+        missionLog.getChild().setMileage(currentMileage+missionMileage);
+
         MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
 //        System.out.println("오늘의 미션" + missionLogResDto);
 //        missionLogResDto.setPermitted(true);
