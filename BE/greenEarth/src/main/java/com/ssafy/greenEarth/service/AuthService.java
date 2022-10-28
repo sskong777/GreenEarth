@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.security.auth.login.LoginException;
+
 @Slf4j
 @Service
 @Transactional(readOnly = true)
@@ -23,8 +25,7 @@ public class AuthService {
     public Child childLogin(LoginDto loginDto) {
         // email id 비교
         Child child = childRepository.findByEmail(loginDto.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException(String.format("계정을 찾을 수 없습니다.")));
-
+                .orElseThrow(() -> new IllegalArgumentException("계정을 찾을 수 없습니다."));
         // password 비교
         if (child.getPassword().equals(loginDto.getPassword())) {
             return child;
@@ -36,11 +37,16 @@ public class AuthService {
 
     @Transactional
     public String createAccessToken(int id, Role role) {
+        Child child = childRepository.findChildById(id)
+                .orElseThrow(() -> new IllegalArgumentException("계정을 찾을 수 없습니다."));
         return tokenProvider.createAccessToken(id, role);
     }
 
     @Transactional
     public String createRefreshToken(int id, Role role) {
-        return tokenProvider.createRefreshToken(id,role);
+        Child child = childRepository.findChildById(id)
+                .orElseThrow(() -> new IllegalArgumentException("계정을 찾을 수 없습니다."));
+        String refreshToken =  tokenProvider.createAccessToken(id, role);
+        return refreshToken;
     }
 }
