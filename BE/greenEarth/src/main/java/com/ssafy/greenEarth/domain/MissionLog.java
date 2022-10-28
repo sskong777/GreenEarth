@@ -53,18 +53,11 @@ public class MissionLog extends BaseTimeEntity {
         this.mission = mission;
     }
 
-    public MissionLog(Child child, Mission mission, boolean isPermitted, LocalDateTime createdAt, String parentNickname){
+    public MissionLog(Child child, Mission mission, Parent parent, LocalDateTime createdAt){
         this.child = child;
         this.mission = mission;
         this.isPermitted = false;
-        this.createdAt = createdAt;
-        this.parentNickname = "부모 임시";
-    }
-    public MissionLog(Child child, Mission mission, LocalDateTime createdAt){
-        this.child = child;
-        this.mission = mission;
-        this.isPermitted = false;
-        this.parentNickname = "부모 임시";
+        this.parentNickname = parent.getNickname();
         this.createdAt = createdAt;
     }
 }
