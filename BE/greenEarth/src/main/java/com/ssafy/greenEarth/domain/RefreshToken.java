@@ -9,20 +9,15 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "admin")
-public class Admin {
+@Table(name = "refresh_token")
+public class RefreshToken extends BaseTimeEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "admin_id")
+    @Column(name = "refreshTokenId")
     private int id;
 
-    private String email;
-
-    private String password;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
+    @Column(nullable = false)
     private String refreshToken;
+
 }
