@@ -35,12 +35,12 @@ dependencies {
 	// jwt 의존성 추가
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 
-	// swagger
-	implementation 'io.springfox:springfox-swagger2:3.0.0'
-	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+//	// swagger
+//	implementation 'io.springfox:springfox-swagger2:2.9.2'
+//	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 
-	// health check
-	implementation "org.springframework.boot:spring-boot-starter-actuator"
+//	// health check
+//	implementation "org.springframework.boot:spring-boot-starter-actuator"
 }
 
 tasks.named('test') {
