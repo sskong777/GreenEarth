@@ -1,10 +1,10 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.5'
-	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'org.springframework.boot' version '2.4.0'
+	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
 	id 'java'
 }
 
-group = 'com.example'
+group = 'com.greenEarth'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -25,7 +25,8 @@ dependencies {
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.mysql:mysql-connector-j'
+//	runtimeOnly 'com.mysql:mysql-connector-j'
+	implementation 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
 
 	implementation "io.springfox:springfox-boot-starter:3.0.0"
@@ -39,8 +40,8 @@ dependencies {
 //	implementation 'io.springfox:springfox-swagger2:2.9.2'
 //	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 
-//	// health check
-//	implementation "org.springframework.boot:spring-boot-starter-actuator"
+	// health check
+	implementation "org.springframework.boot:spring-boot-starter-actuator"
 }
 
 tasks.named('test') {
