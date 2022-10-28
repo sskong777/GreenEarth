@@ -29,8 +29,7 @@ public class AuthController {
 
     private final AuthService authService;
 
-//    @ApiOperation(value = "아이 로그인", notes = "email id와 password 받아서 로그인진행 성공시 token에 JWT를 넘겨줌")
-    @ApiOperation(value = "아이 로그인", notes = "email id와 password 받아서 로그인진행")
+    @ApiOperation(value = "아이 로그인", notes = "email id와 password 받아서 로그인진행 성공시 token에 JWT를 넘겨줌")
     @PostMapping("/login/child")
     public ResponseEntity<Map<String,Object>> childLogin(@RequestBody LoginDto loginDto) {
         log.info("로그인 요청 : {}", loginDto.getEmail());
@@ -43,8 +42,8 @@ public class AuthController {
 
         try {
             if (child != null) {
-//                resMap.put("accessToken", authService.createAccessToken(child.getId(), Role.ROLE_CHILD));
-//                resMap.put("refreshToken", authService.createRefreshToken(child.getId(), Role.ROLE_CHILD));
+                resMap.put("accessToken", authService.createAccessToken(child.getId(), Role.ROLE_CHILD));
+                resMap.put("refreshToken", authService.createRefreshToken(child.getId(), Role.ROLE_CHILD));
                 resMap.put("message", "로그인 성공");
                 status = HttpStatus.OK;
             } else {
@@ -58,4 +57,6 @@ public class AuthController {
 
         return new ResponseEntity<>(resMap, status);
     }
+
+
 }
