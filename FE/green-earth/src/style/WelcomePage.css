@@ -1,0 +1,10 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* WelcomePage */
+
+.WelcomePage {
+  @apply flex flex-col justify-center items-center
+  bg-[#FFF8E1] min-h-full;
+}
