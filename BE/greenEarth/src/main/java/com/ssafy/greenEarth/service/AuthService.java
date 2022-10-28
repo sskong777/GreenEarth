@@ -47,7 +47,6 @@ public class AuthService {
         Child child = childRepository.findChildById(id)
                 .orElseThrow(() -> new IllegalArgumentException("계정을 찾을 수 없습니다."));
         String refreshToken =  tokenProvider.createAccessToken(id, role);
-        child.setRefreshToken(refreshToken);
         return refreshToken;
     }
 }
