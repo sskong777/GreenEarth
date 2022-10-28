@@ -24,9 +24,9 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable();
-        http
-                .authorizeHttpRequests()    // http request 사용하는 요청에 접근 제한 설정
-                .anyRequest().permitAll();  // 나머지 요청들에 대해서 . 모두 항상 허용
+//        http
+//                .authorizeHttpRequests()    // http request 사용하는 요청에 접근 제한 설정
+//                .anyRequest().permitAll();  // 나머지 요청들에 대해서 . 모두 항상 허용
         return http.build();
     }
 }

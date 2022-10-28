@@ -65,6 +65,10 @@ public class Child {
         this.clearedMission = clearedMission;
     }
 
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
+
     @Builder
     public Child(String realName, String email, String password, Gender gender, String nickname, int mileage, int clearedMission, int earthLevel, Role role, Parent parent) {
         this.realName = realName;
