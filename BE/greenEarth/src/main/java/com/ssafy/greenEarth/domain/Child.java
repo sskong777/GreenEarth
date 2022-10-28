@@ -45,8 +45,6 @@ public class Child {
     @JoinColumn(name = "parent_id")
     private Parent parent;
 
-    private String refreshToken;
-
     @OneToMany(mappedBy = "child", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private final List<MissionLog> missionLogList = new ArrayList<>();
@@ -55,12 +53,16 @@ public class Child {
     @JsonBackReference
     private final List<Reward> rewardList = new ArrayList<>();
 
-    public void setClearedMission(int clearedMission) {
-        this.clearedMission = clearedMission;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
+    public void setParent(Parent parent) {
+        this.parent = parent;
+    }
+
+    public void setClearedMission(int clearedMission) {
+        this.clearedMission = clearedMission;
     }
 
     @Builder
@@ -74,14 +76,6 @@ public class Child {
         this.clearedMission = clearedMission;
         this.earthLevel = earthLevel;
         this.role = role;
-        this.parent = parent;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public void setParent(Parent parent) {
         this.parent = parent;
     }
 }
