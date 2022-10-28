@@ -3,8 +3,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
   margin: 0px;
+  font-family: "BinggraeBold";
 }
 
 
@@ -18,17 +19,28 @@ body {
 
 @media (max-width: 1280px) {
   .App {
-    width: 95vw;
+    width: 98vw;
+  }
+}
+
+@media (min-height: 720px) {
+  .App {
+    height: 710px;
+  }
+}
+
+@media (max-height: 720px) {
+  .App {
+    height: 98vh;
   }
 }
 
 #root {
-  background-color: white;
+  background-color: #fff8e1;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .App {
-  min-height: 100vh;
-  padding-left: 20px;
-  padding-right: 20px;
+  height: 720px;
+  min-height: 100%;
 }

@@ -1,3 +1,4 @@
+
 import "../style/ParentMain.css";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -463,7 +464,7 @@ function Model20(props) {
 
 
 
-function ChildMainPage() {
+function ParentMainPage() {
   const level = 1
   const value = level*11.3
   const mileage = level*87.6
@@ -622,4 +623,5 @@ function ChildMainPage() {
   );
 }
 
-export default ChildMainPage;
+export default ParentMainPage;
+
