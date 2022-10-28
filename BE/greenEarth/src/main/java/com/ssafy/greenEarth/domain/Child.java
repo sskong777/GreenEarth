@@ -47,11 +47,11 @@ public class Child {
 
     @OneToMany(mappedBy = "child", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
-    private List<MissionLog> missionLogList = new ArrayList<>();
+    private final List<MissionLog> missionLogList = new ArrayList<>();
 
     @OneToMany(mappedBy = "child", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
-    private List<Reward> rewardList = new ArrayList<>();
+    private final List<Reward> rewardList = new ArrayList<>();
 
     @Builder
     public Child(String realName, String email, String password, Gender gender, String nickname, int mileage, int clearedMission, int earthLevel, Role role, Parent parent) {
@@ -69,5 +69,13 @@ public class Child {
 
     public void setClearedMission(int clearedMission) {
         this.clearedMission = clearedMission;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setParent(Parent parent) {
+        this.parent = parent;
     }
 }
