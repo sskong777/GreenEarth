@@ -18,6 +18,19 @@ public class RefreshToken extends BaseTimeEntity{
     private int id;
 
     @Column(nullable = false)
-    private String refreshToken;
+    private String token;
+
+    @Column(nullable = false)
+    private int subjectId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role subjectRole;
+
+    public RefreshToken(String token, int subjectId, Role subjectRole) {
+        this.token = token;
+        this.subjectId = subjectId;
+        this.subjectRole = subjectRole;
+    }
 
 }
