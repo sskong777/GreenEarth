@@ -1,0 +1,18 @@
+# 프로젝트 Root 폴더
+# 프로젝트Root/docker-compose.blue.yml
+version: '3.7'
+
+services:
+  backend:
+    container_name: "greenEarth_backend-blue"
+    image: greenEarth_backend:0.1-blue
+    build:
+      context: BE/greenEarth/
+      dockerfile: Dockerfile
+    ports:
+      - "8881:8881"
+    # [인증서 파일 저장 경로]:/root
+    volumes:
+      - /etc/letsencrypt/live/j7d210.p.ssafy.io/:/root
+    environment:
+      - TZ=Asia/Seoul
