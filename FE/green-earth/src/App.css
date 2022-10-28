@@ -10,7 +10,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
   margin: 0px;
   font-family: "Jua";
 }
@@ -45,6 +45,11 @@ body {
 }
 
 .App {
+<<<<<<< HEAD
+  height: 720px;
+  min-height: 100%;
+=======
+>>>>>>> develop
   padding-left: 20px;
   padding-right: 20px;
 }
