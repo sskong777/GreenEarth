@@ -28,5 +28,6 @@ public class Mission {
 
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
-    private List<MissionLog> missionLogList = new ArrayList<>();
+    private List<MissionLog> missionLogList =  new ArrayList<>();
+
 }

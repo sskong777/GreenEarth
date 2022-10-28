@@ -3,7 +3,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
   margin: 0px;
   font-family: "BinggraeBold";
 }
@@ -38,6 +38,6 @@ body {
 }
 
 .App {
-  padding-left: 20px;
-  padding-right: 20px;
+  height: 720px;
+  min-height: 100%;
 }
