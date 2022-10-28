@@ -1,15 +1,15 @@
+import { useNavigate } from "react-router-dom";
 
-import React from "react";
+const GamePage = () => {
+  const navigate = useNavigate();
 
-const Game = ( ) => {
   return (
-    <div className="Game">
-      <h2>game페이지 인디용</h2>
+    <div className="GamePage">
+      <h1>GamePage</h1>
 
+      <button onClick={() => navigate("/")}>웰컴페이지로 이동</button>
     </div>
   );
 };
 
-
-export default Game;
-
+export default GamePage;
