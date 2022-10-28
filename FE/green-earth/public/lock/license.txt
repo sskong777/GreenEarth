@@ -1,0 +1,11 @@
+Model Information:
+* title:	Gold Lock Improved
+* source:	https://sketchfab.com/3d-models/gold-lock-improved-d1e3a58799b146e4af6496ca9b8fba41
+* author:	George Sims (https://sketchfab.com/BookBoy)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Gold Lock Improved" (https://sketchfab.com/3d-models/gold-lock-improved-d1e3a58799b146e4af6496ca9b8fba41) by George Sims (https://sketchfab.com/BookBoy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
