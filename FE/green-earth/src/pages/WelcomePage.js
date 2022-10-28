@@ -1,44 +1,20 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import WelcomeDescription from "./../components/WelcomePage/WelcomeDescription";
+import WelcomeDefault from "./../components/WelcomePage/WelcomeDefault";
 
-import "./../style/style.css";
+import "../style/WelcomePage.css";
 
 const WelcomePage = () => {
-  const navigate = useNavigate();
+  // 컴포넌트 구분을 위한 상태
+  const [description, setDescription] = useState(false);
 
   return (
-    <div className="WelcomPage">
-      <section>
-        <h1>내가 Green 지구</h1>
-        <br />
-      </section>
-
-      <section>
-        <p className="text-3xl font-bold underline">TailWind Style</p>
-        <p>Tailwind Install</p>
-        <br />
-      </section>
-
-      <section>
-        <Canvas>
-          <OrbitControls autoRotate={true} />
-          <mesh>
-            <ambientLight intensity={1} />
-            <directionalLight position={[-1, 0, 1]} intensity={0.5} />
-            <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial attach="material" color={0xa3b18a} />
-          </mesh>
-        </Canvas>
-        <p>Three.js Install</p>
-        <br />
-      </section>
-
-      <section>
-        <button onClick={() => navigate("/login")}>지구 구하러 가기</button>
-      </section>
+    <div className="WelcomePage">
+      {/* 메인 컴포넌트 */}
+      {!description && <WelcomeDefault setDescription={setDescription} />}
+      {/* 지구를 살리는 방법 설명 컴포넌트 */}
+      {description && <WelcomeDescription />}
     </div>
   );
 };
