@@ -1,0 +1,36 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* WelcomeDescription */
+.WelcomeDescription {
+  @apply flex flex-col justify-center items-center space-y-20 min-w-full mt-10;
+}
+
+.DescriptionImage {
+  @apply flex justify-center;
+}
+
+.DescriptionImageSize {
+  @apply max-w-[80%];
+}
+
+.DescriptionHead {
+  @apply text-5xl;
+}
+
+.DescriptionBody {
+  @apply flex justify-evenly min-w-full;
+}
+
+.DescriptionText {
+  @apply max-w-[50%];
+}
+
+.DescriptionButton {
+  @apply flex w-[90%] justify-end;
+}
+
+.DescriptionBtn {
+  @apply py-4 px-8 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+}
