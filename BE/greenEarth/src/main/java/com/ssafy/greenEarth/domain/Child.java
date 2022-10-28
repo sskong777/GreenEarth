@@ -2,6 +2,7 @@ package com.ssafy.greenEarth.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -46,9 +47,39 @@ public class Child {
 
     @OneToMany(mappedBy = "child", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
-    private List<MissionLog> missionLogList = new ArrayList<>();
+    private final List<MissionLog> missionLogList = new ArrayList<>();
 
     @OneToMany(mappedBy = "child", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
-    private List<Reward> rewardList = new ArrayList<>();
+    private final List<Reward> rewardList = new ArrayList<>();
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setParent(Parent parent) {
+        this.parent = parent;
+    }
+
+    public void setClearedMission(int clearedMission) {
+        this.clearedMission = clearedMission;
+    }
+
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
+
+    @Builder
+    public Child(String realName, String email, String password, Gender gender, String nickname, int mileage, int clearedMission, int earthLevel, Role role, Parent parent) {
+        this.realName = realName;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.nickname = nickname;
+        this.mileage = mileage;
+        this.clearedMission = clearedMission;
+        this.earthLevel = earthLevel;
+        this.role = role;
+        this.parent = parent;
+    }
 }

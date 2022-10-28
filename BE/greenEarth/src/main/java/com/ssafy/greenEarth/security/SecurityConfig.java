@@ -23,8 +23,10 @@ public class SecurityConfig {
     @Order(SecurityProperties.BASIC_AUTH_ORDER)
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests()
-                .anyRequest().permitAll();
+                .csrf().disable();
+//        http
+//                .authorizeHttpRequests()    // http request 사용하는 요청에 접근 제한 설정
+//                .anyRequest().permitAll();  // 나머지 요청들에 대해서 . 모두 항상 허용
         return http.build();
     }
 }

@@ -1,18 +1,22 @@
 package com.ssafy.greenEarth.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "mission_logs")
-public class MissionLog {
+public class MissionLog extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +32,32 @@ public class MissionLog {
 
     private String parentNickname;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "mission_id")
+    @JsonBackReference
     private Mission mission;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "child_id")
     private Child child;
+
+    public void setPermitted(boolean permitted) {
+        isPermitted = permitted;
+    }
+
+    public void setClearedAt(LocalDateTime clearedAt) {
+        this.clearedAt = clearedAt;
+    }
+
+    public void setMission(Mission mission) {
+        this.mission = mission;
+    }
+
+    public MissionLog(Child child, Mission mission, Parent parent, LocalDateTime createdAt){
+        this.child = child;
+        this.mission = mission;
+        this.isPermitted = false;
+        this.parentNickname = parent.getNickname();
+        this.createdAt = createdAt;
+    }
 }
