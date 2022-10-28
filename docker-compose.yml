@@ -1,11 +1,11 @@
 # 프로젝트 Root 폴더
-# 프로젝트Root/docker-compose.blue.yml
+# 프로젝트Root/docker-compose.yml
 version: '3.7'
 
 services:
   backend:
-    container_name: "greenEarth_backend-blue"
-    image: greenEarth_backend:0.1-blue
+    container_name: "greenearth_backend"
+    image: greenearth_backend:0.1
     build:
       context: BE/greenEarth/
       dockerfile: Dockerfile
