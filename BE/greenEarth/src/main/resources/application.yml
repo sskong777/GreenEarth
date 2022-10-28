@@ -1,11 +1,12 @@
 server:
-  port: 8080
+  port: 8881
   servlet:
     contextPath: /api
 
 spring:
-  profiles:
-    default: local
+  config:
+    activate:
+      on-profile: production-set1
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://k7d206.p.ssafy.io:8888/greenearth?serverTimezone=Asia/Seoul
@@ -45,11 +46,18 @@ jwt:
 ---
 
 server:
-  port: 5001
+  port: 8882
 
 spring:
-  profiles:
-    active: aws
+  config:
+    activate:
+      on-profile: production-set2
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://k7d206.p.ssafy.io:8888/greenearth?serverTimezone=Asia/Seoul
+    username: root
+    password: Ssafyd206@
+
   jpa:
     hibernate:
       ddl-auto: none
@@ -64,3 +72,18 @@ spring:
     open-in-view: false
     generate-ddl: false
     database: mysql
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+    hiddenmethod:
+      filter:
+        enabled: true
+
+logging:
+  level:
+    org.hibernate.sql: debug
+    root: info
+
+jwt:
+  secretKey: ssafyd206pjejjihshpkypcskjmmygreenearth
