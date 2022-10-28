@@ -2,12 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* WelcomPage */
-
-.WelcomPage {
-  @apply flex flex-col justify-center items-center;
-}
-
 /* ProfilePage */
 
 .ProfileHeader {
