@@ -1,14 +1,6 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-<<<<<<< HEAD
-=======
-
-/* WelcomPage */
-
-.WelcomPage {
-  @apply flex flex-col justify-center items-center;
-}
 
 /* ProfilePage */
 
@@ -31,4 +23,3 @@
 .ProfileHeaderButton {
   @apply w-40 h-40 bg-yellow-300 rounded-md text-lg mx-2;
 }
->>>>>>> develop
