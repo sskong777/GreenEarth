@@ -1,6 +1,9 @@
 package com.ssafy.greenEarth.jwt;
 
 public interface JwtProperties {
-    long accessTokenValidityInSeconds = 60 * 60 * 2;    // 초 * 분 * 시 = 2시간
-    long refreshTokenValidityInSeconds = 60 * 60 * 24 * 7;  // 초 * 분 * 시 * 일 = 7일
+    String TOKEN_PREFIX = "Bearer ";                        // JWT 토큰 타입
+    String HEADER_STRING = "Authorization";                 // 토큰 전달할 Http 헤더 항목
+    long accessTokenValidityInSeconds = 60 * 60 * 2;        // Access Token 만료 기간 : 2시간
+    long refreshTokenValidityInSeconds = 60 * 60 * 24 * 7;  // Refresh Token 만료 기간 : 7일
+
 }
