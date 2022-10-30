@@ -6,6 +6,7 @@ import com.ssafy.greenEarth.domain.Parent;
 import com.ssafy.greenEarth.domain.Role;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Data
 @NoArgsConstructor
@@ -21,10 +22,10 @@ public class ChildRegisterDto {
 
     private Gender gender;
 
-    public Child toEntity(Parent parent) {
+    public Child toEntity(Parent parent, PasswordEncoder passwordEncoder) {
         return Child.builder()
                 .email(getEmail())
-                .password(getPassword())
+                .password(passwordEncoder.encode(getPassword()))
                 .gender(getGender())
                 .nickname(getNickname())
                 .realName(getRealName())
