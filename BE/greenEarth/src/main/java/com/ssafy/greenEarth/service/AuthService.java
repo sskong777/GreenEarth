@@ -35,9 +35,13 @@ public class AuthService {
         if (passwordEncoder.matches(loginDto.getPassword(), child.getPassword())) {
             return child;
         } else {
-            log.error("로그인 실패 : 비밀번호 오류");
             return null;
         }
+    }
+
+    @Transactional
+    public void logout(int id, Role role) {
+        refreshTokenRepository.deleteBySubjectIdAndSubjectRole(id, role);
     }
 
     @Transactional

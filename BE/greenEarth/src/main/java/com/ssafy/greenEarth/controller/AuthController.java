@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,6 +60,14 @@ public class AuthController {
         }
 
         return new ResponseEntity<>(resMap, status);
+    }
+
+    @ApiOperation(value = "로그아웃", notes = "로그아웃 요청 시 refresh token 삭제함")
+    @PostMapping("/logout")
+    public void logout(HttpServletRequest request) {
+        int id = (int) request.getAttribute("curUserId");
+        Role role = (Role) request.getAttribute("curUserRole");
+        authService.logout(id, role);
     }
 
 
