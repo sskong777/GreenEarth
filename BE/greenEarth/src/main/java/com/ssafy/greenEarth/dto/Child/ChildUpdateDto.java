@@ -3,9 +3,7 @@ package com.ssafy.greenEarth.dto.Child;
 import lombok.Data;
 
 @Data
-public class ChildProfileUpdateDto {
+public class ChildUpdateDto {
 
     private String nickname;
-
-    private String parent;
 }
