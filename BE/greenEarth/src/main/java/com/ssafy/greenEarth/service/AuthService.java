@@ -1,16 +1,16 @@
 package com.ssafy.greenEarth.service;
 
 import com.ssafy.greenEarth.domain.Child;
+import com.ssafy.greenEarth.domain.RefreshToken;
 import com.ssafy.greenEarth.domain.Role;
-import com.ssafy.greenEarth.dto.Auth.LoginDto;
+import com.ssafy.greenEarth.dto.Auth.*;
 import com.ssafy.greenEarth.jwt.TokenProvider;
 import com.ssafy.greenEarth.repository.ChildRepository;
+import com.ssafy.greenEarth.repository.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.security.auth.login.LoginException;
 
 @Slf4j
 @Service
@@ -22,6 +22,8 @@ public class AuthService {
 
     private final ChildRepository childRepository;
 
+    private final RefreshTokenRepository refreshTokenRepository;
+
     public Child childLogin(LoginDto loginDto) {
         // email id 비교
         Child child = childRepository.findByEmail(loginDto.getEmail())
@@ -30,7 +32,7 @@ public class AuthService {
         if (child.getPassword().equals(loginDto.getPassword())) {
             return child;
         } else {
-            log.error("로그인 실패 : 비밀번호가 일치하지 않습니다.");
+            log.error("로그인 실패 : 비밀번호 오류");
             return null;
         }
     }
@@ -46,7 +48,10 @@ public class AuthService {
     public String createRefreshToken(int id, Role role) {
         Child child = childRepository.findChildById(id)
                 .orElseThrow(() -> new IllegalArgumentException("계정을 찾을 수 없습니다."));
-        String refreshToken =  tokenProvider.createAccessToken(id, role);
-        return refreshToken;
+        // refresh token 생성
+        String token =  tokenProvider.createRefreshToken();
+        // refresh token 저장
+        RefreshToken refreshToken = refreshTokenRepository.save(new RefreshToken(token, id, role));
+        return refreshToken.getToken();
     }
 }
