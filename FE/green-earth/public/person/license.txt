@@ -1,0 +1,11 @@
+Model Information:
+* title:	Child - Blacksmith's workshop assets
+* source:	https://sketchfab.com/3d-models/child-blacksmiths-workshop-assets-d0e274c15c2f46d89d0412b2112877b5
+* author:	Kyan0s (https://sketchfab.com/kyan0s)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Child - Blacksmith's workshop assets" (https://sketchfab.com/3d-models/child-blacksmiths-workshop-assets-d0e274c15c2f46d89d0412b2112877b5) by Kyan0s (https://sketchfab.com/kyan0s) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

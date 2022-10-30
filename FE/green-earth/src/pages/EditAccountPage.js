@@ -7,7 +7,7 @@ const EditAccountPage = () => {
     <div className="EditAccountPage">
       <h1>EditAccountPage</h1>
 
-      <button onClick={() => navigate("/")}>웰컴페이지로 이동</button>
+      <button onClick={() => navigate(-1)}>뒤로가기</button>
     </div>
   );
 };
