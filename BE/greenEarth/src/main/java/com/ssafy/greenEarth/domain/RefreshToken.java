@@ -27,6 +27,10 @@ public class RefreshToken extends BaseTimeEntity{
     @Column(nullable = false)
     private Role subjectRole;
 
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public RefreshToken(String token, int subjectId, Role subjectRole) {
         this.token = token;
         this.subjectId = subjectId;
