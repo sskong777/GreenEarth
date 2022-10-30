@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @NoArgsConstructor
 public class ChildRegisterDto {
 
-    private String email;
+    private String id;
 
     private String password;
 
@@ -24,7 +24,7 @@ public class ChildRegisterDto {
 
     public Child toEntity(Parent parent, PasswordEncoder passwordEncoder) {
         return Child.builder()
-                .email(getEmail())
+                .email(getId() + "@greenearth.com")
                 .password(passwordEncoder.encode(getPassword()))
                 .gender(getGender())
                 .nickname(getNickname())
