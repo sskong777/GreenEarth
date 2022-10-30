@@ -2,6 +2,7 @@ package com.ssafy.greenEarth.service;
 
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Parent;
+import com.ssafy.greenEarth.domain.Role;
 import com.ssafy.greenEarth.dto.Child.*;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.ParentRepository;
@@ -19,6 +20,12 @@ public class ChildService {
     private final ChildRepository childRepository;
 
     private final ParentRepository parentRepository;
+
+    public ParentProfileDto findParent(int parentId) {
+        Parent parent = parentRepository.findById(parentId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 보호자 프로필을 찾을 수 없습니다."));
+        return new ParentProfileDto(parent);
+    }
 
     public ChildProfileDto findChild(int childId) {
         // 아이 프로필 조회
@@ -44,5 +51,14 @@ public class ChildService {
         // 아이 닉네임 수정
         child.setNickname(childDto.getNickname());
         return new ChildProfileDto(childRepository.save(child));
+    }
+
+    @Transactional
+    public void deleteProfile(int id, Role role) {
+        if (role == Role.ROLE_PARENT) {
+            parentRepository.deleteById(id);
+        }else {
+            childRepository.deleteById(id);
+        }
     }
 }
