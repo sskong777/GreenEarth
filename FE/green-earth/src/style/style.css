@@ -21,6 +21,10 @@
 
 /* ProfilePage */
 
+.ProfilePage {
+  @apply w-252 mx-auto;
+}
+
 .ProfileHeader {
   @apply flex justify-center items-start mt-8 mb-6;
 }
@@ -106,7 +110,7 @@
 /* BadgeList */
 
 .BadgeList {
-  @apply grid grid-cols-5 w-272 mx-auto;
+  @apply grid grid-cols-5 w-252 mx-auto;
 }
 
 /* BadgeItem */
@@ -127,4 +131,92 @@
 
 .BadgeItemTitle {
   @apply text-xl text-blackBrown font-medium;
+}
+
+/* MissionComponent */
+
+.MissionComponent {
+  @apply w-252 mx-auto;
+}
+
+.MissionComponentHeader {
+  @apply flex justify-between items-center mt-4 mb-6;
+}
+
+.MissionComponentToday {
+  @apply text-3xl text-darkBrown font-semibold;
+}
+
+.MissionComponentButton {
+  @apply w-20 h-12 rounded-md text-3xl text-light font-medium
+  bg-darkRed hover:bg-darkRed-hover active:bg-darkRed-active
+  outline outline-offset-2 outline-1 shadow-lg shadow-darkRed/50;
+}
+
+/* MissionList */
+
+.MissionListHeader {
+  @apply flex justify-between items-center mb-6;
+}
+
+.MissionDropdown {
+  @apply w-72 relative select-none;
+}
+
+.MissionDropdownButton {
+  @apply flex justify-between items-center h-14 px-6 cursor-pointer rounded-md text-xl text-light font-medium text-center
+  bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
+  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
+}
+
+.MissionDropdownContent {
+  @apply absolute w-full top-1.15 left-0 p-2 rounded-md text-lg text-blackBrown font-medium 
+  bg-stoneRed-dropdown outline outline-offset-1 outline-1 shadow-lg shadow-stoneRed-dropdown;
+}
+
+.MissionDropdownItem {
+  @apply p-2 rounded-md cursor-pointer transition-all delay-75
+  hover:bg-stoneRed-dropdown-hover;
+}
+
+.MissionListDate {
+  @apply w-100 h-14 rounded-md p-4 cursor-pointer text-2xl text-blackBrown font-medium
+  bg-light active:bg-lightGray/50
+  outline outline-offset-1 outline-1 shadow-lg shadow-lightGray/50;
+}
+
+/* MissionItem */
+
+.MissionItem {
+  @apply flex justify-between items-center w-252 h-14 px-6 my-3 rounded-md text-xl text-light font-medium text-center
+  bg-stoneRed
+  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
+}
+
+.MissionItemComplete {
+  @apply flex justify-between items-center w-252 h-14 px-6 my-3 rounded-md text-xl text-light font-medium text-center
+  bg-green-100
+  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
+}
+
+/* ReawardModal */
+
+.ReawardModal {
+  @apply flex justify-center items-center h-screen w-full fixed text-center left-0 top-0 bg-black bg-opacity-70;
+}
+
+.ReawardModalBody {
+  @apply w-252 bg-white rounded-md;
+}
+
+.ReawardModalContent {
+  @apply flex justify-center items-center p-4;
+}
+
+.ReawardModalButton {
+  @apply bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150;
+}
+
+.ReawardModalBackground {
+  @apply opacity-25 fixed inset-0 z-40 bg-black;
 }

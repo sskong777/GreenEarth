@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { ChildInfoState } from "../store/atoms";
 
-import TodayMissionList from "../components/TodayMissionList";
-import MissionList from "../components/MissionList";
-import BadgeList from "../components/BadgeList";
+import TodayMissionList from "../components/ProfilePage/TodayMissionList";
+import MissionComponent from "../components/ProfilePage/MissionComponent";
+import BadgeList from "../components/ProfilePage/BadgeList";
+import RewardModal from "../components/ProfilePage/RewardModal";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const ProfilePage = () => {
   const [childInfo, setChildInfo] = useRecoilState(ChildInfoState);
   const [isBadge, setIsBadge] = useState(false);
   const [isMission, setIsMission] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleClickChildProfile = () => {
     navigate(`/account/${childInfo.childId}`);
@@ -29,8 +31,14 @@ const ProfilePage = () => {
     setIsBadge(false);
   };
 
+  const handleClickRewardButton = () => {
+    console.log("모달 오픈");
+    setModalOpen(true);
+  };
+
   return (
     <div className="ProfilePage">
+      {modalOpen ? <RewardModal setModalOpen={setModalOpen} /> : null}
       <section className="ProfileHeader">
         <div>
           <div className="ChildImage">
@@ -73,7 +81,12 @@ const ProfilePage = () => {
         <button className="ProfileMenuButton" onClick={handleClickMenuButton}>
           {!isBadge && isMission ? "오늘 미션 목록" : "과거 미션 목록"}
         </button>
-        <button className="ProfileMenuButton mx-6">보상 설정하러 가기</button>
+        <button
+          className="ProfileMenuButton mx-6"
+          onClick={handleClickRewardButton}
+        >
+          보상 설정하러 가기
+        </button>
         <button className="ProfileMenuButton" onClick={handleClickChildProfile}>
           회원 수정하러 가기
         </button>
@@ -89,7 +102,7 @@ const ProfilePage = () => {
       )}
       {!isBadge && isMission && (
         <section>
-          <MissionList />
+          <MissionComponent />
         </section>
       )}
       {!isBadge && !isMission && (

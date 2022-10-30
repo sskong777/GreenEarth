@@ -52,7 +52,7 @@ const DiaryList = ({ diaryList }) => {
       }
     };
     const copyList = JSON.parse(JSON.stringify(diaryList));
-
+    console.log(copyList);
     const filterdList =
       filter === "all" ? copyList : copyList.filter((it) => filterCallBack(it));
     const sortedList = filterdList.sort(compare);
