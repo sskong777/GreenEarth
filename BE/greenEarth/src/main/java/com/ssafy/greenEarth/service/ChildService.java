@@ -34,6 +34,11 @@ public class ChildService {
         return new ChildProfileDto(child);
     }
 
+//    @Transactional
+//    public Parent registerParent(ParentRegisterDto parentRegisterDto) {
+//
+//    }
+
     @Transactional
     public Child registerChild(ChildRegisterDto childDto) {
         // 연결된 보호자 조회
