@@ -45,13 +45,16 @@ public class AuthController {
                 resMap.put("accessToken", authService.createAccessToken(child.getId(), Role.ROLE_CHILD));
                 resMap.put("refreshToken", authService.createRefreshToken(child.getId(), Role.ROLE_CHILD));
                 resMap.put("message", "로그인 성공");
+                log.info("로그인 성공 : {}", loginDto.getEmail());
                 status = HttpStatus.OK;
             } else {
                 resMap.put("message", "로그인 실패 : 비밀번호 일치하지 않음");
+                log.info("로그인 실패 (비밀번호 오류) : {}", loginDto.getEmail());
                 status = HttpStatus.BAD_REQUEST;
             }
         } catch(Exception e){
             resMap.put("message", "로그인 실패 : "+ e.getMessage());
+            log.info("로그인 실패 ({}) : {}", e.getMessage(), loginDto.getEmail());
             status = HttpStatus.FORBIDDEN;
         }
 

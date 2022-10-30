@@ -1,8 +1,9 @@
 package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Child;
+import com.ssafy.greenEarth.domain.Role;
 import com.ssafy.greenEarth.dto.Child.ChildProfileDto;
-import com.ssafy.greenEarth.dto.Child.ChildProfileUpdateDto;
+import com.ssafy.greenEarth.dto.Child.ChildUpdateDto;
 import com.ssafy.greenEarth.dto.Child.ChildRegisterDto;
 import com.ssafy.greenEarth.dto.ResponseDto;
 import com.ssafy.greenEarth.service.ChildService;
@@ -15,7 +16,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Api("MemberController")
+import javax.servlet.http.HttpServletRequest;
+
+@Api("ChildController")
 @Slf4j
 @RestController
 @RequestMapping("/member")
@@ -45,9 +48,11 @@ public class ChildController {
         }
     }
 
-    @ApiOperation(value = "아이 프로필 수정", notes = "아이 프로필 정보 수정 (nickname과 parant nickname 만 수정 가능) 후 수정된 아이 프로필 정보 전달")
+    @ApiOperation(value = "아이 닉네임 수정", notes = "아이 nickname 수정 후 아이 프로필 정보 전달")
     @PutMapping("/child/{childId}")
-    public ResponseDto updateProfile(@PathVariable int childId, @RequestBody ChildProfileUpdateDto childDto) {
+    public ResponseDto updateProfile(@PathVariable int childId, @RequestBody ChildUpdateDto childDto, HttpServletRequest request) {
+        int curUserId = (int) request.getAttribute("curUserId");
+        Role curUserRole = (Role) request.getAttribute("curUserRole");
         ChildProfileDto data = childService.updateProfile(childId, childDto);
         return new ResponseDto(data);
     }
