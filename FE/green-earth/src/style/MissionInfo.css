@@ -1,0 +1,17 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+
+.MissionTitle {
+  @apply justify-center items-center bg-blue-500 text-white
+}
+
+.Select {
+    @apply justify-center items-center bg-blue-500 text-white
+}
+
+.Contents {
+    @apply justify-center items-center bg-blue-500 text-white
+}
