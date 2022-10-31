@@ -2,11 +2,13 @@ package com.ssafy.greenEarth.dto.Child;
 
 import com.ssafy.greenEarth.domain.Parent;
 import com.ssafy.greenEarth.domain.Role;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class ParentRegisterDto {
 
     private String email;

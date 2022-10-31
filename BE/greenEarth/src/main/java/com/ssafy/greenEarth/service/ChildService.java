@@ -34,10 +34,14 @@ public class ChildService {
         return new ChildProfileDto(child);
     }
 
-//    @Transactional
-//    public Parent registerParent(ParentRegisterDto parentRegisterDto) {
-//
-//    }
+    @Transactional
+    public Parent registerParent(ParentRegisterDto parentRegisterDto) {
+        Parent parent = parentRepository.findByNickname(parentRegisterDto.getNickname()).orElse(null);
+        if (parent == null) {
+            parentRepository.save(parentRegisterDto.toEntity());
+        }
+        return null;
+    }
 
     @Transactional
     public Child registerChild(ChildRegisterDto childDto) {
