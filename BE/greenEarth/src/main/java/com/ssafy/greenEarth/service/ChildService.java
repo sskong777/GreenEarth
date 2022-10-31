@@ -38,6 +38,15 @@ public class ChildService {
     }
 
     @Transactional
+    public Parent registerParent(ParentRegisterDto parentRegisterDto) {
+        Parent parent = parentRepository.findByNickname(parentRegisterDto.getNickname()).orElse(null);
+        if (parent == null) {
+            parentRepository.save(parentRegisterDto.toEntity());
+        }
+        return null;
+    }
+
+    @Transactional
     public Child registerChild(ChildRegisterDto childDto) {
         // 연결된 보호자 조회
         Parent parent = parentRepository.findById(1)
