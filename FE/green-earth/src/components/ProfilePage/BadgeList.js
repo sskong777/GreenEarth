@@ -1,7 +1,7 @@
 import { useState } from "react";
 import BadgeItem from "./BadgeItem";
 
-const dummyBadge = [
+const badgeInfo = [
   { level: 1, title: "내가 제일 최고" },
   { level: 2, title: "내가 제일 최고" },
   { level: 3, title: "내가 제일 최고" },
@@ -17,24 +17,27 @@ const dummyBadge = [
 const BadgeList = () => {
   const [childLevel, setChildLevel] = useState(6);
 
-  const unlockBadge = dummyBadge.slice(0, childLevel);
-  const lockBadge = dummyBadge.slice(childLevel, 10);
-
-  console.log(unlockBadge);
-  console.log(lockBadge);
+  const unlockBadge = badgeInfo.slice(0, childLevel);
+  const lockBadge = badgeInfo.slice(childLevel, 10);
 
   return (
     <div className="BadgeList">
-      <BadgeItem />
-      <BadgeItem />
-      <BadgeItem />
-      <BadgeItem />
-      <BadgeItem />
-      <BadgeItem />
-      <BadgeItem />
-      <BadgeItem />
-      <BadgeItem />
-      <BadgeItem />
+      {unlockBadge.map((badge, idx) => (
+        <BadgeItem
+          key={idx}
+          isLock={false}
+          level={badge.level}
+          title={badge.title}
+        />
+      ))}
+      {lockBadge.map((badge, idx) => (
+        <BadgeItem
+          key={idx}
+          isLock={true}
+          level={badge.level}
+          title={badge.title}
+        />
+      ))}
     </div>
   );
 };
