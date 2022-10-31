@@ -54,8 +54,9 @@ public class MemberController {
 
     @ApiOperation(value = "아이 등록", notes = "아이 등록 및 현재 접속 중인 보호자 계정과 연결")
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody ChildRegisterDto childDto) {
-        Child child = childService.registerChild(childDto, 1);
+    public ResponseEntity<String> signup(@RequestBody ChildRegisterDto childDto, HttpServletRequest request) {
+        int curUserId = (int) request.getAttribute("curUserId");
+        Child child = childService.registerChild(childDto, curUserId);
         if (child != null){
             return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
         } else {
