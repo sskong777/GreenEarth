@@ -1,14 +1,14 @@
 version: '3.7'
 
 services:
-  backend:
+  frontend:
     container_name: "greenearth_front"
     image: greenearth_front:0.1
     build:
       context: FE/green-earth/
       dockerfile: Dockerfile
     ports:
-      - "8881:8881"
+      - "3000:80"
     # [인증서 파일 저장 경로]:/root
     volumes:
       - /etc/letsencrypt/live/k7d206.p.ssafy.io/:/root
