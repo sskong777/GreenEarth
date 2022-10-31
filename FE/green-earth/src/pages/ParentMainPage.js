@@ -14,7 +14,7 @@ import rocket from '../image/rocket.png'
 import start from '../image/start.png'
 import end from '../image/end.png'
 import { Color } from "three";
-
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 // import useAnimations from 'react-useanimations';
 function Model(props) {
   const { nodes, materials } = useGLTF('/earth/scene.gltf')
@@ -462,13 +462,23 @@ function Model20(props) {
   )
 }
 
-
+function Model21(props) {
+  const { nodes, materials } = useGLTF('/plus/scene.gltf')
+  return (
+    <group {...props} dispose={null}>
+      <group rotation={[-Math.PI / 2, 0, 0]}>
+        <group rotation={[Math.PI / 2, 0, 0]}>
+          <group position={[0, -15, -70]} rotation={[-Math.PI / 2, 0, 0]} scale={0.2}>
+            <mesh geometry={nodes.Box001__0.geometry} material={materials.RootNode} />
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
 
 function ParentMainPage() {
-  const level = 1
-  const value = level*11.3
-  const mileage = level*87.6
-  const nickname = '어린왕자'
+  
   
   return (
     // <BrowserRouter>
@@ -481,21 +491,25 @@ function ParentMainPage() {
 
     <div className='Earth2'>
   
-      
+  
         <div className= "peoplelist"  >
             <div className = "people">
+    
+
                 <div className = "canvasPerson">
                     <Canvas  id="person1" >
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        
                         <Model3 />
-                        {level<1 && <Model20/>}
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
                     </Canvas>
                 </div>
-                {/* <div className = "canvasLock">
+              
+                {/* <div classN
+                ame = "canvasLock">
                     <Canvas  id="person" >
                     <Suspense fallback={null}>
                         <ambientLight />
@@ -510,7 +524,7 @@ function ParentMainPage() {
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model11 /> */}
+                        <Model21 />
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
                     </Canvas>
@@ -520,7 +534,7 @@ function ParentMainPage() {
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model12 /> */}
+                        <Model21 />
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
                     </Canvas>
@@ -530,7 +544,7 @@ function ParentMainPage() {
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model13   /> */}
+                        <Model21 />
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
                     </Canvas>
@@ -540,7 +554,7 @@ function ParentMainPage() {
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model14 /> */}
+                        <Model21 />
 
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
@@ -552,7 +566,7 @@ function ParentMainPage() {
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model15 /> */}
+                        <Model21 />
         
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
@@ -563,7 +577,7 @@ function ParentMainPage() {
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model9 /> */}
+                        <Model21 />
                  
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
@@ -574,7 +588,7 @@ function ParentMainPage() {
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model17 /> */}
+                        <Model21 />
                        
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
@@ -585,7 +599,7 @@ function ParentMainPage() {
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000,100,100]} castShadow />
-                        {/* <Model19 /> */}
+                        <Model21 />
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
                     </Canvas>
@@ -595,7 +609,7 @@ function ParentMainPage() {
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model18 /> */}
+                        <Model21 />
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
                     </Canvas>
