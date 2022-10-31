@@ -5,8 +5,11 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +40,10 @@ public class Child {
     private int clearedMission;
 
     private int earthLevel;
+
+    private LocalDateTime birthday;
+
+    private int avatar;
 
     @Enumerated(EnumType.STRING)
     private Role role;

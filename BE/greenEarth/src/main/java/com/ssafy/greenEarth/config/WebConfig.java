@@ -17,7 +17,10 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new AuthenticationInterceptor(tokenProvider))
                 .order(1)
-                .addPathPatterns("/**")
+//                .addPathPatterns("/**")
+                .addPathPatterns("/member/**")
+                .addPathPatterns("/mission/**")
+                .addPathPatterns("/reward/**")
                 .excludePathPatterns("/member/signup", "/member/login/**", "/kakao/login", "/test", "/swagger-ui/**");
     }
 }
