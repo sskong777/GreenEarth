@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -53,5 +56,18 @@ public class AuthController {
         TokenResDto tokenResDto = authService.tokenIssue(tokenIssueDto, curUserId, curUserRole);
         return new ResponseDto(tokenResDto);
     }
+
+    @ApiOperation(value = "카카오 로그인 url", notes = "카카오 로그인 url을 반환")
+    @GetMapping("/login/adult")
+    public String kakaoLoginURL() {
+
+        String REST_API_KEY = "2045a52f644e0bfc27a039cf2bef8568";
+        String REDIRECT_URI = "http://localhost:8881/api/kakao/login";
+
+        return String.format("kauth.kakao.com/oauth/authorize?client_id=%s&redirect_uri=%s&response_type=code", REST_API_KEY, REDIRECT_URI);
+
+
+    }
+
 
 }
