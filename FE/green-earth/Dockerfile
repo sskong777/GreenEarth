@@ -18,10 +18,10 @@ RUN mkdir /app
 
 WORKDIR /app
 
-RUN mkdir ./dist
+RUN mkdir ./build
 
 #ADD ./dist /app/dist
-COPY --from=builder /app/dist /app/dist
+COPY --from=builder /app/build /app/build
 
 RUN rm /etc/nginx/conf.d/default.conf
 
