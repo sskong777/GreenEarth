@@ -465,10 +465,9 @@ function Model20(props) {
 
 
 function ChildMainPage() {
-  const level = 4
-
-  const value = level*11.3
-  const mileage = level*87.6
+  const level = 1
+  const value = level*11.2
+  const mileage = level*98+5
   const nickname = '어린왕자'
   if (level ===1 ){
   return (
@@ -487,7 +486,7 @@ function ChildMainPage() {
       <div className="end" >
         <img src={end} className='end' alt='React' />
       </div>
-      <progress className='pgbar' max="110" value={value-2}> 70% </progress>
+      <progress className='pgbar' max="100" value={value-3.2}> 70% </progress>
       </div>
       
       <div className="Rocket" style={{left:mileage}}>
