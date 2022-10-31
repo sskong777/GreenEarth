@@ -82,8 +82,6 @@ public class AuthService {
             throw new RuntimeException();
         }
         resMap.put("accessToken", createAccessToken(id, role));
-        refreshTokenRepository.delete(storedRefreshToken);
-        resMap.put("refreshToken", createRefreshToken(id, role));
         return new TokenResDto(resMap);
     }
 }
