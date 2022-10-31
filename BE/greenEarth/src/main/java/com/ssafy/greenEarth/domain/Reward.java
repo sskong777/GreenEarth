@@ -29,6 +29,9 @@ public class Reward {
     @JoinColumn(name = "child_id")
     private Child child;
 
+    private boolean is_paid;
+
+
     public Reward(int id, String name, int rewardCondition, String parentNickname, Child child) {
         this.id = id;
         this.name = name;
