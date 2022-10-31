@@ -8,6 +8,7 @@ import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.ParentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class ChildService {
+
+    private final PasswordEncoder passwordEncoder;
 
     private final ChildRepository childRepository;
 
@@ -34,13 +37,23 @@ public class ChildService {
         return new ChildProfileDto(child);
     }
 
+    // 카카오 유저 정보로 회원 확인 후 회원가입 & 로그인
+    @Transactional
+    public Parent registerParent(ParentRegisterDto parentRegisterDto) {
+        Parent parent = parentRepository.findByEmail(parentRegisterDto.getEmail()).orElse(null);
+        if (parent == null) {
+            parentRepository.save(parentRegisterDto.toEntity());
+        }
+        return null;
+    }
+
     @Transactional
     public Child registerChild(ChildRegisterDto childDto) {
         // 연결된 보호자 조회
         Parent parent = parentRepository.findById(1)
                 .orElseThrow(() -> new IllegalArgumentException("연결될 보호자 계정을 찾을 수 없습니다."));
         // 등록
-        return childRepository.save(childDto.toEntity(parent));
+        return childRepository.save(childDto.toEntity(parent, passwordEncoder));
     }
 
     @Transactional
