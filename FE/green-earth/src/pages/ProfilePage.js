@@ -32,13 +32,14 @@ const ProfilePage = () => {
   };
 
   const handleClickRewardButton = () => {
-    console.log("모달 오픈");
     setModalOpen(true);
   };
 
   return (
     <div className="ProfilePage">
-      {modalOpen ? <RewardModal setModalOpen={setModalOpen} /> : null}
+      {modalOpen ? (
+        <RewardModal setModalOpen={setModalOpen} childInfo={childInfo} />
+      ) : null}
       <section className="ProfileHeader">
         <div>
           <div className="ChildImage">

@@ -3,7 +3,7 @@ import { missionListState } from "./../store/atoms";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const useMissonCallback = () => {
+export const useMissonCallback = () => {
   const navigate = useNavigate();
 
   const [missionList, setMissionList] = useRecoilState(missionListState);
@@ -33,5 +33,3 @@ const useMissonCallback = () => {
 
   return { saveMissonCallback };
 };
-
-export default useMissonCallback;
