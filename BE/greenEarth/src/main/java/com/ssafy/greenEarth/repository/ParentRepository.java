@@ -10,4 +10,7 @@ public interface ParentRepository extends JpaRepository<Parent, Integer> {
     Optional<Parent> findByNickname(String nickname);
 
     Optional<Parent> findByEmail(String email);
+
+    Optional<Parent> findParentById(int id);
+
 }

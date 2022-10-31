@@ -37,9 +37,10 @@ public class ChildService {
         return new ChildProfileDto(child);
     }
 
+    // 카카오 유저 정보로 회원 확인 후 회원가입 & 로그인
     @Transactional
     public Parent registerParent(ParentRegisterDto parentRegisterDto) {
-        Parent parent = parentRepository.findByNickname(parentRegisterDto.getNickname()).orElse(null);
+        Parent parent = parentRepository.findByEmail(parentRegisterDto.getEmail()).orElse(null);
         if (parent == null) {
             parentRepository.save(parentRegisterDto.toEntity());
         }
