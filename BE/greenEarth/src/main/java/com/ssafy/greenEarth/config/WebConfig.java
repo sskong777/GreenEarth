@@ -18,6 +18,6 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new AuthenticationInterceptor(tokenProvider))
                 .order(1)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/member/signup", "/member/login/*", "/kakao/login");
+                .excludePathPatterns("/member/signup", "/member/login/**", "/kakao/login", "/test");
     }
 }
