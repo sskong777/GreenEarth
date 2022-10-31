@@ -10,31 +10,17 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "refresh_token")
-public class RefreshToken extends BaseTimeEntity{
+public class RefreshToken {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "refreshTokenId")
-    private int id;
+    @EmbeddedId
+    private RefreshTokenId id;
 
     @Column(nullable = false)
     private String token;
 
-    @Column(nullable = false)
-    private int subjectId;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role subjectRole;
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public RefreshToken(String token, int subjectId, Role subjectRole) {
+        this.id = new RefreshTokenId(subjectId, subjectRole);
         this.token = token;
-        this.subjectId = subjectId;
-        this.subjectRole = subjectRole;
     }
 
 }

@@ -2,6 +2,7 @@ package com.ssafy.greenEarth.service;
 
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.RefreshToken;
+import com.ssafy.greenEarth.domain.RefreshTokenId;
 import com.ssafy.greenEarth.domain.Role;
 import com.ssafy.greenEarth.dto.Auth.*;
 import com.ssafy.greenEarth.jwt.TokenProvider;
@@ -12,8 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.naming.AuthenticationException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +48,7 @@ public class AuthService {
         return refreshToken.getToken();
     }
 
+    @Transactional
     public TokenResDto childLogin(LoginDto loginDto) {
         // email id 비교
         Child child = childRepository.findByEmail(loginDto.getEmail())
@@ -61,19 +61,18 @@ public class AuthService {
         resMap.put("accessToken", createAccessToken(child.getId(), Role.ROLE_CHILD));
         resMap.put("refreshToken", createRefreshToken(child.getId(), Role.ROLE_CHILD));
         return new TokenResDto(resMap);
-
     }
 
     @Transactional
     public void logout(int id, Role role) {
-        refreshTokenRepository.deleteBySubjectIdAndSubjectRole(id, role);
+        refreshTokenRepository.deleteById(new RefreshTokenId(id, role));
     }
 
     @Transactional
     public TokenResDto tokenIssue(TokenIssueDto tokenIssueDto, int id, Role role) {
         // 비교할 refresh token 추출
         String requestRefreshToken = tokenIssueDto.getRefreshToken();
-        RefreshToken storedRefreshToken = refreshTokenRepository.findBySubjectIdAndSubjectRole(id, role)
+        RefreshToken storedRefreshToken = refreshTokenRepository.findById(new RefreshTokenId(id, role))
                 .orElseThrow(() -> new IllegalArgumentException("refresh token 을 찾을 수 없습니다."));
 
         Map<String, String> resMap = new HashMap<>();
@@ -83,8 +82,8 @@ public class AuthService {
             throw new RuntimeException();
         }
         resMap.put("accessToken", createAccessToken(id, role));
-        storedRefreshToken.setToken(createRefreshToken(id, role));
-        resMap.put("refreshToken", refreshTokenRepository.save(storedRefreshToken).getToken());
+        refreshTokenRepository.delete(storedRefreshToken);
+        resMap.put("refreshToken", createRefreshToken(id, role));
         return new TokenResDto(resMap);
     }
 }
