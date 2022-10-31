@@ -1,9 +1,7 @@
 package com.ssafy.greenEarth.jwt;
 
 import com.ssafy.greenEarth.domain.Role;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -22,18 +20,17 @@ public class TokenProvider {
 
     private final long refreshTokenValidityInMilliseconds;
 
-    public TokenProvider(
-            @Value("${jwt.secretKey}") String secretKey) {
+    public TokenProvider(@Value("${jwt.secretKey}") String secretKey) {
         this.SECRET_KEY = Base64.getEncoder().encodeToString(secretKey.getBytes());  // 비밀키 Base64로 인코딩하여 설정
         this.accessTokenValidityInMilliseconds = JwtProperties.accessTokenValidityInSeconds * 1000;
         this.refreshTokenValidityInMilliseconds = JwtProperties.refreshTokenValidityInSeconds * 1000;
     }
 
     // 토큰 생성 메소드
-    public String createAccessToken(int subject, Role role) {
+    public String createAccessToken(int currentUserId, Role currentUserRole) {
         Claims claims = Jwts.claims();
-        claims.put("Id", subject);
-        claims.put("Role", role);
+        claims.put("Id", currentUserId);
+        claims.put("Role", currentUserRole);
 
         Date now = new Date();
         Date accessTokenExpiresIn = new Date(now.getTime() + this.accessTokenValidityInMilliseconds);   // access token 만료 시간 설정
@@ -44,11 +41,11 @@ public class TokenProvider {
                 .setIssuedAt(now)                               // 발급 시간 (iat)
                 .setSubject("accessToken")                      // 토큰 제목 (sub)
                 .setExpiration(accessTokenExpiresIn)            // 만료 시간 (exp)
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)  // 암호화 알고리즘, 시크릿키
+                .signWith(SignatureAlgorithm.HS256, this.SECRET_KEY)  // 암호화 알고리즘, 시크릿키
                 .compact();
     }
 
-    public String createRefreshToken(int subject, Role role) {
+    public String createRefreshToken() {
         Date now = new Date();
         Date refreshTokenExpiresIn = new Date(now.getTime() + this.refreshTokenValidityInMilliseconds);   // refresh token 만료 시간 설정
 
@@ -56,29 +53,35 @@ public class TokenProvider {
         return Jwts.builder()
                 .setSubject("refreshToken")
                 .setExpiration(refreshTokenExpiresIn)
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .signWith(SignatureAlgorithm.HS256, this.SECRET_KEY)
                 .compact();
     }
 
     // claim 정보 (payload data) 추출
     public Claims getClaims(String jwtToken) {
-        return Jwts.parser().setSigningKey(SECRET_KEY.getBytes()).parseClaimsJws(jwtToken).getBody();
+        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(jwtToken).getBody();
     }
 
-    // 토큰 만료여부 체크
-    public boolean isTokenExpired(String jwtToken) {
-        try {
-            return !getClaims(jwtToken).getExpiration().before(new Date());
-        } catch (Exception e) {
-            return false;
-        }
+    // 현재 사용자 id(pk) 추출
+    public int getCurrentUserId(String jwtToken) {
+        return getClaims(jwtToken).get("Id", Integer.class);
+    }
+
+    // 현재 사용자 role 추출
+    public Role getCurrentUserRole(String jwtToken) {
+        return Role.valueOf(getClaims(jwtToken).get("Role", String.class));
     }
 
     // 토큰 유효성 검층
-//    public boolean isTokenValid(String jwtToken) {
-//        try {
-//            getClaims(jwtToken).getId();
-//        }
-//    }
-
+    public String isTokenValid(String jwtToken) {
+        try {
+            Claims claims = getClaims(jwtToken);
+            return "valid";     // 유효한 토큰
+        } catch (ExpiredJwtException e) {
+            return "expired";   // 만료된 토큰
+        } catch (Exception e) {
+            log.error("invalid : " + getClaims(jwtToken).getSubject());
+            return "invalid";   // 유효하지 않은 토큰
+        }
+    }
 }

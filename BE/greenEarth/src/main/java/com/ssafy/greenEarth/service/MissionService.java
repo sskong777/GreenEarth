@@ -1,9 +1,6 @@
 package com.ssafy.greenEarth.service;
 
-import com.ssafy.greenEarth.domain.Child;
-import com.ssafy.greenEarth.domain.Mission;
-import com.ssafy.greenEarth.domain.MissionLog;
-import com.ssafy.greenEarth.domain.Parent;
+import com.ssafy.greenEarth.domain.*;
 import com.ssafy.greenEarth.dto.MissionLogResDto;
 import com.ssafy.greenEarth.dto.MissionPutDto;
 import com.ssafy.greenEarth.dto.MissionReqDto;
@@ -35,8 +32,9 @@ public class MissionService {
     private final ParentRepository parentRepository;
 
     // 오늘의 미션생성
+    // 로그인한 부모 정보가 넘어오는지 확인 필요
     @Transactional
-    public MissionLogResDto saveTodayMission(int child_id, MissionReqDto missionReqDto) {
+    public MissionLogResDto saveTodayMission(int child_id, MissionReqDto missionReqDto, Role curUserRole, int curUserId) {
         int missionId = missionReqDto.getMissionId();
         Mission mission = missionRepository.findMissionById(missionId).orElseThrow(
                 () -> new CustomErrorException("미션이 존재하지 않습니다.")
@@ -45,7 +43,10 @@ public class MissionService {
                 () -> new CustomErrorException("아이가 존재하지 않습니다.")
         );
 
-        Parent parent = parentRepository.findByNickname("parent1").orElseThrow(
+//        Parent parent = parentRepository.findByNickname("parent1").orElseThrow(
+//                () -> new CustomErrorException("부모가 존재하지 않습니다.")
+//        );
+        Parent parent = parentRepository.findParentById(curUserId).orElseThrow(
                 () -> new CustomErrorException("부모가 존재하지 않습니다.")
         );
 
