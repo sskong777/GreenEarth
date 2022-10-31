@@ -17,7 +17,6 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
   };
 
   const handleClickRewardSubmit = () => {
-    console.log(rewardGoal, rewardGift);
     if (window.confirm("보상을 설정하시겠습니까?")) {
       setModalOpen(false);
     }

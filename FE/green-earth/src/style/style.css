@@ -34,7 +34,7 @@
 }
 
 .ProfileInfo {
-  @apply flex justify-start items-center w-100 h-40 ml-6 mr-12 pl-5 rounded-md text-xl text-amber-900 leading-relaxed 
+  @apply flex justify-start items-center w-100 h-40 ml-6 pl-5 rounded-md text-xl text-amber-900 leading-relaxed 
   bg-light outline outline-offset-2 outline-1 shadow-lg shadow-light/50;
 }
 
@@ -44,11 +44,17 @@
 }
 
 .ChildImageName {
-  @apply text-center text-xl text-amber-900;
+  @apply text-center text-xl text-light;
 }
 
 .ProfileHeaderButton {
-  @apply w-40 h-40 ml-6 rounded-md text-3xl text-amber-900 font-binggrae font-semibold
+  @apply w-[13rem] h-18 ml-6 rounded-md text-3xl text-amber-900 font-binggrae font-semibold
+  bg-darkBeige hover:bg-darkBeige-hover active:bg-darkBeige-active
+  outline outline-offset-2 outline-1 shadow-lg shadow-darkBeige/50;
+}
+
+.ProfileHeaderRewardButton {
+  @apply w-[27.5rem] h-18 ml-6 mt-4 rounded-md text-3xl text-amber-900 font-binggrae font-semibold
   bg-darkBeige hover:bg-darkBeige-hover active:bg-darkBeige-active
   outline outline-offset-2 outline-1 shadow-lg shadow-darkBeige/50;
 }
@@ -66,7 +72,7 @@
 }
 
 .TodayHeader {
-  @apply mt-4 mb-6 text-4xl text-darkBrown font-semibold;
+  @apply mt-4 mb-6 text-4xl text-light font-semibold;
 }
 
 /* TodayMissonItem */
@@ -76,7 +82,13 @@
 }
 
 .TodayItemButtonSingle {
-  @apply w-56 h-16 ml-6 rounded-md text-2xl text-light font-medium 
+  @apply w-56 h-16 ml-4 rounded-md text-2xl text-light font-medium 
+  bg-oceanBlue hover:bg-oceanBlue-hover active:bg-oceanBlue-active
+  outline outline-offset-2 outline-1 shadow-lg shadow-oceanBlue/50;
+}
+
+.TodayItemButtonDouble {
+  @apply w-26 h-16 ml-4 rounded-md text-2xl text-light font-medium 
   bg-oceanBlue hover:bg-oceanBlue-hover active:bg-oceanBlue-active
   outline outline-offset-2 outline-1 shadow-lg shadow-oceanBlue/50;
 }
@@ -88,7 +100,7 @@
 }
 
 .TodayDropdown {
-  @apply w-188 relative select-none;
+  @apply w-188 relative select-none mr-2;
 }
 
 .TodayDropdownButton {
@@ -130,7 +142,7 @@
 }
 
 .BadgeItemTitle {
-  @apply text-xl text-blackBrown font-medium;
+  @apply text-xl text-light font-medium;
 }
 
 /* MissionComponent */
@@ -144,7 +156,7 @@
 }
 
 .MissionComponentToday {
-  @apply text-3xl text-darkBrown font-semibold;
+  @apply text-3xl text-light font-semibold;
 }
 
 .MissionComponentButton {
@@ -206,7 +218,7 @@
 }
 
 .ReawardModalBody {
-  @apply w-[60rem] bg-white rounded-md;
+  @apply w-240 bg-white rounded-md;
 }
 
 .ReawardModalContent {
@@ -218,7 +230,7 @@
 }
 
 .ReawardModalHeader {
-  @apply flex w-[52rem] items-center justify-start mb-10;
+  @apply flex w-208 items-center justify-start mb-10;
 }
 
 .ReawardModalInfo {
@@ -246,7 +258,7 @@
 }
 
 .ReawardModalInputGift {
-  @apply w-[16rem] h-11 text-2xl mx-5 mb-5 text-center rounded-md 
+  @apply w-64 h-11 text-2xl mx-5 mb-5 text-center rounded-md 
   bg-light hover:bg-lightGray/70 active:bg-lightGray
   outline outline-offset-2 outline-1 shadow-lg shadow-lightGray/50;
 }

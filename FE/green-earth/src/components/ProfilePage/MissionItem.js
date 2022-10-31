@@ -9,7 +9,7 @@ const MissionItem = (data) => {
       ) : (
         <div className="MissionItemComplete">
           <div>{data.mission.name}</div>
-          <div>😊 {data.clearedAt}</div>
+          <div>😊 {data.clearedAt} 완료</div>
         </div>
       )}
     </>
