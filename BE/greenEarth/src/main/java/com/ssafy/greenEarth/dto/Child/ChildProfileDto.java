@@ -9,7 +9,7 @@ public class ChildProfileDto {
 
     private int childId;
 
-    private String email;
+    private String id;
 
     private String realName;
 
@@ -27,7 +27,7 @@ public class ChildProfileDto {
 
     public ChildProfileDto(Child child) {
         this.childId = child.getId();
-        this.email = child.getEmail();
+        this.id = child.getEmail().replace("@greenearth.com", "");
         this.realName = child.getRealName();
         this.nickname = child.getNickname();
         this.gender = child.getGender();
