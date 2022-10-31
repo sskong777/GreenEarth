@@ -25,7 +25,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         // Bearer 체크
         if (authHeader == null || !authHeader.startsWith(JwtProperties.TOKEN_PREFIX)) {
-            log.debug("access token : {}", "null");
+            log.info("access token : {}", "null");
             throw new AuthenticationException("Access Token is null");
         }
 
@@ -33,7 +33,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         String accessToken = authHeader.replace(JwtProperties.TOKEN_PREFIX, "");
         // 토큰 검증
         if (!StringUtils.hasText(accessToken)) {
-            log.debug("access token : {}", "null");
+            log.info("access token : {}", "null");
             throw new AuthenticationException("AccessToken 값이 비어있습니다.");
         }
 

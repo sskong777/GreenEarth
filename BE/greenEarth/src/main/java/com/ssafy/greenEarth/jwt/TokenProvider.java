@@ -80,7 +80,6 @@ public class TokenProvider {
         } catch (ExpiredJwtException e) {
             return "expired";   // 만료된 토큰
         } catch (Exception e) {
-            log.error("invalid : " + getClaims(jwtToken).getSubject());
             return "invalid";   // 유효하지 않은 토큰
         }
     }
