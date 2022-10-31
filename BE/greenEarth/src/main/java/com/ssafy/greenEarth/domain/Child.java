@@ -5,11 +5,9 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +39,7 @@ public class Child {
 
     private int earthLevel;
 
-    private LocalDateTime birthday;
+    private LocalDate birthday;
 
     private int avatar;
 
@@ -77,7 +75,9 @@ public class Child {
     }
 
     @Builder
-    public Child(String realName, String email, String password, Gender gender, String nickname, int mileage, int clearedMission, int earthLevel, Role role, Parent parent) {
+    public Child(String realName, String email, String password, Gender gender, String nickname,
+                 int mileage, int clearedMission, int earthLevel, LocalDate birthday, int avatar,
+                 Role role, Parent parent) {
         this.realName = realName;
         this.email = email;
         this.password = password;
@@ -86,6 +86,8 @@ public class Child {
         this.mileage = mileage;
         this.clearedMission = clearedMission;
         this.earthLevel = earthLevel;
+        this.birthday = birthday;
+        this.avatar = avatar;
         this.role = role;
         this.parent = parent;
     }

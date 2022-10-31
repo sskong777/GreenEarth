@@ -62,7 +62,7 @@ public class AuthController {
     public String kakaoLoginURL() {
 
         String REST_API_KEY = "2045a52f644e0bfc27a039cf2bef8568";
-        String REDIRECT_URI = "http://localhost:8080/api/kakao/login";
+        String REDIRECT_URI = "http://k7d206.p.ssafy.io/api/kakao/login";
 
         return String.format("https://kauth.kakao.com/oauth/authorize?client_id=%s&redirect_uri=%s&response_type=code", REST_API_KEY, REDIRECT_URI);
 
