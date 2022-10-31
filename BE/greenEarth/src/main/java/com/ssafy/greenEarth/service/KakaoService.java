@@ -1,11 +1,13 @@
 package com.ssafy.greenEarth.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ssafy.greenEarth.dto.Auth.KakaoProfile;
-import com.ssafy.greenEarth.dto.Auth.OAuthToken;
+import com.ssafy.greenEarth.domain.Role;
+import com.ssafy.greenEarth.dto.Child.ParentRegisterDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.*;
+import org.json.JSONObject;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
@@ -17,10 +19,11 @@ import org.springframework.web.client.RestTemplate;
 @Transactional(readOnly = true)
 public class KakaoService {
 
-    public OAuthToken getKakaoAccessToken(String code) {
+    // 카카오 액세스 토큰 발급
+    public String getKakaoAccessToken(String code) {
 
         String REST_API_KEY = "2045a52f644e0bfc27a039cf2bef8568";
-        String REDIRECT_URI = "http://k7d206.p.ssafy.io/api/kakao/login";
+        String REDIRECT_URI = "http://localhost:8881/api/kakao/login";
 
         // POST방식으로 key=value 데이터 요청
         RestTemplate restTemplate = new RestTemplate();
@@ -49,19 +52,15 @@ public class KakaoService {
         System.out.println("response : ");
         System.out.println(response);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        OAuthToken oauthToken =null;
-        // Model과 다르게 되어있거나 getter, setter가 없으면 오류 발생
-        try {
-            oauthToken = objectMapper.readValue(response.getBody(), OAuthToken.class);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+        // JSON -> 액세스 토큰 파싱
+        String tokenJson = response.getBody();
+        JSONObject rjson = new JSONObject(tokenJson);
+        return rjson.getString("access_token");
 
-        return oauthToken;
     }
 
-    public KakaoProfile getKakaoProfile(String accessToken) {
+    // 카카오 액세스 토큰을 사용해 유저 정보 요청
+    public ParentRegisterDto getKakaoProfile(String accessToken) {
 
         ///유저정보 요청
         RestTemplate restTemplate = new RestTemplate();
@@ -71,19 +70,21 @@ public class KakaoService {
         headers.add("Authorization", "Bearer " + accessToken);
         headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 
-        //HttpHeader와 HttpBody 담기기
+        //HttpHeader와 HttpBody 담기
         HttpEntity<MultiValueMap<String, String>> kakaoProfileRequest = new HttpEntity<>(headers);
 
         ResponseEntity<String> response = restTemplate.exchange("https://kapi.kakao.com/v2/user/me", HttpMethod.POST, kakaoProfileRequest, String.class);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        KakaoProfile kakaoProfile = null;
+        // 응답 JSON에서 필요한 정보들을 추출 후 DTO에 담기
+        JSONObject body = new JSONObject(response.getBody());
+        Long id = body.getLong("id");
+        String email = body.getJSONObject("kakao_account").getString("email");
+        String nickname = body.getJSONObject("properties").getString("nickname");
 
-        try {
-            kakaoProfile = objectMapper.readValue(response.getBody(), KakaoProfile.class);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return kakaoProfile;
+        System.out.println(email);
+        System.out.println(nickname);
+
+        // DTO 반환
+        return new ParentRegisterDto(email, nickname, Role.ROLE_PARENT);
     }
 }
