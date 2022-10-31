@@ -8,7 +8,7 @@ echo "Backend down"
 docker-compose -p ${DOCKER_APP_BACK_NAME} -f docker-compose-back.yml down
 
 # 이전 이미지 삭제
-docker rmi greenearth_front:0.1
+docker rmi greenearth_back:0.1
 
 echo "Backend up"
 docker-compose -p ${DOCKER_APP_BACK_NAME} -f docker-compose-back.yml up -d
