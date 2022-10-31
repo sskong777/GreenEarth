@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "refresh_token")
-public class RefreshToken {
+public class RefreshToken extends BaseTimeEntity {
 
     @EmbeddedId
     private RefreshTokenId id;
