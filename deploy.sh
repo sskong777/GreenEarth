@@ -13,12 +13,6 @@ docker rmi greenearth_front:0.1
 echo "Backend up"
 docker-compose -p ${DOCKER_APP_BACK_NAME} -f docker-compose-back.yml up -d
 
-echo "Frontend down"
-docker-compose -p ${DOCKER_APP_FRONT_NAME} -f docker-compose-front.yml up -d
-
-echo "Backend up"
-docker-compose -p ${DOCKER_APP_BACK_NAME} -f docker-compose-back.yml up -d
-
 sleep 5
 
 echo "Server On"
