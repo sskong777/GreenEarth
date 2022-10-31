@@ -27,8 +27,6 @@ public class Parent {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String refreshToken;
-
     @JsonBackReference
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Child> childList = new ArrayList<>();

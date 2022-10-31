@@ -98,7 +98,7 @@
 }
 
 .TodayDropdownContent {
-  @apply absolute w-full top-1.15 left-0 p-2.5 rounded-md text-xl text-blackBrown font-medium 
+  @apply absolute w-full top-1.15 left-0 p-2.5 z-10 rounded-md text-xl text-blackBrown font-medium 
   bg-stoneRed-dropdown outline outline-offset-1 outline-1 shadow-lg shadow-stoneRed-dropdown;
 }
 
@@ -195,28 +195,58 @@
 
 .MissionItemComplete {
   @apply flex justify-between items-center w-252 h-14 px-6 my-3 rounded-md text-xl text-light font-medium text-center
-  bg-green-100
+  bg-green-900
   outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
 }
 
 /* ReawardModal */
 
 .ReawardModal {
-  @apply flex justify-center items-center h-screen w-full fixed text-center left-0 top-0 bg-black bg-opacity-70;
+  @apply flex justify-center items-center h-screen w-full z-10 fixed text-center left-0 top-0 bg-black bg-opacity-70;
 }
 
 .ReawardModalBody {
-  @apply w-252 bg-white rounded-md;
+  @apply w-[60rem] bg-white rounded-md;
 }
 
 .ReawardModalContent {
-  @apply flex justify-center items-center p-4;
+  @apply flex flex-col justify-center items-center p-3 my-5;
+}
+
+.ReawardModalTitle {
+  @apply mb-5 text-amber-900 text-4xl text-center font-bold;
+}
+
+.ReawardModalHeader {
+  @apply flex w-[52rem] items-center justify-start mb-10;
+}
+
+.ReawardModalInfo {
+  @apply w-full text-left px-10;
+}
+
+.ReawardModalSetting {
+  @apply flex flex-col justify-center items-start;
+}
+
+.ReawardModalSettingSection {
+  @apply flex justify-center items-center my-3;
 }
 
 .ReawardModalButton {
-  @apply bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150;
+  @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
+  bg-green-800 hover:bg-green-800/50 active:bg-green-800/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-green-800/50;
 }
 
-.ReawardModalBackground {
-  @apply opacity-25 fixed inset-0 z-40 bg-black;
+.ReawardModalInput {
+  @apply w-28 h-11 text-2xl mx-5 mt-5 text-center rounded-md 
+  bg-light hover:bg-lightGray/70 active:bg-lightGray
+  outline outline-offset-2 outline-1 shadow-lg shadow-lightGray/50;
+}
+
+.ReawardModalInputGift {
+  @apply w-[16rem] h-11 text-2xl mx-5 mb-5 text-center rounded-md 
+  bg-light hover:bg-lightGray/70 active:bg-lightGray
+  outline outline-offset-2 outline-1 shadow-lg shadow-lightGray/50;
 }
