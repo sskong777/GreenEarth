@@ -1,8 +1,8 @@
 package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Parent;
-import com.ssafy.greenEarth.dto.Child.ParentRegisterDto;
-import com.ssafy.greenEarth.service.ChildService;
+import com.ssafy.greenEarth.dto.Member.ParentRegisterDto;
+import com.ssafy.greenEarth.service.MemberService;
 import com.ssafy.greenEarth.service.KakaoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,7 +22,7 @@ public class KakaoController {
 
     private final KakaoService kakaoService;
 
-    private final ChildService childService;
+    private final MemberService childService;
 
     @ApiOperation(value = "카카오 로그인 인가 code 발급", notes = "사용자가 카카오 로그인 완료시 인가 code 넘어옴")
     @GetMapping("/login")
