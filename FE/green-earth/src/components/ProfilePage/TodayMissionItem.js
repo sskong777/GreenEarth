@@ -82,14 +82,45 @@ const ControlMenu = React.memo(({ data, onChange, optionList }) => {
 const TodayMissionItem = ({ data }) => {
   const [missionItem, setMissionItem] = useState();
   const [isCleared, setIsCleared] = useState(false);
+  const [isCreated, setIsCreated] = useState(false);
+  const [isPermitted, setIsPermitted] = useState(false);
 
   useEffect(() => {
     if (data) {
       if (data.clearedAt) {
         setIsCleared(true);
       }
+      if (data.isPermitted) {
+        setIsPermitted(true);
+      }
+    } else {
+      setIsCreated(true);
     }
   }, [data]);
+
+  const handleClickMissionSubmit = () => {
+    if (window.confirm("미션을 설정하시겠습니까?")) {
+      console.log("미션 설정 완료");
+    }
+  };
+
+  const handleClickMissionEdit = () => {
+    if (window.confirm("미션을 수정하시겠습니까?")) {
+      console.log("미션 수정 완료");
+    }
+  };
+
+  const handleClickMissionApprove = () => {
+    if (window.confirm("미션을 승인하시겠습니까?")) {
+      console.log("미션 승인 완료");
+    }
+  };
+
+  const handleClickMissionRefuse = () => {
+    if (window.confirm("미션을 거절하시겠습니까?")) {
+      console.log("미션 거절 완료");
+    }
+  };
 
   return (
     <>
@@ -99,7 +130,44 @@ const TodayMissionItem = ({ data }) => {
           onChange={setMissionItem}
           optionList={missionOptionList}
         />
-        <button className="TodayItemButtonSingle">미션 설정</button>
+        {isCleared && isPermitted && (
+          <button className="TodayItemButtonSingle">승인 완료</button>
+        )}
+
+        {isCleared && !isPermitted && !isCreated && (
+          <>
+            <button
+              className="TodayItemButtonDouble"
+              onClick={handleClickMissionApprove}
+            >
+              승인
+            </button>
+            <button
+              className="TodayItemButtonDouble"
+              onClick={handleClickMissionRefuse}
+            >
+              거절
+            </button>
+          </>
+        )}
+
+        {!isCleared && !isCreated && (
+          <button
+            className="TodayItemButtonSingle"
+            onClick={handleClickMissionEdit}
+          >
+            수정
+          </button>
+        )}
+
+        {isCreated && (
+          <button
+            className="TodayItemButtonSingle"
+            onClick={handleClickMissionSubmit}
+          >
+            설정
+          </button>
+        )}
       </div>
     </>
   );
