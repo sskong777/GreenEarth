@@ -35,4 +35,4 @@ logging:
     root: info
 
 jwt:
-  secretKey: ssafyd206pjejjihshpkypcskjmmygreenearth
+  secretKey: pjejjihshpkypcskjm
