@@ -29,7 +29,7 @@ module.exports = {
         lightOrange: "#FFAB2E",
       },
       spacing: {
-        272: "68rem",
+        252: "63rem",
         188: "47rem",
         100: "25rem",
         76: "19rem",

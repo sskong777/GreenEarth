@@ -1,17 +1,9 @@
-body {
-    background-color: #f6f6f6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0px;
-  }
-  
+
 .Earth{
     /* background-color: red; */
     background-image: url('/public/galaxy3.jpg');
     position:relative;
-    height:1000px;
+    height:720px;
     
     
 }
@@ -40,6 +32,18 @@ body {
 
 
 }
+
+.canvasProfile::before{
+    content:"";
+    opacity:0.9;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background:  linear-gradient(black, rgb(5, 5, 67));
+}
+
 
 .Rocket {
     position: relative;
@@ -72,10 +76,13 @@ body {
 }
 
 
+
+
+
 progress {
     -webkit-appearance: none;
     appearance: none;
-    width:80%;
+    width:100%;
     margin-top:2%;
     margin-left:10%;
     position: relative;
@@ -243,7 +250,7 @@ progress::before{
 .Earth10{
     background-image: url('/public/galaxy3.jpg');
     position:relative;
-    height:1000px;
+    height:720px;
     
     
 }
@@ -268,11 +275,21 @@ progress::before{
     margin-right: 10px;
     position:relative;
     border : solid;
-    border-color: black;
+    border-color:  rgb(255, 179, 0);
+
 
 
 }
-
+.canvasProfile10::before{
+    content:"";
+    opacity:0.9;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background:  linear-gradient(black, rgb(5, 5, 67));
+}
 .Rocket {
     position: relative;
     width:50px;
@@ -296,7 +313,7 @@ progress::before{
 
 .characterInfo10{
     font-weight: bold;
-    color: black;
+    color: white;
     size: 115px;
     text-align: center;
     margin:2px;
@@ -414,7 +431,7 @@ progress::before{
 
 .info10::before{
     content:"";
-    opacity:0.3;
+    opacity:0.1;
     position:absolute;
     top:0px;
     left:0px;
@@ -479,7 +496,7 @@ progress::before{
     /* background-color: red; */
     background-image: url('/public/galaxy3.jpg');
     position:relative;
-    height:1000px;
+    height:720px;
     
     
 }
@@ -508,7 +525,16 @@ progress::before{
 
 
 }
-
+.canvasProfile2::before{
+    content:"";
+    opacity:0.9;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background:  linear-gradient(black, rgb(5, 5, 67));
+}
 .Rocket {
     position: relative;
     width:50px;
@@ -713,7 +739,7 @@ progress::before{
     /* background-color: red; */
     background-image: url('/public/galaxy3.jpg');
     position:relative;
-    height:1000px;
+    height:720px;
     
     
 }
@@ -743,7 +769,16 @@ progress::before{
 
 }
 
-
+.canvasProfile3::before{
+    content:"";
+    opacity:0.9;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background:  linear-gradient(black, rgb(5, 5, 67));
+}
 .characterInfo3{
     font-weight: bold;
     color: white;
@@ -834,7 +869,7 @@ progress::before{
     /* background-color: red; */
     background-image: url('/public/galaxy3.jpg');
     position:relative;
-    height:1000px;
+    height:720px;
     
     
 }
@@ -862,6 +897,16 @@ progress::before{
     border-color:  rgb(255, 179, 0);
 
 
+}
+.canvasProfile4::before{
+    content:"";
+    opacity:0.9;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background:  linear-gradient(black, rgb(5, 5, 67));
 }
 
 
@@ -954,7 +999,7 @@ progress::before{
     /* background-color: red; */
     background-image: url('/public/galaxy3.jpg');
     position:relative;
-    height:1000px;
+    height:720px;
     
     
 }
@@ -980,8 +1025,17 @@ progress::before{
     position:relative;
     border : solid;
     border-color:  rgb(255, 179, 0);
+}
 
-
+.canvasProfile5::before{
+    content:"";
+    opacity:0.9;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background:  linear-gradient(black, rgb(5, 5, 67));
 }
 
 
@@ -1074,7 +1128,7 @@ progress::before{
     /* background-color: red; */
     background-image: url('/public/galaxy3.jpg');
     position:relative;
-    height:1000px;
+    height:720px;
     
     
 }
@@ -1103,7 +1157,16 @@ progress::before{
 
 
 }
-
+.canvasProfile6::before{
+    content:"";
+    opacity:0.9;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background:  linear-gradient(black, rgb(5, 5, 67));
+}
 
 .characterInfo6{
     font-weight: bold;
@@ -1193,7 +1256,7 @@ progress::before{
     /* background-color: red; */
     background-image: url('/public/galaxy3.jpg');
     position:relative;
-    height:1000px;
+    height:720px;
     
     
 }
@@ -1223,10 +1286,19 @@ progress::before{
 
 }
 
-
+.canvasProfile7::before{
+    content:"";
+    opacity:0.9;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background:  linear-gradient(black, rgb(5, 5, 67));
+}
 .characterInfo7{
     font-weight: bold;
-    color: black;
+    color: white;
     size: 115px;
     text-align: center;
     margin:2px;
@@ -1252,7 +1324,7 @@ progress::before{
 
 .info7::before{
     content:"";
-    opacity:0.3;
+    opacity:0.1;
     position:absolute;
     top:0px;
     left:0px;
@@ -1312,7 +1384,7 @@ progress::before{
     /* background-color: red; */
     background-image : url('/public/galaxy3.jpg');
     position:relative;
-    height:1000px;
+    height:720px;
     
     
 }
@@ -1342,10 +1414,19 @@ progress::before{
 
 }
 
-
+.canvasProfile8::before{
+    content:"";
+    opacity:0.9;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background:  linear-gradient(black, rgb(5, 5, 67));
+}
 .characterInfo8{
     font-weight: bold;
-    color: black;
+    color: white;
     size: 115px;
     text-align: center;
     margin:2px;
@@ -1371,7 +1452,7 @@ progress::before{
 
 .info8::before{
     content:"";
-    opacity:0.3;
+    opacity:0.1;
     position:absolute;
     top:0px;
     left:0px;
@@ -1431,7 +1512,7 @@ progress::before{
     /* background-color: red; */
     background-image: url('/public/galaxy3.jpg');
     position:relative;
-    height:1000px;
+    height:720px;
     
     
 }
@@ -1460,11 +1541,20 @@ progress::before{
 
 
 }
-
+.canvasProfile9::before{
+    content:"";
+    opacity:0.9;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background:  linear-gradient(black, rgb(5, 5, 67));
+}
 
 .characterInfo9{
     font-weight: bold;
-    color: black;
+    color: white;
     size: 115px;
     text-align: center;
     margin:2px;
@@ -1490,13 +1580,13 @@ progress::before{
 
 .info9::before{
     content:"";
-    opacity:0.3;
+    opacity:0.1;
     position:absolute;
     top:0px;
     left:0px;
     right:0px;
     bottom:0px;
-    background-color: black;
+    background-color: white;
     margin:7%;
 }
 .badges9 {
@@ -1511,13 +1601,13 @@ progress::before{
 }
 .badges9::before{
     content:"";
-    opacity:0.3;
+    opacity:0.1;
     position:absolute;
     top:0px;
     left:0px;
     right:0px;
     bottom:0px;
-    background-color: black;
+    background-color: white;
 }
 
 .canvasBadge9 {
@@ -1531,13 +1621,13 @@ progress::before{
 
 .canvasBadge9::before{
     content:"";
-    opacity:0.1;
+    opacity:0.3;
     position:absolute;
     top:0px;
     left:0px;
     right:0px;
     bottom:0px;
-    background-color: white
+    background-color: black
 }
 /* //////////////////////////////////////////////////////////////////////////// */
   
