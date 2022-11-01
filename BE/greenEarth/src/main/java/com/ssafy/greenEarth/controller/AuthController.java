@@ -61,7 +61,7 @@ public class AuthController {
     }
 
     @ApiOperation(value = "카카오 로그인 인가 code 발급", notes = "사용자가 카카오 로그인 완료시 인가 code 넘어옴")
-    @PostMapping("/adult")
+    @PostMapping("/login/adult")
     public ResponseEntity<HashMap<String, String>> adultLogin(@RequestBody String code) {
 
         // 인가 code를 통해 카카오 OAuth Token 발급
