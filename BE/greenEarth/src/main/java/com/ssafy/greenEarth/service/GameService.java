@@ -44,13 +44,15 @@ public class GameService {
 
         int curEarthLevel = greenEarthRepository.findFirstByMileage_condition(finalMileage);
 
-        if (child.getEarthLevel() < curEarthLevel) {
-            greenEarthLogRepository.save(new GreenEarthLog(new GreenEarthLogId(childId, curEarthLevel), LocalDateTime.now()));
+        if (child.getEarthLevel() < 10) {
+            if (child.getEarthLevel() < curEarthLevel) {
+                greenEarthLogRepository.save(new GreenEarthLog(new GreenEarthLogId(childId, curEarthLevel), LocalDateTime.now()));
 
-            child.setEarthLevel(curEarthLevel);
-            log.info(child.getNickname() + "의 EarthLevel을 " + curEarthLevel + "(으)로 설정합니다.");
-
+                child.setEarthLevel(curEarthLevel);
+                log.info(child.getNickname() + "의 EarthLevel을 " + curEarthLevel + "(으)로 설정합니다.");
+            }
         }
+
         return new ChildProfileDto(childRepository.save(child));
     }
 }
