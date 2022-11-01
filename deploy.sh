@@ -1,24 +1,19 @@
 #!/bin/bash
 
-DOCKER_APP_NAME="greenearth_backend"
+DOCKER_APP_BACK_NAME="greenearth_backend"
+DOCKER_APP_FRONT_NAME="greenearth_frontend"
 
-# 현재 떠있는 컨테이너를 체크한다.
-EXIST=$(docker-compose -p ${DOCKER_APP_NAME} -f docker-compose.yml ps | grep Up)
-
-echo ${EXIST}
-
-# 컨테이너 down
-echo "server down"
-docker-compose -p ${DOCKER_APP_NAME} -f docker-compose.yml down
+# backend 컨테이너 down
+echo "Backend down"
+docker-compose -p ${DOCKER_APP_BACK_NAME} -f docker-compose-back.yml down
 
 # 이전 이미지 삭제
 docker rmi greenearth_backend:0.1
 
-echo "server up"
-docker-compose -p ${DOCKER_APP_NAME} -f docker-compose.yml up -d
+echo "Backend up"
+docker-compose -p ${DOCKER_APP_BACK_NAME} -f docker-compose-back.yml up -d
 
-sleep 8
+sleep 5
 
-# 새로운 컨테이너가 제대로 떴는지 확인
-EXIST_AFTER=$(docker-compose -p ${DOCKER_APP_NAME} -f docker-compose.yml ps | grep Up)
-echo EXIST_AFTER
+echo "Server On"
+

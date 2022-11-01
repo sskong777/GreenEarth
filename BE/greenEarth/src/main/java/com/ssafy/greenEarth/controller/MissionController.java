@@ -1,15 +1,19 @@
 package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Mission;
+import com.ssafy.greenEarth.domain.Role;
 import com.ssafy.greenEarth.dto.*;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.MissionRepository;
 import com.ssafy.greenEarth.service.MissionService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("mission")
@@ -21,9 +25,14 @@ public class MissionController {
 
     // 오늘의 미션생성
     @PostMapping("/child/{child_id}")
-    public ResponseDto todayMissionCreate(@PathVariable("child_id") int child_id, @RequestBody MissionReqDto missionReqDto){
-        System.out.println(missionReqDto);
-        MissionLogResDto data = missionService.saveTodayMission(child_id, missionReqDto);
+    public ResponseDto todayMissionCreate(@PathVariable("child_id") int child_id, @RequestBody MissionReqDto missionReqDto,
+                                          HttpServletRequest request){
+
+        int curUserId = (int) request.getAttribute("curUserId");
+        Role curUserRole = (Role) request.getAttribute("curUserRole");
+        log.info("현재 로그인한 유저 {}", curUserId);
+        log.info("Role {}",curUserRole);
+        MissionLogResDto data = missionService.saveTodayMission(child_id, missionReqDto, curUserRole, curUserId);
 
         return new ResponseDto(data);
     }
@@ -63,6 +72,15 @@ public class MissionController {
     @PutMapping("log/{log_id}/permit")
     public ResponseDto permitTodayMission(@PathVariable("log_id") int log_id){
         MissionLogResDto data = missionService.permitMission(log_id);
+//        System.out.println(data);
+        return new ResponseDto(data);
+
+    }
+
+    // 오늘의 미션 거절
+    @PutMapping("log/{log_id}/reject")
+    public ResponseDto rejectTodayMission(@PathVariable("log_id") int log_id){
+        MissionLogResDto data = missionService.rejectMission(log_id);
 //        System.out.println(data);
         return new ResponseDto(data);
 
