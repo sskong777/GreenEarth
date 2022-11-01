@@ -4,21 +4,21 @@ import com.ssafy.greenEarth.domain.Role;
 import com.ssafy.greenEarth.dto.Auth.LoginDto;
 import com.ssafy.greenEarth.dto.Auth.TokenIssueDto;
 import com.ssafy.greenEarth.dto.Auth.TokenResDto;
+import com.ssafy.greenEarth.dto.Member.ParentRegisterDto;
 import com.ssafy.greenEarth.dto.ResponseDto;
 import com.ssafy.greenEarth.service.AuthService;
+import com.ssafy.greenEarth.service.KakaoService;
+import com.ssafy.greenEarth.service.MemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 
 @Api("AuthController")
 @Slf4j
@@ -28,6 +28,11 @@ import javax.servlet.http.HttpServletRequest;
 public class AuthController {
 
     private final AuthService authService;
+
+    private final KakaoService kakaoService;
+
+    private final MemberService memberService;
+
 
     @ApiOperation(value = "아이 로그인", notes = "email id와 password 받아서 로그인진행 성공시 token에 JWT를 넘겨줌")
     @PostMapping("/login/child")
@@ -57,16 +62,36 @@ public class AuthController {
         return new ResponseDto(tokenResDto);
     }
 
-    @ApiOperation(value = "카카오 로그인 url", notes = "카카오 로그인 url을 반환")
-    @GetMapping("/login/adult")
-    public String kakaoLoginURL() {
+    @ApiOperation(value = "카카오 로그인 인가 code 발급", notes = "사용자가 카카오 로그인 완료시 인가 code 넘어옴")
+    @PostMapping("/adult")
+    public ResponseEntity<HashMap<String, String>> adultLogin(@RequestParam String code) {
 
-        String REST_API_KEY = "2045a52f644e0bfc27a039cf2bef8568";
-        String REDIRECT_URI = "http://k7d206.p.ssafy.io/api/kakao/login";
+        // 인가 code를 통해 카카오 OAuth Token 발급
+        log.info("인가 code를 통해 카카오 OAuth Token 발급");
+        String accessToken = kakaoService.getKakaoAccessToken(code);
 
-        return String.format("https://kauth.kakao.com/oauth/authorize?client_id=%s&redirect_uri=%s&response_type=code", REST_API_KEY, REDIRECT_URI);
+        // 추출한 Access Token을 통해 유저 정보 요청
+        log.info("추출한 Access Token을 통해 유저 정보 요청");
+        ParentRegisterDto parentRegisterDto = kakaoService.getKakaoProfile(accessToken);
 
+        // 유저 정보를 기반으로 회원가입 & 로그인 처리
+        log.info("유저 정보를 기반으로 회원가입 & 로그인 처리");
+        HashMap<String, String> tokens = memberService.registerParent(parentRegisterDto);
+
+        return new ResponseEntity<>(tokens, HttpStatus.OK);
     }
+
+//    @ApiOperation(value = "카카오 로그인 url", notes = "카카오 로그인 url을 반환")
+//    @GetMapping("/login/adult")
+//    public String kakaoLoginURL() {
+//
+//        String REST_API_KEY = "2045a52f644e0bfc27a039cf2bef8568";
+//        String REDIRECT_URI = "http://localhost:8881/api/kakao/login";
+//
+//        return String.format("https://kauth.kakao.com/oauth/authorize?client_id=%s&redirect_uri=%s&response_type=code", REST_API_KEY, REDIRECT_URI);
+//
+//
+//    }
 
 
 }
