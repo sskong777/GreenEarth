@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface GreenEarthRepository extends JpaRepository<GreenEarth, Integer> {
 
-    @Query("select g from GreenEarth g where g.mileage_condition >= :mileage")
-    Optional<GreenEarth> findFirstByMileage_condition(@Param("mileage") int mileage);
+//    @Query("select g from GreenEarth g where g.mileage_condition >= :mileage")
+//    Optional<GreenEarth> findFirstByMileage_condition(@Param("mileage") int mileage);
 
 }
