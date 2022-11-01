@@ -1,7 +1,7 @@
 package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.dto.Member.ChildProfileDto;
-import com.ssafy.greenEarth.dto.MileageAddReqDto;
+import com.ssafy.greenEarth.dto.Game.MileageAddReqDto;
 import com.ssafy.greenEarth.dto.ResponseDto;
 import com.ssafy.greenEarth.service.GameService;
 import io.swagger.annotations.Api;
@@ -25,6 +25,7 @@ public class GameMileageController {
     @ApiOperation(value = "게임 마일리지 적립", notes = "게임 마일리지를 적립한다.")
     @PutMapping("/success")
     public ResponseDto updateMileage(@RequestBody MileageAddReqDto requestDto, HttpServletRequest request) {
+        log.info("게임 마일리지 적립을 실행합니다.");
         int curUserId = (int) request.getAttribute("curUserId");
         ChildProfileDto data = gameService.addMileage(curUserId, requestDto);
         return new ResponseDto(data);

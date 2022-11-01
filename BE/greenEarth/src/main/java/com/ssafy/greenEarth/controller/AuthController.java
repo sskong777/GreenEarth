@@ -1,16 +1,14 @@
 package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Role;
-import com.ssafy.greenEarth.dto.Auth.LoginDto;
-import com.ssafy.greenEarth.dto.Auth.TokenIssueDto;
-import com.ssafy.greenEarth.dto.Auth.TokenResDto;
+import com.ssafy.greenEarth.dto.Auth.*;
 import com.ssafy.greenEarth.dto.Member.ParentRegisterDto;
 import com.ssafy.greenEarth.dto.ResponseDto;
 import com.ssafy.greenEarth.service.AuthService;
 import com.ssafy.greenEarth.service.KakaoService;
 import com.ssafy.greenEarth.service.MemberService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+
+import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -36,10 +34,10 @@ public class AuthController {
 
     @ApiOperation(value = "아이 로그인", notes = "email id와 password 받아서 로그인진행 성공시 token에 JWT를 넘겨줌")
     @PostMapping("/login/child")
-    public ResponseDto childLogin(@RequestBody LoginDto loginDto) {
+    public ResponseEntity<TokenResDto> childLogin(@RequestBody LoginDto loginDto) {
         log.info("로그인 요청 : {}", loginDto.getEmail());
-        TokenResDto tokenResDto = authService.childLogin(loginDto);
-        return new ResponseDto(tokenResDto);
+        TokenResDto data = authService.childLogin(loginDto);
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     @ApiOperation(value = "로그아웃", notes = "로그아웃 요청 시 refresh token 삭제함")
@@ -53,18 +51,18 @@ public class AuthController {
 
     @ApiOperation(value = "Access Token 재발급", notes = "access token 과 refresh token 유효성 검증 후 모두 재발급")
     @PostMapping("/token_issue")
-    public ResponseDto tokenIssue(@RequestBody TokenIssueDto tokenIssueDto, HttpServletRequest request) {
+    public ResponseEntity<TokenResDto> tokenIssue(@RequestBody TokenIssueDto tokenIssueDto, HttpServletRequest request) {
         // interceptor 예외 처리해서 둘다 유효한 경우에만 들어오도록 하자 (access 는 만료, refresh 는 만료 x)
         log.info("refresh 토큰 재발급 요청");
         int curUserId = (int) request.getAttribute("curUserId");
         Role curUserRole = (Role) request.getAttribute("curUserRole");
-        TokenResDto tokenResDto = authService.tokenIssue(tokenIssueDto, curUserId, curUserRole);
-        return new ResponseDto(tokenResDto);
+        TokenResDto data = authService.tokenIssue(tokenIssueDto, curUserId, curUserRole);
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     @ApiOperation(value = "카카오 로그인 인가 code 발급", notes = "사용자가 카카오 로그인 완료시 인가 code 넘어옴")
     @PostMapping("/adult")
-    public ResponseEntity<HashMap<String, String>> adultLogin(@RequestParam String code) {
+    public ResponseEntity<HashMap<String, String>> adultLogin(@RequestBody String code) {
 
         // 인가 code를 통해 카카오 OAuth Token 발급
         log.info("인가 code를 통해 카카오 OAuth Token 발급");
@@ -80,18 +78,4 @@ public class AuthController {
 
         return new ResponseEntity<>(tokens, HttpStatus.OK);
     }
-
-//    @ApiOperation(value = "카카오 로그인 url", notes = "카카오 로그인 url을 반환")
-//    @GetMapping("/login/adult")
-//    public String kakaoLoginURL() {
-//
-//        String REST_API_KEY = "2045a52f644e0bfc27a039cf2bef8568";
-//        String REDIRECT_URI = "http://localhost:8881/api/kakao/login";
-//
-//        return String.format("https://kauth.kakao.com/oauth/authorize?client_id=%s&redirect_uri=%s&response_type=code", REST_API_KEY, REDIRECT_URI);
-//
-//
-//    }
-
-
 }
