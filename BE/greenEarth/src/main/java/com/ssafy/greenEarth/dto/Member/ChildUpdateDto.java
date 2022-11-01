@@ -1,4 +1,4 @@
-package com.ssafy.greenEarth.dto.Child;
+package com.ssafy.greenEarth.dto.Member;
 
 import lombok.Data;
 
