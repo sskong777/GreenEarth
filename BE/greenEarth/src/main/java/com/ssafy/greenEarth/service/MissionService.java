@@ -43,9 +43,6 @@ public class MissionService {
                 () -> new CustomErrorException("아이가 존재하지 않습니다.")
         );
 
-//        Parent parent = parentRepository.findByNickname("parent1").orElseThrow(
-//                () -> new CustomErrorException("부모가 존재하지 않습니다.")
-//        );
         Parent parent = parentRepository.findParentById(curUserId).orElseThrow(
                 () -> new CustomErrorException("부모가 존재하지 않습니다.")
         );
@@ -72,8 +69,6 @@ public class MissionService {
             MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
             data.add(missionLogResDto);
         }
-
-//        List<MissionLog> missionLogs = missionLogRepository.findAll();
         return data;
 
     }
@@ -113,6 +108,7 @@ public class MissionService {
         Mission mission = missionRepository.findMissionById(mission_id).orElseThrow(
                 () -> new CustomErrorException("미션이 존재하지 않습니다.")
         );
+
         MissionResDto missionResDto = new MissionResDto(mission);
         return missionResDto;
     }
@@ -123,17 +119,32 @@ public class MissionService {
         MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
                 ()->new CustomErrorException("미션 로그가 존재하지 않습니다.")
         );
+        // is_permit -> true
         missionLog.setPermitted(true);
+        // cleared_mission 개수 + 1
         int curruentMissionCount = missionLog.getChild().getClearedMission();
         missionLog.getChild().setClearedMission(curruentMissionCount+1);
 
+        // mileage 증가
         int currentMileage = missionLog.getChild().getMileage();
         int missionMileage = missionLog.getMission().getMileage();
         missionLog.getChild().setMileage(currentMileage+missionMileage);
 
         MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
-//        System.out.println("오늘의 미션" + missionLogResDto);
-//        missionLogResDto.setPermitted(true);
+
+        return missionLogResDto;
+    }
+
+    // 오늘의 미션 승인
+    @Transactional
+    public MissionLogResDto rejectMission(int log_id){
+        MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
+                ()->new CustomErrorException("미션 로그가 존재하지 않습니다.")
+        );
+        // cleared_at -> null
+        missionLog.setClearedAt(null);
+
+        MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
 
         return missionLogResDto;
     }
@@ -146,8 +157,8 @@ public class MissionService {
         );
         LocalDateTime now = LocalDateTime.now();
         missionLog.setClearedAt(now);
+
         MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
-//        missionLogResDto.setClearedAt(now);
         return missionLogResDto;
     }
 
@@ -161,6 +172,7 @@ public class MissionService {
         MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
                 () -> new CustomErrorException("미션 로그가 존재하지 않습니다.")
         );
+
         missionLog.setMission(updatedMission);
         MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
         return missionLogResDto;
@@ -174,7 +186,7 @@ public class MissionService {
         MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
                 () -> new CustomErrorException("미션 로그가 존재하지 않습니다.")
         );
-        System.out.println("삭제" + missionLog.getId());
+
         missionLogRepository.delete(missionLog);
     }
 }
