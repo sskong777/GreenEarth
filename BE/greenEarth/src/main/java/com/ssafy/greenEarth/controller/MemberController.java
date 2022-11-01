@@ -80,6 +80,4 @@ public class MemberController {
         Role curUserRole = (Role) request.getAttribute("curUserRole");
         childService.deleteProfile(curUserId, curUserRole);
     }
-
-
 }
