@@ -2,9 +2,9 @@ package com.ssafy.greenEarth.service;
 
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Reward;
-import com.ssafy.greenEarth.dto.RewardPutDto;
-import com.ssafy.greenEarth.dto.RewardReqDto;
-import com.ssafy.greenEarth.dto.RewardResDto;
+import com.ssafy.greenEarth.dto.Reward.RewardPutDto;
+import com.ssafy.greenEarth.dto.Reward.RewardReqDto;
+import com.ssafy.greenEarth.dto.Reward.RewardResDto;
 import com.ssafy.greenEarth.exception.CustomErrorException;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.RewardRespository;
