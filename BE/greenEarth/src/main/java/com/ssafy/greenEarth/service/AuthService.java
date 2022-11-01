@@ -39,6 +39,11 @@ public class AuthService {
 
     @Transactional
     public String createRefreshToken(int id, Role role) {
+        // 로그인 상태인지 체크
+        if (refreshTokenRepository.existsById(new RefreshTokenId(id, role))) {
+            log.error("현재 로그인 상태");
+            throw new RuntimeException();
+        }
         Child child = childRepository.findChildById(id)
                 .orElseThrow(() -> new IllegalArgumentException("계정을 찾을 수 없습니다."));
         // refresh token 생성
