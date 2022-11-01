@@ -1,27 +1,22 @@
 package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Child;
-import com.ssafy.greenEarth.domain.Parent;
 import com.ssafy.greenEarth.domain.Role;
 import com.ssafy.greenEarth.dto.Member.ChildProfileDto;
-import com.ssafy.greenEarth.dto.Member.ChildUpdateDto;
 import com.ssafy.greenEarth.dto.Member.ChildRegisterDto;
+import com.ssafy.greenEarth.dto.Member.ChildUpdateDto;
 import com.ssafy.greenEarth.dto.Member.ParentProfileDto;
-import com.ssafy.greenEarth.dto.Child.*;
 import com.ssafy.greenEarth.dto.ResponseDto;
 import com.ssafy.greenEarth.service.MemberService;
-
-import com.ssafy.greenEarth.service.KakaoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 @Api("ChildController")
 @Slf4j
