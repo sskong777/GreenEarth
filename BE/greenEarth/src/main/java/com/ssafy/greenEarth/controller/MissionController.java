@@ -29,7 +29,7 @@ public class MissionController {
 
     // 오늘의 미션생성
     @PostMapping("/child/{child_id}")
-    public ResponseDto todayMissionCreate(@PathVariable("child_id") int child_id, @RequestBody MissionReqDto missionReqDto,
+    public MissionLogResDto todayMissionCreate(@PathVariable("child_id") int child_id, @RequestBody MissionReqDto missionReqDto,
                                           HttpServletRequest request){
 
         int curUserId = (int) request.getAttribute("curUserId");
@@ -38,78 +38,77 @@ public class MissionController {
         log.info("Role {}",curUserRole);
         MissionLogResDto data = missionService.saveTodayMission(child_id, missionReqDto, curUserRole, curUserId);
 
-        return new ResponseDto(data);
+        return data;
     }
 
     // 미션 전체 조회
     @GetMapping("")
-    public ResponseDto getAllMissions(){
+    public List<Mission> getAllMissions(){
         List<Mission> data = missionService.getAllMissions();
-        return new ResponseDto(data);
+        return data;
     }
 
     // 미션 상세 조회
     @GetMapping("{mission_id}")
-    public ResponseDto getMissionDetail(@PathVariable("mission_id") int mission_id){
+    public MissionResDto getMissionDetail(@PathVariable("mission_id") int mission_id){
         MissionResDto data = missionService.getMissionDetail(mission_id);
 
-        return new ResponseDto(data);
+        return data;
     }
 
     // 아이 미션 로그 조회
     @GetMapping("/child/{child_id}/log")
-    public ResponseDto  getmissionLogs(@PathVariable("child_id") int child_id){
+    public List<MissionLogResDto>  getmissionLogs(@PathVariable("child_id") int child_id){
         List<MissionLogResDto> data = missionService.getMissionLogs(child_id);
 
-        return new ResponseDto(data);
+        return data;
     }
 
     // 오늘의 미션 조회
     @GetMapping("/child/{child_id}/today")
-    public ResponseDto  getTodaymissionLogs(@PathVariable("child_id") int child_id){
+    public List<MissionLogResDto>  getTodaymissionLogs(@PathVariable("child_id") int child_id){
         List<MissionLogResDto> data = missionService.getTodayMissionLogs(child_id);
 
-        return new ResponseDto(data);
+        return data;
     }
 
     // 오늘의 미션 승인
     @PutMapping("log/{log_id}/permit")
-    public ResponseDto permitTodayMission(@PathVariable("log_id") int log_id){
+    public MissionLogResDto permitTodayMission(@PathVariable("log_id") int log_id){
         MissionLogResDto data = missionService.permitMission(log_id);
 //        System.out.println(data);
-        return new ResponseDto(data);
+        return data;
 
     }
 
     // 오늘의 미션 거절
     @PutMapping("log/{log_id}/reject")
-    public ResponseDto rejectTodayMission(@PathVariable("log_id") int log_id){
+    public MissionLogResDto rejectTodayMission(@PathVariable("log_id") int log_id){
         MissionLogResDto data = missionService.rejectMission(log_id);
 //        System.out.println(data);
-        return new ResponseDto(data);
+        return data;
 
     }
 
     // 오늘의 미션 완료
     @PutMapping("log/{log_id}/clear")
-    public ResponseDto clearTodayMission(@PathVariable("log_id") int log_id){
+    public MissionLogResDto clearTodayMission(@PathVariable("log_id") int log_id){
         MissionLogResDto data = missionService.clearMission(log_id);
-        return new ResponseDto(data);
+        return data;
 
     }
 
     // 오늘의 미션 수정
     @PutMapping("/log/{log_id}")
-    public ResponseDto putTodayMission(@PathVariable("log_id") int log_id, @RequestBody MissionPutDto missionPutDto ){
+    public MissionLogResDto putTodayMission(@PathVariable("log_id") int log_id, @RequestBody MissionPutDto missionPutDto ){
         MissionLogResDto data = missionService.updateTodayMission(log_id, missionPutDto);
-        return new ResponseDto(data);
+        return data;
     }
 
 
     // 오늘의 미션 삭제
     @DeleteMapping("/log/{log_id}")
-    public ResponseDto deleteTodayMission(@PathVariable("log_id") int log_id) {
+    public void deleteTodayMission(@PathVariable("log_id") int log_id) {
         missionService.deleteTodayMission(log_id);
-        return new ResponseDto("");
     }
 }
