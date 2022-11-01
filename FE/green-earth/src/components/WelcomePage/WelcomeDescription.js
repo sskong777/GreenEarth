@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import "animate.css";
 import "../../style/WelcomeDescription.css";
 
 const WelcomeDescription = () => {
@@ -53,12 +54,14 @@ const WelcomeDescription = () => {
     <div className="WelcomeDescription">
       {/* 스크립트 제목 */}
       <div className="DescriptionHead">
-        <h1>{nowScript.title}</h1>
+        <div className="animate__animated animate__backInDown">
+          {nowScript.title}
+        </div>
       </div>
       <div className="DescriptionBody">
         {/* 스크립트 이미지 */}
         <div className="DescriptionImage">
-          <img src={nowScript.image} className="DescriptionImageSize" />
+          <img className="rounded-lg" src={nowScript.image} />
         </div>
         {/* 스크립트 설명 */}
         <div className="DescriptionText">

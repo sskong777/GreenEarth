@@ -1,12 +1,11 @@
 body {
-  background-color: #f6f6f6;
+  background: linear-gradient(#011d29, #08183c);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   margin: 0px;
   font-family: "BinggraeBold";
-  
 }
 
 @media (min-width: 1280px) {
@@ -36,7 +35,7 @@ body {
 #root {
   background: linear-gradient(#1d3a72, #076fa6);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
+  border-radius: 10px;
 }
 
 .App {

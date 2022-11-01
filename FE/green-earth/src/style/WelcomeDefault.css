@@ -16,7 +16,7 @@
 }
 
 .WelcomeButton {
-  @apply flex justify-end w-full;
+  /* @apply flex justify-end w-full; */
 }
 
 .WelcomeBody {
@@ -28,5 +28,13 @@
 }
 
 .Btn {
-  @apply py-4 px-8 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+  @apply w-56 h-16 text-light text-xl font-bold rounded-md 
+  bg-[#3faa35] hover:bg-[#3faa35]/90 active:bg-[#3faa35]/70
+  shadow-lg shadow-[#3faa35]/70 animate-pulse;
+}
+
+.BtnSkip {
+  @apply w-56 h-16 text-light text-2xl font-bold rounded-md 
+  bg-[#af3535] hover:bg-[#af3535]/90 active:bg-[#af3535]/70
+  shadow-lg shadow-[#af3535]/70;
 }
