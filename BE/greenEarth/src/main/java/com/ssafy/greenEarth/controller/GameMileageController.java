@@ -1,6 +1,6 @@
 package com.ssafy.greenEarth.controller;
 
-import com.ssafy.greenEarth.dto.Child.ChildProfileDto;
+import com.ssafy.greenEarth.dto.Member.ChildProfileDto;
 import com.ssafy.greenEarth.dto.MileageAddReqDto;
 import com.ssafy.greenEarth.dto.ResponseDto;
 import com.ssafy.greenEarth.service.GameService;

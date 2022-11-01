@@ -66,7 +66,6 @@ public class AuthController {
 
         return String.format("https://kauth.kakao.com/oauth/authorize?client_id=%s&redirect_uri=%s&response_type=code", REST_API_KEY, REDIRECT_URI);
 
-
     }
 
 
