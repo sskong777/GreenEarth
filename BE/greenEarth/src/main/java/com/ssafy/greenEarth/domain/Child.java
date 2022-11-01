@@ -74,6 +74,8 @@ public class Child {
         this.mileage = mileage;
     }
 
+    public void setEarthLevel(int earthLevel) { this.earthLevel = earthLevel;}
+
     @Builder
     public Child(String realName, String email, String password, Gender gender, String nickname,
                  int mileage, int clearedMission, int earthLevel, LocalDate birthday, int avatar,
