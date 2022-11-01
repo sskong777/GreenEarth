@@ -62,7 +62,7 @@ public class MemberController {
 
     @ApiOperation(value = "닉네임 중복 확인", notes = "유저 닉네임 받아 중복 확인")
     @GetMapping("/check/{nickname}")
-    public ResponseEntity<String> duplcateCheck(@PathVariable String nickname) {
+    public ResponseEntity<String> duplicateCheck(@PathVariable String nickname) {
         return new ResponseEntity<>(childService.duplicateCheck(nickname), HttpStatus.OK);
     }
 
