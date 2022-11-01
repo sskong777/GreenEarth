@@ -4,11 +4,11 @@ import com.ssafy.greenEarth.domain.Role;
 import com.ssafy.greenEarth.dto.Auth.LoginDto;
 import com.ssafy.greenEarth.dto.Auth.TokenIssueDto;
 import com.ssafy.greenEarth.dto.Auth.TokenResDto;
-import com.ssafy.greenEarth.dto.Child.ParentRegisterDto;
+import com.ssafy.greenEarth.dto.Member.ParentRegisterDto;
 import com.ssafy.greenEarth.dto.ResponseDto;
 import com.ssafy.greenEarth.service.AuthService;
-import com.ssafy.greenEarth.service.ChildService;
 import com.ssafy.greenEarth.service.KakaoService;
+import com.ssafy.greenEarth.service.MemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 
 @Api("AuthController")
 @Slf4j
@@ -31,7 +31,8 @@ public class AuthController {
 
     private final KakaoService kakaoService;
 
-    private final ChildService childService;
+    private final MemberService memberService;
+
 
     @ApiOperation(value = "아이 로그인", notes = "email id와 password 받아서 로그인진행 성공시 token에 JWT를 넘겨줌")
     @PostMapping("/login/child")
@@ -75,7 +76,7 @@ public class AuthController {
 
         // 유저 정보를 기반으로 회원가입 & 로그인 처리
         log.info("유저 정보를 기반으로 회원가입 & 로그인 처리");
-        HashMap<String, String> tokens = childService.registerParent(parentRegisterDto);
+        HashMap<String, String> tokens = memberService.registerParent(parentRegisterDto);
 
         return new ResponseEntity<>(tokens, HttpStatus.OK);
     }
