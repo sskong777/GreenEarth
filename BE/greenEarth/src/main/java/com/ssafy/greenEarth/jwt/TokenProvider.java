@@ -78,7 +78,7 @@ public class TokenProvider {
             Claims claims = getClaims(jwtToken);
             return "valid";     // 유효한 토큰
         } catch (ExpiredJwtException e) {
-            return "expired";   // 만료된 토큰
+            return " ";   // 만료된 토큰
         } catch (Exception e) {
             return "invalid";   // 유효하지 않은 토큰
         }

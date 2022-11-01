@@ -1,7 +1,7 @@
 package com.ssafy.greenEarth.service;
 
 import com.ssafy.greenEarth.domain.Role;
-import com.ssafy.greenEarth.dto.Child.ParentRegisterDto;
+import com.ssafy.greenEarth.dto.Member.ParentRegisterDto;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
