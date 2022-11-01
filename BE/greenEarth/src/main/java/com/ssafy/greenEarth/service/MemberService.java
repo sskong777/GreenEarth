@@ -8,11 +8,11 @@ import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.ParentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashMap;
 
 @Slf4j
 @Service
@@ -43,13 +43,22 @@ public class MemberService {
 
     // 카카오 유저 정보로 회원 확인 후 회원가입 & 로그인
     @Transactional
-    public String registerParent(ParentRegisterDto parentRegisterDto) {
+    public HashMap<String, String> registerParent(ParentRegisterDto parentRegisterDto) {
         Parent parent = parentRepository.findByEmail(parentRegisterDto.getEmail()).orElse(null);
         if (parent == null) {
             parentRepository.save(parentRegisterDto.toEntity());
         }
-        int curParentId = parentRepository.findByEmail(parentRegisterDto.getEmail()).get().getId();
-        return authService.createAccessToken(curParentId, parentRegisterDto.getRole());
+        Parent newParent = parentRepository.findByEmail(parentRegisterDto.getEmail()).get();
+        int parentId = newParent.getId();
+        Role parentRole = newParent.getRole();
+
+        String accessToken = authService.createAccessToken(parentId, parentRole);
+        String refreshToken = authService.createRefreshToken(parentId, parentRole);
+
+        HashMap<String, String> tokenMap = new HashMap<>();
+        tokenMap.put("accessToken", accessToken);
+        tokenMap.put("refreshToken", refreshToken);
+        return tokenMap;
     }
 
     @Transactional
