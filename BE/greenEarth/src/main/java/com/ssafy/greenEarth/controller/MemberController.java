@@ -33,35 +33,31 @@ public class MemberController {
 
     @ApiOperation(value = "아이 프로필 조회", notes = "아이 ID 받아서 프로필 전달")
     @GetMapping("/child/{childId}")
-    public ResponseDto getChildProfile(@PathVariable int childId) {
+    public ResponseEntity<ChildProfileDto> getChildProfile(@PathVariable int childId) {
         ChildProfileDto data = childService.findChild(childId);
-        return new ResponseDto(data);
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     @ApiOperation(value = "본인 회원 정보 조회", notes = "토큰 ID 받아서 프로필 전달")
     @GetMapping("/member")
-    public ResponseDto getProfile(HttpServletRequest request) {
+    public ResponseEntity<?> getProfile(HttpServletRequest request) {
         int curUserId = (int) request.getAttribute("curUserId");
         Role curUserRole = (Role) request.getAttribute("curUserRole");
         if (curUserRole == Role.ROLE_PARENT) {
             ParentProfileDto data = childService.findParent(curUserId);
-            return new ResponseDto(data);
+            return new ResponseEntity<>(data, HttpStatus.OK);
         }else {
             ChildProfileDto data = childService.findChild(curUserId);
-            return new ResponseDto(data);
+            return new ResponseEntity<>(data, HttpStatus.OK);
         }
     }
 
     @ApiOperation(value = "아이 등록", notes = "아이 등록 및 현재 접속 중인 보호자 계정과 연결")
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody ChildRegisterDto childDto, HttpServletRequest request) {
+    public ResponseEntity<Child> signup(@RequestBody ChildRegisterDto childDto, HttpServletRequest request) {
         int curUserId = (int) request.getAttribute("curUserId");
-        Child child = childService.registerChild(childDto, curUserId);
-        if (child != null){
-            return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(FAIL, HttpStatus.FORBIDDEN);
-        }
+        Child data = childService.registerChild(childDto, curUserId);
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     @ApiOperation(value = "닉네임 중복 확인", notes = "유저 닉네임 받아 중복 확인")
@@ -72,9 +68,8 @@ public class MemberController {
 
     @ApiOperation(value = "아이 닉네임 수정", notes = "아이 nickname 수정 후 아이 프로필 정보 전달")
     @PutMapping("/child/{childId}")
-    public ResponseDto updateProfile(@PathVariable int childId, @RequestBody ChildUpdateDto childDto) {
-        ChildProfileDto data = childService.updateProfile(childId, childDto);
-        return new ResponseDto(data);
+    public ResponseEntity<ChildProfileDto> updateProfile(@PathVariable int childId, @RequestBody ChildUpdateDto childDto) {
+        return new ResponseEntity<>(childService.updateProfile(childId, childDto), HttpStatus.OK);
     }
 
     @ApiOperation(value = "회원 탈퇴", notes = "토큰 ID 받아서 회원 탈퇴")
