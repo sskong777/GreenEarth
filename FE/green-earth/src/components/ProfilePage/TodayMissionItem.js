@@ -125,11 +125,16 @@ const TodayMissionItem = ({ data }) => {
   return (
     <>
       <div className="TodayMissionItem">
-        <ControlMenu
-          data={data}
-          onChange={setMissionItem}
-          optionList={missionOptionList}
-        />
+        {isCleared && isPermitted ? (
+          <div className="TodayMissionItemComplete">{data.mission.name}</div>
+        ) : (
+          <ControlMenu
+            data={data}
+            onChange={setMissionItem}
+            optionList={missionOptionList}
+          />
+        )}
+
         {isCleared && isPermitted && (
           <button className="TodayItemButtonSingle">승인 완료</button>
         )}
@@ -137,13 +142,13 @@ const TodayMissionItem = ({ data }) => {
         {isCleared && !isPermitted && !isCreated && (
           <>
             <button
-              className="TodayItemButtonDouble"
+              className="TodayItemButtonDoubleApprove"
               onClick={handleClickMissionApprove}
             >
               승인
             </button>
             <button
-              className="TodayItemButtonDouble"
+              className="TodayItemButtonDoubleRefuse"
               onClick={handleClickMissionRefuse}
             >
               거절
@@ -153,7 +158,7 @@ const TodayMissionItem = ({ data }) => {
 
         {!isCleared && !isCreated && (
           <button
-            className="TodayItemButtonSingle"
+            className="TodayItemButtonSingleEdit"
             onClick={handleClickMissionEdit}
           >
             수정
@@ -162,7 +167,7 @@ const TodayMissionItem = ({ data }) => {
 
         {isCreated && (
           <button
-            className="TodayItemButtonSingle"
+            className="TodayItemButtonSingleSubmit"
             onClick={handleClickMissionSubmit}
           >
             설정
