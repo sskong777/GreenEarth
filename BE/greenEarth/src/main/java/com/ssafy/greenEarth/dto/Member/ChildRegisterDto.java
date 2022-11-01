@@ -39,7 +39,7 @@ public class ChildRegisterDto {
                 .realName(getRealName())
                 .mileage(0)
                 .clearedMission(0)
-                .earthLevel(0)
+                .earthLevel(1)
                 .birthday(getBirthday())
                 .avatar(getAvatar())
                 .role(Role.ROLE_CHILD)
