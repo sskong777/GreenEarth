@@ -64,6 +64,12 @@ public class MemberController {
         }
     }
 
+    @ApiOperation(value = "닉네임 중복 확인", notes = "유저 닉네임 받아 중복 확인")
+    @GetMapping("/check/{nickname}")
+    public ResponseEntity<String> duplcateCheck(@PathVariable String nickname) {
+        return new ResponseEntity<>(childService.duplicateCheck(nickname), HttpStatus.OK);
+    }
+
     @ApiOperation(value = "아이 닉네임 수정", notes = "아이 nickname 수정 후 아이 프로필 정보 전달")
     @PutMapping("/child/{childId}")
     public ResponseDto updateProfile(@PathVariable int childId, @RequestBody ChildUpdateDto childDto) {
