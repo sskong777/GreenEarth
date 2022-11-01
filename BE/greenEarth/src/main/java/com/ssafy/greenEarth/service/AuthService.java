@@ -86,7 +86,9 @@ public class AuthService {
         if (!requestRefreshToken.equals(storedRefreshToken.getToken())) {
             throw new RuntimeException();
         }
-        resMap.put("accessToken", createAccessToken(id, role));
+        resMap.put("accessToken", createAccessToken(id, role));     // 재발급된 access token
+        resMap.put("refreshToken", storedRefreshToken.getToken());  // 기존 refresh token
+
         return new TokenResDto(resMap);
     }
 }

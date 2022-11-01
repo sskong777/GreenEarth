@@ -1,9 +1,9 @@
 package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.dto.ResponseDto;
-import com.ssafy.greenEarth.dto.RewardPutDto;
-import com.ssafy.greenEarth.dto.RewardReqDto;
-import com.ssafy.greenEarth.dto.RewardResDto;
+import com.ssafy.greenEarth.dto.Reward.RewardPutDto;
+import com.ssafy.greenEarth.dto.Reward.RewardReqDto;
+import com.ssafy.greenEarth.dto.Reward.RewardResDto;
 import com.ssafy.greenEarth.service.RewardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

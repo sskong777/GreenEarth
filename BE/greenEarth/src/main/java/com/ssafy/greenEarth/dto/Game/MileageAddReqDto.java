@@ -1,4 +1,4 @@
-package com.ssafy.greenEarth.dto;
+package com.ssafy.greenEarth.dto.Game;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
