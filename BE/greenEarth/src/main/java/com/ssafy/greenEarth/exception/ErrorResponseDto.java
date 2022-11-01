@@ -14,7 +14,7 @@ public class ErrorResponseDto {
     private final String code;
     private final String message;
 
-    public ResponseEntity<ErrorResponseDto> toResponseEntity(ErrorCode errorCode) {
+    public static ResponseEntity<ErrorResponseDto> toResponseEntity(ErrorCode errorCode) {
         return ResponseEntity
                 .status(errorCode.getHttpStatus())
                 .body(ErrorResponseDto.builder()
