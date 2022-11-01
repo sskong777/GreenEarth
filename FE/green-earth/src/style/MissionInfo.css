@@ -1,0 +1,43 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.MissionInfoPage{
+    @apply bg-blue-100  p-2 ;
+}
+
+.MissionTitle {
+    @apply flex flex-col  justify-center items-center  mt-10 border-4 border-black bg-white h-20 rounded-md text-3xl;
+}
+
+.Info{
+    @apply flex flex-col mx-32 justify-center items-center space-y-20  mt-10 border-4 border-black w-4/5 bg-white rounded-md;
+}
+
+.MissionImage {
+    @apply flex justify-evenly my-8 h-1/4 space-x-6 ;
+}
+
+.MissionImage1 {
+    @apply h-72 w-96;
+}
+.MissionImage2 {
+    @apply h-72 w-96;
+}
+
+.Contents {
+    @apply  max-w-screen-lg w-11/12 mb-16 pb-16;
+}
+
+.Select {
+    @apply flex justify-evenly my-16 ;
+}
+
+.Select1{
+    @apply border-4 border-black bg-white pb-16 rounded-md h-14 p-6 text-3xl;
+}
+
+.Select2{
+    @apply border-4 border-black bg-white pb-16 rounded-md h-14 p-6 text-3xl;
+
+}

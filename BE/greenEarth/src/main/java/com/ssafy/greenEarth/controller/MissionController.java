@@ -77,6 +77,15 @@ public class MissionController {
 
     }
 
+    // 오늘의 미션 거절
+    @PutMapping("log/{log_id}/reject")
+    public ResponseDto rejectTodayMission(@PathVariable("log_id") int log_id){
+        MissionLogResDto data = missionService.rejectMission(log_id);
+//        System.out.println(data);
+        return new ResponseDto(data);
+
+    }
+
     // 오늘의 미션 완료
     @PutMapping("log/{log_id}/clear")
     public ResponseDto clearTodayMission(@PathVariable("log_id") int log_id){

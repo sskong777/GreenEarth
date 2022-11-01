@@ -59,7 +59,7 @@ public class RewardService {
         reward.setName(rewardPutDto.getRewardName());
         reward.setRewardCondition(rewardPutDto.getRewardCondition());
         reward.setChild(child);
-        System.out.println(reward.getChild().getId());
+
         RewardResDto data = new RewardResDto(reward);
         return data;
 

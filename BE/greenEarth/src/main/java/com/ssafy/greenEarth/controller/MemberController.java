@@ -3,16 +3,15 @@ package com.ssafy.greenEarth.controller;
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Role;
 import com.ssafy.greenEarth.dto.Member.ChildProfileDto;
-import com.ssafy.greenEarth.dto.Member.ChildUpdateDto;
 import com.ssafy.greenEarth.dto.Member.ChildRegisterDto;
+import com.ssafy.greenEarth.dto.Member.ChildUpdateDto;
 import com.ssafy.greenEarth.dto.Member.ParentProfileDto;
 import com.ssafy.greenEarth.dto.ResponseDto;
 import com.ssafy.greenEarth.service.MemberService;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +29,7 @@ public class MemberController {
     private static final String FAIL = "FAIL";
 
     private final MemberService childService;
+
 
     @ApiOperation(value = "아이 프로필 조회", notes = "아이 ID 받아서 프로필 전달")
     @GetMapping("/child/{childId}")
@@ -85,5 +85,6 @@ public class MemberController {
         Role curUserRole = (Role) request.getAttribute("curUserRole");
         childService.deleteProfile(curUserId, curUserRole);
     }
+
 
 }
