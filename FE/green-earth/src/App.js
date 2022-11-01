@@ -11,6 +11,7 @@ import ProfilePage from "./pages/ProfilePage";
 import GamePage from "./pages/GamePage";
 import GamePicturePage from "./pages/GamePicturePage";
 import GameRecyclePage from "./pages/GameRecyclePage";
+import MissionInfoPage from "./pages/MissionInfoPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/game" element={<GamePage />} />
           <Route path="/game/picture" element={<GamePicturePage />} />
           <Route path="/game/recycle" element={<GameRecyclePage />} />
+          <Route path="/mission" element={<MissionInfoPage/>}/>
         </Routes>
       </div>
     </BrowserRouter>
