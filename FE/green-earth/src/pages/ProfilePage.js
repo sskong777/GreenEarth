@@ -51,6 +51,7 @@ const ProfilePage = () => {
     setModalChildOpen(true);
   };
 
+  console.log(isBadge, isMission);
   return (
     <div className="ProfilePage">
       {modalOpen ? (
@@ -140,8 +141,14 @@ const ProfilePage = () => {
       <section>
         <hr />
       </section>
+
       {isParent && (
         <>
+          {!isBadge && !isMission && (
+            <section>
+              <TodayMissionList />
+            </section>
+          )}
           {isBadge && !isMission && (
             <section>
               <BadgeList />
@@ -152,17 +159,21 @@ const ProfilePage = () => {
               <MissionComponent />
             </section>
           )}
-          {!isBadge && !isMission && (
-            <section>
-              <TodayMissionList />
-            </section>
-          )}
         </>
       )}
       {!isParent && (
-        <section>
-          <MissionComponent />
-        </section>
+        <>
+          {!isBadge && (
+            <section className="mt-10">
+              <MissionComponent />
+            </section>
+          )}
+          {isBadge && (
+            <section className="mt-10">
+              <BadgeList />
+            </section>
+          )}
+        </>
       )}
     </div>
   );
