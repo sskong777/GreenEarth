@@ -302,3 +302,9 @@
 }
 
 /* GamePage */
+
+.GamePageButtonBack {
+  @apply w-40 h-16 rounded-md text-2xl text-blackBrown font-binggrae font-semibold
+  bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
+}
