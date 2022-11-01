@@ -3,11 +3,15 @@ package com.ssafy.greenEarth.service;
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.dto.Member.ChildProfileDto;
 import com.ssafy.greenEarth.dto.Game.MileageAddReqDto;
+import com.ssafy.greenEarth.exception.BusinessException;
+import com.ssafy.greenEarth.exception.ErrorCode;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import static com.ssafy.greenEarth.exception.ErrorCode.NOT_EXIST_ACCOUNT;
 
 
 @Service
@@ -21,9 +25,10 @@ public class GameService {
     @Transactional
     public ChildProfileDto addMileage(int childId, MileageAddReqDto requestDto) {
         Child child = childRepository.findChildById(childId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 아이 프로필을 찾을 수 없습니다."));
+                .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
         int finalMileage = child.getMileage() + requestDto.getMileage();
         child.setMileage(finalMileage);
+        log.info(child.getNickname() + "에게 " + requestDto.getMileage() + "마일리지를 적립합니다.");
 
         return new ChildProfileDto(childRepository.save(child));
     }
