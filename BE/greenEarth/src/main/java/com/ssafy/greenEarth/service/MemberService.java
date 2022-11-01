@@ -3,7 +3,7 @@ package com.ssafy.greenEarth.service;
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Parent;
 import com.ssafy.greenEarth.domain.Role;
-import com.ssafy.greenEarth.dto.Child.*;
+import com.ssafy.greenEarth.dto.Member.*;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.ParentRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class ChildService {
+public class MemberService {
 
     private final PasswordEncoder passwordEncoder;
 
@@ -53,9 +53,9 @@ public class ChildService {
     }
 
     @Transactional
-    public Child registerChild(ChildRegisterDto childDto) {
+    public Child registerChild(ChildRegisterDto childDto, int parentId) {
         // 연결된 보호자 조회
-        Parent parent = parentRepository.findById(1)
+        Parent parent = parentRepository.findById(parentId)
                 .orElseThrow(() -> new IllegalArgumentException("연결될 보호자 계정을 찾을 수 없습니다."));
         // 등록
         return childRepository.save(childDto.toEntity(parent, passwordEncoder));
