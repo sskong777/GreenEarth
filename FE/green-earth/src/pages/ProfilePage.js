@@ -15,9 +15,11 @@ const ProfilePage = () => {
 
   const [childInfo, setChildInfo] = useRecoilState(ChildInfoState);
   const [memberInfo, setMemberInfo] = useRecoilState(MemberInfoState);
+
   const [isParent, setIsParent] = useState(false);
   const [isBadge, setIsBadge] = useState(false);
   const [isMission, setIsMission] = useState(false);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [modalChildOpen, setModalChildOpen] = useState(false);
 

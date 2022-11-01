@@ -15,7 +15,7 @@ const WelcomeDefault = (props) => {
   return (
     <div className="WelcomeDefault">
       {/* 로고 이미지 */}
-      <img src={"assets/images/logo_main.png"} className="LogoImage" />
+      <img src={"assets/images/new_logo_main.svg"} className="LogoImage" />
 
       <div className="WelcomeBody">
         <div>
