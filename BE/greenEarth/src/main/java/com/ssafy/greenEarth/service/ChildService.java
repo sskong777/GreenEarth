@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
+
 @Slf4j
 @Service
 @Transactional(readOnly = true)
@@ -20,6 +22,8 @@ public class ChildService {
     private final ChildRepository childRepository;
 
     private final ParentRepository parentRepository;
+
+    private final AuthService authService;
 
     public ParentProfileDto findParent(int parentId) {
         Parent parent = parentRepository.findById(parentId)
@@ -36,12 +40,22 @@ public class ChildService {
 
     // 카카오 유저 정보로 회원 확인 후 회원가입 & 로그인
     @Transactional
-    public Parent registerParent(ParentRegisterDto parentRegisterDto) {
+    public HashMap<String, String> registerParent(ParentRegisterDto parentRegisterDto) {
         Parent parent = parentRepository.findByEmail(parentRegisterDto.getEmail()).orElse(null);
         if (parent == null) {
             parentRepository.save(parentRegisterDto.toEntity());
         }
-        return null;
+        Parent newParent = parentRepository.findByEmail(parentRegisterDto.getEmail()).get();
+        int parentId = newParent.getId();
+        Role parentRole = newParent.getRole();
+
+        String accessToken = authService.createAccessToken(parentId, parentRole);
+        String refreshToken = authService.createRefreshToken(parentId, parentRole);
+
+        HashMap<String, String> tokenMap = new HashMap<>();
+        tokenMap.put("accessToken", accessToken);
+        tokenMap.put("refreshToken", refreshToken);
+        return tokenMap;
     }
 
     @Transactional

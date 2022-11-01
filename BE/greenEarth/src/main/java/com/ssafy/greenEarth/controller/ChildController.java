@@ -1,14 +1,13 @@
 package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Child;
+import com.ssafy.greenEarth.domain.Parent;
 import com.ssafy.greenEarth.domain.Role;
-import com.ssafy.greenEarth.dto.Child.ChildProfileDto;
-import com.ssafy.greenEarth.dto.Child.ChildUpdateDto;
-import com.ssafy.greenEarth.dto.Child.ChildRegisterDto;
-import com.ssafy.greenEarth.dto.Child.ParentProfileDto;
+import com.ssafy.greenEarth.dto.Child.*;
 import com.ssafy.greenEarth.dto.ResponseDto;
 import com.ssafy.greenEarth.service.ChildService;
 
+import com.ssafy.greenEarth.service.KakaoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 @Api("ChildController")
 @Slf4j
@@ -30,6 +30,7 @@ public class ChildController {
     private static final String FAIL = "FAIL";
 
     private final ChildService childService;
+
 
     @ApiOperation(value = "아이 프로필 조회", notes = "아이 ID 받아서 프로필 전달")
     @GetMapping("/child/{childId}")
@@ -78,5 +79,6 @@ public class ChildController {
         Role curUserRole = (Role) request.getAttribute("curUserRole");
         childService.deleteProfile(curUserId, curUserRole);
     }
+
 
 }
