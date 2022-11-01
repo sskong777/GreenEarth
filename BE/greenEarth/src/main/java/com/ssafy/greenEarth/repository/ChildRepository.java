@@ -16,4 +16,6 @@ public interface ChildRepository extends JpaRepository<Child, Integer> {
     Optional<Child> findChildById(@Param("id") int id);
 
     Optional<Child> findByEmail(String email);
+
+    Optional<Child> findByNickname(String nickname);
 }
