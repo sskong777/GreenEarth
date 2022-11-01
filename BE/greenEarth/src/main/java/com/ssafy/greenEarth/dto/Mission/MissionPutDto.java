@@ -1,4 +1,4 @@
-package com.ssafy.greenEarth.dto;
+package com.ssafy.greenEarth.dto.Mission;
 
 import lombok.Data;
 

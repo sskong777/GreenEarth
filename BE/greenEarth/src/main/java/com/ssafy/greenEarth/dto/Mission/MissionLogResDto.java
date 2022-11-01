@@ -1,4 +1,4 @@
-package com.ssafy.greenEarth.dto;
+package com.ssafy.greenEarth.dto.Mission;
 
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Mission;
