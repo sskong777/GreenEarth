@@ -67,6 +67,7 @@ public class AuthController {
         // 인가 code를 통해 카카오 OAuth Token 발급
         log.info("인가 code를 통해 카카오 OAuth Token 발급");
         String accessToken = kakaoService.getKakaoAccessToken(code);
+        log.info("OAuth Token 발급 완료");
 
         // 추출한 Access Token을 통해 유저 정보 요청
         log.info("추출한 Access Token을 통해 유저 정보 요청");
