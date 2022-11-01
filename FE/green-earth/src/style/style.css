@@ -34,13 +34,13 @@
 }
 
 .ProfileInfo {
-  @apply flex justify-start items-center w-100 h-40 ml-6 pl-5 rounded-md text-xl text-amber-900 leading-relaxed 
-  bg-light outline outline-offset-2 outline-1 shadow-lg shadow-light/50;
+  @apply flex justify-start items-center w-100 h-40 ml-6 pl-5 rounded-md text-xl text-darkBrown leading-relaxed 
+  bg-[#fff8e6] outline outline-offset-2 outline-1 shadow-lg shadow-[#fff8e6]/50;
 }
 
 .ChildImage {
   @apply w-40 h-40 mb-2 rounded-md 
-  bg-light outline outline-offset-2 outline-1 shadow-lg shadow-light/50;
+  bg-[#fff8e6] outline outline-offset-2 outline-1 shadow-md shadow-[#fff8e6]/50;
 }
 
 .ChildImageName {
@@ -48,21 +48,21 @@
 }
 
 .ProfileHeaderButton {
-  @apply w-[13rem] h-18 ml-6 rounded-md text-3xl text-amber-900 font-binggrae font-semibold
-  bg-darkBeige hover:bg-darkBeige-hover active:bg-darkBeige-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-darkBeige/50;
+  @apply w-[13rem] h-18 ml-6 rounded-md text-3xl text-blackBrown font-binggrae font-semibold
+  bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
 }
 
 .ProfileHeaderRewardButton {
-  @apply w-[27.5rem] h-18 ml-6 mt-4 rounded-md text-3xl text-amber-900 font-binggrae font-semibold
-  bg-darkBeige hover:bg-darkBeige-hover active:bg-darkBeige-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-darkBeige/50;
+  @apply w-[27.5rem] h-18 ml-6 mt-4 rounded-md text-3xl text-blackBrown font-binggrae font-semibold
+  bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
 }
 
 .ProfileMenuButton {
   @apply w-80 h-18 rounded-md text-2xl text-light font-medium
-  bg-darkRed hover:bg-darkRed-hover active:bg-darkRed-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-darkRed/50;
+  bg-[#22505e] hover:bg-[#22505e]/90 active:bg-[#22505e]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#22505e]/70;
 }
 
 /* TodayMissonList */
@@ -81,21 +81,39 @@
   @apply flex justify-center items-center mb-5;
 }
 
-.TodayItemButtonSingle {
-  @apply w-56 h-16 ml-4 rounded-md text-2xl text-light font-medium 
-  bg-oceanBlue hover:bg-oceanBlue-hover active:bg-oceanBlue-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-oceanBlue/50;
+.TodayItemButtonDoubleRefuse {
+  @apply w-26 h-16 ml-4 rounded-md text-2xl text-light font-medium 
+  bg-[#c01223] hover:bg-[#c01223]/70 active:bg-[#c01223]/50
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#c01223]/50;
 }
 
-.TodayItemButtonDouble {
+.TodayItemButtonDoubleApprove {
   @apply w-26 h-16 ml-4 rounded-md text-2xl text-light font-medium 
-  bg-oceanBlue hover:bg-oceanBlue-hover active:bg-oceanBlue-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-oceanBlue/50;
+  bg-[#0f7835] hover:bg-[#0f7835]/70 active:bg-[#0f7835]/50
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#0f7835]/50;
+}
+
+.TodayItemButtonSingle {
+  @apply w-56 h-16 ml-4 rounded-md text-2xl text-light font-medium 
+  bg-[#223e10] cursor-not-allowed
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#0f7835]/70;
+}
+
+.TodayItemButtonSingleEdit {
+  @apply w-56 h-16 ml-4 rounded-md text-2xl text-light font-medium 
+  bg-[#f9750d] hover:bg-[#f9750d]/90 active:bg-[#f9750d]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#f9750d]/70;
+}
+
+.TodayItemButtonSingleSubmit {
+  @apply w-56 h-16 ml-4 rounded-md text-2xl text-light font-medium 
+  bg-[#0d3d3f] hover:bg-[#0d3d3f]/90 active:bg-[#0d3d3f]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#0d3d3f]/70;
 }
 
 .TodayItem {
   @apply flex justify-between items-center w-188 h-16 px-6 rounded-md text-2xl text-light font-medium text-center
-    bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
+  bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
   outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
 }
 
@@ -103,10 +121,16 @@
   @apply w-188 relative select-none mr-2;
 }
 
+.TodayMissionItemComplete {
+  @apply w-188 mr-2 flex justify-between items-center h-16 px-6 rounded-md text-2xl text-light font-medium text-center
+  bg-[#e1d7b4] hover:bg-[#e1d7b4]/90
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#e1d7b4]/70;
+}
+
 .TodayDropdownButton {
   @apply flex justify-between items-center h-16 px-6 cursor-pointer rounded-md text-2xl text-light font-medium text-center
-  bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
+  bg-[#e1d7b4] hover:bg-[#e1d7b4]/90 active:bg-[#e1d7b4]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#e1d7b4]/70;
 }
 
 .TodayDropdownContent {
@@ -161,8 +185,8 @@
 
 .MissionComponentButton {
   @apply w-20 h-12 rounded-md text-3xl text-light font-medium
-  bg-darkRed hover:bg-darkRed-hover active:bg-darkRed-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-darkRed/50;
+  bg-[#0d3d3f] hover:bg-[#0d3d3f]/90 active:bg-[#0d3d3f]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#0d3d3f]/70;
 }
 
 /* MissionList */
@@ -176,9 +200,9 @@
 }
 
 .MissionDropdownButton {
-  @apply flex justify-between items-center h-14 px-6 cursor-pointer rounded-md text-xl text-light font-medium text-center
+  @apply flex justify-between items-center h-14 px-6 cursor-pointer rounded-md text-xl text-blackBrown font-medium text-center
   bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#ecdf90]/70;
 }
 
 .MissionDropdownContent {
@@ -200,15 +224,15 @@
 /* MissionItem */
 
 .MissionItem {
-  @apply flex justify-between items-center w-252 h-14 px-6 my-3 rounded-md text-xl text-light font-medium text-center
-  bg-stoneRed
-  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
+  @apply flex justify-between items-center w-252 h-14 px-6 my-4 rounded-md text-xl text-light font-medium text-center
+  bg-[#c01223]
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#c01223]/50;
 }
 
 .MissionItemComplete {
-  @apply flex justify-between items-center w-252 h-14 px-6 my-3 rounded-md text-xl text-light font-medium text-center
-  bg-green-900
-  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
+  @apply flex justify-between items-center w-252 h-14 px-6 my-4 rounded-md text-xl text-light font-medium text-center
+  bg-[#0f7835]
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#0f7835]/50;
 }
 
 /* ReawardModal */
@@ -218,23 +242,25 @@
 }
 
 .ReawardModalBody {
-  @apply w-240 bg-white rounded-md;
+  @apply w-240 bg-[#fffee0] rounded-md;
 }
 
 .ReawardModalContent {
-  @apply flex flex-col justify-center items-center p-3 my-5;
+  @apply flex flex-col justify-center items-center py-3 my-5;
 }
 
 .ReawardModalTitle {
-  @apply mb-5 text-amber-900 text-4xl text-center font-bold;
+  @apply mb-5 text-blackBrown text-4xl text-center font-bold;
 }
 
 .ReawardModalHeader {
-  @apply flex w-208 items-center justify-start mb-10;
+  @apply flex w-208 items-start justify-start mb-5 p-4
+  bg-[#efe0c3] rounded-md
+  outline outline-offset-2 outline-1 outline-gray-100 shadow-md shadow-light/50;
 }
 
 .ReawardModalInfo {
-  @apply w-full text-left px-10;
+  @apply w-full text-left px-10 mt-5;
 }
 
 .ReawardModalSetting {
@@ -242,13 +268,19 @@
 }
 
 .ReawardModalSettingSection {
-  @apply flex justify-center items-center my-3;
+  @apply flex justify-center items-center my-3 text-darkBrown;
 }
 
 .ReawardModalButton {
   @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
   bg-green-800 hover:bg-green-800/50 active:bg-green-800/70
   outline outline-offset-2 outline-1 shadow-lg shadow-green-800/50;
+}
+
+.ReawardModalButtonClose {
+  @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
+  bg-darkRed hover:bg-darkRed-hover active:bg-darkRed-active
+  outline outline-offset-2 outline-1 shadow-lg shadow-darkRed/50;
 }
 
 .ReawardModalInput {
@@ -258,95 +290,15 @@
 }
 
 .ReawardModalInputGift {
-  @apply w-64 h-11 text-2xl mx-5 mb-5 text-center rounded-md 
+  @apply w-64 h-11 text-2xl mx-5 mb-5 text-center text-darkBrown rounded-md 
   bg-light hover:bg-lightGray/70 active:bg-lightGray
   outline outline-offset-2 outline-1 shadow-lg shadow-lightGray/50;
 }
 
-/* MissionComponent */
+/* RewardModalChild */
 
-.MissionComponent {
-  @apply w-252 mx-auto;
+.ReawardModalChildInfo {
+  @apply w-full h-40 flex justify-center items-center text-3xl;
 }
 
-.MissionComponentHeader {
-  @apply flex justify-between items-center mt-4 mb-6;
-}
-
-.MissionComponentToday {
-  @apply text-3xl text-darkBrown font-semibold;
-}
-
-.MissionComponentButton {
-  @apply w-20 h-12 rounded-md text-3xl text-light font-medium
-  bg-darkRed hover:bg-darkRed-hover active:bg-darkRed-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-darkRed/50;
-}
-
-/* MissionList */
-
-.MissionListHeader {
-  @apply flex justify-between items-center mb-6;
-}
-
-.MissionDropdown {
-  @apply w-72 relative select-none;
-}
-
-.MissionDropdownButton {
-  @apply flex justify-between items-center h-14 px-6 cursor-pointer rounded-md text-xl text-light font-medium text-center
-  bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
-}
-
-.MissionDropdownContent {
-  @apply absolute w-full top-1.15 left-0 p-2 rounded-md text-lg text-blackBrown font-medium 
-  bg-stoneRed-dropdown outline outline-offset-1 outline-1 shadow-lg shadow-stoneRed-dropdown;
-}
-
-.MissionDropdownItem {
-  @apply p-2 rounded-md cursor-pointer transition-all delay-75
-  hover:bg-stoneRed-dropdown-hover;
-}
-
-.MissionListDate {
-  @apply w-100 h-14 rounded-md p-4 cursor-pointer text-2xl text-blackBrown font-medium
-  bg-light active:bg-lightGray/50
-  outline outline-offset-1 outline-1 shadow-lg shadow-lightGray/50;
-}
-
-/* MissionItem */
-
-.MissionItem {
-  @apply flex justify-between items-center w-252 h-14 px-6 my-3 rounded-md text-xl text-light font-medium text-center
-  bg-stoneRed
-  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
-}
-
-.MissionItemComplete {
-  @apply flex justify-between items-center w-252 h-14 px-6 my-3 rounded-md text-xl text-light font-medium text-center
-  bg-green-100
-  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
-}
-
-/* ReawardModal */
-
-.ReawardModal {
-  @apply flex justify-center items-center h-screen w-full z-10 fixed text-center left-0 top-0 bg-black bg-opacity-70;
-}
-
-.ReawardModalBody {
-  @apply w-252 bg-white rounded-md;
-}
-
-.ReawardModalContent {
-  @apply flex justify-center items-center p-4;
-}
-
-.ReawardModalButton {
-  @apply bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150;
-}
-
-.ReawardModalBackground {
-  @apply opacity-25 fixed inset-0 z-40 bg-black;
-}
+/* GamePage */

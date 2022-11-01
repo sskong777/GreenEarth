@@ -8,6 +8,7 @@ import TodayMissionList from "../components/ProfilePage/TodayMissionList";
 import MissionComponent from "../components/ProfilePage/MissionComponent";
 import BadgeList from "../components/ProfilePage/BadgeList";
 import RewardModal from "../components/ProfilePage/RewardModal";
+import RewardModalChild from "../components/ProfilePage/RewardModalChild";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const ProfilePage = () => {
   const [isBadge, setIsBadge] = useState(false);
   const [isMission, setIsMission] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalChildOpen, setModalChildOpen] = useState(false);
 
   useEffect(() => {
     if (memberInfo.parentId) {
@@ -43,10 +45,20 @@ const ProfilePage = () => {
     setModalOpen(true);
   };
 
+  const handleClickRewardChildButton = () => {
+    setModalChildOpen(true);
+  };
+
   return (
     <div className="ProfilePage">
       {modalOpen ? (
         <RewardModal setModalOpen={setModalOpen} childInfo={childInfo} />
+      ) : null}
+      {modalChildOpen ? (
+        <RewardModalChild
+          setModalChildOpen={setModalChildOpen}
+          childInfo={childInfo}
+        />
       ) : null}
       <section className="ProfileHeader">
         <div>
@@ -94,7 +106,7 @@ const ProfilePage = () => {
             <div>
               <button
                 className="ProfileHeaderRewardButton"
-                onClick={handleClickRewardButton}
+                onClick={handleClickRewardChildButton}
               >
                 보상 확인하러 가기
               </button>

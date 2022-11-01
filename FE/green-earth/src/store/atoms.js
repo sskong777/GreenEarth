@@ -74,7 +74,7 @@ export const missionListState = atom({
       logId: 1,
       clearedAt: null,
       isPermitted: false,
-      createdAt: "2022-10-30T11:10:07",
+      createdAt: "2022-11-01T11:10:07",
       parentNickname: "정종일",
       mission: {
         missionId: 1,
@@ -88,7 +88,7 @@ export const missionListState = atom({
       logId: 2,
       clearedAt: null,
       isPermitted: false,
-      createdAt: "2022-10-27T11:10:07",
+      createdAt: "2022-11-01T11:10:09",
       parentNickname: "정종일",
       mission: {
         missionId: 2,
@@ -102,7 +102,7 @@ export const missionListState = atom({
       logId: 3,
       clearedAt: "2022-03-13 13:33",
       isPermitted: true,
-      createdAt: "2022-10-30T13:10:07",
+      createdAt: "2022-11-01T13:10:07",
       parentNickname: "정종일",
       mission: {
         missionId: 3,

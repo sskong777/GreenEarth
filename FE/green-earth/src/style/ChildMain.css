@@ -1,19 +1,8 @@
-<<<<<<< HEAD
-
-.Earth{
-    /* background-color: red; */
-    background-image: url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px;
-    
-    
-=======
 .Earth {
   /* background-color: red; */
   background-image: url("/public/galaxy3.jpg");
   position: relative;
-  height: 1000px;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  height: 720px;
 }
 
 .Earth::before {
@@ -39,17 +28,16 @@
   border-color: rgb(255, 179, 0);
 }
 
-.canvasProfile::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
+.canvasProfile::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
-
 
 .Rocket {
   position: relative;
@@ -81,27 +69,13 @@
   z-index: 4;
 }
 
-<<<<<<< HEAD
-
-
-
-
-progress {
-    -webkit-appearance: none;
-    appearance: none;
-    width:100%;
-    margin-top:2%;
-    margin-left:10%;
-    position: relative;
-=======
 progress {
   -webkit-appearance: none;
   appearance: none;
-  width: 80%;
+  width: 100%;
   margin-top: 2%;
   margin-left: 10%;
   position: relative;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
 }
 
 progress::-webkit-progress-bar {
@@ -131,14 +105,14 @@ progress::before {
   z-index: 1;
 }
 /* .canvasEarth::before{
-    content:"";
-    opacity:0.8;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black;
+  content:"";
+  opacity:0.8;
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  background-color: black;
 } */
 .game {
   background-color: black;
@@ -172,22 +146,22 @@ progress::before {
 }
 /* 
 .blinking{
-    -webkit-animation:blink 1.5s ease-in-out infinite alternate;
-    -moz-animation:blink 1.5s ease-in-out infinite alternate;
-    animation:blink 1.5s ease-in-out infinite alternate;
-    }
-    @-webkit-keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-    @-moz-keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-    @keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-    } */
+  -webkit-animation:blink 1.5s ease-in-out infinite alternate;
+  -moz-animation:blink 1.5s ease-in-out infinite alternate;
+  animation:blink 1.5s ease-in-out infinite alternate;
+  }
+  @-webkit-keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  @-moz-keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  @keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+  } */
 
 .info {
   display: flex;
@@ -260,21 +234,10 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-<<<<<<< HEAD
-
-
-.Earth10{
-    background-image: url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px;
-    
-    
-=======
 .Earth10 {
   background-image: url("/public/galaxy3.jpg");
   position: relative;
-  height: 1000px;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  height: 720px;
 }
 .Earth10::before {
   content: "";
@@ -287,21 +250,6 @@ progress::before {
   background: linear-gradient(rgb(28, 24, 50), rgb(117, 117, 212));
 }
 
-<<<<<<< HEAD
-.canvasProfile10{
-    width:200px;
-    height:200px;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: rgb(255, 247, 232);;
-    margin-right: 10px;
-    position:relative;
-    border : solid;
-    border-color:  rgb(255, 179, 0);
-
-
-
-=======
 .canvasProfile10 {
   width: 200px;
   height: 200px;
@@ -311,18 +259,17 @@ progress::before {
   margin-right: 10px;
   position: relative;
   border: solid;
-  border-color: black;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  border-color: rgb(255, 179, 0);
 }
-.canvasProfile10::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
+.canvasProfile10::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
 .Rocket {
   position: relative;
@@ -345,23 +292,13 @@ progress::before {
   margin: 0.5%;
 }
 
-<<<<<<< HEAD
-.characterInfo10{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
-=======
 .characterInfo10 {
   font-weight: bold;
-  color: black;
+  color: white;
   size: 115px;
   text-align: center;
   margin: 2px;
   z-index: 4;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
 }
 
 progress {
@@ -400,14 +337,14 @@ progress::before {
   z-index: 1;
 }
 /* .canvasEarth::before{
-    content:"";
-    opacity:0.8;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black;
+  content:"";
+  opacity:0.8;
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  background-color: black;
 } */
 .game {
   background-color: black;
@@ -441,22 +378,22 @@ progress::before {
 }
 /* 
 .blinking{
-    -webkit-animation:blink 1.5s ease-in-out infinite alternate;
-    -moz-animation:blink 1.5s ease-in-out infinite alternate;
-    animation:blink 1.5s ease-in-out infinite alternate;
-    }
-    @-webkit-keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-    @-moz-keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-    @keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-    } */
+  -webkit-animation:blink 1.5s ease-in-out infinite alternate;
+  -moz-animation:blink 1.5s ease-in-out infinite alternate;
+  animation:blink 1.5s ease-in-out infinite alternate;
+  }
+  @-webkit-keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  @-moz-keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  @keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+  } */
 
 .info10 {
   display: flex;
@@ -473,21 +410,9 @@ progress::before {
   margin-top: 2%;
 }
 
-<<<<<<< HEAD
-.info10::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
-=======
 .info10::before {
   content: "";
-  opacity: 0.3;
+  opacity: 0.1;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -495,7 +420,6 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
 }
 .badges10 {
   display: flex;
@@ -545,23 +469,11 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-<<<<<<< HEAD
-
-
-.Earth2{
-    /* background-color: red; */
-    background-image: url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px;
-    
-    
-=======
 .Earth2 {
   /* background-color: red; */
   background-image: url("/public/galaxy3.jpg");
   position: relative;
-  height: 1000px;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  height: 720px;
 }
 .Earth2::before {
   content: "";
@@ -585,15 +497,15 @@ progress::before {
   border: solid;
   border-color: rgb(255, 179, 0);
 }
-.canvasProfile2::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
+.canvasProfile2::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
 .Rocket {
   position: relative;
@@ -661,14 +573,14 @@ progress::before {
   z-index: 1;
 }
 /* .canvasEarth::before{
-    content:"";
-    opacity:0.8;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black;
+  content:"";
+  opacity:0.8;
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  background-color: black;
 } */
 .game {
   background-color: black;
@@ -702,22 +614,22 @@ progress::before {
 }
 /* 
 .blinking{
-    -webkit-animation:blink 1.5s ease-in-out infinite alternate;
-    -moz-animation:blink 1.5s ease-in-out infinite alternate;
-    animation:blink 1.5s ease-in-out infinite alternate;
-    }
-    @-webkit-keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-    @-moz-keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-    @keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-    } */
+  -webkit-animation:blink 1.5s ease-in-out infinite alternate;
+  -moz-animation:blink 1.5s ease-in-out infinite alternate;
+  animation:blink 1.5s ease-in-out infinite alternate;
+  }
+  @-webkit-keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  @-moz-keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  @keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+  } */
 
 .info2 {
   display: flex;
@@ -791,23 +703,11 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-<<<<<<< HEAD
-
-
-.Earth3{
-    /* background-color: red; */
-    background-image: url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px;
-    
-    
-=======
 .Earth3 {
   /* background-color: red; */
   background-image: url("/public/galaxy3.jpg");
   position: relative;
-  height: 1000px;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  height: 720px;
 }
 .Earth3::before {
   content: "";
@@ -832,25 +732,16 @@ progress::before {
   border-color: rgb(255, 179, 0);
 }
 
-<<<<<<< HEAD
-.canvasProfile3::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
+.canvasProfile3::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
-.characterInfo3{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
-=======
 .characterInfo3 {
   font-weight: bold;
   color: white;
@@ -858,7 +749,6 @@ progress::before {
   text-align: center;
   margin: 2px;
   z-index: 4;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
 }
 
 .info3 {
@@ -933,23 +823,11 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-<<<<<<< HEAD
-
-
-.Earth4{
-    /* background-color: red; */
-    background-image: url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px;
-    
-    
-=======
 .Earth4 {
   /* background-color: red; */
   background-image: url("/public/galaxy3.jpg");
   position: relative;
-  height: 1000px;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  height: 720px;
 }
 .Earth4::before {
   content: "";
@@ -973,15 +851,15 @@ progress::before {
   border: solid;
   border-color: rgb(255, 179, 0);
 }
-.canvasProfile4::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
+.canvasProfile4::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
 
 .characterInfo4 {
@@ -1064,23 +942,11 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-<<<<<<< HEAD
-
-
-.Earth5{
-    /* background-color: red; */
-    background-image: url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px;
-    
-    
-=======
 .Earth5 {
   /* background-color: red; */
   background-image: url("/public/galaxy3.jpg");
   position: relative;
-  height: 1000px;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  height: 720px;
 }
 .Earth5::before {
   content: "";
@@ -1093,29 +959,6 @@ progress::before {
   background: linear-gradient(black, rgb(5, 5, 67));
 }
 
-<<<<<<< HEAD
-.canvasProfile5{
-    width:200px;
-    height:200px;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: rgb(255, 255, 255);
-    margin-right: 10px;
-    position:relative;
-    border : solid;
-    border-color:  rgb(255, 179, 0);
-}
-
-.canvasProfile5::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
-=======
 .canvasProfile5 {
   width: 200px;
   height: 200px;
@@ -1126,7 +969,17 @@ progress::before {
   position: relative;
   border: solid;
   border-color: rgb(255, 179, 0);
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+}
+
+.canvasProfile5::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
 
 .characterInfo5 {
@@ -1209,23 +1062,11 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-<<<<<<< HEAD
-
-
-.Earth6{
-    /* background-color: red; */
-    background-image: url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px;
-    
-    
-=======
 .Earth6 {
   /* background-color: red; */
   background-image: url("/public/galaxy3.jpg");
   position: relative;
-  height: 1000px;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  height: 720px;
 }
 .Earth6::before {
   content: "";
@@ -1249,26 +1090,16 @@ progress::before {
   border: solid;
   border-color: rgb(255, 179, 0);
 }
-<<<<<<< HEAD
-.canvasProfile6::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
+.canvasProfile6::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
-
-.characterInfo6{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
-=======
 
 .characterInfo6 {
   font-weight: bold;
@@ -1277,7 +1108,6 @@ progress::before {
   text-align: center;
   margin: 2px;
   z-index: 4;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
 }
 
 .info6 {
@@ -1351,22 +1181,11 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-<<<<<<< HEAD
-
-.Earth7{
-    /* background-color: red; */
-    background-image: url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px;
-    
-    
-=======
 .Earth7 {
   /* background-color: red; */
   background-image: url("/public/galaxy3.jpg");
   position: relative;
-  height: 1000px;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  height: 720px;
 }
 .Earth7::before {
   content: "";
@@ -1391,33 +1210,23 @@ progress::before {
   border-color: rgb(255, 179, 0);
 }
 
-<<<<<<< HEAD
-.canvasProfile7::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
+.canvasProfile7::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
-.characterInfo7{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
-=======
 .characterInfo7 {
   font-weight: bold;
-  color: black;
+  color: white;
   size: 115px;
   text-align: center;
   margin: 2px;
   z-index: 4;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
 }
 
 .info7 {
@@ -1435,21 +1244,9 @@ progress::before {
   margin-top: 2%;
 }
 
-<<<<<<< HEAD
-.info7::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
-=======
 .info7::before {
   content: "";
-  opacity: 0.3;
+  opacity: 0.1;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -1457,7 +1254,6 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
 }
 .badges7 {
   display: flex;
@@ -1504,22 +1300,11 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-<<<<<<< HEAD
-
-.Earth8{
-    /* background-color: red; */
-    background-image : url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px;
-    
-    
-=======
 .Earth8 {
   /* background-color: red; */
   background-image: url("/public/galaxy3.jpg");
   position: relative;
-  height: 1000px;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  height: 720px;
 }
 .Earth8::before {
   content: "";
@@ -1544,33 +1329,23 @@ progress::before {
   border-color: rgb(255, 179, 0);
 }
 
-<<<<<<< HEAD
-.canvasProfile8::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
+.canvasProfile8::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
-.characterInfo8{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
-=======
 .characterInfo8 {
   font-weight: bold;
-  color: black;
+  color: white;
   size: 115px;
   text-align: center;
   margin: 2px;
   z-index: 4;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
 }
 
 .info8 {
@@ -1588,21 +1363,9 @@ progress::before {
   margin-top: 2%;
 }
 
-<<<<<<< HEAD
-.info8::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
-=======
 .info8::before {
   content: "";
-  opacity: 0.3;
+  opacity: 0.1;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -1610,7 +1373,6 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
 }
 .badges8 {
   display: flex;
@@ -1657,22 +1419,11 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-<<<<<<< HEAD
-
-.Earth9{
-    /* background-color: red; */
-    background-image: url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px;
-    
-    
-=======
 .Earth9 {
   /* background-color: red; */
   background-image: url("/public/galaxy3.jpg");
   position: relative;
-  height: 1000px;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  height: 720px;
 }
 .Earth9::before {
   content: "";
@@ -1696,35 +1447,24 @@ progress::before {
   border: solid;
   border-color: rgb(255, 179, 0);
 }
-<<<<<<< HEAD
-.canvasProfile9::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
+.canvasProfile9::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
-
-.characterInfo9{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
-=======
 
 .characterInfo9 {
   font-weight: bold;
-  color: black;
+  color: white;
   size: 115px;
   text-align: center;
   margin: 2px;
   z-index: 4;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
 }
 
 .info9 {
@@ -1742,29 +1482,16 @@ progress::before {
   margin-top: 2%;
 }
 
-<<<<<<< HEAD
-.info9::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
-=======
 .info9::before {
   content: "";
-  opacity: 0.3;
+  opacity: 0.1;
   position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background-color: black;
+  background-color: white;
   margin: 7%;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
 }
 .badges9 {
   display: flex;
@@ -1776,27 +1503,15 @@ progress::before {
   margin-left: 2%;
   margin-right: 2%;
 }
-<<<<<<< HEAD
-.badges9::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-=======
 .badges9::before {
   content: "";
-  opacity: 0.3;
+  opacity: 0.1;
   position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background-color: black;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  background-color: white;
 }
 
 .canvasBadge9 {
@@ -1807,27 +1522,37 @@ progress::before {
   height: 40%;
 }
 
-<<<<<<< HEAD
-
-.canvasBadge9::before{
-    content:"";
-    opacity:0.3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black
-=======
 .canvasBadge9::before {
   content: "";
-  opacity: 0.1;
+  opacity: 0.3;
   position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background-color: white;
->>>>>>> ff7a1b4f582a718885ec48f09d1e3497be343148
+  background-color: black;
 }
 /* //////////////////////////////////////////////////////////////////////////// */
+
+/* @media (min-width: 1280px) {
+  .App {
+    width: 1270px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .App {
+    width: 95vw;
+  }
+}
+
+#root {
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.App {
+  min-height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
+} */
