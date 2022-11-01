@@ -4,6 +4,8 @@ import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Parent;
 import com.ssafy.greenEarth.domain.Role;
 import com.ssafy.greenEarth.dto.Member.*;
+import com.ssafy.greenEarth.exception.BusinessException;
+import com.ssafy.greenEarth.exception.ErrorCode;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.ParentRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
+
+import static com.ssafy.greenEarth.exception.ErrorCode.NOT_EXIST_ACCOUNT;
 
 @Slf4j
 @Service
@@ -48,7 +52,8 @@ public class MemberService {
         if (parent == null) {
             parentRepository.save(parentRegisterDto.toEntity());
         }
-        Parent newParent = parentRepository.findByEmail(parentRegisterDto.getEmail()).get();
+        Parent newParent = parentRepository.findByEmail(parentRegisterDto.getEmail())
+                .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
         int parentId = newParent.getId();
         Role parentRole = newParent.getRole();
 

@@ -2,7 +2,13 @@
 import "../style/ParentMain.css";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+} from "@material-tailwind/react";
 // import Home from "./pages/Home";
 import {useRef} from 'react'
 //import {useState} from 'react'
@@ -14,7 +20,8 @@ import rocket from '../image/rocket.png'
 import start from '../image/start.png'
 import end from '../image/end.png'
 import { Color } from "three";
-
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import WelcomePage from "./WelcomePage";
 // import useAnimations from 'react-useanimations';
 function Model(props) {
   const { nodes, materials } = useGLTF('/earth/scene.gltf')
@@ -462,13 +469,27 @@ function Model20(props) {
   )
 }
 
-
+function Model21(props) {
+  const { nodes, materials } = useGLTF('/plus/scene.gltf')
+  return (
+    <group {...props} dispose={null}>
+      <group rotation={[-Math.PI / 2, 0, 0]}>
+        <group rotation={[Math.PI / 2, 0, 0]}>
+          <group position={[0, -15, -70]} rotation={[-Math.PI / 2, 0, 0]} scale={0.2}>
+            <mesh geometry={nodes.Box001__0.geometry} material={materials.RootNode} />
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
 
 function ParentMainPage() {
-  const level = 1
-  const value = level*11.3
-  const mileage = level*87.6
-  const nickname = '어린왕자'
+
+  let relation = {
+    parent : 1,
+    child : [1,0,0,0,0,0,0,0,0,0]
+  }
   
   return (
     // <BrowserRouter>
@@ -478,129 +499,413 @@ function ParentMainPage() {
     //     </Routes>
     //   </div>
     // </BrowserRouter>
+    <div>
 
     <div className='Earth2'>
-  
       
+  
         <div className= "peoplelist"  >
             <div className = "people">
-                <div className = "canvasPerson">
-                    <Canvas  id="person1" >
-                    <Suspense fallback={null}>
-                        <ambientLight />
-                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        <Model3 />
-                        {level<1 && <Model20/>}
-                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                    </Suspense> 
-                    </Canvas>
-                </div>
-                {/* <div className = "canvasLock">
-                    <Canvas  id="person" >
-                    <Suspense fallback={null}>
-                        <ambientLight />
-                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {level<1 && <Model20/>}
-                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                    </Suspense> 
-                    </Canvas>
-                </div> */}
-                <div className = "canvasPerson">
-                    <Canvas  id="person2  " >
-                    <Suspense fallback={null}>
-                        <ambientLight />
-                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model11 /> */}
-                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                    </Suspense> 
-                    </Canvas>
-                </div>
-                <div className = "canvasPerson">
-                    <Canvas id="person3" >
-                    <Suspense fallback={null}>
-                        <ambientLight />
-                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model12 /> */}
-                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                    </Suspense> 
-                    </Canvas>
-                </div>
-                <div className = "canvasPerson">
-                    <Canvas  id="person4" >
-                    <Suspense fallback={null}>
-                        <ambientLight />
-                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model13   /> */}
-                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                    </Suspense> 
-                    </Canvas>
-                </div>
-                <div className = "canvasPerson">
-                    <Canvas  id="person5" >
-                    <Suspense fallback={null}>
-                        <ambientLight />
-                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model14 /> */}
-
-                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                    </Suspense> 
-                    </Canvas>
-                </div>
-          
-                <div className = "canvasPerson">
-                    <Canvas  id="person6" >
-                    <Suspense fallback={null}>
-                        <ambientLight />
-                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model15 /> */}
-        
-                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                    </Suspense> 
-                    </Canvas>
-                </div>
-                <div className = "canvasPerson">
-                    <Canvas  id="person7" >
-                    <Suspense fallback={null}>
-                        <ambientLight />
-                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model9 /> */}
-                 
-                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                    </Suspense> 
-                    </Canvas>
-                </div>
-                <div className = "canvasPerson">
-                    <Canvas id="person8" >
-                    <Suspense fallback={null}>
-                        <ambientLight />
-                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model17 /> */}
-                       
-                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                    </Suspense> 
-                    </Canvas>
-                </div>
-                <div className = "canvasPerson">
-                    <Canvas  id="person9" >
-                    <Suspense fallback={null}>
-                        <ambientLight />
-                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000,100,100]} castShadow />
-                        {/* <Model19 /> */}
-                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                    </Suspense> 
-                    </Canvas>
-                </div>
-                <div className = "canvasPerson">
-                    <Canvas  id="person10" >
-                    <Suspense fallback={null}>
-                        <ambientLight />
-                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {/* <Model18 /> */}
-                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                    </Suspense> 
-                    </Canvas>
-                </div>
-            
+              { relation['child'][0] ===1 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person1" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model3 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][0] ===0 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person1" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model21 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][1] ===1 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person2" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model3 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][1] ===0 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person2" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model21 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][2] ===1 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person3" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model3 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][2] ===0 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person3" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model21 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][3] ===1 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person4" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model3 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][3] ===0 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person4" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model21 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][4] ===1 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person5" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model3 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][4] ===0 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person5" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model21 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][5] ===1 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person6" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model3 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][5] ===0 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person6" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model21 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][6] ===1 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person7" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model3 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][6] ===0 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person7" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model21 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][7] ===1 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person8" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model3 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][7] ===0 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person8" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model21 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][8] ===1 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person9" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model3 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][8] ===0 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person9" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model21 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][9] ===1 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person10" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model3 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
+              { relation['child'][9] ===0 && <Link to="/profile/1">
+              <header>
+                  <Card className="PersonCard" >
+                      <CardHeader>
+                          <Typography >
+                          <div className = "canvasPerson">
+                            <Canvas  id="person10" >
+                            <Suspense fallback={null}>
+                                <ambientLight />
+                                <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                                <Model21 />
+                                <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                            </Suspense> 
+                            </Canvas>
+                        </div>
+                          </Typography>
+                      </CardHeader>   
+                  </Card>
+              </header>
+              </Link>}
             </div>
             
   
@@ -619,6 +924,7 @@ function ParentMainPage() {
             </Canvas>
         </div>
       
+    </div>
     </div>
   );
 }
