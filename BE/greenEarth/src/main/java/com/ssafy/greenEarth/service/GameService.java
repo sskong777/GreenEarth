@@ -36,6 +36,7 @@ public class GameService {
         Child child = childRepository.findChildById(childId)
                 .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
 
+        log.info("아이를 찾았습니다.");
         int finalMileage = child.getMileage() + requestDto.getMileage();
         child.setMileage(finalMileage);
         log.info(child.getNickname() + "에게 " + requestDto.getMileage() + "마일리지를 적립합니다.");
