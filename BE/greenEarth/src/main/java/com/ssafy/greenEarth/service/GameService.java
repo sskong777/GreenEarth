@@ -2,7 +2,7 @@ package com.ssafy.greenEarth.service;
 
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.dto.Member.ChildProfileDto;
-import com.ssafy.greenEarth.dto.MileageAddReqDto;
+import com.ssafy.greenEarth.dto.Game.MileageAddReqDto;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
