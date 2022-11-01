@@ -64,6 +64,8 @@ public class AuthController {
     @PostMapping("/login/adult")
     public ResponseEntity<HashMap<String, String>> adultLogin(@RequestBody String code) {
 
+        log.info("{}", code);
+
         // 인가 code를 통해 카카오 OAuth Token 발급
         log.info("인가 code를 통해 카카오 OAuth Token 발급");
         String accessToken = kakaoService.getKakaoAccessToken(code);
