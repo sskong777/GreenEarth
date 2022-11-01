@@ -1,4 +1,4 @@
-package com.ssafy.greenEarth.dto.Child;
+package com.ssafy.greenEarth.dto.Member;
 
 import com.ssafy.greenEarth.domain.Parent;
 import com.ssafy.greenEarth.domain.Role;
