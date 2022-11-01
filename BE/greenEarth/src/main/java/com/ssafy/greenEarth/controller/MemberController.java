@@ -3,9 +3,13 @@ package com.ssafy.greenEarth.controller;
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Parent;
 import com.ssafy.greenEarth.domain.Role;
+import com.ssafy.greenEarth.dto.Member.ChildProfileDto;
+import com.ssafy.greenEarth.dto.Member.ChildUpdateDto;
+import com.ssafy.greenEarth.dto.Member.ChildRegisterDto;
+import com.ssafy.greenEarth.dto.Member.ParentProfileDto;
 import com.ssafy.greenEarth.dto.Child.*;
 import com.ssafy.greenEarth.dto.ResponseDto;
-import com.ssafy.greenEarth.service.ChildService;
+import com.ssafy.greenEarth.service.MemberService;
 
 import com.ssafy.greenEarth.service.KakaoService;
 import io.swagger.annotations.Api;
@@ -24,12 +28,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/member")
 @RequiredArgsConstructor
-public class ChildController {
+public class MemberController {
 
     private static final String SUCCESS = "SUCCESS";
     private static final String FAIL = "FAIL";
 
-    private final ChildService childService;
+    private final MemberService childService;
 
 
     @ApiOperation(value = "아이 프로필 조회", notes = "아이 ID 받아서 프로필 전달")
@@ -55,8 +59,9 @@ public class ChildController {
 
     @ApiOperation(value = "아이 등록", notes = "아이 등록 및 현재 접속 중인 보호자 계정과 연결")
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody ChildRegisterDto childDto) {
-        Child child = childService.registerChild(childDto);
+    public ResponseEntity<String> signup(@RequestBody ChildRegisterDto childDto, HttpServletRequest request) {
+        int curUserId = (int) request.getAttribute("curUserId");
+        Child child = childService.registerChild(childDto, curUserId);
         if (child != null){
             return new ResponseEntity<>(SUCCESS, HttpStatus.OK);
         } else {
