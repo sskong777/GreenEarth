@@ -59,18 +59,29 @@ public class RewardService {
         reward.setName(rewardPutDto.getRewardName());
         reward.setRewardCondition(rewardPutDto.getRewardCondition());
         reward.setChild(child);
-        System.out.println(reward.getChild().getId());
+
         RewardResDto data = new RewardResDto(reward);
         return data;
 
     }
 
+    // 보상 삭제
     @Transactional
     public void deleteReward(int reward_id){
         Reward reward = rewardRespository.findRewardById(reward_id).orElseThrow(
                 () -> new CustomErrorException("보상이 없습니다.")
         );
         rewardRespository.delete(reward);
+    }
+
+    // 보상 지급 완료
+    @Transactional
+    public RewardResDto paidReward(int reward_id){
+        Reward reward = rewardRespository.findRewardById(reward_id).orElseThrow(
+                () -> new CustomErrorException("보상이 없습니다.")
+        );
+        RewardResDto data = new RewardResDto(reward);
+        return data;
     }
 
 }

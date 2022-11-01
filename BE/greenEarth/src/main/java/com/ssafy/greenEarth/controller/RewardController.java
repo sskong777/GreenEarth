@@ -45,4 +45,11 @@ public class RewardController {
         return new ResponseDto("");
     }
 
+    // 보상 지급 완료
+    @PutMapping("{reward_id}/paid")
+    public ResponseDto paidReward(@PathVariable("reward_id") int reward_id){
+        RewardResDto data = rewardService.paidReward(reward_id);
+        return new ResponseDto(data);
+    }
+
 }
