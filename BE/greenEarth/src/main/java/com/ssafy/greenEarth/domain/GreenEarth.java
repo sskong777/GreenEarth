@@ -18,5 +18,5 @@ public class GreenEarth {
     @Column(name = "green_earth_id")
     private int id;
 
-    private int mileage_condition;
+    private int mileageCondition;
 }
