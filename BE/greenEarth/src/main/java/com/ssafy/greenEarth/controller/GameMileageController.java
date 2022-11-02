@@ -8,6 +8,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,11 +26,11 @@ public class GameMileageController {
 
     @ApiOperation(value = "게임 마일리지 적립", notes = "게임 마일리지를 적립한다.")
     @PutMapping("/success")
-    public ResponseDto updateMileage(@RequestBody MileageAddReqDto requestDto, HttpServletRequest request) {
+    public ResponseEntity<ChildProfileDto> updateMileage(@RequestBody MileageAddReqDto requestDto, HttpServletRequest request) {
         log.info("게임 마일리지 적립을 실행합니다. {}", requestDto);
         int curUserId = (int) request.getAttribute("curUserId");
         log.info("{}", curUserId);
         ChildProfileDto data = gameService.addMileage(curUserId, requestDto);
-        return new ResponseDto(data);
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 }
