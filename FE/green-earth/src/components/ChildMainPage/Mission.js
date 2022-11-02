@@ -19,9 +19,9 @@ class Mission extends Component {
                     MISSION
                 </div>
                 <div >
-                    <Subject done= "true" desc="this is mission1"></Subject>
-                    <Subject done= "false" desc="this is mission2"></Subject>
-                    <Subject done= "false" desc="this is mission3"></Subject>
+                    <Subject done= "true" desc="음식 남기지 않기"></Subject>
+                    <Subject done= "false" desc="종이타월 대신 개인 손수건 사용하기"></Subject>
+                    <Subject done= "false" desc="양치컵 사용하기"></Subject>
                 </div> 
 
             </div>
@@ -32,9 +32,9 @@ class Mission extends Component {
                         MISSION
                     </div>
                     <div >
-                        <Subject done= "true" desc="this is mission1"></Subject>
-                        <Subject done= "false" desc="this is mission2"></Subject>
-                        <Subject done= "false" desc="this is mission3"></Subject>
+                        <Subject done= "true" desc="음식 남기지 않기"></Subject>
+                        <Subject done= "false" desc="종이타월 대신 개인 손수건 사용하기"></Subject>
+                        <Subject done= "false" desc="양치컵 사용하기"></Subject>
                     </div> 
     
                 </div>
