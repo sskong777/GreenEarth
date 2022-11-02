@@ -12,30 +12,24 @@ import java.time.LocalDateTime;
 @Data
 public class MissionLogResDto {
 
-    @NotNull(message = "mission_log_id를 입력해주세요")
     @Schema(description = "미션 로그 PK")
     private int id;
 
     @Schema(description = "미션 완료 시간")
     private LocalDateTime clearedAt;
 
-    @NotNull(message = "완료 여부를 입력해주세요")
     @Schema(description = "미션 완료 여부")
     private boolean isPermitted;
 
-    @NotNull(message = "미션 생성 시간을 입력해주세요")
     @Schema(description = "미션 생성 시간")
     private LocalDateTime createdAt;
 
-    @NotBlank(message = "보호자 닉네임을 입력해주세요")
     @Schema(description = "보호자 닉네임")
     private String parentNickname;
 
-    @NotNull(message = "미션을 지정해주세요")
     @Schema(description = "미션")
     private Mission mission;
 
-    @NotNull(message = "아이를 지정해주세요")
     @Schema(description = "미션 수행하는 아이")
     private int child_id;
 

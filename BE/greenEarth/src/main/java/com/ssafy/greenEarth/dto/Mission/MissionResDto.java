@@ -10,19 +10,15 @@ import javax.validation.constraints.NotNull;
 @Data
 public class MissionResDto {
 
-    @NotNull(message = "mission_id를 입력해주세요")
     @Schema(description = "미션 PK")
     private int missionId;
 
-    @NotBlank(message = "미션 이름을 입력해주세요")
     @Schema(description = "미션 이름")
     private String name;
 
-    @NotBlank(message = "미션 설명을 입력해주세요")
     @Schema(description = "미션 설명")
     private String description;
 
-    @NotNull(message = "마일리지를 입력해주세요")
     @Schema(description = "미션에 할당된 마일리지")
     private int mileage;
 
