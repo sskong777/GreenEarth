@@ -21,7 +21,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.info("login interceptor catch");
+        log.info("login interceptor catch!");
 
         String authHeader = request.getHeader(JwtProperties.HEADER_STRING);
 
@@ -32,18 +32,19 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         // Bearer 제외한 토큰값 추출
         String accessToken = authHeader.replace(JwtProperties.TOKEN_PREFIX, "");
-        // 토큰 검증
+
         if (!StringUtils.hasText(accessToken)) {
             throw new BusinessException(EMPTY_TOKEN);
         }
 
+        // 토큰 유효성 및 만료기간 검증
         String msg = tokenProvider.isTokenValid(accessToken);
-        log.info("access token : {}", msg);
+        log.info("access token is {}", msg);
 
         if (msg.equals("invalid")) {
             throw new BusinessException(INVALID_TOKEN);
         } else if (msg.equals("expired")) {
-            throw new AuthenticationException("AccessToken 기간이 만료되었습니다.");
+            throw new BusinessException(EXPIRED_TOKEN);
         }
 
         // 토큰에서 사용자 id 와 role 추출하여 request body에 전달

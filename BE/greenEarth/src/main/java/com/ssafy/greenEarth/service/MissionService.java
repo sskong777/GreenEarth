@@ -6,7 +6,6 @@ import com.ssafy.greenEarth.dto.Mission.MissionPutDto;
 import com.ssafy.greenEarth.dto.Mission.MissionReqDto;
 import com.ssafy.greenEarth.dto.Mission.MissionResDto;
 import com.ssafy.greenEarth.exception.BusinessException;
-import com.ssafy.greenEarth.exception.CustomErrorException;
 import com.ssafy.greenEarth.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
