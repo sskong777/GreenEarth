@@ -1,8 +1,9 @@
 import "../style/MissionInfo.css"
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 const MissionInfo = () => {
+  const { missionName } = useParams();
     const navigate = useNavigate();
     const script = [
         {
@@ -17,7 +18,7 @@ const MissionInfo = () => {
         {
           index : 2,
           data : {
-          title: "종이타월, 핸드드라이어 대신 개인 손수건 사용하기",
+          title: "종이타월 대신 개인 손수건 사용하기",
           image1: "assets/images/papers.png",
           image2: "assets/images/penguin.png",
           contents:
@@ -30,7 +31,7 @@ const MissionInfo = () => {
           image1: "assets/images/water.jpg",
           image2: "assets/images/tiger.jpg",
           contents:
-            "4인 가족이 하루 3회 양치컵을 사용하면 물을 틀어 놓을 때보다 연간 온실가스 약 12.6kg을 줄일 수 있으며 이는 30년생 소나무 1.3그루를 심는 효과와 같습니다. 우리나라 전체 2089만 1,000가구의 10%만 동참해도 연간 온실가스 약 2만 6000톤을 감축하게 돼 30년생 소나무 289만 그루를 심는 효과가 됩니다. 방글라데시와 인도의 습지에는 현재 약 5,000 마리의 벵갈 호랑이가 살고 있습니다. 그러나 기후변화로 인한 해수면 상승으로 인해 벵갈호랑이의 서식처가 물에 잠길 위험에 처했습니다. 유엔은 2070년이 되면 벵갈호랑이가 살 수 있는 습지가 모두 물에 잠겨 완전히 멸종할 것이라고 경고했습니다 . 양치컵 사용하기를 통해 물낭비를 줄이고 벵갈호랑이의 삶의 터전을 지켜주세요",
+            "방글라데시와 인도의 습지에는 현재 약 5,000 마리의 벵갈 호랑이가 살고 있습니다. 그러나 기후변화로 인한 해수면 상승으로 인해 벵갈호랑이의 서식처가 물에 잠길 위험에 처했습니다. 4인 가족이 하루 3회 양치컵을 사용하면 물을 틀어 놓을 때보다 연간 온실가스 약 12.6kg을 줄일 수 있으며 이는 30년생 소나무 1.3그루를 심는 효과와 같습니다. 우리나라 전체 2089만 1,000가구의 10%만 동참해도 연간 온실가스 약 2만 6000톤을 감축하게 돼 30년생 소나무 289만 그루를 심는 효과가 됩니다. 양치컵 사용하기를 통해 물낭비를 줄이고 벵갈호랑이의 삶의 터전을 지켜주세요",
           select1 : "미션 달성하고 벵갈호랑이 구하기"}
         },
         {
@@ -53,14 +54,14 @@ const MissionInfo = () => {
         },
       ];
     
-    let num = 5
+    let num = 4
 
     const onClick = () => {
           navigate("/child");
         }
 
     return (
-        <div>
+        <div className = "MissionForm">
             <div className="MissionTitle">
                 {<h1>{script[num-1].data.title}</h1>}
             </div>
@@ -72,7 +73,7 @@ const MissionInfo = () => {
               
                 <img src={script[num-1].data.image2} className="MissionImage2" />
             </div>
-            <div className="Contents">
+            <div className="MissionContents">
                 <h1>{script[num-1].data.contents}</h1>
             </div>
             </div>
