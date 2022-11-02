@@ -20,8 +20,10 @@ public class Mission {
     @Column(name = "mission_id")
     private int id;
 
+    @Column(length = 128)
     private String name;
 
+    @Column(length = 1024)
     private String description;
 
     private int mileage;

@@ -20,10 +20,13 @@ public class Parent {
     @Column(name = "parent_id")
     private int id;
 
+    @Column(length = 50)
     private String email;
 
+    @Column(length = 25)
     private String nickname;
 
+    @Column(length = 25)
     @Enumerated(EnumType.STRING)
     private Role role;
 
