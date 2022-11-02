@@ -2,10 +2,7 @@ package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Role;
-import com.ssafy.greenEarth.dto.Member.ChildProfileDto;
-import com.ssafy.greenEarth.dto.Member.ChildRegisterDto;
-import com.ssafy.greenEarth.dto.Member.ChildUpdateDto;
-import com.ssafy.greenEarth.dto.Member.ParentProfileDto;
+import com.ssafy.greenEarth.dto.Member.*;
 import com.ssafy.greenEarth.service.MemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
