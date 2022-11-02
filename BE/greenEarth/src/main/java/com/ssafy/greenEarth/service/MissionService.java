@@ -127,8 +127,8 @@ public class MissionService {
         // is_permit -> true
         missionLog.setPermitted(true);
         // cleared_mission 개수 + 1
-        int curruentMissionCount = child.getClearedMission();
-        child.setClearedMission(curruentMissionCount+1);
+        int currentMissionCount = child.getClearedMission();
+        child.setClearedMission(currentMissionCount+1);
 
         // mileage 증가
         int beforeMileage = child.getMileage();

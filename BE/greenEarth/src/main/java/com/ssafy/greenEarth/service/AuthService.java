@@ -67,7 +67,7 @@ public class AuthService {
 
     public TokenDto childLogin(LoginDto loginDto) {
         // email id 비교
-        Child child = childRepository.findByNickname(loginDto.getEmail())
+        Child child = childRepository.findByNickname(loginDto.getNickname())
                 .orElseThrow(() -> new BusinessException(INVALID_ACCOUNT));
         // password 비교
         if (!passwordEncoder.matches(loginDto.getPassword(), child.getPassword())) {
