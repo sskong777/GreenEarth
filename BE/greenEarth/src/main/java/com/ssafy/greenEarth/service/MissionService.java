@@ -6,10 +6,8 @@ import com.ssafy.greenEarth.dto.Mission.MissionPutDto;
 import com.ssafy.greenEarth.dto.Mission.MissionReqDto;
 import com.ssafy.greenEarth.dto.Mission.MissionResDto;
 import com.ssafy.greenEarth.exception.BusinessException;
-import com.ssafy.greenEarth.repository.ChildRepository;
-import com.ssafy.greenEarth.repository.MissionLogRepository;
-import com.ssafy.greenEarth.repository.MissionRepository;
-import com.ssafy.greenEarth.repository.ParentRepository;
+import com.ssafy.greenEarth.exception.CustomErrorException;
+import com.ssafy.greenEarth.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -32,6 +30,10 @@ public class MissionService {
     private final MissionRepository missionRepository;
     private final MissionLogRepository missionLogRepository;
     private final ParentRepository parentRepository;
+
+    private final GreenEarthRepository greenEarthRepository;
+
+    private final GreenEarthLogRepository greenEarthLogRepository;
 
     // 오늘의 미션생성
     // 로그인한 부모 정보가 넘어오는지 확인 필요
@@ -121,23 +123,42 @@ public class MissionService {
         MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
                 ()->new BusinessException(NOT_EXIST_MISSION_LOG)
         );
+
+        Child child = childRepository.findChildById(missionLog.getChild().getId()).orElseThrow(
+                () -> new BusinessException(NOT_EXIST_ACCOUNT)
+        );
+
         // is_permit -> true
         missionLog.setPermitted(true);
         // cleared_mission 개수 + 1
-        int curruentMissionCount = missionLog.getChild().getClearedMission();
-        missionLog.getChild().setClearedMission(curruentMissionCount+1);
+        int curruentMissionCount = child.getClearedMission();
+        child.setClearedMission(curruentMissionCount+1);
 
         // mileage 증가
-        int currentMileage = missionLog.getChild().getMileage();
+        int beforeMileage = child.getMileage();
         int missionMileage = missionLog.getMission().getMileage();
-        missionLog.getChild().setMileage(currentMileage+missionMileage);
+        int currentMileage = beforeMileage + missionMileage;
+
+        child.setMileage(currentMileage);
+
+        int beforeGreenEarth = child.getEarthLevel();
+        int greenEarth = greenEarthRepository.findFirstByMileage_condition(currentMileage);
+
+        if(beforeGreenEarth < greenEarth){
+            GreenEarthLogId greenEarthLogId = new GreenEarthLogId(child.getId(), greenEarth);
+            LocalDateTime now = LocalDateTime.now();
+
+            GreenEarthLog greenEarthLog = new GreenEarthLog(greenEarthLogId, now);
+            greenEarthLogRepository.save(greenEarthLog);
+            child.setEarthLevel(greenEarth);
+        }
 
         MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
 
         return missionLogResDto;
     }
 
-    // 오늘의 미션 승인
+    // 오늘의 미션 거절
     @Transactional
     public MissionLogResDto rejectMission(int log_id){
         MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
