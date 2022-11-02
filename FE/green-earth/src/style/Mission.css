@@ -19,10 +19,11 @@
    */
 
 .Missions{
-    width:140%;
+    width:130%;
     position:relative;
     justify-content: center;
     text-align: center;
+  
 }
 
 .Title{
@@ -54,10 +55,11 @@
     width:100%;
     font-weight: bold;
     background-color: rgb(36, 190, 36);
-    margin: 5px;
+    margin-top:10px;
     z-index: 2;
     justify-content: center;
     text-align: center;
+    
     
 
 }
@@ -68,9 +70,8 @@
     width:100%;
     font-weight: bold;
     background-color: gray;
-    margin: 5px;
+    margin-top:10px;
     justify-content: center;
     text-align: center;
-
-
+    text-decoration:line-through;
 }
