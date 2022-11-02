@@ -1,17 +1,19 @@
 package com.ssafy.greenEarth.dto.Auth;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Map;
 
 @Data
-public class TokenResDto {
+@AllArgsConstructor
+public class TokenDto {
 
     private String accessToken;
 
     private String refreshToken;
 
-    public TokenResDto(Map<String, String> resMap) {
+    public TokenDto(Map<String, String> resMap) {
         this.accessToken = resMap.get("accessToken");
         this.refreshToken = resMap.get("refreshToken");
     }
