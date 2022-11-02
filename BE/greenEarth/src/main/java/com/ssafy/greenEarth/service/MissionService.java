@@ -61,7 +61,7 @@ public class MissionService {
     // 아이 미션 로그 조회
     @Transactional
     public List<MissionLogResDto> getMissionLogs(int child_id){
-        Child child = childRepository.findChildById(child_id).orElseThrow(
+        Child child = childRepository.findChildDetailById(child_id).orElseThrow(
                 ()-> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
@@ -79,7 +79,7 @@ public class MissionService {
     // 오늘의 미션 조회
     @Transactional
     public List<MissionLogResDto> getTodayMissionLogs(int child_id){
-        Child child = childRepository.findChildById(child_id).orElseThrow(
+        Child child = childRepository.findChildDetailById(child_id).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
