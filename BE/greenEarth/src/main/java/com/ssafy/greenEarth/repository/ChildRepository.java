@@ -9,8 +9,11 @@ import java.util.Optional;
 
 public interface ChildRepository extends JpaRepository<Child, Integer> {
 
-    @Query("select c from Child c join fetch c.parent p join fetch c.missionLogList ml join fetch ml.mission m where c.id = :id")
+    @Query("select c from Child c join fetch c.parent p where c.id = :id")
     Optional<Child> findChildById(@Param("id") int id);
+
+    @Query("select c from Child c join fetch c.parent left join fetch c.missionLogList ml join fetch ml.mission where c.id = :id")
+    Optional<Child> findChildDetailById(@Param("id") int id);
 
     Optional<Child> findByEmail(String email);
 
