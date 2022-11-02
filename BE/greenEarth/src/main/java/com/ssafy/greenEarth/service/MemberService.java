@@ -1,11 +1,7 @@
 package com.ssafy.greenEarth.service;
 
-import com.ssafy.greenEarth.domain.Child;
-import com.ssafy.greenEarth.domain.Parent;
-import com.ssafy.greenEarth.domain.Role;
+import com.ssafy.greenEarth.domain.*;
 import com.ssafy.greenEarth.dto.Member.*;
-import com.ssafy.greenEarth.exception.BusinessException;
-import com.ssafy.greenEarth.exception.ErrorCode;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.ParentRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 
-import static com.ssafy.greenEarth.exception.ErrorCode.NOT_EXIST_ACCOUNT;
+import com.ssafy.greenEarth.exception.BusinessException;
+import static com.ssafy.greenEarth.exception.ErrorCode.*;
 
 @Slf4j
 @Service
@@ -34,14 +31,14 @@ public class MemberService {
 
     public ParentProfileDto findParent(int parentId) {
         Parent parent = parentRepository.findById(parentId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 보호자 프로필을 찾을 수 없습니다."));
+                .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
         return new ParentProfileDto(parent);
     }
 
     public ChildProfileDto findChild(int childId) {
         // 아이 프로필 조회
         Child child = childRepository.findChildById(childId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 아이 프로필을 찾을 수 없습니다."));
+                .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
         return new ChildProfileDto(child);
     }
 
@@ -70,7 +67,7 @@ public class MemberService {
     public Child registerChild(ChildRegisterDto childDto, int parentId) {
         // 연결된 보호자 조회
         Parent parent = parentRepository.findById(parentId)
-                .orElseThrow(() -> new IllegalArgumentException("연결될 보호자 계정을 찾을 수 없습니다."));
+                .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
         // 등록
         return childRepository.save(childDto.toEntity(parent, passwordEncoder));
     }
@@ -79,7 +76,7 @@ public class MemberService {
     public ChildProfileDto updateProfile(int childId, ChildUpdateDto childDto) {
         // 아이 프로필 조회
         Child child = childRepository.findChildById(childId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 아이 프로필을 찾을 수 없습니다."));
+                .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
         // 아이 닉네임 수정
         child.setNickname(childDto.getNickname());
         return new ChildProfileDto(childRepository.save(child));
