@@ -1,6 +1,9 @@
 import { useState } from "react";
 
-import { ChildInfoState } from "../../store/atoms";
+import { useRecoilState } from "recoil";
+import { childInfoState, rewardListState } from "../../store/atoms";
+
+import "animate.css";
 
 const RewardModal = ({ setModalChildOpen, childInfo }) => {
   const [rewardGoal, setRewardGoal] = useState(
@@ -45,7 +48,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                 </div>
               </div>
               <hr />
-              <div className="ReawardModalChildInfo">
+              <div className="ReawardModalChildInfo animate__animated animate__tada">
                 <div className="text-4xl text-[#e8c722] mr-3">
                   😆 '{rewardGift}'
                 </div>

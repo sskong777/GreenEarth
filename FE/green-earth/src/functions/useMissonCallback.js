@@ -14,7 +14,7 @@ export const useMissonCallback = () => {
       url: "/api/",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Token",
+        Authorization: `Bearer ${logInToken}`,
       },
       data: {
         id: id,

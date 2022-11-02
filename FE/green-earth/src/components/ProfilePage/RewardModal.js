@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { ChildInfoState } from "../../store/atoms";
+import { useRecoilState } from "recoil";
+import { rewardListState } from "../../store/atoms";
+
+import { useRewardCallback } from "./../../functions/useRewardCallback";
 
 const RewardModal = ({ setModalOpen, childInfo }) => {
-  const [rewardGoal, setRewardGoal] = useState(
-    parseInt(childInfo.clearedMission) + 10
-  );
-  const [rewardGift, setRewardGift] = useState("에어팟");
+  const [rewardList, setRewardList] = useRecoilState(rewardListState);
+
+  const { rewardListCallback } = useRewardCallback();
+
+  const [rewardInfo, setRewardInfo] = useState();
+  const [rewardGoal, setRewardGoal] = useState("");
+  const [rewardGift, setRewardGift] = useState("");
   const [mission, setMission] = useState(childInfo.clearedMission);
+
+  useEffect(() => {
+    if (rewardList[0]) {
+      setRewardInfo(rewardList[0]);
+      setRewardGoal(parseInt(rewardList[0].rewardCondition));
+      setRewardGift(rewardList[0].rewardName);
+    }
+  }, rewardList);
 
   const handleClickRewardGoal = (e) => {
     setRewardGoal(e.target.value);
@@ -19,6 +33,18 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
 
   const handleClickRewardSubmit = () => {
     if (window.confirm("보상을 설정하시겠습니까?")) {
+      rewardListCallback({
+        rewardName: rewardGift,
+        rewardCondition: rewardGoal,
+        childId: childInfo.childId,
+        parentNickname: childInfo.parent,
+      });
+      setModalOpen(false);
+    }
+  };
+
+  const handleClickRewardPay = () => {
+    if (window.confirm("보상을 지급하셨습니까?")) {
       setModalOpen(false);
     }
   };
@@ -36,7 +62,7 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
                     <img src="./../assets/images/girl1.svg" />
                   </div>
                   <div className="text-center text-xl text-blackBrown">
-                    Lv.{childInfo.earthLevel} {childInfo.nickName}
+                    Lv.{childInfo.earthLevel} {childInfo.realName}
                   </div>
                 </div>
 
@@ -44,7 +70,7 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
                   <div className="text-3xl text-darkBrown">
                     지금까지 {mission}개의 미션을 수행했습니다.
                   </div>
-                  {true ? (
+                  {rewardInfo ? (
                     <div className="text-2xl text-darkBrown mt-6">
                       <div>총 22개의 미션을 달성하면,</div>
                       <div className="text-center mt-2">
@@ -52,7 +78,7 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
                       </div>
                     </div>
                   ) : (
-                    <div className="text-2xl text-darkBrown mt-5">
+                    <div className="text-3xl text-darkBrown pt-10">
                       <div>보상이 설정되어 있지 않습니다.</div>
                     </div>
                   )}
@@ -101,12 +127,23 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
               >
                 닫기
               </button>
-              <button
-                className="ReawardModalButton"
-                onClick={handleClickRewardSubmit}
-              >
-                설정
-              </button>
+              {!rewardList[0] && (
+                <button
+                  className="ReawardModalButton"
+                  onClick={handleClickRewardSubmit}
+                >
+                  설정
+                </button>
+              )}
+              {rewardList[0] &&
+                childInfo.clearedMission >= rewardList[0].rewardCondition && (
+                  <button
+                    className="ReawardModalButtonPay"
+                    onClick={handleClickRewardPay}
+                  >
+                    보상 지급
+                  </button>
+                )}
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { useRecoilState } from "recoil";
-import { ChildInfoState } from "./../../store/atoms";
+import { childInfoState } from "./../../store/atoms";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";

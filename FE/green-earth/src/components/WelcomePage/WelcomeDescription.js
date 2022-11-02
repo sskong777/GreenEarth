@@ -32,6 +32,8 @@ const WelcomeDescription = () => {
   // 페이지 번호
   const [page, setPage] = useState(0);
 
+  console.log("page :", page);
+
   // 마지막 페이지 일 경우(page == 2) 지구 살리러 가기 버튼 보여줌
   let btn = page < 2 ? "다음으로" : "지구 살리러 가기";
 
@@ -51,30 +53,94 @@ const WelcomeDescription = () => {
   }, [page]);
 
   return (
-    <div className="WelcomeDescription">
-      {/* 스크립트 제목 */}
-      <div className="DescriptionHead">
-        <div className="animate__animated animate__backInDown">
-          {nowScript.title}
+    <>
+      {page == 0 && (
+        <div className="WelcomeDescription">
+          {/* 스크립트 제목 */}
+          <div className="DescriptionHead">
+            <div className="animate__animated animate__backInDown">
+              {nowScript.title}
+            </div>
+          </div>
+          <div className="DescriptionBody">
+            {/* 스크립트 이미지 */}
+            <div className="DescriptionImage animate__animated animate__fadeInTopLeft">
+              <img className="rounded-lg" src={nowScript.image} />
+            </div>
+            {/* 스크립트 설명 */}
+            <div className="DescriptionText animate__animated animate__fadeInBottomRight">
+              <div>{nowScript.description}</div>
+            </div>
+          </div>
+          {/* 다음으로/로그인으로 이동 버튼 */}
+          <div className="DescriptionButton">
+            <button
+              onClick={onClick}
+              className="DescriptionBtn animate__animated animate__shakeX"
+            >
+              {btn}
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="DescriptionBody">
-        {/* 스크립트 이미지 */}
-        <div className="DescriptionImage">
-          <img className="rounded-lg" src={nowScript.image} />
+      )}
+
+      {page == 1 && (
+        <div className="WelcomeDescription">
+          {/* 스크립트 제목 */}
+          <div className="DescriptionHead">
+            <div className="animate__animated animate__backInDown">
+              {nowScript.title}
+            </div>
+          </div>
+          <div className="DescriptionBody">
+            {/* 스크립트 이미지 */}
+            <div className="DescriptionImage animate__animated animate__fadeInLeft">
+              <img className="rounded-lg" src={nowScript.image} />
+            </div>
+            {/* 스크립트 설명 */}
+            <div className="DescriptionText animate__animated animate__fadeInRight">
+              <div>{nowScript.description}</div>
+            </div>
+          </div>
+          {/* 다음으로/로그인으로 이동 버튼 */}
+          <div className="DescriptionButton">
+            <button
+              onClick={onClick}
+              className="DescriptionBtn animate__animated animate__shakeX"
+            >
+              {btn}
+            </button>
+          </div>
         </div>
-        {/* 스크립트 설명 */}
-        <div className="DescriptionText">
-          <h1>{nowScript.description}</h1>
+      )}
+
+      {page == 2 && (
+        <div className="WelcomeDescription">
+          {/* 스크립트 제목 */}
+          <div className="DescriptionHead">
+            <div className="animate__animated animate__backInDown">
+              {nowScript.title}
+            </div>
+          </div>
+          <div className="DescriptionBody">
+            {/* 스크립트 이미지 */}
+            <div className="DescriptionImage animate__animated animate__fadeInBottomLeft">
+              <img className="rounded-lg" src={nowScript.image} />
+            </div>
+            {/* 스크립트 설명 */}
+            <div className="DescriptionText animate__animated animate__fadeInTopRight">
+              <div>{nowScript.description}</div>
+            </div>
+          </div>
+          {/* 다음으로/로그인으로 이동 버튼 */}
+          <div className="DescriptionButton">
+            <button onClick={onClick} className="DescriptionBtn animate-pulse">
+              {btn}
+            </button>
+          </div>
         </div>
-      </div>
-      {/* 다음으로/로그인으로 이동 버튼 */}
-      <div className="DescriptionButton">
-        <button onClick={onClick} className="DescriptionBtn">
-          {btn}
-        </button>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 export default WelcomeDescription;

@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
-import { MemberInfoState } from "../store/atoms";
+import { memberInfoState } from "../store/atoms";
 
 const GamePage = () => {
   const navigate = useNavigate();
 
-  const [memberInfo, setMemberInfo] = useRecoilState(MemberInfoState);
+  const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 
   console.log(memberInfo);
 

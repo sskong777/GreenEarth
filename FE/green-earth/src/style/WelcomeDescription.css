@@ -4,7 +4,7 @@
 
 /* WelcomeDescription */
 .WelcomeDescription {
-  @apply flex flex-col justify-center items-center w-full;
+  @apply relative flex flex-col justify-start items-center w-full h-[44rem];
 }
 
 .DescriptionHead {
@@ -12,7 +12,7 @@
 }
 
 .DescriptionBody {
-  @apply flex justify-between items-center;
+  @apply flex justify-between items-start;
 }
 
 .DescriptionImage {
@@ -20,7 +20,7 @@
 }
 
 .DescriptionText {
-  @apply w-[32rem] text-lightGray text-2xl leading-relaxed break-keep  pl-10;
+  @apply w-[32rem] text-lightGray text-2xl leading-relaxed break-keep pt-5 pl-10;
 }
 
 .DescriptionButton {
@@ -28,7 +28,7 @@
 }
 
 .DescriptionBtn {
-  @apply absolute bottom-12 right-36 w-56 h-16 text-light text-xl font-bold rounded-md 
+  @apply absolute bottom-10 right-0 w-56 h-16 text-light text-xl font-bold rounded-md 
   bg-[#3faa35] hover:bg-[#3faa35]/90 active:bg-[#3faa35]/70
   shadow-lg shadow-[#3faa35]/70;
 }
