@@ -3,13 +3,21 @@ import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { missionListState } from "./../../store/atoms";
 
+import { useMissionCallback } from "./../../functions/useMissionCallback";
+
 import MissionList from "./MissionList";
 
 const MissionComponent = () => {
   const [missionList, setMissionList] = useRecoilState(missionListState);
 
+  const { missionListCallback } = useMissionCallback();
+
   const [data, setData] = useState([]);
   const [curDate, setCurDate] = useState(new Date());
+
+  useEffect(() => {
+    missionListCallback();
+  }, [missionList]);
 
   const getStringDate = (curDate) => {
     let year = curDate.getFullYear();

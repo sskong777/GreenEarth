@@ -37,6 +37,7 @@ export const useRewardCallback = () => {
     childId,
     parentNickname
   ) => {
+    console.log(rewardName, rewardCondition, childId, parentNickname);
     axios({
       method: "post",
       url: `/api/reward/child/${childId}`,
@@ -54,8 +55,6 @@ export const useRewardCallback = () => {
       .then((response) => {
         if (response.data) {
           console.log(response.data);
-          setRewardList(response.data);
-          console.log("rewardList :", rewardList);
           console.log("보상이 등록 되었습니다.");
         }
       })
@@ -64,10 +63,10 @@ export const useRewardCallback = () => {
       });
   };
 
-  const rewardPayCallback = async (childId) => {
+  const rewardPayCallback = async (rewardId) => {
     axios({
-      method: "get",
-      url: `/api/reward/child/${childId}`,
+      method: "delete",
+      url: `/api/reward/${rewardId}`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${logInToken}`,
@@ -76,9 +75,7 @@ export const useRewardCallback = () => {
       .then((response) => {
         if (response.data) {
           console.log(response.data);
-          setRewardList(response.data);
-          console.log("rewardList :", rewardList);
-          console.log("보상 정보가 조회되었습니다.");
+          console.log("보상이 지급되었습니다.");
         }
       })
       .catch((error) => {

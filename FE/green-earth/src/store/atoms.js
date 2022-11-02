@@ -84,9 +84,34 @@ export const missionListState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const missionItemState = atom({
-  key: "missionItemState",
-  default: {},
+export const missionOptionListState = atom({
+  key: "missionOptionListState",
+  default: [
+    {
+      missionId: 1,
+      name: "분리수거 하기",
+      description: "미션 설명",
+      mileage: 10,
+    },
+    {
+      missionId: 2,
+      name: "텀블러 사용하기",
+      description: "미션 설명",
+      mileage: 10,
+    },
+    {
+      missionId: 3,
+      name: "음식 남기지 않기",
+      description: "미션 설명",
+      mileage: 10,
+    },
+  ],
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const missionSelectState = atom({
+  key: "missionSelectState",
+  default: "",
   effects_UNSTABLE: [persistAtom],
 });
 

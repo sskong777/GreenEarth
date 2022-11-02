@@ -81,13 +81,13 @@
   @apply flex justify-center items-center mb-5;
 }
 
-.TodayItemButtonDoubleRefuse {
+.TodayItemButtonDoubleReject {
   @apply w-26 h-16 ml-4 rounded-md text-2xl text-light font-medium 
   bg-[#c01223] hover:bg-[#c01223]/70 active:bg-[#c01223]/50
   outline outline-offset-1 outline-1 shadow-lg shadow-[#c01223]/50;
 }
 
-.TodayItemButtonDoubleApprove {
+.TodayItemButtonDoublePermit {
   @apply w-26 h-16 ml-4 rounded-md text-2xl text-light font-medium 
   bg-[#0f7835] hover:bg-[#0f7835]/70 active:bg-[#0f7835]/50
   outline outline-offset-1 outline-1 shadow-lg shadow-[#0f7835]/50;

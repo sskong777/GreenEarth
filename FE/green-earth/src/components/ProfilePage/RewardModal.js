@@ -8,14 +8,19 @@ import { useRewardCallback } from "./../../functions/useRewardCallback";
 const RewardModal = ({ setModalOpen, childInfo }) => {
   const [rewardList, setRewardList] = useRecoilState(rewardListState);
 
-  const { rewardListCallback } = useRewardCallback();
+  const { rewardListCallback, rewardSubmitCallback, rewardPayCallback } =
+    useRewardCallback();
 
   const [rewardInfo, setRewardInfo] = useState();
   const [rewardGoal, setRewardGoal] = useState("");
   const [rewardGift, setRewardGift] = useState("");
-  const [mission, setMission] = useState(childInfo.clearedMission);
+  const [mission, setMission] = useState(
+    childInfo.clearedMission ? childInfo.clearedMission : 0
+  );
 
   useEffect(() => {
+    rewardListCallback(childInfo.childId);
+
     if (rewardList[0]) {
       setRewardInfo(rewardList[0]);
       setRewardGoal(parseInt(rewardList[0].rewardCondition));
@@ -33,18 +38,19 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
 
   const handleClickRewardSubmit = () => {
     if (window.confirm("보상을 설정하시겠습니까?")) {
-      rewardListCallback({
-        rewardName: rewardGift,
-        rewardCondition: rewardGoal,
-        childId: childInfo.childId,
-        parentNickname: childInfo.parent,
-      });
+      rewardSubmitCallback(
+        rewardGift,
+        rewardGoal,
+        childInfo.childId,
+        childInfo.parent
+      );
       setModalOpen(false);
     }
   };
 
   const handleClickRewardPay = () => {
-    if (window.confirm("보상을 지급하셨습니까?")) {
+    if (window.confirm("보상을 지급하시겠습니까?")) {
+      rewardPayCallback(rewardList[0].rewardId);
       setModalOpen(false);
     }
   };
@@ -72,9 +78,9 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
                   </div>
                   {rewardInfo ? (
                     <div className="text-2xl text-darkBrown mt-6">
-                      <div>총 22개의 미션을 달성하면,</div>
+                      <div>총 {rewardGoal}개의 미션을 달성하면,</div>
                       <div className="text-center mt-2">
-                        보상으로 에어팟이 제공 됩니다.
+                        보상으로 {rewardGift}이 제공 됩니다.
                       </div>
                     </div>
                   ) : (
