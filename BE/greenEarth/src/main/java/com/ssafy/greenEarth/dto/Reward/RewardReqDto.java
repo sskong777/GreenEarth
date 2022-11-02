@@ -2,22 +2,39 @@ package com.ssafy.greenEarth.dto.Reward;
 
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Reward;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 public class RewardReqDto {
 
+    @NotBlank(message = "보상 이름을 입력해주세요")
+    @Schema(description = "보상 이름")
+    private String name;
 
-    private int id;
-
-    private String rewardName;
-
+    @NotNull(message = "보상 획득에 필요한 미션 개수를 입력해주세요")
+    @Schema(description = "보상 획득에 필요한 미션 개수")
     private int rewardCondition;
 
+    @NotBlank(message = "보호자 닉네임을 입력해주세요")
+    @Schema(description = "보상 지정하는 보호자 이름")
     private String parentNickname;
 
-    private int child_id;
+    @NotNull(message = "child_id를 입력해주세요")
+    @Schema(description = "아이 PK")
+    private int childId;
+
+    public Reward toEntity(RewardReqDto rewardReqDto, Child child) {
+        return Reward.builder()
+                .name(rewardReqDto.getName())
+                .rewardCondition(rewardReqDto.getRewardCondition())
+                .parentNickname(rewardReqDto.getParentNickname())
+                .child(child)
+                .build();
+
+    }
 
 }
