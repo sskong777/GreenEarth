@@ -1,8 +1,10 @@
+import "animate.css";
+
 const BadgeItem = ({ isLock, level, title }) => {
   return (
     <div className="BadgeItem">
       {!isLock && (
-        <div className="BadgeItemImage">
+        <div className="BadgeItemImage animate__animated animate__tada">
           <img src="./../assets/images/badge1.svg" />
         </div>
       )}

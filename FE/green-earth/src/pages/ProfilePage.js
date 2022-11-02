@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
-import { MemberInfoState, ChildInfoState } from "../store/atoms";
+import {
+  logInTokenState,
+  memberInfoState,
+  childInfoState,
+} from "../store/atoms";
+
+import { useAuthCallback } from "./../functions/useAuthCallback";
+import { useRewardCallback } from "./../functions/useRewardCallback";
 
 import TodayMissionList from "../components/ProfilePage/TodayMissionList";
 import MissionComponent from "../components/ProfilePage/MissionComponent";
@@ -13,10 +20,16 @@ import RewardModalChild from "../components/ProfilePage/RewardModalChild";
 const ProfilePage = () => {
   const navigate = useNavigate();
 
-  const [childInfo, setChildInfo] = useRecoilState(ChildInfoState);
-  const [memberInfo, setMemberInfo] = useRecoilState(MemberInfoState);
+  const { childId } = useParams();
 
-  const [isParent, setIsParent] = useState(false);
+  const [childInfo, setChildInfo] = useRecoilState(childInfoState);
+  const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
+  const [loginToken, setLoginToken] = useRecoilState(logInTokenState);
+
+  const { memberInfoCallback, childInfoCallback } = useAuthCallback();
+  const { rewardListCallback } = useRewardCallback();
+
+  const [isParentState, setIsParentState] = useState(false);
   const [isBadge, setIsBadge] = useState(false);
   const [isMission, setIsMission] = useState(false);
 
@@ -24,10 +37,22 @@ const ProfilePage = () => {
   const [modalChildOpen, setModalChildOpen] = useState(false);
 
   useEffect(() => {
-    if (memberInfo.parentId) {
-      setIsParent(true);
-    }
-  }, [memberInfo]);
+    setIsParentState(true);
+  }, []);
+
+  // useEffect(() => {
+  //   if (memberInfo.isParent) {
+  //     setIsParentState(true);
+  //   }
+  // }, [memberInfo]);
+
+  useEffect(() => {
+    childInfoCallback(childId);
+  }, []);
+
+  const handleClickMemberInfo = () => {
+    memberInfoCallback(loginToken);
+  };
 
   const handleClickChildProfile = () => {
     navigate(`/account/${childInfo.childId}`);
@@ -44,14 +69,15 @@ const ProfilePage = () => {
   };
 
   const handleClickRewardButton = () => {
+    rewardListCallback(3);
     setModalOpen(true);
   };
 
   const handleClickRewardChildButton = () => {
+    rewardListCallback(childId);
     setModalChildOpen(true);
   };
 
-  console.log(isBadge, isMission);
   return (
     <div className="ProfilePage">
       {modalOpen ? (
@@ -69,24 +95,24 @@ const ProfilePage = () => {
             <img src="./../assets/images/girl1.svg" />
           </div>
           <div className="ChildImageName">
-            Lv.{childInfo.earthLevel} {childInfo.nickName}
+            Lv.{childInfo.earthLevel} {childInfo.realName}
           </div>
         </div>
 
-        <div className="ProfileInfo">
+        <div className="ProfileInfo" onClick={handleClickMemberInfo}>
           <div className="text-2xl">
             <div>이름</div>
-            <div>생일</div>
-            <div>아이디</div>
+            <div>닉네임</div>
+            <div>생년월일</div>
             <div>마일리지</div>
           </div>
           <div className="ml-4">
             <div>
               {childInfo.realName}
-              <span>{childInfo.gender === "남" ? " 왕자님" : " 공주님"}</span>
+              <span>{childInfo.gender === "MALE" ? " 왕자님" : " 공주님"}</span>
             </div>
-            <div>2017년 05월 05일</div>
-            <div>{childInfo.email}</div>
+            <div>{childInfo.nickname}</div>
+            <div>{childInfo.birthday}</div>
             <div>{childInfo.mileage}점</div>
           </div>
         </div>
@@ -105,7 +131,7 @@ const ProfilePage = () => {
               뒤로 가기
             </button>
           </div>
-          {!isParent && (
+          {!isParentState && (
             <div>
               <button
                 className="ProfileHeaderRewardButton"
@@ -118,7 +144,7 @@ const ProfilePage = () => {
         </div>
       </section>
 
-      {isParent && (
+      {isParentState && (
         <section className="ProfileMenu">
           <button className="ProfileMenuButton" onClick={handleClickMenuButton}>
             {!isBadge && isMission ? "오늘 미션 목록" : "과거 미션 목록"}
@@ -142,7 +168,7 @@ const ProfilePage = () => {
         <hr />
       </section>
 
-      {isParent && (
+      {isParentState && (
         <>
           {!isBadge && !isMission && (
             <section>
@@ -151,7 +177,7 @@ const ProfilePage = () => {
           )}
           {isBadge && !isMission && (
             <section>
-              <BadgeList />
+              <BadgeList earthLevel={childInfo.earthLevel} />
             </section>
           )}
           {!isBadge && isMission && (
@@ -161,16 +187,16 @@ const ProfilePage = () => {
           )}
         </>
       )}
-      {!isParent && (
+      {!isParentState && (
         <>
           {!isBadge && (
-            <section className="mt-10">
+            <section className="pt-10">
               <MissionComponent />
             </section>
           )}
           {isBadge && (
-            <section className="mt-10">
-              <BadgeList />
+            <section className="pt-10">
+              <BadgeList earthLevel={childInfo.earthLevel} />
             </section>
           )}
         </>

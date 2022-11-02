@@ -26,7 +26,7 @@
 }
 
 .ProfileHeader {
-  @apply flex justify-center items-start mt-8 mb-6;
+  @apply flex justify-center items-start pt-8 pb-6;
 }
 
 .ProfileMenu {
@@ -84,13 +84,13 @@
 .TodayItemButtonDoubleRefuse {
   @apply w-26 h-16 ml-4 rounded-md text-2xl text-light font-medium 
   bg-[#c01223] hover:bg-[#c01223]/70 active:bg-[#c01223]/50
-  outline outline-offset-2 outline-1 shadow-lg shadow-[#c01223]/50;
+  outline outline-offset-1 outline-1 shadow-lg shadow-[#c01223]/50;
 }
 
 .TodayItemButtonDoubleApprove {
   @apply w-26 h-16 ml-4 rounded-md text-2xl text-light font-medium 
   bg-[#0f7835] hover:bg-[#0f7835]/70 active:bg-[#0f7835]/50
-  outline outline-offset-2 outline-1 shadow-lg shadow-[#0f7835]/50;
+  outline outline-offset-1 outline-1 shadow-lg shadow-[#0f7835]/50;
 }
 
 .TodayItemButtonSingle {
@@ -156,12 +156,12 @@
 }
 
 .BadgeItemImage {
-  @apply flex justify-center items-center w-34 h-34 mt-3 mb-2 rounded-2xl 
+  @apply flex justify-center items-center w-32 h-32 mt-3 mb-2 rounded-2xl 
   bg-lightOrange shadow-lg shadow-lightOrange/50;
 }
 
 .BadgeItemImageLock {
-  @apply flex justify-center items-center w-34 h-34 mt-3 mb-2 rounded-2xl 
+  @apply flex justify-center items-center w-32 h-32 mt-3 mb-2 rounded-2xl 
   bg-lightGray shadow-lg shadow-lightGray/50;
 }
 
@@ -283,14 +283,20 @@
   outline outline-offset-2 outline-1 shadow-lg shadow-darkRed/50;
 }
 
+.ReawardModalButtonPay {
+  @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
+  bg-[#28678a] hover:bg-[#28678a]/70 active:bg-[#28678a]/50
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#28678a]/50;
+}
+
 .ReawardModalInput {
-  @apply w-28 h-11 text-2xl mx-5 mt-5 text-center rounded-md 
+  @apply w-28 h-11 text-2xl mx-5 text-center rounded-md 
   bg-light hover:bg-lightGray/70 active:bg-lightGray
   outline outline-offset-2 outline-1 shadow-lg shadow-lightGray/50;
 }
 
 .ReawardModalInputGift {
-  @apply w-64 h-11 text-2xl mx-5 mb-5 text-center text-darkBrown rounded-md 
+  @apply w-64 h-11 text-2xl mx-5 text-center text-darkBrown rounded-md 
   bg-light hover:bg-lightGray/70 active:bg-lightGray
   outline outline-offset-2 outline-1 shadow-lg shadow-lightGray/50;
 }

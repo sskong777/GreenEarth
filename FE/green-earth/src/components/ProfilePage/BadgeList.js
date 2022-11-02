@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import BadgeItem from "./BadgeItem";
 
 const badgeInfo = [
@@ -14,8 +15,8 @@ const badgeInfo = [
   { level: 10, title: "내가 제일 최고" },
 ];
 
-const BadgeList = () => {
-  const [childLevel, setChildLevel] = useState(6);
+const BadgeList = ({ earthLevel }) => {
+  const [childLevel, setChildLevel] = useState(earthLevel);
 
   const unlockBadge = badgeInfo.slice(0, childLevel);
   const lockBadge = badgeInfo.slice(childLevel, 10);
