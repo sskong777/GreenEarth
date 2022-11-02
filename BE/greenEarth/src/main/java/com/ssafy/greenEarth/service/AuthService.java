@@ -42,15 +42,13 @@ public class AuthService {
             Parent parent = parentRepository.findParentById(id)
                     .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
         }
-        log.info("엑세스 토큰 발급 완료");
         return tokenProvider.createAccessToken(id, role);
     }
 
     public String createRefreshToken(int id, Role role) {
         // 로그인 상태인지 체크
         if (refreshTokenRepository.existsById(new RefreshTokenId(id, role))) {
-            log.error("현재 로그인 상태");
-            throw new RuntimeException();
+            throw new BusinessException(ALREADY_LOGGED_IN);
         }
         if (role == Role.ROLE_CHILD) {
             Child child = childRepository.findChildById(id)
@@ -84,16 +82,25 @@ public class AuthService {
         refreshTokenRepository.deleteById(new RefreshTokenId(id, role));
     }
 
-    public TokenResDto tokenIssue(TokenIssueDto tokenIssueDto, int id, Role role) {
+    public TokenResDto tokenReissue(TokenReissueDto tokenIssueDto) {
+        String reqAccessToken = tokenIssueDto.getAccessToken();
+        String reqRefreshToken = tokenIssueDto.getRefreshToken();
+        // access token 유효성 검증
+        if (tokenProvider.isTokenValid(reqAccessToken).equals("invalid")) {
+            throw new BusinessException(INVALID_TOKEN);
+        }
+        // access token 에서 사용자 정보 추출
+        int id = tokenProvider.getCurrentUserId(reqAccessToken);
+        Role role = tokenProvider.getCurrentUserRole(reqRefreshToken);
+
         // 비교할 refresh token 추출
-        String requestRefreshToken = tokenIssueDto.getRefreshToken();
         RefreshToken storedRefreshToken = refreshTokenRepository.findById(new RefreshTokenId(id, role))
-                .orElseThrow(() -> new IllegalArgumentException("refresh token 을 찾을 수 없습니다."));
+                .orElseThrow(() -> new BusinessException(NOT_EXIST_REFRESH_TOKEN));
 
         Map<String, String> resMap = new HashMap<>();
 
         // refresh token 비교 후 재발급
-        if (!requestRefreshToken.equals(storedRefreshToken.getToken())) {
+        if (!reqRefreshToken.equals(storedRefreshToken.getToken())) {
             throw new RuntimeException();
         }
         resMap.put("accessToken", createAccessToken(id, role));     // 재발급된 access token
