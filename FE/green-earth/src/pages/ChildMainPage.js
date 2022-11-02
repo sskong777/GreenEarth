@@ -2,7 +2,7 @@
 import "../style/ChildMain.css";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import axios from 'axios'; // 액시오스
 // import Home from "./pages/Home";
 import {useRef} from 'react'
 //import {useState} from 'react'
@@ -14,6 +14,8 @@ import rocket from '../image/rocket.png'
 import start from '../image/start.png'
 import end from '../image/end.png'
 import { Color } from "three";
+import {useEffect, useState} from "react";
+
 
 // import useAnimations from 'react-useanimations';
 function Model(props) {
@@ -465,6 +467,7 @@ function Model20(props) {
 
 
 function ChildMainPage() {
+  
   const level = 1
   const value = level*11.2
   const mileage = level*98+5
@@ -494,6 +497,7 @@ function ChildMainPage() {
       </div>
       
         <div className= "info"  >
+          <div className= "infogroup">
             <div className = "canvasProfile">
                 <Canvas   id="person" >
                 <Suspense fallback={null}>
@@ -504,7 +508,8 @@ function ChildMainPage() {
                 </Suspense> 
                 </Canvas>
             <div className='characterInfo'>
-            <div >Lv.{level}   {nickname}</div>
+            <div >Lv.{level}   {nickname} </div>
+
             </div>
             </div>
             <div className = "badges">
@@ -635,6 +640,7 @@ function ChildMainPage() {
             <div className= "Mission">
               <Mission />
             </div>
+            </div>
             <div className= "game">
             <div className = "gameButton blinking">
               <Link to="/game">GAME</Link>
@@ -681,6 +687,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info2"  >
+            <div className = "infogroup2">
               <div className = "canvasProfile2">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -822,6 +829,7 @@ function ChildMainPage() {
               <div>
                 <Mission />
               </div>
+              </div>
               <div className= "game">
               <div className = "gameButton blinking">
                 <Link to="/game">GAME</Link>
@@ -869,6 +877,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info3"  >
+          <div className= "infogroup3">
               <div className = "canvasProfile3">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -1010,6 +1019,7 @@ function ChildMainPage() {
               <div>
                 <Mission />
               </div>
+              </div>
               <div className= "game">
               <div className = "gameButton blinking">
                 <Link to="/game">GAME</Link>
@@ -1057,6 +1067,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info4"  >
+          <div className= "infogroup4">
               <div className = "canvasProfile4">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -1198,6 +1209,7 @@ function ChildMainPage() {
               <div>
                 <Mission />
               </div>
+              </div>
               <div className= "game">
               <div className = "gameButton blinking">
                 <Link to="/game">GAME</Link>
@@ -1245,6 +1257,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info5"  >
+          <div className= "infogroup5">
               <div className = "canvasProfile5">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -1386,6 +1399,7 @@ function ChildMainPage() {
               <div>
                 <Mission />
               </div>
+              </div>
               <div className= "game">
               <div className = "gameButton blinking">
                 <Link to="/game">GAME</Link>
@@ -1433,6 +1447,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info6"  >
+          <div className= "infogroup6">
               <div className = "canvasProfile6">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -1574,6 +1589,7 @@ function ChildMainPage() {
               <div>
                 <Mission />
               </div>
+              </div>
               <div className= "game">
               <div className = "gameButton blinking">
                 <Link to="/game">GAME</Link>
@@ -1621,6 +1637,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info7"  >
+          <div className= "infogroup7">
               <div className = "canvasProfile7">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -1762,6 +1779,7 @@ function ChildMainPage() {
               <div>
                 <Mission />
               </div>
+              </div>
               <div className= "game">
               <div className = "gameButton blinking">
                 <Link to="/game">GAME</Link>
@@ -1809,6 +1827,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info8"  >
+          <div className= "infogroup8">
               <div className = "canvasProfile8">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -1950,6 +1969,7 @@ function ChildMainPage() {
               <div>
                 <Mission />
               </div>
+              </div>
               <div className= "game">
               <div className = "gameButton blinking">
                 <Link to="/game">GAME</Link>
@@ -1997,6 +2017,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info9"  >
+          <div className= "infogroup9">
               <div className = "canvasProfile9">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -2138,6 +2159,7 @@ function ChildMainPage() {
               <div>
                 <Mission />
               </div>
+              </div>
               <div className= "game">
               <div className = "gameButton blinking">
                 <Link to="/game">GAME</Link>
@@ -2185,6 +2207,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info10"  >
+          <div className= "infogroup10">
               <div className = "canvasProfile10">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -2325,6 +2348,7 @@ function ChildMainPage() {
               
               <div>
                 <Mission />
+              </div>
               </div>
               <div className= "game">
               <div className = "gameButton blinking">
