@@ -25,7 +25,6 @@
     margin-top: auto;
     margin-bottom: auto;
     background-color: rgb(42, 42, 42);
-    margin-right: 10px;
     position:relative;
     border : solid;
     border-color:  rgb(255, 179, 0);
@@ -174,7 +173,7 @@ progress::before{
 .info {
 
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap : wrap;
     width: 100%;
     /* background-color: blue; */
@@ -188,6 +187,9 @@ progress::before{
     
 }
 
+
+
+
 .info::before{
     content:"";
     opacity:0.1;
@@ -198,6 +200,13 @@ progress::before{
     bottom:0px;
     background-color: white;
     margin:7%;
+}
+
+.infogroup {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-right:7%;
 }
 .badges {
     display:flex;
@@ -272,7 +281,6 @@ progress::before{
     margin-top: auto;
     margin-bottom: auto;
     background-color: rgb(255, 247, 232);;
-    margin-right: 10px;
     position:relative;
     border : solid;
     border-color:  rgb(255, 179, 0);
@@ -415,7 +423,7 @@ progress::before{
 .info10 {
 
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap : wrap;
     width: 100%;
     /* background-color: blue; */
@@ -439,6 +447,13 @@ progress::before{
     bottom:0px;
     background-color: white;
     margin:7%;
+}
+
+.infogroup10 {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-right:7%;
 }
 .badges10 {
     display:flex;
@@ -518,7 +533,6 @@ progress::before{
     margin-top: auto;
     margin-bottom: auto;
     background-color: rgb(69, 69, 69);
-    margin-right: 10px;
     position:relative;
     border : solid;
     border-color:  rgb(255, 179, 0);
@@ -660,7 +674,7 @@ progress::before{
 .info2 {
 
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap : wrap;
     width: 100%;
     /* background-color: blue; */
@@ -684,6 +698,13 @@ progress::before{
     bottom:0px;
     background-color: white;
     margin:7%;
+}
+
+.infogroup2 {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-right:7%;
 }
 .badges2 {
     display:flex;
@@ -761,7 +782,6 @@ progress::before{
     margin-top: auto;
     margin-bottom: auto;
     background-color: rgb(88, 88, 88);
-    margin-right: 10px;
     position:relative;
     border : solid;
     border-color:  rgb(255, 179, 0);
@@ -791,7 +811,7 @@ progress::before{
 .info3 {
 
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap : wrap;
     width: 100%;
     /* background-color: blue; */
@@ -815,6 +835,13 @@ progress::before{
     bottom:0px;
     background-color: white;
     margin:7%;
+}
+
+.infogroup3 {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-right:7%;
 }
 .badges3 {
     display:flex;
@@ -891,7 +918,6 @@ progress::before{
     margin-top: auto;
     margin-bottom: auto;
     background-color: rgb(180, 180, 180);
-    margin-right: 10px;
     position:relative;
     border : solid;
     border-color:  rgb(255, 179, 0);
@@ -922,7 +948,7 @@ progress::before{
 .info4 {
 
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap : wrap;
     width: 100%;
     /* background-color: blue; */
@@ -946,6 +972,13 @@ progress::before{
     bottom:0px;
     background-color: white;
     margin:7%;
+}
+
+.infogroup4 {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-right:7%;
 }
 .badges4 {
     display:flex;
@@ -1021,7 +1054,6 @@ progress::before{
     margin-top: auto;
     margin-bottom: auto;
     background-color: rgb(255, 255, 255);
-    margin-right: 10px;
     position:relative;
     border : solid;
     border-color:  rgb(255, 179, 0);
@@ -1051,7 +1083,7 @@ progress::before{
 .info5 {
 
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap : wrap;
     width: 100%;
     /* background-color: blue; */
@@ -1075,6 +1107,13 @@ progress::before{
     bottom:0px;
     background-color: white;
     margin:7%;
+}
+
+.infogroup5 {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-right:7%;
 }
 .badges5 {
     display:flex;
@@ -1150,7 +1189,6 @@ progress::before{
     margin-top: auto;
     margin-bottom: auto;
     background-color: rgb(255, 255, 255);
-    margin-right: 10px;
     position:relative;
     border : solid;
     border-color:  rgb(255, 179, 0);
@@ -1180,7 +1218,7 @@ progress::before{
 .info6{
 
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap : wrap;
     width: 100%;
     /* background-color: blue; */
@@ -1204,6 +1242,13 @@ progress::before{
     bottom:0px;
     background-color: white;
     margin:7%;
+}
+
+.infogroup6 {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-right:7%;
 }
 .badges6 {
     display:flex;
@@ -1278,7 +1323,6 @@ progress::before{
     margin-top: auto;
     margin-bottom: auto;
     background-color: rgb(255, 255, 255);
-    margin-right: 10px;
     position:relative;
     border : solid;
     border-color:  rgb(255, 179, 0);
@@ -1308,7 +1352,7 @@ progress::before{
 .info7{
 
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap : wrap;
     width: 100%;
     /* background-color: blue; */
@@ -1332,6 +1376,13 @@ progress::before{
     bottom:0px;
     background-color: white;
     margin:7%;
+}
+
+.infogroup7 {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-right:7%;
 }
 .badges7 {
     display:flex;
@@ -1406,7 +1457,6 @@ progress::before{
     margin-top: auto;
     margin-bottom: auto;
     background-color: rgb(255, 255, 255);
-    margin-right: 10px;
     position:relative;
     border : solid;
     border-color:  rgb(255, 179, 0);
@@ -1436,7 +1486,7 @@ progress::before{
 .info8{
 
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap : wrap;
     width: 100%;
     /* background-color: blue; */
@@ -1460,6 +1510,13 @@ progress::before{
     bottom:0px;
     background-color: white;
     margin:7%;
+}
+
+.infogroup8 {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-right:7%;
 }
 .badges8 {
     display:flex;
@@ -1534,7 +1591,6 @@ progress::before{
     margin-top: auto;
     margin-bottom: auto;
     background-color: rgb(255, 255, 255);
-    margin-right: 10px;
     position:relative;
     border : solid;
     border-color:  rgb(255, 179, 0);
@@ -1564,7 +1620,7 @@ progress::before{
 .info9{
 
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap : wrap;
     width: 100%;
     /* background-color: blue; */
@@ -1589,6 +1645,14 @@ progress::before{
     background-color: white;
     margin:7%;
 }
+
+.infogroup9 {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-right:7%;
+}
+
 .badges9 {
     display:flex;
     flex-direction: row;
@@ -1631,7 +1695,7 @@ progress::before{
 }
 /* //////////////////////////////////////////////////////////////////////////// */
   
-  @media (min-width: 1280px) {
+  /* @media (min-width: 1280px) {
     .App {
       width: 1270px;
     }
@@ -1653,4 +1717,4 @@ progress::before{
     padding-left: 20px;
     padding-right: 20px;
   }
-  
+   */
