@@ -17,10 +17,13 @@ public class Admin {
     @Column(name = "admin_id")
     private int id;
 
+    @Column(length = 50)
     private String email;
 
+    @Column(length = 50)
     private String password;
 
+    @Column(length = 25)
     @Enumerated(EnumType.STRING)
     private Role role;
 
