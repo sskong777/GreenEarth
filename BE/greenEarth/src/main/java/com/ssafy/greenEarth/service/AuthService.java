@@ -2,6 +2,7 @@ package com.ssafy.greenEarth.service;
 
 import com.ssafy.greenEarth.domain.*;
 import com.ssafy.greenEarth.dto.Auth.*;
+import com.ssafy.greenEarth.dto.Auth.TokenDto;
 import com.ssafy.greenEarth.jwt.TokenProvider;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.ParentRepository;
@@ -34,13 +35,18 @@ public class AuthService {
 
     private final RefreshTokenRepository refreshTokenRepository;
 
+    public Boolean isCurAccountExist(int id, Role role) {
+        if (role == Role.ROLE_CHILD && childRepository.existsById(id)) {
+            return true;
+        } else if (role == Role.ROLE_PARENT && parentRepository.existsById(id)) {
+            return true;
+        }
+        return false;
+    }
+
     public String createAccessToken(int id, Role role) {
-        if (role == Role.ROLE_CHILD) {
-            Child child = childRepository.findChildById(id)
-                    .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
-        } else {
-            Parent parent = parentRepository.findParentById(id)
-                    .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
+        if (!isCurAccountExist(id, role)) {
+            throw new BusinessException(NOT_EXIST_ACCOUNT);
         }
         return tokenProvider.createAccessToken(id, role);
     }
@@ -50,21 +56,16 @@ public class AuthService {
         if (refreshTokenRepository.existsById(new RefreshTokenId(id, role))) {
             throw new BusinessException(ALREADY_LOGGED_IN);
         }
-        if (role == Role.ROLE_CHILD) {
-            Child child = childRepository.findChildById(id)
-                    .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
-        } else {
-            Parent parent = parentRepository.findParentById(id)
-                    .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
+        if (!isCurAccountExist(id, role)) {
+            throw new BusinessException(NOT_EXIST_ACCOUNT);
         }
-        // refresh token 생성
-        String token =  tokenProvider.createRefreshToken();
-        // refresh token 저장
+        // refresh token 생성 및 저장
+        String token = tokenProvider.createRefreshToken();
         RefreshToken refreshToken = refreshTokenRepository.save(new RefreshToken(token, id, role));
         return refreshToken.getToken();
     }
 
-    public TokenResDto childLogin(LoginDto loginDto) {
+    public TokenDto childLogin(LoginDto loginDto) {
         // email id 비교
         Child child = childRepository.findByEmail(loginDto.getEmail())
                 .orElseThrow(() -> new BusinessException(INVALID_ACCOUNT));
@@ -75,14 +76,14 @@ public class AuthService {
         Map<String, String> resMap = new HashMap<>();
         resMap.put("accessToken", createAccessToken(child.getId(), Role.ROLE_CHILD));
         resMap.put("refreshToken", createRefreshToken(child.getId(), Role.ROLE_CHILD));
-        return new TokenResDto(resMap);
+        return new TokenDto(resMap);
     }
 
     public void logout(int id, Role role) {
         refreshTokenRepository.deleteById(new RefreshTokenId(id, role));
     }
 
-    public TokenResDto tokenReissue(TokenReissueDto tokenIssueDto) {
+    public TokenDto tokenReissue(TokenDto tokenIssueDto) {
         String reqAccessToken = tokenIssueDto.getAccessToken();
         String reqRefreshToken = tokenIssueDto.getRefreshToken();
         // access token 유효성 검증
@@ -106,6 +107,6 @@ public class AuthService {
         resMap.put("accessToken", createAccessToken(id, role));     // 재발급된 access token
         resMap.put("refreshToken", storedRefreshToken.getToken());  // 기존 refresh token
 
-        return new TokenResDto(resMap);
+        return new TokenDto(resMap);
     }
 }

@@ -18,4 +18,5 @@ public interface ChildRepository extends JpaRepository<Child, Integer> {
     Optional<Child> findByEmail(String email);
 
     Optional<Child> findByNickname(String nickname);
+
 }
