@@ -4,6 +4,7 @@ import com.ssafy.greenEarth.domain.*;
 import com.ssafy.greenEarth.dto.Auth.*;
 import com.ssafy.greenEarth.jwt.TokenProvider;
 import com.ssafy.greenEarth.repository.ChildRepository;
+import com.ssafy.greenEarth.repository.ParentRepository;
 import com.ssafy.greenEarth.repository.RefreshTokenRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -29,11 +30,19 @@ public class AuthService {
 
     private final ChildRepository childRepository;
 
+    private final ParentRepository parentRepository;
+
     private final RefreshTokenRepository refreshTokenRepository;
 
     public String createAccessToken(int id, Role role) {
-        Child child = childRepository.findChildById(id)
-                .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
+        if (role == Role.ROLE_CHILD) {
+            Child child = childRepository.findChildById(id)
+                    .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
+        } else {
+            Parent parent = parentRepository.findParentById(id)
+                    .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
+        }
+        log.info("엑세스 토큰 발급 완료");
         return tokenProvider.createAccessToken(id, role);
     }
 
@@ -43,8 +52,13 @@ public class AuthService {
             log.error("현재 로그인 상태");
             throw new RuntimeException();
         }
-        Child child = childRepository.findChildById(id)
-                .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
+        if (role == Role.ROLE_CHILD) {
+            Child child = childRepository.findChildById(id)
+                    .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
+        } else {
+            Parent parent = parentRepository.findParentById(id)
+                    .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
+        }
         // refresh token 생성
         String token =  tokenProvider.createRefreshToken();
         // refresh token 저장
