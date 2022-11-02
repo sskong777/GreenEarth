@@ -50,13 +50,10 @@ public class AuthController {
     }
 
     @ApiOperation(value = "Access Token 재발급", notes = "access token 과 refresh token 유효성 검증 후 모두 재발급")
-    @PostMapping("/token_issue")
-    public ResponseEntity<TokenResDto> tokenIssue(@RequestBody TokenIssueDto tokenIssueDto, HttpServletRequest request) {
-        // interceptor 예외 처리해서 둘다 유효한 경우에만 들어오도록 하자 (access 는 만료, refresh 는 만료 x)
+    @PostMapping("/token/reissue")
+    public ResponseEntity<TokenResDto> tokenReissue(@RequestBody TokenReissueDto tokenReissueDto) {
         log.info("refresh 토큰 재발급 요청");
-        int curUserId = (int) request.getAttribute("curUserId");
-        Role curUserRole = (Role) request.getAttribute("curUserRole");
-        TokenResDto data = authService.tokenIssue(tokenIssueDto, curUserId, curUserRole);
+        TokenResDto data = authService.tokenReissue(tokenReissueDto);
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
