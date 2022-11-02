@@ -32,7 +32,7 @@ public class Parent {
 
     @JsonBackReference
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Child> childList = new ArrayList<>();
+    private final List<Child> childList = new ArrayList<>();
 
 
 }
