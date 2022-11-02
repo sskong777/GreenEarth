@@ -142,6 +142,8 @@ public class MissionService {
         child.setMileage(currentMileage);
 
         int beforeGreenEarth = child.getEarthLevel();
+        System.out.println(child.getMileage());
+        System.out.println(currentMileage);
         int greenEarth = greenEarthRepository.findFirstByMileage_condition(currentMileage);
 
         if(beforeGreenEarth < greenEarth){
@@ -203,7 +205,7 @@ public class MissionService {
 
 
 
-//     오늘의 미션 삭제
+//  오늘의 미션 삭제
     @Transactional
     public void deleteTodayMission(int log_id){
         MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
