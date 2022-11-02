@@ -7,6 +7,7 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -28,7 +29,7 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.ssafy.greenEarth.controller"))
                 .paths(PathSelectors.any())
                 .build()
-//                .securityContexts(Arrays.asList(securityContext()))
+                .securityContexts(Arrays.asList(securityContext()))
                 .securitySchemes(Arrays.asList(apiKey()));
     }
 
@@ -46,13 +47,15 @@ public class SwaggerConfig {
         return new ApiKey("JWT_TOKEN", "Authorization", "header");
     }
 
-//    private SecurityContext securityContext() {
-//        return springfox.documentation.spi.service.contexts.SecurityContext
-//                .builder()
-//                .securityReferences(defaultAuth()).operationSelector(oc -> oc.requestMappingPattern().matches("/.*")).build();
-//    }
+    private SecurityContext securityContext() {
+        return SecurityContext
+                .builder()
+                .securityReferences(defaultAuth())
+                .operationSelector(oc -> oc.requestMappingPattern().matches("/.*"))
+                .build();
+    }
 
-    List<SecurityReference> defaultAuth() {
+    private List<SecurityReference> defaultAuth() {
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEveryThing");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
