@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,7 +26,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         // Bearer 체크
         if (authHeader == null || !authHeader.startsWith(JwtProperties.TOKEN_PREFIX)) {
-            throw new BusinessException(INVALID_TOKEN);
+            throw new BusinessException(EMPTY_TOKEN);
         }
 
         // Bearer 제외한 토큰값 추출
