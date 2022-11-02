@@ -49,7 +49,7 @@ public class MemberController {
     public ResponseEntity<Child> signup(@RequestBody ChildRegisterDto childDto, HttpServletRequest request) {
         int curUserId = (int) request.getAttribute("curUserId");
         Child data = childService.registerChild(childDto, curUserId);
-        return new ResponseEntity<>(data, HttpStatus.OK);
+        return new ResponseEntity<>(data, HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "닉네임 중복 확인", notes = "유저 닉네임 받아 중복 확인")

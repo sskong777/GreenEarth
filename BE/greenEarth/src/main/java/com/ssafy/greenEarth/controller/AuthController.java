@@ -35,7 +35,7 @@ public class AuthController {
     @ApiOperation(value = "아이 로그인", notes = "email id와 password 받아서 로그인진행 성공시 token에 JWT를 넘겨줌")
     @PostMapping("/login/child")
     public ResponseEntity<TokenDto> childLogin(@RequestBody LoginDto loginDto) {
-        log.info("로그인 요청 : {}", loginDto.getEmail());
+        log.info("로그인 요청 : {}", loginDto.getNickname());
         TokenDto data = authService.childLogin(loginDto);
         return new ResponseEntity<>(data, HttpStatus.OK);
     }

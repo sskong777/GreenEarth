@@ -19,8 +19,6 @@ import java.util.List;
 @RequestMapping("mission")
 public class MissionController {
 
-    private final ChildRepository childRepository;
-    private final MissionRepository mIssionRepository;
     private final MissionService missionService;
 
     // 오늘의 미션생성
