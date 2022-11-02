@@ -31,6 +31,8 @@ public class ChildProfileDto {
 
     private String parent;
 
+    private Boolean isParent;
+
     public ChildProfileDto(Child child) {
         this.childId = child.getId();
         this.id = child.getEmail().replace("@greenearth.com", "");
@@ -43,5 +45,6 @@ public class ChildProfileDto {
         this.birthday = child.getBirthday();
         this.avatar = child.getAvatar();
         this.parent = child.getParent().getNickname();
+        this.isParent = false;
     }
 }
