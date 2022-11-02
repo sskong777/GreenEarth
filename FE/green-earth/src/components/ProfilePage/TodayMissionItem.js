@@ -1,44 +1,30 @@
 import React, { useState, useEffect } from "react";
 
 import { useRecoilState } from "recoil";
-import { childInfoState } from "./../../store/atoms";
+import {
+  missionOptionListState,
+  missionSelectState,
+} from "./../../store/atoms";
+
+import { useMissionCallback } from "./../../functions/useMissionCallback";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
-const missionOptionList = [
-  {
-    missionId: 1,
-    name: "분리수거 하기",
-    description: "미션 설명",
-    mileage: 10,
-  },
-  {
-    missionId: 2,
-    name: "텀블러 사용하기",
-    description: "미션 설명",
-    mileage: 10,
-  },
-  {
-    missionId: 3,
-    name: "음식 남기지 않기",
-    description: "미션 설명",
-    mileage: 10,
-  },
-];
-
 const ControlMenu = React.memo(({ data, onChange, optionList }) => {
   const [isActive, setIsActive] = useState(false);
-  const [selected, setSelected] = useState({
-    missionId: 1,
-    name: "미션을 설정해 주세요.",
-    description: "미션 설명",
-    mileage: 0,
-  });
+  const [selected, setSelected] = useRecoilState(missionSelectState);
 
   useEffect(() => {
     if (data) {
       setSelected(data.mission);
+    } else {
+      setSelected({
+        missionId: 1,
+        name: "미션을 설정해 주세요.",
+        description: "미션 설명",
+        mileage: 0,
+      });
     }
   }, [data]);
 
@@ -80,10 +66,29 @@ const ControlMenu = React.memo(({ data, onChange, optionList }) => {
 });
 
 const TodayMissionItem = ({ data }) => {
+  const [missionOptionList, setmissionOptionList] = useRecoilState(
+    missionOptionListState
+  );
+  const [selected, setSelected] = useRecoilState(missionSelectState);
+
+  const {
+    missionOptionListCallback,
+    saveMissionCallback,
+    editMissionCallback,
+    permitMissionCallback,
+    rejectMissionCallback,
+  } = useMissionCallback();
+
+  console.log("data", data);
+
   const [missionItem, setMissionItem] = useState();
   const [isCleared, setIsCleared] = useState(false);
   const [isCreated, setIsCreated] = useState(false);
   const [isPermitted, setIsPermitted] = useState(false);
+
+  useEffect(() => {
+    missionOptionListCallback();
+  }, []);
 
   useEffect(() => {
     if (data) {
@@ -100,24 +105,28 @@ const TodayMissionItem = ({ data }) => {
 
   const handleClickMissionSubmit = () => {
     if (window.confirm("미션을 설정하시겠습니까?")) {
+      saveMissionCallback(data.childId);
       console.log("미션 설정 완료");
     }
   };
 
   const handleClickMissionEdit = () => {
     if (window.confirm("미션을 수정하시겠습니까?")) {
+      editMissionCallback(data.childId, selected.missionId);
       console.log("미션 수정 완료");
     }
   };
 
-  const handleClickMissionApprove = () => {
+  const handleClickMissionPermit = () => {
     if (window.confirm("미션을 승인하시겠습니까?")) {
+      permitMissionCallback(data.logId);
       console.log("미션 승인 완료");
     }
   };
 
-  const handleClickMissionRefuse = () => {
+  const handleClickMissionReject = () => {
     if (window.confirm("미션을 거절하시겠습니까?")) {
+      rejectMissionCallback(data.logId);
       console.log("미션 거절 완료");
     }
   };
@@ -142,14 +151,14 @@ const TodayMissionItem = ({ data }) => {
         {isCleared && !isPermitted && !isCreated && (
           <>
             <button
-              className="TodayItemButtonDoubleApprove"
-              onClick={handleClickMissionApprove}
+              className="TodayItemButtonDoublePermit"
+              onClick={handleClickMissionPermit}
             >
               승인
             </button>
             <button
-              className="TodayItemButtonDoubleRefuse"
-              onClick={handleClickMissionRefuse}
+              className="TodayItemButtonDoubleReject"
+              onClick={handleClickMissionReject}
             >
               거절
             </button>

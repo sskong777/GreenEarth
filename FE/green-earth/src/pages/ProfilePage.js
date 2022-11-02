@@ -172,7 +172,7 @@ const ProfilePage = () => {
         <>
           {!isBadge && !isMission && (
             <section>
-              <TodayMissionList />
+              <TodayMissionList childId={childId} />
             </section>
           )}
           {isBadge && !isMission && (

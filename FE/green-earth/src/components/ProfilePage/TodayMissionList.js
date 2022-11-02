@@ -1,12 +1,22 @@
+import { useEffect } from "react";
+
 import { useRecoilState } from "recoil";
 import { todayMissionListState } from "./../../store/atoms";
 
+import { useMissionCallback } from "./../../functions/useMissionCallback";
+
 import TodayMissionItem from "./TodayMissionItem";
 
-const TodayMissionList = () => {
+const TodayMissionList = ({ childId }) => {
   const [todayMissionList, setTodayMissionList] = useRecoilState(
     todayMissionListState
   );
+
+  const { todayMissionListCallback } = useMissionCallback();
+
+  useEffect(() => {
+    todayMissionListCallback(childId);
+  }, [todayMissionList]);
 
   const createTodayMission = (value) => {
     let answer = [];
