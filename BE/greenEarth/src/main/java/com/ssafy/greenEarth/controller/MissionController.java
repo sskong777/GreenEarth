@@ -2,11 +2,7 @@ package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Mission;
 import com.ssafy.greenEarth.domain.Role;
-import com.ssafy.greenEarth.dto.*;
-import com.ssafy.greenEarth.dto.Mission.MissionLogResDto;
-import com.ssafy.greenEarth.dto.Mission.MissionPutDto;
-import com.ssafy.greenEarth.dto.Mission.MissionReqDto;
-import com.ssafy.greenEarth.dto.Mission.MissionResDto;
+import com.ssafy.greenEarth.dto.Mission.*;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.MissionRepository;
 import com.ssafy.greenEarth.service.MissionService;
@@ -23,8 +19,6 @@ import java.util.List;
 @RequestMapping("mission")
 public class MissionController {
 
-    private final ChildRepository childRepository;
-    private final MissionRepository mIssionRepository;
     private final MissionService missionService;
 
     // 오늘의 미션생성

@@ -52,6 +52,8 @@ public class ChildProfileDto {
     @Schema(description = "아이와 연결된 보호자 닉네임")
     private String parent;
 
+    private Boolean isParent;
+
     public ChildProfileDto(Child child) {
         this.childId = child.getId();
         this.realName = child.getRealName();
@@ -63,5 +65,6 @@ public class ChildProfileDto {
         this.birthday = child.getBirthday();
         this.avatar = child.getAvatar();
         this.parent = child.getParent().getNickname();
+        this.isParent = false;
     }
 }

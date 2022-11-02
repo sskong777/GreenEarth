@@ -28,10 +28,13 @@ public class ParentProfileDto {
     @Schema(description = "보호자와 연결된 아이")
     private List<Child> childList;
 
+    private Boolean isParent;
+
     public ParentProfileDto(Parent parent) {
         this.parentId = parent.getId();
         this.email = parent.getEmail();
         this.nickname = parent.getNickname();
         this.childList = parent.getChildList();
+        this.isParent = true;
     }
 }
