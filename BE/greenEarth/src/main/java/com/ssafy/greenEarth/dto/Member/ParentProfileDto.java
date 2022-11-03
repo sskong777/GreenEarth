@@ -1,12 +1,9 @@
 package com.ssafy.greenEarth.dto.Member;
 
-import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Parent;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +28,8 @@ public class ParentProfileDto {
         this.parentId = parent.getId();
         this.email = parent.getEmail();
         this.nickname = parent.getNickname();
-        this.childList = parent.getChildList().stream().map(ChildProfileDto::new).collect(Collectors.toList());
+        this.childList = parent.getChildList().stream()
+                .map(ChildProfileDto::new).collect(Collectors.toList());
         this.isParent = true;
     }
 }
