@@ -18,7 +18,30 @@ import {useEffect, useState} from "react";
 
 
 // import useAnimations from 'react-useanimations';
+function Model00(props) {
+  const group = useRef()
+  const { nodes, materials, animations } = useGLTF('/movingearth/scene.gltf')
+  const { actions } = useAnimations(animations, group)
 
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+          <group name="root">
+            <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
+ 
+
+              <group name="planet_barren_8" position={[-0.2, -3, -3]} scale={5}>
+                <mesh name="Object_20" geometry={nodes.Object_20.geometry} material={materials.Planet_barren} material-transparent="true" material-opacity="0.9"/>
+              </group>
+   
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
 function Model0(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/astronaut/scene.gltf')
@@ -63,7 +86,6 @@ function Model0(props) {
 }
 
 
-
 function Model(props) {
   const { nodes, materials } = useGLTF('/earth/scene.gltf')
   
@@ -91,7 +113,7 @@ function Model2(props) {
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
-          <group position={[0, -3500, -12000]} rotation={[-Math.PI / 3, 0, 0]} scale={1600}>
+          <group position={[0, -3500, -10000]} rotation={[-Math.PI / 3, 0, 0]} scale={1600}>
             <mesh geometry={nodes['01foxFinal_Material092_0'].geometry} material={materials['Material.092']} />
           </group>
           {/*<group position={[1209.05, 5803.94, 500.96]} rotation={[-Math.PI / 3, 0, 0]} scale={2000}>
@@ -175,7 +197,7 @@ function Model3(props) {
     const { nodes, materials } = useGLTF('/person/scene.gltf')
     return (
       <group {...props} dispose={null}>
-        <group position={[0, -2, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={3}>
+        <group position={[0, -2, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={3} >
           <mesh geometry={nodes.children_0.geometry} material={materials.child} />
         </group>
       </group>
@@ -1034,7 +1056,7 @@ function ChildMainPage() {
                 <Suspense fallback={null}>
                 <ambientLight />
                 <spotLight intensity={5} angle={0.1} penumbra={1} position={[10,15,10]} castShadow />        
-                <Model />
+                <Model00 />
                 <Model2 />
                 <Model0 />
                 <OrbitControls enablePan={true} enableZoom={true} rotateSpeed = {0.2} enableRotate={true} />
