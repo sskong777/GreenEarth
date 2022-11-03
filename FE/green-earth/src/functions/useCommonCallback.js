@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const useCommonCallback = () => {
   const navigate = useNavigate();
   const baseUrl = "https://k7d206.p.ssafy.io/api";
+  // const baseUrl = "http://localhost:8881/api";
 
   const [refreshToken, setRefreshToken] = useRecoilState(refreshTokenState);
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
