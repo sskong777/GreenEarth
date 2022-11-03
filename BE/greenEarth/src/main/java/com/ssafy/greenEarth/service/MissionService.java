@@ -43,7 +43,7 @@ public class MissionService {
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
-        Parent parent = parentRepository.findParentById(curUserId).orElseThrow(
+        Parent parent = parentRepository.findById(curUserId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
