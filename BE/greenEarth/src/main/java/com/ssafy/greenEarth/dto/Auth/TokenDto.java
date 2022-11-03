@@ -13,6 +13,8 @@ public class TokenDto {
 
     private String refreshToken;
 
+    public TokenDto() {}
+
     public TokenDto(Map<String, String> resMap) {
         this.accessToken = resMap.get("accessToken");
         this.refreshToken = resMap.get("refreshToken");
