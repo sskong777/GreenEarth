@@ -2,13 +2,14 @@ import { useNavigate } from "react-router-dom";
 
 import LoginForm from "../components/LoginPage/LoginForm";
 
+import "../style/LoginPage/LoginPage.css";
+
 const LogInPage = () => {
   const navigate = useNavigate();
 
   return (
     <div className="LogInPage">
-      <img src={"assets/images/logo_main.png"} />
-      <h1>LogInPage</h1>
+      <img className="LogoImage" src={"assets/images/logo_main.png"} />
 
       <LoginForm />
 
