@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import WelcomeDescription from "./../components/WelcomePage/WelcomeDescription";
 import WelcomeDefault from "./../components/WelcomePage/WelcomeDefault";
 
-import "../style/WelcomePage.css";
+import "../style/WelcomePage/WelcomePage.css";
 
 const WelcomePage = () => {
   // 컴포넌트 구분을 위한 상태
