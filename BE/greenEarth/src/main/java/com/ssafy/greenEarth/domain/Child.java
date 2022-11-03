@@ -22,15 +22,17 @@ public class Child {
     @Column(name = "child_id")
     private int id;
 
+    @Column(length = 25)
     private String realName;
 
-    private String email;
-
+    @Column(columnDefinition = "TEXT")
     private String password;
 
+    @Column(length = 25)
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Column(length = 25)
     private String nickname;
 
     private int mileage;
@@ -43,6 +45,7 @@ public class Child {
 
     private int avatar;
 
+    @Column(length = 25)
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -74,12 +77,13 @@ public class Child {
         this.mileage = mileage;
     }
 
+    public void setEarthLevel(int earthLevel) { this.earthLevel = earthLevel;}
+
     @Builder
     public Child(String realName, String email, String password, Gender gender, String nickname,
                  int mileage, int clearedMission, int earthLevel, LocalDate birthday, int avatar,
                  Role role, Parent parent) {
         this.realName = realName;
-        this.email = email;
         this.password = password;
         this.gender = gender;
         this.nickname = nickname;

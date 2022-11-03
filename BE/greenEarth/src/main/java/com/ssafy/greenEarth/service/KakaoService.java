@@ -4,10 +4,7 @@ import com.ssafy.greenEarth.domain.Role;
 import com.ssafy.greenEarth.dto.Member.ParentRegisterDto;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
@@ -23,7 +20,7 @@ public class KakaoService {
     public String getKakaoAccessToken(String code) {
 
         String REST_API_KEY = "2045a52f644e0bfc27a039cf2bef8568";
-        String REDIRECT_URI = "http://k7d206.p.ssafy.io/api/kakao/login";
+        String REDIRECT_URI = "http://localhost:3000/oauth/redirect";
 
         // POST방식으로 key=value 데이터 요청
         RestTemplate restTemplate = new RestTemplate();

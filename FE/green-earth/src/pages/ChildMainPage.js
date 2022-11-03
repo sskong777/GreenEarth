@@ -2,7 +2,7 @@
 import "../style/ChildMain.css";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import axios from 'axios'; // 액시오스
 // import Home from "./pages/Home";
 import {useRef} from 'react'
 //import {useState} from 'react'
@@ -14,10 +14,82 @@ import rocket from '../image/rocket.png'
 import start from '../image/start.png'
 import end from '../image/end.png'
 import { Color } from "three";
+import {useEffect, useState} from "react";
+
 
 // import useAnimations from 'react-useanimations';
+function Model00(props) {
+  const group = useRef()
+  const { nodes, materials, animations } = useGLTF('/movingearth/scene.gltf')
+  const { actions } = useAnimations(animations, group)
+
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+          <group name="root">
+            <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
+ 
+
+              <group name="planet_barren_8" position={[-0.2, -3, -3]} scale={5}>
+                <mesh name="Object_20" geometry={nodes.Object_20.geometry} material={materials.Planet_barren} material-transparent="true" material-opacity="0.9"/>
+              </group>
+   
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
+function Model0(props) {
+  const group = useRef()
+  const { nodes, materials, animations } = useGLTF('/astronaut/scene.gltf')
+  const { actions } = useAnimations(animations, group)
+   useEffect(() => {
+    Object.keys(actions).forEach((key) => {
+   actions[key].play();
+   });
+   }, []);
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model"  position={[4 , -1, -1]}  rotation={[-Math.PI / 2, 0, -0.5]} scale={1.0}>
+          <group name="root">
+            <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
+              <group name="RootNode0_0" scale={0.01}>
+                <group name="skeletal3_6">
+                  <group name="GLTF_created_0">
+                    <primitive object={nodes.GLTF_created_0_rootJoint} />
+                    <group name="_3_correction">
+                      <group name="_3" />
+                    </group>
+                    <group name="_4_correction">
+                      <group name="_4" />
+                    </group>
+                    <group name="_5_correction">
+                      <group name="_5" />
+                    </group>
+                    <skinnedMesh name="Object_99" geometry={nodes.Object_99.geometry} material={materials.material_0} skeleton={nodes.Object_99.skeleton} />
+                    <skinnedMesh name="Object_100" geometry={nodes.Object_100.geometry} material={materials.material_0} skeleton={nodes.Object_100.skeleton} />
+                    <skinnedMesh name="Object_103" geometry={nodes.Object_103.geometry} material={materials.material_1} skeleton={nodes.Object_103.skeleton} />
+                    <skinnedMesh name="Object_106" geometry={nodes.Object_106.geometry} material={materials.material_2} skeleton={nodes.Object_106.skeleton} />
+                  </group>
+                </group>
+              </group>
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
+
+
 function Model(props) {
   const { nodes, materials } = useGLTF('/earth/scene.gltf')
+  
+
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
@@ -41,7 +113,7 @@ function Model2(props) {
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
-          <group position={[0, -3500, -12000]} rotation={[-Math.PI / 3, 0, 0]} scale={1600}>
+          <group position={[0, -3500, -10000]} rotation={[-Math.PI / 3, 0, 0]} scale={1600}>
             <mesh geometry={nodes['01foxFinal_Material092_0'].geometry} material={materials['Material.092']} />
           </group>
           {/*<group position={[1209.05, 5803.94, 500.96]} rotation={[-Math.PI / 3, 0, 0]} scale={2000}>
@@ -125,7 +197,7 @@ function Model3(props) {
     const { nodes, materials } = useGLTF('/person/scene.gltf')
     return (
       <group {...props} dispose={null}>
-        <group position={[0, -2, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={3}>
+        <group position={[0, -2, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={3} >
           <mesh geometry={nodes.children_0.geometry} material={materials.child} />
         </group>
       </group>
@@ -154,7 +226,9 @@ function Model3(props) {
 function Model8(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/badge/scene.gltf')
+  
   const { actions } = useAnimations(animations, group)
+ 
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
@@ -179,6 +253,11 @@ function Model9(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/badge/scene.gltf')
   const { actions } = useAnimations(animations, group)
+  //  useEffect(() => {
+  //   Object.keys(actions).forEach((key) => {
+  //  actions[key].play();
+  //  });
+  //  }, []);
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
@@ -189,6 +268,30 @@ function Model9(props) {
                 <group name="Plane001"  position={[0,0,-50]} rotation={[0, 0.0, 0.0]}scale={22.69}>
                   <mesh name="Plane001_Material002_0" geometry={nodes.Plane001_Material002_0.geometry} material={materials['Material.002']} />
                   <mesh name="Plane001_Material023_0" geometry={nodes.Plane001_Material023_0.geometry} material={materials['Material.023']} />
+                </group> 
+                 
+              </group>
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
+function Model90(props) {
+  const group = useRef()
+  const { nodes, materials, animations } = useGLTF('/badge/scene.gltf')
+  const { actions } = useAnimations(animations, group)
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+          <group name="eeebe696fe144016b54f1646de5f3274fbx" rotation={[Math.PI / 2, 0, 0]}>
+            <group name="Object_2">
+              <group name="RootNode">
+                <group name="Plane001"  position={[0,0,-50]} rotation={[0, 0.0, 0.0]}scale={22.69}>
+                  <mesh name="Plane001_Material002_0" geometry={nodes.Plane001_Material002_0.geometry} material={materials['Material.002']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane001_Material023_0" geometry={nodes.Plane001_Material023_0.geometry} material={materials['Material.023']} material-transparent="true" material-opacity="0.2"/>
                 </group> 
                  
               </group>
@@ -215,8 +318,31 @@ function Model10(props) {
                   <mesh name="Plane_Material015_0" geometry={nodes.Plane_Material015_0.geometry} material={materials['Material.015']} />
                   <mesh name="Plane_Material016_0" geometry={nodes.Plane_Material016_0.geometry} material={materials['Material.016']} />
                   <mesh name="Plane_Material004_0" geometry={nodes.Plane_Material004_0.geometry} material={materials['Material.004']} />
-                </group>
-               
+                </group>            
+              </group>
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
+function Model100(props) {
+  const group = useRef()
+  const { nodes, materials, animations } = useGLTF('/badge/scene.gltf')
+  const { actions } = useAnimations(animations, group)
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+          <group name="eeebe696fe144016b54f1646de5f3274fbx" rotation={[Math.PI / 2, 0, 0]}>
+            <group name="Object_2">
+              <group name="RootNode">
+                <group name="Plane" position={[0,0,-50]} rotation={[0, 0.0, 0.0]} scale={20.98}>
+                  <mesh name="Plane_Material015_0" geometry={nodes.Plane_Material015_0.geometry} material={materials['Material.015']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane_Material016_0" geometry={nodes.Plane_Material016_0.geometry} material={materials['Material.016']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane_Material004_0" geometry={nodes.Plane_Material004_0.geometry} material={materials['Material.004']} material-transparent="true" material-opacity="0.2"/>
+                </group>            
               </group>
             </group>
           </group>
@@ -241,6 +367,32 @@ function Model11(props) {
                   <mesh name="Plane002_Material018_0" geometry={nodes.Plane002_Material018_0.geometry} material={materials['Material.018']} />
                   <mesh name="Plane002_Material023_0" geometry={nodes.Plane002_Material023_0.geometry} material={materials['Material.023']} />
                   <mesh name="Plane002_Material019_0" geometry={nodes.Plane002_Material019_0.geometry} material={materials['Material.019']} />
+                </group>
+     
+              </group>
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
+function Model110(props) {
+  const group = useRef()
+  const { nodes, materials, animations } = useGLTF('/badge/scene.gltf')
+  const { actions } = useAnimations(animations, group)
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+          <group name="eeebe696fe144016b54f1646de5f3274fbx" rotation={[Math.PI / 2, 0, 0]}>
+            <group name="Object_2">
+              <group name="RootNode">
+      
+                <group name="Plane002" position={[0,0,-50]} rotation={[0, 0.0, 0.0]} scale={29.98}>
+                  <mesh name="Plane002_Material018_0" geometry={nodes.Plane002_Material018_0.geometry} material={materials['Material.018']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane002_Material023_0" geometry={nodes.Plane002_Material023_0.geometry} material={materials['Material.023']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane002_Material019_0" geometry={nodes.Plane002_Material019_0.geometry} material={materials['Material.019']} material-transparent="true" material-opacity="0.2"/>
                 </group>
      
               </group>
@@ -276,6 +428,32 @@ function Model12(props) {
     </group>
   )
 }
+function Model120(props) {
+  const group = useRef()
+  const { nodes, materials, animations } = useGLTF('/badge/scene.gltf')
+  const { actions } = useAnimations(animations, group)
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+          <group name="eeebe696fe144016b54f1646de5f3274fbx" rotation={[Math.PI / 2, 0, 0]}>
+            <group name="Object_2">
+              <group name="RootNode">
+              
+                  <group name="Cylinder011" position={[0,0,-80]} rotation={[0, 0.0, 0.0]} scale={[26.99, 26.99, 3.93]}>
+                  <mesh name="Cylinder011_Material017_0" geometry={nodes.Cylinder011_Material017_0.geometry} material={materials['Material.017']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Cylinder011_Material004_0" geometry={nodes.Cylinder011_Material004_0.geometry} material={materials['Material.004']} material-transparent="true" material-opacity="0.2" />
+                </group>
+                
+              </group>
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
+
 function Model13(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/badge/scene.gltf')
@@ -289,9 +467,35 @@ function Model13(props) {
               <group name="RootNode">
           
                 <group name="Cylinder013" position={[5,10,-80]} rotation={[0, -0.05, 0.37]} scale={[34.99, 34.99, 3.93]}>
-                  <mesh name="Cylinder013_Material024_0" geometry={nodes.Cylinder013_Material024_0.geometry} material={materials['Material.024']} />
+                  <mesh name="Cylinder013_Material024_0" geometry={nodes.Cylinder013_Material024_0.geometry} material={materials['Material.024']}  />
                   <mesh name="Cylinder013_Material003_0" geometry={nodes.Cylinder013_Material003_0.geometry} material={materials['Material.003']} />
-                  <mesh name="Cylinder013_Material004_0" geometry={nodes.Cylinder013_Material004_0.geometry} material={materials['Material.004']} />
+                  <mesh name="Cylinder013_Material004_0" geometry={nodes.Cylinder013_Material004_0.geometry} material={materials['Material.004']}/>
+                </group>
+              
+              </group>
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
+function Model130(props) {
+  const group = useRef()
+  const { nodes, materials, animations } = useGLTF('/badge/scene.gltf')
+  const { actions } = useAnimations(animations, group)
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+          <group name="eeebe696fe144016b54f1646de5f3274fbx" rotation={[Math.PI / 2, 0, 0]}>
+            <group name="Object_2">
+              <group name="RootNode">
+          
+                <group name="Cylinder013" position={[5,10,-80]} rotation={[0, -0.05, 0.37]} scale={[34.99, 34.99, 3.93]}>
+                  <mesh name="Cylinder013_Material024_0" geometry={nodes.Cylinder013_Material024_0.geometry} material={materials['Material.024']} material-transparent="true" material-opacity="0.2" />
+                  <mesh name="Cylinder013_Material003_0" geometry={nodes.Cylinder013_Material003_0.geometry} material={materials['Material.003']} material-transparent="true" material-opacity="0.2" />
+                  <mesh name="Cylinder013_Material004_0" geometry={nodes.Cylinder013_Material004_0.geometry} material={materials['Material.004']} material-transparent="true" material-opacity="0.2"/>
                 </group>
               
               </group>
@@ -319,6 +523,33 @@ function Model14(props) {
                   <mesh name="Cylinder008_Material022_0" geometry={nodes.Cylinder008_Material022_0.geometry} material={materials['Material.022']} />
                   <mesh name="Cylinder008_Material023_0" geometry={nodes.Cylinder008_Material023_0.geometry} material={materials['Material.023']} />
                   <mesh name="Cylinder008_Material020_0" geometry={nodes.Cylinder008_Material020_0.geometry} material={materials['Material.020']} />
+                </group>
+                
+              </group>
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
+function Model140(props) {
+  const group = useRef()
+  const { nodes, materials, animations } = useGLTF('/badge/scene.gltf')
+  const { actions } = useAnimations(animations, group)
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+          <group name="eeebe696fe144016b54f1646de5f3274fbx" rotation={[Math.PI / 2, 0, 0]}>
+            <group name="Object_2">
+              <group name="RootNode">
+              
+                <group name="Cylinder008" position={[0,3,-80]} rotation={[0, -0.05, 0.8]}scale={[25.25, 25.25, 4.15]}>
+                  <mesh name="Cylinder008_Material021_0" geometry={nodes.Cylinder008_Material021_0.geometry} material={materials['Material.021']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Cylinder008_Material022_0" geometry={nodes.Cylinder008_Material022_0.geometry} material={materials['Material.022']} material-transparent="true" material-opacity="0.2" />
+                  <mesh name="Cylinder008_Material023_0" geometry={nodes.Cylinder008_Material023_0.geometry} material={materials['Material.023']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Cylinder008_Material020_0" geometry={nodes.Cylinder008_Material020_0.geometry} material={materials['Material.020']} material-transparent="true" material-opacity="0.2"/>
                 </group>
                 
               </group>
@@ -363,6 +594,39 @@ function Model15(props) {
   )
 }
 
+function Model150(props) {
+  const group = useRef()
+  const { nodes, materials, animations } = useGLTF('/badge/scene.gltf')
+  const { actions } = useAnimations(animations, group)
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+          <group name="eeebe696fe144016b54f1646de5f3274fbx" rotation={[Math.PI / 2, 0, 0]}>
+            <group name="Object_2">
+              <group name="RootNode">
+              
+                  <group name="Plane021"  position={[0,0,-80]} rotation={[0, -0.05, 0.8]} scale={13.56}>
+                  <mesh name="Plane021_Material018_0" geometry={nodes.Plane021_Material018_0.geometry} material={materials['Material.018']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane021_Material009_0" geometry={nodes.Plane021_Material009_0.geometry} material={materials['Material.009']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane021_Material008_0" geometry={nodes.Plane021_Material008_0.geometry} material={materials['Material.008']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane021_Material015_0" geometry={nodes.Plane021_Material015_0.geometry} material={materials['Material.015']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane021_Material010_0" geometry={nodes.Plane021_Material010_0.geometry} material={materials['Material.010']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane021_Material006_0" geometry={nodes.Plane021_Material006_0.geometry} material={materials['Material.006']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane021_Material011_0" geometry={nodes.Plane021_Material011_0.geometry} material={materials['Material.011']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane021_Material007_0" geometry={nodes.Plane021_Material007_0.geometry} material={materials['Material.007']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane021_Material019_0" geometry={nodes.Plane021_Material019_0.geometry} material={materials['Material.019']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane021_Material013_0" geometry={nodes.Plane021_Material013_0.geometry} material={materials['Material.013']} material-transparent="true" material-opacity="0.2"/>
+                  <mesh name="Plane021_Material004_0" geometry={nodes.Plane021_Material004_0.geometry} material={materials['Material.004']} material-transparent="true" material-opacity="0.2"/>
+                </group>
+              </group>
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
 function Model16(props) {
   const { nodes, materials } = useGLTF('/badge2/scene.gltf')
   return (
@@ -377,13 +641,36 @@ function Model16(props) {
     </group>
   )
 }
-
+function Model160(props) {
+  const { nodes, materials } = useGLTF('/badge2/scene.gltf')
+  return (
+    <group {...props} dispose={null}>
+      <group rotation={[-Math.PI / 2, 0, 0]}>
+        <group rotation={[Math.PI / 2, 3, 1.5]} scale={0.4}>
+          <group rotation={[-Math.PI, 0, -Math.PI]}>
+            <mesh geometry={nodes.BadgeSeason4_Badge_LegendsDiamond_PBR_0.geometry} material={materials.Badge_LegendsDiamond_PBR} material-transparent="true" material-opacity="0.2"/>
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
 function Model17(props) {
   const { nodes, materials } = useGLTF('/badge3/scene.gltf')
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={0.075}>
         <mesh geometry={nodes.Object_2.geometry} material={materials.DefaultMaterial} />
+      </group>
+    </group>
+  )
+}
+function Model170(props) {
+  const { nodes, materials } = useGLTF('/badge3/scene.gltf')
+  return (
+    <group {...props} dispose={null}>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={0.075}>
+        <mesh geometry={nodes.Object_2.geometry} material={materials.DefaultMaterial} material-transparent="true" material-opacity="0.2"/>
       </group>
     </group>
   )
@@ -425,6 +712,39 @@ function Model18(props) {
   )
 }
 
+function Model180(props) {
+  const group = useRef()
+  const { nodes, materials, animations } = useGLTF('/badge4/scene.gltf')
+  const { actions } = useAnimations(animations, group)
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model" position={[0,0,-4]}  rotation={[-Math.PI / 2, 0, 0]} scale={1.7}>
+          <group name="29a0177e54924335988f7c35f7183ffbfbx" rotation={[Math.PI / 7, 0, 0]} scale={0.025}>
+            <group name="Object_2">
+              <group name="RootNode">
+                <group name="Sphere" rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+                  <mesh name="Sphere_Material001_0" geometry={nodes.Sphere_Material001_0.geometry} material={materials['Material.001']} material-transparent="true" material-opacity="0.2" />
+                </group>
+                <group name="Sphere001" rotation={[-Math.PI / 2, 0, -1.07]} scale={100}>
+                  <mesh name="Sphere001_Material002_0" geometry={nodes.Sphere001_Material002_0.geometry} material={materials['Material.002']} material-transparent="true" material-opacity="0.2" />
+                </group>
+                <group name="Sun" position={[-822.36, 294.31, 360.56]} rotation={[-1.73, 1.34, 2.48]} scale={100}>
+                  <group name="Object_11" rotation={[Math.PI / 2, 0, 0]}>
+                    <group name="Object_12" />
+                  </group>
+                </group>
+                <group name="Camera" position={[-340.34, 76.73, 63.77]} rotation={[0, 0.2, -0.21]} scale={100}>
+                  <group name="Object_9" />
+                </group>
+              </group>
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  )
+}
 function Model19(props) {
   const { nodes, materials } = useGLTF('/badge5/scene.gltf')
   return (
@@ -435,6 +755,21 @@ function Model19(props) {
           <mesh geometry={nodes.Object_8.geometry} material={materials.Police_Badge} />
           <mesh geometry={nodes.Object_10.geometry} material={materials.Police_Badge} />
           <mesh geometry={nodes.Object_4.geometry} material={materials.Police_Badge} />
+        </group>
+      </group>
+    </group>
+  )
+}
+function Model190(props) {
+  const { nodes, materials } = useGLTF('/badge5/scene.gltf')
+  return (
+    <group {...props} dispose={null}>
+      <group position={[0, 0, 1]} rotation={[-0.01, -0.01, 0]} scale={46}>
+        <group rotation={[Math.PI / 2, 0, 0]}>
+          <mesh geometry={nodes.Object_6.geometry} material={materials.Police_Badge} material-transparent="true" material-opacity="0.2" />
+          <mesh geometry={nodes.Object_8.geometry} material={materials.Police_Badge} material-transparent="true" material-opacity="0.2" />
+          <mesh geometry={nodes.Object_10.geometry} material={materials.Police_Badge} material-transparent="true" material-opacity="0.2" />
+          <mesh geometry={nodes.Object_4.geometry} material={materials.Police_Badge} material-transparent="true" material-opacity="0.2" />
         </group>
       </group>
     </group>
@@ -465,9 +800,10 @@ function Model20(props) {
 
 
 function ChildMainPage() {
+  
   const level = 1
   const value = level*11.2
-  const mileage = level*98+5
+  const mileage = level*100+12
   const nickname = '어린왕자'
   if (level ===1 ){
   return (
@@ -494,6 +830,7 @@ function ChildMainPage() {
       </div>
       
         <div className= "info"  >
+          <div className= "infogroup">
             <div className = "canvasProfile">
                 <Canvas   id="person" >
                 <Suspense fallback={null}>
@@ -504,136 +841,207 @@ function ChildMainPage() {
                 </Suspense> 
                 </Canvas>
             <div className='characterInfo'>
-            <div >Lv.{level}   {nickname}</div>
+            <div >Lv.{level}   {nickname} </div>
+
             </div>
             </div>
             <div className = "badges">
                 <div className = "canvasBadge">
-                    <Canvas  id="badge1" >
+                    {level<1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model100 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=1 && <Canvas  id="badge1" >
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
                         <Model10 />
-                        {level<1 && <Model20/>}
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
-                    </Canvas>
+                    </Canvas>}
                 </div>
-                {/* <div className = "canvasLock">
-                    <Canvas  id="lock1" >
+                <div className = "canvasBadge">
+                    {level<2 && <Canvas  id="badge2" >
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                        {level<1 && <Model20/>}
+                        <Model110 />
+                        <Model20/>
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
-                    </Canvas>
-                </div> */}
-                <div className = "canvasBadge">
-                    <Canvas  id="badge2  " >
+                    </Canvas>}
+                    {level>=2 && <Canvas  id="badge2" >
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
                         <Model11 />
-                        {level<2 && <Model20/>}
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
-                    </Canvas>
+                    </Canvas>}
                 </div>
                 <div className = "canvasBadge">
-                    <Canvas id="badge3" >
+                    {level<3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model120 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=3 && <Canvas  id="badge3" >
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
                         <Model12 />
-                        {level<3 && <Model20/>}
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
-                    </Canvas>
+                    </Canvas>}
                 </div>
                 <div className = "canvasBadge">
-                    <Canvas  id="badge4" >
+                    {level<4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model130 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=4 && <Canvas  id="badge4" >
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
                         <Model13 />
-                        {level<4 && <Model20/>}
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
-                    </Canvas>
+                    </Canvas>}
                 </div>
                 <div className = "canvasBadge">
-                    <Canvas  id="badge5" >
+                    {level<5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model140 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=5 && <Canvas  id="badge5" >
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
                         <Model14 />
-                        {level<5 && <Model20/>}
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
-                    </Canvas>
+                    </Canvas>}
                 </div>
           
                 <div className = "canvasBadge">
-                    <Canvas  id="badge6" >
+                    {level<6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model150 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=6 && <Canvas  id="badge6" >
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
                         <Model15 />
-                        {level<6 && <Model20/>}
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
-                    </Canvas>
+                    </Canvas>}
                 </div>
                 <div className = "canvasBadge">
-                    <Canvas  id="badge7" >
+                    {level<7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model90 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=7 && <Canvas  id="badge7" >
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
                         <Model9 />
-                        {level<7 && <Model20/>}
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
-                    </Canvas>
+                    </Canvas>}
                 </div>
                 <div className = "canvasBadge">
-                    <Canvas id="badge8" >
+                    {level<8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model170 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=8 && <Canvas  id="badge8" >
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
                         <Model17 />
-                        {level<8 && <Model20/>}
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
-                    </Canvas>
+                    </Canvas>}
                 </div>
                 <div className = "canvasBadge">
-                    <Canvas  id="badge9" >
-                    <Suspense fallback={null}>
-                        <ambientLight />
-                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000,100,100]} castShadow />
-                        <Model19 />
-                        {level<9 && <Model20/>}
-                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                    </Suspense> 
-                    </Canvas>
-                </div>
-                <div className = "canvasBadge">
-                    <Canvas  id="badge10" >
+                    {level<9 && <Canvas  id="badge9" >
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          {level<10 && <Model20/>}
+                        <Model190 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model19 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model180 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
                         <Model18 />
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
-                    </Canvas>
+                    </Canvas>}
                 </div>
-            
             </div>
             
             <div className= "Mission">
               <Mission />
+            </div>
             </div>
             <div className= "game">
             <div className = "gameButton blinking">
@@ -648,8 +1056,9 @@ function ChildMainPage() {
                 <Suspense fallback={null}>
                 <ambientLight />
                 <spotLight intensity={5} angle={0.1} penumbra={1} position={[10,15,10]} castShadow />        
-                <Model />
+                <Model00 />
                 <Model2 />
+                <Model0 />
                 <OrbitControls enablePan={true} enableZoom={true} rotateSpeed = {0.2} enableRotate={true} />
                 </Suspense> 
             </Canvas>
@@ -681,6 +1090,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info2"  >
+            <div className = "infogroup2">
               <div className = "canvasProfile2">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -695,132 +1105,202 @@ function ChildMainPage() {
               </div>
               </div>
               <div className = "badges2">
-                  <div className = "canvasBadge2">
-                      <Canvas  id="badge1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model10 />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  {/* <div className = "canvasLock">
-                      <Canvas  id="lock1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div> */}
-                  <div className = "canvasBadge2">
-                      <Canvas  id="badge2  " >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model11 />
-                          {level<2 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge2">
-                      <Canvas id="badge3" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model12 />
-                          {level<3 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge2">
-                      <Canvas  id="badge4" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model13 />
-                          {level<4 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge2">
-                      <Canvas  id="badge5" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model14 />
-                          {level<5 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-            
-                  <div className = "canvasBadge2">
-                      <Canvas  id="badge6" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model15 />
-                          {level<6 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge2">
-                      <Canvas  id="badge7" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model9 />
-                          {level<7 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge2">
-                      <Canvas id="badge8" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model17 />
-                          {level<8 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge2">
-                      <Canvas  id="badge9" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000,100,100]} castShadow />
-                          <Model19 />
-                          {level<9 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge2">
-                      <Canvas  id="badge10" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                            {level<10 && <Model20/>}
-                          <Model18 />
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-              
-              </div>
+                <div className = "canvasBadge">
+                    {level<1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model100 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model10 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model110 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model11 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model120 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model12 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model130 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model13 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model140 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model14 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+          
+                <div className = "canvasBadge">
+                    {level<6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model150 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model15 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model90 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model9 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model170 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model17 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model190 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model19 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model180 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model18 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+            </div>
               
               <div>
                 <Mission />
+              </div>
               </div>
               <div className= "game">
               <div className = "gameButton blinking">
@@ -869,6 +1349,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info3"  >
+          <div className= "infogroup3">
               <div className = "canvasProfile3">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -883,132 +1364,202 @@ function ChildMainPage() {
               </div>
               </div>
               <div className = "badges3">
-                  <div className = "canvasBadge3">
-                      <Canvas  id="badge1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model10 />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  {/* <div className = "canvasLock">
-                      <Canvas  id="lock1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div> */}
-                  <div className = "canvasBadge3">
-                      <Canvas  id="badge2  " >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model11 />
-                          {level<2 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge3">
-                      <Canvas id="badge3" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model12 />
-                          {level<3 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge3">
-                      <Canvas  id="badge4" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model13 />
-                          {level<4 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge3">
-                      <Canvas  id="badge5" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model14 />
-                          {level<5 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-            
-                  <div className = "canvasBadge3">
-                      <Canvas  id="badge6" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model15 />
-                          {level<6 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge3">
-                      <Canvas  id="badge7" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model9 />
-                          {level<7 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge3">
-                      <Canvas id="badge8" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model17 />
-                          {level<8 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge3">
-                      <Canvas  id="badge9" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000,100,100]} castShadow />
-                          <Model19 />
-                          {level<9 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge3">
-                      <Canvas  id="badge10" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                            {level<10 && <Model20/>}
-                          <Model18 />
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-              
-              </div>
+                <div className = "canvasBadge">
+                    {level<1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model100 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model10 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model110 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model11 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model120 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model12 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model130 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model13 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model140 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model14 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+          
+                <div className = "canvasBadge">
+                    {level<6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model150 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model15 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model90 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model9 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model170 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model17 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model190 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model19 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model180 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model18 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+            </div>
               
               <div>
                 <Mission />
+              </div>
               </div>
               <div className= "game">
               <div className = "gameButton blinking">
@@ -1057,6 +1608,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info4"  >
+          <div className= "infogroup4">
               <div className = "canvasProfile4">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -1071,132 +1623,202 @@ function ChildMainPage() {
               </div>
               </div>
               <div className = "badges4">
-                  <div className = "canvasBadge4">
-                      <Canvas  id="badge1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model10 />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  {/* <div className = "canvasLock">
-                      <Canvas  id="lock1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div> */}
-                  <div className = "canvasBadge4">
-                      <Canvas  id="badge2  " >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model11 />
-                          {level<2 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge4">
-                      <Canvas id="badge3" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model12 />
-                          {level<3 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge4">
-                      <Canvas  id="badge4" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model13 />
-                          {level<4 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge4">
-                      <Canvas  id="badge5" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model14 />
-                          {level<5 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-            
-                  <div className = "canvasBadge4">
-                      <Canvas  id="badge6" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model15 />
-                          {level<6 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge4">
-                      <Canvas  id="badge7" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model9 />
-                          {level<7 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge4">
-                      <Canvas id="badge8" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model17 />
-                          {level<8 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge4">
-                      <Canvas  id="badge9" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000,100,100]} castShadow />
-                          <Model19 />
-                          {level<9 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge4">
-                      <Canvas  id="badge10" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                            {level<10 && <Model20/>}
-                          <Model18 />
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-              
-              </div>
+                <div className = "canvasBadge">
+                    {level<1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model100 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model10 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model110 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model11 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model120 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model12 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model130 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model13 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model140 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model14 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+          
+                <div className = "canvasBadge">
+                    {level<6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model150 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model15 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model90 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model9 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model170 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model17 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model190 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model19 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model180 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model18 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+            </div>
               
               <div>
                 <Mission />
+              </div>
               </div>
               <div className= "game">
               <div className = "gameButton blinking">
@@ -1245,6 +1867,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info5"  >
+          <div className= "infogroup5">
               <div className = "canvasProfile5">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -1259,132 +1882,202 @@ function ChildMainPage() {
               </div>
               </div>
               <div className = "badges5">
-                  <div className = "canvasBadge5">
-                      <Canvas  id="badge1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model10 />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  {/* <div className = "canvasLock">
-                      <Canvas  id="lock1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div> */}
-                  <div className = "canvasBadge5">
-                      <Canvas  id="badge2  " >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model11 />
-                          {level<2 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge5">
-                      <Canvas id="badge3" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model12 />
-                          {level<3 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge5">
-                      <Canvas  id="badge4" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model13 />
-                          {level<4 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge5">
-                      <Canvas  id="badge5" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model14 />
-                          {level<5 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-            
-                  <div className = "canvasBadge5">
-                      <Canvas  id="badge6" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model15 />
-                          {level<6 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge5">
-                      <Canvas  id="badge7" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model9 />
-                          {level<7 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge5">
-                      <Canvas id="badge8" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model17 />
-                          {level<8 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge5">
-                      <Canvas  id="badge9" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000,100,100]} castShadow />
-                          <Model19 />
-                          {level<9 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge5">
-                      <Canvas  id="badge10" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                            {level<10 && <Model20/>}
-                          <Model18 />
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-              
-              </div>
+              <div className = "canvasBadge">
+                    {level<1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model100 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model10 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model110 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model11 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model120 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model12 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model130 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model13 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model140 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model14 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+          
+                <div className = "canvasBadge">
+                    {level<6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model150 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model15 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model90 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model9 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model170 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model17 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model190 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model19 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model180 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model18 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+            </div>
               
               <div>
                 <Mission />
+              </div>
               </div>
               <div className= "game">
               <div className = "gameButton blinking">
@@ -1433,6 +2126,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info6"  >
+          <div className= "infogroup6">
               <div className = "canvasProfile6">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -1447,132 +2141,202 @@ function ChildMainPage() {
               </div>
               </div>
               <div className = "badges6">
-                  <div className = "canvasBadge6">
-                      <Canvas  id="badge1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model10 />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  {/* <div className = "canvasLock">
-                      <Canvas  id="lock1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div> */}
-                  <div className = "canvasBadge6">
-                      <Canvas  id="badge2  " >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model11 />
-                          {level<2 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge6">
-                      <Canvas id="badge3" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model12 />
-                          {level<3 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge6">
-                      <Canvas  id="badge4" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model13 />
-                          {level<4 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge6">
-                      <Canvas  id="badge5" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model14 />
-                          {level<5 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-            
-                  <div className = "canvasBadge6">
-                      <Canvas  id="badge6" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model15 />
-                          {level<6 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge6">
-                      <Canvas  id="badge7" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model9 />
-                          {level<7 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge6">
-                      <Canvas id="badge8" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model17 />
-                          {level<8 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge6">
-                      <Canvas  id="badge9" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000,100,100]} castShadow />
-                          <Model19 />
-                          {level<9 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge6">
-                      <Canvas  id="badge10" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                            {level<10 && <Model20/>}
-                          <Model18 />
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-              
-              </div>
+              <div className = "canvasBadge">
+                    {level<1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model100 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model10 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model110 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model11 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model120 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model12 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model130 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model13 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model140 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model14 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+          
+                <div className = "canvasBadge">
+                    {level<6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model150 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model15 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model90 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model9 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model170 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model17 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model190 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model19 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model180 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model18 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+            </div>
               
               <div>
                 <Mission />
+              </div>
               </div>
               <div className= "game">
               <div className = "gameButton blinking">
@@ -1621,6 +2385,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info7"  >
+          <div className= "infogroup7">
               <div className = "canvasProfile7">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -1635,132 +2400,202 @@ function ChildMainPage() {
               </div>
               </div>
               <div className = "badges7">
-                  <div className = "canvasBadge7">
-                      <Canvas  id="badge1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model10 />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  {/* <div className = "canvasLock">
-                      <Canvas  id="lock1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div> */}
-                  <div className = "canvasBadge7">
-                      <Canvas  id="badge2  " >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model11 />
-                          {level<2 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge7">
-                      <Canvas id="badge3" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model12 />
-                          {level<3 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge7">
-                      <Canvas  id="badge4" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model13 />
-                          {level<4 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge7">
-                      <Canvas  id="badge5" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model14 />
-                          {level<5 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-            
-                  <div className = "canvasBadge7">
-                      <Canvas  id="badge6" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model15 />
-                          {level<6 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge7">
-                      <Canvas  id="badge7" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model9 />
-                          {level<7 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge7">
-                      <Canvas id="badge8" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model17 />
-                          {level<8 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge7">
-                      <Canvas  id="badge9" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000,100,100]} castShadow />
-                          <Model19 />
-                          {level<9 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge7">
-                      <Canvas  id="badge10" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                            {level<10 && <Model20/>}
-                          <Model18 />
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-              
-              </div>
+              <div className = "canvasBadge">
+                    {level<1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model100 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model10 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model110 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model11 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model120 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model12 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model130 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model13 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model140 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model14 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+          
+                <div className = "canvasBadge">
+                    {level<6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model150 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model15 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model90 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model9 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model170 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model17 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model190 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model19 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model180 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model18 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+            </div>
               
               <div>
                 <Mission />
+              </div>
               </div>
               <div className= "game">
               <div className = "gameButton blinking">
@@ -1809,6 +2644,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info8"  >
+          <div className= "infogroup8">
               <div className = "canvasProfile8">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -1823,132 +2659,202 @@ function ChildMainPage() {
               </div>
               </div>
               <div className = "badges8">
-                  <div className = "canvasBadge8">
-                      <Canvas  id="badge1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model10 />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  {/* <div className = "canvasLock">
-                      <Canvas  id="lock1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div> */}
-                  <div className = "canvasBadge8">
-                      <Canvas  id="badge2  " >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model11 />
-                          {level<2 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge8">
-                      <Canvas id="badge3" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model12 />
-                          {level<3 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge8">
-                      <Canvas  id="badge4" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model13 />
-                          {level<4 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge8">
-                      <Canvas  id="badge5" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model14 />
-                          {level<5 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-            
-                  <div className = "canvasBadge8">
-                      <Canvas  id="badge6" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model15 />
-                          {level<6 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge8">
-                      <Canvas  id="badge7" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model9 />
-                          {level<7 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge8">
-                      <Canvas id="badge8" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model17 />
-                          {level<8 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge8">
-                      <Canvas  id="badge9" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000,100,100]} castShadow />
-                          <Model19 />
-                          {level<9 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge8">
-                      <Canvas  id="badge10" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                            {level<10 && <Model20/>}
-                          <Model18 />
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-              
-              </div>
+              <div className = "canvasBadge">
+                    {level<1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model100 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model10 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model110 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model11 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model120 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model12 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model130 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model13 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model140 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model14 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+          
+                <div className = "canvasBadge">
+                    {level<6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model150 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model15 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model90 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model9 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model170 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model17 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model190 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model19 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model180 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model18 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+            </div>
               
               <div>
                 <Mission />
+              </div>
               </div>
               <div className= "game">
               <div className = "gameButton blinking">
@@ -1997,6 +2903,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info9"  >
+          <div className= "infogroup9">
               <div className = "canvasProfile9">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -2011,132 +2918,202 @@ function ChildMainPage() {
               </div>
               </div>
               <div className = "badges9">
-                  <div className = "canvasBadge9">
-                      <Canvas  id="badge1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model10 />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  {/* <div className = "canvasLock">
-                      <Canvas  id="lock1" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          {level<1 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div> */}
-                  <div className = "canvasBadge9">
-                      <Canvas  id="badge2  " >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model11 />
-                          {level<2 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge9">
-                      <Canvas id="badge3" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model12 />
-                          {level<3 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge9">
-                      <Canvas  id="badge4" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model13 />
-                          {level<4 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge9">
-                      <Canvas  id="badge5" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model14 />
-                          {level<5 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-            
-                  <div className = "canvasBadge9">
-                      <Canvas  id="badge6" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model15 />
-                          {level<6 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge9">
-                      <Canvas  id="badge7" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model9 />
-                          {level<7 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge9">
-                      <Canvas id="badge8" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                          <Model17 />
-                          {level<8 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge9">
-                      <Canvas  id="badge9" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000,100,100]} castShadow />
-                          <Model19 />
-                          {level<9 && <Model20/>}
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-                  <div className = "canvasBadge9">
-                      <Canvas  id="badge10" >
-                      <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
-                            {level<10 && <Model20/>}
-                          <Model18 />
-                          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
-                      </Suspense> 
-                      </Canvas>
-                  </div>
-              
-              </div>
+              <div className = "canvasBadge">
+                    {level<1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model100 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=1 && <Canvas  id="badge1" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model10 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model110 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=2 && <Canvas  id="badge2" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model11 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model120 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=3 && <Canvas  id="badge3" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model12 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model130 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=4 && <Canvas  id="badge4" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model13 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model140 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=5 && <Canvas  id="badge5" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model14 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+          
+                <div className = "canvasBadge">
+                    {level<6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model150 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=6 && <Canvas  id="badge6" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model15 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model90 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=7 && <Canvas  id="badge7" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model9 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model170 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=8 && <Canvas  id="badge8" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model17 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model190 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=9 && <Canvas  id="badge9" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model19 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+                <div className = "canvasBadge">
+                    {level<10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model180 />
+                        <Model20/>
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {level>=10 && <Canvas  id="badge10" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={1} position={[1000, 100,100]} castShadow />
+                        <Model18 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                </div>
+            </div>
               
               <div>
                 <Mission />
+              </div>
               </div>
               <div className= "game">
               <div className = "gameButton blinking">
@@ -2185,6 +3162,7 @@ function ChildMainPage() {
         </div>
         
           <div className= "info10"  >
+          <div className= "infogroup10">
               <div className = "canvasProfile10">
                   <Canvas   id="person" >
                   <Suspense fallback={null}>
@@ -2326,6 +3304,7 @@ function ChildMainPage() {
               <div>
                 <Mission />
               </div>
+              </div>
               <div className= "game">
               <div className = "gameButton blinking">
                 <Link to="/game">GAME</Link>
@@ -2341,6 +3320,7 @@ function ChildMainPage() {
                   <spotLight intensity={5} angle={0.1} penumbra={1} position={[10,15,10]} castShadow />        
                   <Model />
                   <Model2 />
+                  <Model0 />
                   <OrbitControls enablePan={true} enableZoom={true} rotateSpeed = {0.2} enableRotate={true} />
                   </Suspense> 
               </Canvas>

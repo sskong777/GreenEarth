@@ -20,6 +20,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/member/**")
                 .addPathPatterns("/mission/**")
                 .addPathPatterns("/reward/**")
-                .excludePathPatterns("/member/login/**", "/kakao/login", "/test", "/swagger-ui/**");
+                .addPathPatterns("/game/**")
+                .excludePathPatterns("/member/login/**", "/member/token/reissue", "/kakao/login", "/test", "/swagger-ui/**");
     }
 }
