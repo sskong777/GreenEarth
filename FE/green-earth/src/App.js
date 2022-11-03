@@ -11,6 +11,7 @@ import ProfilePage from "./pages/ProfilePage";
 import GamePage from "./pages/GamePage";
 import GamePicturePage from "./pages/GamePicturePage";
 import GameRecyclePage from "./pages/GameRecyclePage";
+import MissionInfoPage from "./pages/MissionInfoPage";
 
 import OauthRedirectPage from "./pages/OauthRedirectPage";
 
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/game/recycle" element={<GameRecyclePage />} />
 
           <Route path="/oauth/redirect" element={<OauthRedirectPage />} />
+          <Route path="/mission" element={<MissionInfoPage />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -9,7 +9,6 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -30,9 +29,10 @@ public class MissionLog extends BaseTimeEntity {
     @CreatedDate
     private LocalDateTime createdAt;
 
+    @Column(length = 25)
     private String parentNickname;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id")
     @JsonBackReference
     private Mission mission;
