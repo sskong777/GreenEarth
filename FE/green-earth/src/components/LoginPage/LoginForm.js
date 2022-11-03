@@ -1,56 +1,57 @@
 import React, { useState } from "react";
 import { useAuthCallback } from "./../../functions/useAuthCallback";
+
+import "../../style/LoginPage/LoginForm.css";
+
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
+  const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
   const { loginCallback } = useAuthCallback();
 
   // KAKAO LOGIN
   const REST_API_KEY = `2045a52f644e0bfc27a039cf2bef8568`;
-  const REDIRECT_URI = `http://localhost:5173/oauth/redirect`;
-  // const REDIRECT_URI = `https://j7d210.p.ssafy.io/oauth/redirect`;
+  const REDIRECT_URI = `http://localhost:3000/oauth/redirect`;
+  // const REDIRECT_URI = `http://k7d206.p.ssafy.io/oauth/redirect`;
 
   const url = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    if (!email.trim() && !password.trim()) {
+    if (!id.trim() && !password.trim()) {
       alert("아이디와 비밀번호를 입력해주세요");
       return;
-    } else if (!email.trim()) {
+    } else if (!id.trim()) {
       alert("아이디를 입력해주세요");
       return;
     } else if (!password.trim()) {
       alert("비밀번호를 입력해주세요");
       return;
     } else {
-      loginCallback(email, password);
+      loginCallback(id, password);
     }
   };
 
   return (
-    <div>
+    <div className="LoginForm">
       <h1>환영합니다!</h1>
       <h2>아이 회원은 아이디로 로그인, 보호자는 카카오 로그인 하세요</h2>
 
-      <form method="post" onSubmit={submitHandler}>
+      <form method="post" onSubmit={submitHandler} className="LoginFormBody">
         {/* 아이디 */}
-        <div>
-          <label htmlFor="email">아이디</label>
+        <div className="LoginElement">
           <input
-            type="email"
-            name="email"
-            value={email}
+            type="id"
+            name="id"
+            value={id}
             placeholder="아이디를 입력하세요"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setId(e.target.value)}
           />
         </div>
 
         {/* 비밀번호 */}
-        <div>
-          <label htmlFor="password">비밀번호</label>
+        <div className="LoginElement">
           <input
             type="password"
             name="password"
@@ -62,11 +63,11 @@ const LoginForm = () => {
 
         {/* 버튼 */}
         <div>
-          <button type="">로그인</button>
+          <button className="LoginButton">로그인</button>
         </div>
-
-        <h1>--보호자 로그인--</h1>
       </form>
+
+      <div className="LoginLine"></div>
 
       {/* 카카오 로그인 */}
       <div>
@@ -75,7 +76,7 @@ const LoginForm = () => {
             window.open(url);
           }}
         >
-          카카오 로그인
+          <img src={"assets/images/kakao_login_medium_wide.png"} />
         </button>
       </div>
     </div>

@@ -3,8 +3,14 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
-export const jwtTokenState = atom({
-  key: "jwtTokenState",
+export const refreshTokenState = atom({
+  key: "refreshTokenState",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const accessTokenState = atom({
+  key: "accessTokenState",
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
