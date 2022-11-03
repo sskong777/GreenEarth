@@ -20,16 +20,19 @@ public class Parent {
     @Column(name = "parent_id")
     private int id;
 
+    @Column(length = 50)
     private String email;
 
+    @Column(length = 25)
     private String nickname;
 
+    @Column(length = 25)
     @Enumerated(EnumType.STRING)
     private Role role;
 
     @JsonBackReference
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Child> childList = new ArrayList<>();
+    private final List<Child> childList = new ArrayList<>();
 
 
 }

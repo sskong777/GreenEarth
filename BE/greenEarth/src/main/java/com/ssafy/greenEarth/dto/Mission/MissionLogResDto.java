@@ -1,28 +1,36 @@
 package com.ssafy.greenEarth.dto.Mission;
 
-import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Mission;
 import com.ssafy.greenEarth.domain.MissionLog;
-import lombok.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
 public class MissionLogResDto {
 
+    @Schema(description = "미션 로그 PK")
     private int id;
 
+    @Schema(description = "미션 완료 시간")
     private LocalDateTime clearedAt;
 
+    @Schema(description = "미션 완료 여부")
     private boolean isPermitted;
 
+    @Schema(description = "미션 생성 시간")
     private LocalDateTime createdAt;
 
+    @Schema(description = "보호자 닉네임")
     private String parentNickname;
 
+    @Schema(description = "미션")
     private Mission mission;
 
+    @Schema(description = "미션 수행하는 아이")
     private int child_id;
 
     public void setClearedAt(LocalDateTime clearedAt) {
