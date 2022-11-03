@@ -1,12 +1,9 @@
 package com.ssafy.greenEarth.dto.Member;
 
-import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Parent;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
