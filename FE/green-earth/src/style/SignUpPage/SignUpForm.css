@@ -1,0 +1,25 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* SignUpForm */
+
+.SignUpForm {
+  @apply flex justify-end items-start min-w-full space-x-5 mt-10;
+}
+
+.NicknameCheckForm {
+  @apply flex flex-col items-start py-2 px-8 bg-rose-500 text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-opacity-75;
+}
+
+.SignUpFormBody {
+  @apply flex flex-col space-y-5;
+}
+
+.SignUpFormBodyElement {
+  @apply flex rounded border-4 border-transparent outline outline-offset-2 outline-cyan-500 py-1 px-3 space-x-5;
+}
+
+.SignUpButton {
+  @apply flex flex-col py-4 px-20 bg-cyan-500 text-white font-semibold rounded-lg shadow-md hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+}

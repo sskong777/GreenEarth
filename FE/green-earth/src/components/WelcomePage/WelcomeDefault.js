@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../../style/WelcomeDefault.css";
+import "../../style/WelcomePage/WelcomeDefault.css";
 
 // 웰컴 페이지 기본 컴포넌트
 const WelcomeDefault = (props) => {
