@@ -9,6 +9,7 @@ export const useRewardCallback = () => {
   const [logInToken, setLogInToken] = useRecoilState(logInTokenState);
   const [rewardList, setRewardList] = useRecoilState(rewardListState);
 
+  // 보상 목록 조회 콜백 함수
   const rewardListCallback = async (childId) => {
     axios({
       method: "get",
@@ -31,6 +32,7 @@ export const useRewardCallback = () => {
       });
   };
 
+  // 보상 설정 콜백 함수
   const rewardSubmitCallback = async (
     rewardName,
     rewardCondition,
@@ -63,6 +65,7 @@ export const useRewardCallback = () => {
       });
   };
 
+  // 보상 지급 콜백 함수
   const rewardPayCallback = async (rewardId) => {
     axios({
       method: "delete",
