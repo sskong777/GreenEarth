@@ -1,0 +1,13 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* LogInPage */
+
+.LogInPage {
+  @apply flex flex-col justify-center items-center;
+}
+
+.LogoImage {
+  @apply w-2/3;
+}
