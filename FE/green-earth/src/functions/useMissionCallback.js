@@ -32,10 +32,9 @@ export const useMissionCallback = () => {
     })
       .then((response) => {
         if (response.data) {
-          console.log(response.data);
           setMissionList(response.data);
-          console.log("missionList :", missionList);
           console.log("미션 리스트가 조회되었습니다.");
+          console.log("missionList :", response.data);
         }
       })
       .catch((error) => {
@@ -55,10 +54,9 @@ export const useMissionCallback = () => {
     })
       .then((response) => {
         if (response.data) {
-          console.log(response.data);
           setTodayMissionList(response.data);
-          console.log("todayMissionList :", todayMissionList);
           console.log("오늘의 미션 리스트가 조회되었습니다.");
+          console.log("todayMissionList :", response.data);
         }
       })
       .catch((error) => {
@@ -78,10 +76,9 @@ export const useMissionCallback = () => {
     })
       .then((response) => {
         if (response.data) {
-          console.log(response.data);
           setMissionOptionList(response.data);
-          console.log("missionOptionList :", missionOptionList);
           console.log("미션 옵션 정보가 조회되었습니다.");
+          console.log("missionOptionList :", response.data);
         }
       })
       .catch((error) => {
@@ -104,8 +101,8 @@ export const useMissionCallback = () => {
     })
       .then((response) => {
         if (response.data) {
-          console.log(response.data);
           console.log("미션 정보가 등록되었습니다.");
+          console.log("mission :", response.data);
         }
       })
       .catch((error) => {
@@ -128,8 +125,8 @@ export const useMissionCallback = () => {
     })
       .then((response) => {
         if (response.data) {
-          console.log(response.data);
           console.log("미션 정보가 수정되었습니다.");
+          console.log("mission :", response.data);
         }
       })
       .catch((error) => {
@@ -149,8 +146,8 @@ export const useMissionCallback = () => {
     })
       .then((response) => {
         if (response.data) {
-          console.log(response.data);
           console.log("미션이 승인되었습니다.");
+          console.log("mission :", response.data);
         }
       })
       .catch((error) => {
@@ -170,8 +167,8 @@ export const useMissionCallback = () => {
     })
       .then((response) => {
         if (response.data) {
-          console.log(response.data);
           console.log("미션이 거절되었습니다.");
+          console.log("mission :", response.data);
         }
       })
       .catch((error) => {
@@ -191,8 +188,8 @@ export const useMissionCallback = () => {
     })
       .then((response) => {
         if (response.data) {
-          console.log(response.data);
           console.log("미션 승인 요청이 전송되었습니다.");
+          console.log("mission :", response.data);
         }
       })
       .catch((error) => {

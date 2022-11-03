@@ -26,6 +26,7 @@ const ControlMenu = React.memo(({ data, onChange, optionList }) => {
   useEffect(() => {
     if (data) {
       setIsValue(data.mission);
+      setSelected(data.mission);
     }
   }, [data]);
 

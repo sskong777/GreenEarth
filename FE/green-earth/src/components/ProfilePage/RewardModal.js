@@ -11,7 +11,7 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
   const { rewardListCallback, rewardSubmitCallback, rewardPayCallback } =
     useRewardCallback();
 
-  const [rewardInfo, setRewardInfo] = useState();
+  const [rewardInfo, setRewardInfo] = useState("");
   const [rewardGoal, setRewardGoal] = useState("");
   const [rewardGift, setRewardGift] = useState("");
   const [mission, setMission] = useState(

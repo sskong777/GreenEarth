@@ -7,7 +7,7 @@ import { useMissionCallback } from "./../../functions/useMissionCallback";
 
 import MissionList from "./MissionList";
 
-const MissionComponent = (childId) => {
+const MissionComponent = ({ childId }) => {
   const [missionList, setMissionList] = useRecoilState(missionListState);
 
   const { missionListCallback } = useMissionCallback();
@@ -18,7 +18,7 @@ const MissionComponent = (childId) => {
   // 현재 회원의 미션 목록 Axios 요청
   useEffect(() => {
     missionListCallback(childId);
-  }, [missionList]);
+  }, []);
 
   // curDate(오늘 날짜)를 받아서 년 월 일 형식으로 리턴
   const getStringDate = (curDate) => {
