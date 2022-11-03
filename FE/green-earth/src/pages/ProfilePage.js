@@ -20,59 +20,58 @@ import RewardModalChild from "../components/ProfilePage/RewardModalChild";
 const ProfilePage = () => {
   const navigate = useNavigate();
 
+  // URL을 통해 childId 획득
   const { childId } = useParams();
 
+  // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
   const [childInfo, setChildInfo] = useRecoilState(childInfoState);
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
   const [loginToken, setLoginToken] = useRecoilState(logInTokenState);
 
+  // 회원정보, 아이정보 Axios 요청
   const { memberInfoCallback, childInfoCallback } = useAuthCallback();
   const { rewardListCallback } = useRewardCallback();
 
-  const [isParentState, setIsParentState] = useState(false);
+  // 컴포넌트 전환을 위해 배지버튼과 과거미션버튼 상태 확인
   const [isBadge, setIsBadge] = useState(false);
   const [isMission, setIsMission] = useState(false);
 
+  // 모달 전환을 위해 보호자 보상 모달과 아이 보상 모달 상태 확인
   const [modalOpen, setModalOpen] = useState(false);
   const [modalChildOpen, setModalChildOpen] = useState(false);
 
+  // 프로필 페이지에 접근하면 해당 아이정보 Axios 요청
   useEffect(() => {
-    setIsParentState(true);
-  }, []);
+    // 임시 (토큰 연동 시 삭제 예정)
+    memberInfoCallback(loginToken);
 
-  // useEffect(() => {
-  //   if (memberInfo.isParent) {
-  //     setIsParentState(true);
-  //   }
-  // }, [memberInfo]);
-
-  useEffect(() => {
     childInfoCallback(childId);
   }, []);
 
-  const handleClickMemberInfo = () => {
-    memberInfoCallback(loginToken);
-  };
-
+  // 아이 회원 수정 페이지 이동 함수
   const handleClickChildProfile = () => {
     navigate(`/account/${childInfo.childId}`);
   };
 
+  // 배지 목록 확인 컴포넌트 이동 함수
   const handleClickHeaderButton = () => {
     setIsBadge(!isBadge);
     setIsMission(false);
   };
 
+  // 과거 미션 목록 확인 컴포넌트 이동 함수
   const handleClickMenuButton = () => {
     setIsMission(!isMission);
     setIsBadge(false);
   };
 
+  // 보상 목록 설정 모달 이동 함수
   const handleClickRewardButton = () => {
-    rewardListCallback(3);
+    rewardListCallback(childId);
     setModalOpen(true);
   };
 
+  // 보상 목록 확인 모달 이동 함수
   const handleClickRewardChildButton = () => {
     rewardListCallback(childId);
     setModalChildOpen(true);
@@ -80,16 +79,21 @@ const ProfilePage = () => {
 
   return (
     <div className="ProfilePage">
-      {modalOpen ? (
+      {/* 보상 설정 모달 */}
+      {modalOpen && (
         <RewardModal setModalOpen={setModalOpen} childInfo={childInfo} />
-      ) : null}
-      {modalChildOpen ? (
+      )}
+
+      {/* 보상 확인 모달 */}
+      {modalChildOpen && (
         <RewardModalChild
           setModalChildOpen={setModalChildOpen}
           childInfo={childInfo}
         />
-      ) : null}
+      )}
+
       <section className="ProfileHeader">
+        {/* 아이 프로필 사진과 이름 */}
         <div>
           <div className="ChildImage">
             <img src="./../assets/images/girl1.svg" />
@@ -99,7 +103,8 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        <div className="ProfileInfo" onClick={handleClickMemberInfo}>
+        {/* 아이 프로필 정보 */}
+        <div className="ProfileInfo">
           <div className="text-2xl">
             <div>이름</div>
             <div>닉네임</div>
@@ -117,6 +122,7 @@ const ProfilePage = () => {
           </div>
         </div>
         <div>
+          {/* 배지 목록과 뒤로 가기 버튼 */}
           <div className="flex">
             <button
               className="ProfileHeaderButton"
@@ -131,7 +137,9 @@ const ProfilePage = () => {
               뒤로 가기
             </button>
           </div>
-          {!isParentState && (
+
+          {/* 아이라면 보상 확인 버튼 추가 */}
+          {!memberInfo.isParent && (
             <div>
               <button
                 className="ProfileHeaderRewardButton"
@@ -144,7 +152,8 @@ const ProfilePage = () => {
         </div>
       </section>
 
-      {isParentState && (
+      {/* 보호자라면 프로필 메뉴 버튼 추카 */}
+      {memberInfo.isParent && (
         <section className="ProfileMenu">
           <button className="ProfileMenuButton" onClick={handleClickMenuButton}>
             {!isBadge && isMission ? "오늘 미션 목록" : "과거 미션 목록"}
@@ -168,7 +177,8 @@ const ProfilePage = () => {
         <hr />
       </section>
 
-      {isParentState && (
+      {/* 보호자라면 오늘 미션, 배지목록, 과거 미션 컴포넌트 이용 */}
+      {memberInfo.isParent && (
         <>
           {!isBadge && !isMission && (
             <section>
@@ -182,16 +192,18 @@ const ProfilePage = () => {
           )}
           {!isBadge && isMission && (
             <section>
-              <MissionComponent />
+              <MissionComponent childId={childId} />
             </section>
           )}
         </>
       )}
-      {!isParentState && (
+
+      {/* 아이라면 과거 미션, 배지 목록 컴포넌트 이용 */}
+      {!memberInfo.isParent && (
         <>
           {!isBadge && (
             <section className="pt-10">
-              <MissionComponent />
+              <MissionComponent childId={childId} />
             </section>
           )}
           {isBadge && (

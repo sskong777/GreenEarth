@@ -20,10 +20,11 @@ export const useMissionCallback = () => {
     todayMissionListState
   );
 
-  const missionListCallback = async () => {
+  // 전체 미션 콜백 함수
+  const missionListCallback = async (childId) => {
     axios({
       method: "get",
-      url: "/api/mission",
+      url: `/api/mission/child/${childId}/log`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${logInToken}`,
@@ -34,7 +35,7 @@ export const useMissionCallback = () => {
           console.log(response.data);
           setMissionList(response.data);
           console.log("missionList :", missionList);
-          console.log("오늘의 미션 리스트가 조회되었습니다.");
+          console.log("미션 리스트가 조회되었습니다.");
         }
       })
       .catch((error) => {
@@ -42,6 +43,7 @@ export const useMissionCallback = () => {
       });
   };
 
+  // 오늘의 미션 콜백 함수
   const todayMissionListCallback = async (childId) => {
     axios({
       method: "get",
@@ -64,6 +66,7 @@ export const useMissionCallback = () => {
       });
   };
 
+  // 미션 종류 콜백 함수
   const missionOptionListCallback = async () => {
     axios({
       method: "get",
@@ -86,6 +89,7 @@ export const useMissionCallback = () => {
       });
   };
 
+  // 미션 설정 콜백 함수
   const saveMissionCallback = async (childId, missionId) => {
     axios({
       method: "post",
@@ -109,6 +113,7 @@ export const useMissionCallback = () => {
       });
   };
 
+  // 미션 수정 콜백 함수
   const editMissionCallback = async (childId, missionId) => {
     axios({
       method: "put",
@@ -132,6 +137,7 @@ export const useMissionCallback = () => {
       });
   };
 
+  // 미션 승인 콜백 함수
   const permitMissionCallback = async (logId) => {
     axios({
       method: "put",
@@ -152,6 +158,7 @@ export const useMissionCallback = () => {
       });
   };
 
+  // 미션 거절 콜백 함수
   const rejectMissionCallback = async (logId) => {
     axios({
       method: "put",
@@ -172,6 +179,7 @@ export const useMissionCallback = () => {
       });
   };
 
+  // 미션 승인 요청 콜백 함수
   const clearMissionCallback = async (logId) => {
     axios({
       method: "put",

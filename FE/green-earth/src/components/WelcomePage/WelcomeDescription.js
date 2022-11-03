@@ -32,8 +32,6 @@ const WelcomeDescription = () => {
   // 페이지 번호
   const [page, setPage] = useState(0);
 
-  console.log("page :", page);
-
   // 마지막 페이지 일 경우(page == 2) 지구 살리러 가기 버튼 보여줌
   let btn = page < 2 ? "다음으로" : "지구 살리러 가기";
 

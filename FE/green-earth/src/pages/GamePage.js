@@ -1,3 +1,4 @@
+import { startTransition } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
@@ -8,40 +9,41 @@ const GamePage = () => {
 
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 
-  console.log(memberInfo);
-
   return (
-    <div className="GamePage mt-8 mb-5">
-      <div className="mb-10">
+    <div className="GamePage pt-8 pb-5">
+      <div className="pb-10">
+        {/* 내가 Green 지구 로고 */}
         <img
           src={"assets/images/new_logo_main.svg"}
           className="w-64 ml-5 cursor-pointer"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/child")}
         />
       </div>
-      <div className="flex w-full h-[35rem]">
-        <div className="flex flex-col justify-between ml-3">
+      <div className="GamePageBody">
+        {/* 게임 페이지 왼쪽 내브바 */}
+        <div className="GamePageNavBar">
+          {/* 아이 프로필 정보 */}
           <div>
             <div className="ChildImage">
               <img src="./../assets/images/girl1.svg" />
             </div>
             <div className="ChildImageName">
-              Lv.{memberInfo.earth_level} {memberInfo.nickname}
+              Lv.{memberInfo.earthLevel} {memberInfo.realName}
             </div>
           </div>
+
           <div className="flex flex-col">
-            <button
-              className="h-16 w-40 bg-light rounded-md"
-              onClick={() => navigate("/")}
-            >
+            {/* 게임 선택하기 */}
+            <button className="GamePageButton" onClick={() => navigate("/")}>
               게임 1
             </button>
             <button
-              className="h-16 w-40 bg-light rounded-md my-5"
+              className="GamePageButton my-5"
               onClick={() => navigate("/")}
             >
               게임 2
             </button>
+            {/* 뒤로가기 버튼 */}
             <button
               className="GamePageButtonBack"
               onClick={() => navigate("/")}
@@ -50,8 +52,9 @@ const GamePage = () => {
             </button>
           </div>
         </div>
-        <div className="w-[62rem] ml-10 bg-light rounded-md">
-          <div>게임 목록</div>
+        {/* 게임 실제 화면 */}
+        <div className="GamePagePlaySpace">
+          <div>게임 목록 (기능 구현중)</div>
         </div>
       </div>
     </div>

@@ -16,13 +16,14 @@ export const useAuthCallback = () => {
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
   const [childInfo, setChildInfo] = useRecoilState(childInfoState);
 
+  // 임시 코드 (토큰 기능 완료시 삭제)
   useEffect(() => {
     setLogInToken(
-      "eyJhbGciOiJIUzI1NiJ9.eyJJZCI6NSwiUm9sZSI6IlJPTEVfQ0hJTEQiLCJpYXQiOjE2NjczNjY1NTgsInN1YiI6ImFjY2Vzc1Rva2VuIiwiZXhwIjoxNjY3NDUyOTU4fQ.-q9vy9m8ljV3lcK2BoO9oS9sTNfAQ3kdeTmdRLnzvjk"
+      "eyJhbGciOiJIUzI1NiJ9.eyJJZCI6MiwiUm9sZSI6IlJPTEVfUEFSRU5UIiwiaWF0IjoxNjY3NDUxNDYwLCJzdWIiOiJhY2Nlc3NUb2tlbiIsImV4cCI6MTY2NzUzNzg2MH0.kCol2o_xOem1z-1bWGGVjIy18d9sMzm_AOKlkeoym_M"
     );
-    console.log("Token :", logInToken);
   }, []);
 
+  // 회원 정보 콜백 함수
   const memberInfoCallback = async (token) => {
     axios({
       method: "get",
@@ -45,6 +46,7 @@ export const useAuthCallback = () => {
       });
   };
 
+  // 아이 정보 콜백 함수
   const childInfoCallback = async (childId) => {
     axios({
       method: "get",

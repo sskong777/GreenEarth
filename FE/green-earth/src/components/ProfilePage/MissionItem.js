@@ -1,9 +1,7 @@
 const MissionItem = (data) => {
-  if (new Date(data.createdAt) == new Date()) {
-    console.log("최고");
-  }
   return (
     <>
+      {/* 만약 clearedAt이 널이면 미션 미완료 출력 */}
       {data.clearedAt === null ? (
         <div className="MissionItem">
           <div>{data.mission.name}</div>
