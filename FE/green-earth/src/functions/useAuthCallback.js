@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 export const useAuthCallback = () => {
   const navigate = useNavigate();
   const baseUrl = "https://k7d206.p.ssafy.io/api";
+  // const baseUrl = "http://localhost:8881/api";
 
   const { reissueAccessTokenCallback } = useCommonCallback();
 
@@ -120,15 +121,15 @@ export const useAuthCallback = () => {
         console.log(error.response.data);
         if (error.response.data.code === "T001") {
           console.log("엑세스 토큰이 만료되었습니다.");
-          reissueAccessTokenCallback(accessToken, refreshToken);
-          signUpCallback(
-            nickname,
-            password,
-            realName,
-            gender,
-            birthday,
-            avatar
-          );
+          // reissueAccessTokenCallback(accessToken, refreshToken);
+          //   signUpCallback(
+          //     nickname,
+          //     password,
+          //     realName,
+          //     gender,
+          //     birthday,
+          //     avatar
+          //   );
         }
       });
   };
