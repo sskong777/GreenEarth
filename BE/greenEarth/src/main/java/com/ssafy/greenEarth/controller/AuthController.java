@@ -3,7 +3,7 @@ package com.ssafy.greenEarth.controller;
 import com.ssafy.greenEarth.domain.Role;
 import com.ssafy.greenEarth.dto.Auth.*;
 import com.ssafy.greenEarth.dto.Member.ParentRegisterDto;
-import com.ssafy.greenEarth.dto.ResponseDto;
+import com.ssafy.greenEarth.dto.Auth.TokenDto;
 import com.ssafy.greenEarth.service.AuthService;
 import com.ssafy.greenEarth.service.KakaoService;
 import com.ssafy.greenEarth.service.MemberService;
@@ -34,9 +34,9 @@ public class AuthController {
 
     @ApiOperation(value = "아이 로그인", notes = "email id와 password 받아서 로그인진행 성공시 token에 JWT를 넘겨줌")
     @PostMapping("/login/child")
-    public ResponseEntity<TokenResDto> childLogin(@RequestBody LoginDto loginDto) {
-        log.info("로그인 요청 : {}", loginDto.getEmail());
-        TokenResDto data = authService.childLogin(loginDto);
+    public ResponseEntity<TokenDto> childLogin(@RequestBody LoginDto loginDto) {
+        log.info("로그인 요청 : {}", loginDto.getNickname());
+        TokenDto data = authService.childLogin(loginDto);
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
@@ -50,13 +50,10 @@ public class AuthController {
     }
 
     @ApiOperation(value = "Access Token 재발급", notes = "access token 과 refresh token 유효성 검증 후 모두 재발급")
-    @PostMapping("/token_issue")
-    public ResponseEntity<TokenResDto> tokenIssue(@RequestBody TokenIssueDto tokenIssueDto, HttpServletRequest request) {
-        // interceptor 예외 처리해서 둘다 유효한 경우에만 들어오도록 하자 (access 는 만료, refresh 는 만료 x)
+    @PostMapping("/token/reissue")
+    public ResponseEntity<TokenDto> tokenReissue(@RequestBody TokenDto tokenReissueDto) {
         log.info("refresh 토큰 재발급 요청");
-        int curUserId = (int) request.getAttribute("curUserId");
-        Role curUserRole = (Role) request.getAttribute("curUserRole");
-        TokenResDto data = authService.tokenIssue(tokenIssueDto, curUserId, curUserRole);
+        TokenDto data = authService.tokenReissue(tokenReissueDto);
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 

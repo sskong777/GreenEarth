@@ -15,7 +15,6 @@ public interface ChildRepository extends JpaRepository<Child, Integer> {
     @Query("select c from Child c join fetch c.parent left join fetch c.missionLogList ml join fetch ml.mission where c.id = :id")
     Optional<Child> findChildDetailById(@Param("id") int id);
 
-    Optional<Child> findByEmail(String email);
-
     Optional<Child> findByNickname(String nickname);
+
 }

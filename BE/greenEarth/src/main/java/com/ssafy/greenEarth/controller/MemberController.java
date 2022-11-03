@@ -2,11 +2,7 @@ package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Role;
-import com.ssafy.greenEarth.dto.Member.ChildProfileDto;
-import com.ssafy.greenEarth.dto.Member.ChildRegisterDto;
-import com.ssafy.greenEarth.dto.Member.ChildUpdateDto;
-import com.ssafy.greenEarth.dto.Member.ParentProfileDto;
-import com.ssafy.greenEarth.dto.ResponseDto;
+import com.ssafy.greenEarth.dto.Member.*;
 import com.ssafy.greenEarth.service.MemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,18 +14,14 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Api("ChildController")
+@Api("MemberController")
 @Slf4j
 @RestController
 @RequestMapping("/member")
 @RequiredArgsConstructor
 public class MemberController {
 
-    private static final String SUCCESS = "SUCCESS";
-    private static final String FAIL = "FAIL";
-
     private final MemberService childService;
-
 
     @ApiOperation(value = "아이 프로필 조회", notes = "아이 ID 받아서 프로필 전달")
     @GetMapping("/child/{childId}")
@@ -39,7 +31,7 @@ public class MemberController {
     }
 
     @ApiOperation(value = "본인 회원 정보 조회", notes = "토큰 ID 받아서 프로필 전달")
-    @GetMapping("/member")
+    @GetMapping()
     public ResponseEntity<?> getProfile(HttpServletRequest request) {
         int curUserId = (int) request.getAttribute("curUserId");
         Role curUserRole = (Role) request.getAttribute("curUserRole");
@@ -57,7 +49,7 @@ public class MemberController {
     public ResponseEntity<Child> signup(@RequestBody ChildRegisterDto childDto, HttpServletRequest request) {
         int curUserId = (int) request.getAttribute("curUserId");
         Child data = childService.registerChild(childDto, curUserId);
-        return new ResponseEntity<>(data, HttpStatus.OK);
+        return new ResponseEntity<>(data, HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "닉네임 중복 확인", notes = "유저 닉네임 받아 중복 확인")

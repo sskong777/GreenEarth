@@ -1,15 +1,13 @@
 package com.ssafy.greenEarth.domain;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "rewards")
 public class Reward {
@@ -19,10 +17,12 @@ public class Reward {
     @Column(name = "reward_id")
     private int id;
 
+    @Column(length = 128)
     private String name;
 
     private int rewardCondition;
 
+    @Column(length = 25)
     private String parentNickname;
 
     @ManyToOne(fetch = FetchType.LAZY)
