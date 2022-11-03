@@ -35,10 +35,9 @@ export const useAuthCallback = () => {
     })
       .then((response) => {
         if (response.data) {
-          console.log(response.data);
           setMemberInfo(response.data);
-          console.log("memberInfo :", memberInfo);
           console.log("회원 정보가 조회되었습니다.");
+          console.log("memberInfo :", response.data);
         }
       })
       .catch((error) => {
@@ -58,10 +57,9 @@ export const useAuthCallback = () => {
     })
       .then((response) => {
         if (response.data) {
-          console.log(response.data);
           setChildInfo(response.data);
-          console.log("childInfo :", childInfo);
           console.log("아이 정보가 조회되었습니다.");
+          console.log("childInfo :", response.data);
         }
       })
       .catch((error) => {

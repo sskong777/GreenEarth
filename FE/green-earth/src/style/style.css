@@ -26,11 +26,11 @@
 }
 
 .ProfileHeader {
-  @apply flex justify-center items-start pt-8 pb-6;
+  @apply flex justify-center items-start pt-6 pb-6;
 }
 
 .ProfileMenu {
-  @apply flex justify-center items-center mb-7;
+  @apply flex justify-center items-center pb-4;
 }
 
 .ProfileInfo {
@@ -60,7 +60,7 @@
 }
 
 .ProfileMenuButton {
-  @apply w-80 h-18 rounded-md text-2xl text-light font-medium
+  @apply w-80 h-16 rounded-md text-2xl text-light font-medium
   bg-[#22505e] hover:bg-[#22505e]/90 active:bg-[#22505e]/70
   outline outline-offset-2 outline-1 shadow-lg shadow-[#22505e]/70;
 }
