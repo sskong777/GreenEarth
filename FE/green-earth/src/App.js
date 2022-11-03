@@ -12,7 +12,9 @@ import GamePage from "./pages/GamePage";
 import GamePicturePage from "./pages/GamePicturePage";
 import GameRecyclePage from "./pages/GameRecyclePage";
 
-function App() {
+import OauthRedirectPage from "./pages/OauthRedirectPage";
+
+const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
@@ -27,10 +29,12 @@ function App() {
           <Route path="/game" element={<GamePage />} />
           <Route path="/game/picture" element={<GamePicturePage />} />
           <Route path="/game/recycle" element={<GameRecyclePage />} />
+
+          <Route path="/oauth/redirect" element={<OauthRedirectPage />} />
         </Routes>
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
