@@ -13,7 +13,9 @@ import GamePicturePage from "./pages/GamePicturePage";
 import GameRecyclePage from "./pages/GameRecyclePage";
 import MissionInfoPage from "./pages/MissionInfoPage";
 
-function App() {
+import OauthRedirectPage from "./pages/OauthRedirectPage";
+
+const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
@@ -28,11 +30,13 @@ function App() {
           <Route path="/game" element={<GamePage />} />
           <Route path="/game/picture" element={<GamePicturePage />} />
           <Route path="/game/recycle" element={<GameRecyclePage />} />
-          <Route path="/mission" element={<MissionInfoPage/>}/>
+
+          <Route path="/oauth/redirect" element={<OauthRedirectPage />} />
+          <Route path="/mission" element={<MissionInfoPage />} />
         </Routes>
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
