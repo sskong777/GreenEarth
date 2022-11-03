@@ -25,8 +25,8 @@ public class RewardService {
 
     // 보상 목록 조회
     @Transactional
-    public List<RewardResDto> getRewards(int child_id){
-        Child child = childRepository.findChildById(child_id).orElseThrow(
+    public List<RewardResDto> getRewards(int childId){
+        Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
@@ -42,20 +42,19 @@ public class RewardService {
 
     // 보상 작성
     @Transactional
-    public RewardResDto createReward(int child_id, RewardReqDto rewardReqDto){
-        Child child = childRepository.findChildById(child_id).orElseThrow(
+    public RewardResDto createReward(int childId, RewardReqDto rewardReqDto){
+        Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
         Reward reward = rewardReqDto.toEntity(rewardReqDto, child);
         rewardRespository.save(reward);
-        RewardResDto data = new RewardResDto(reward);
-        return data;
+        return new RewardResDto(reward);
     }
 
     // 보상 수정
     @Transactional
-    public RewardResDto updateReward(int reward_id, RewardPutDto rewardPutDto){
-        Reward reward = rewardRespository.findRewardById(reward_id).orElseThrow(
+    public RewardResDto updateReward(int rewardId, RewardPutDto rewardPutDto){
+        Reward reward = rewardRespository.findRewardById(rewardId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_REWARD)
         );
         Child child = childRepository.findChildById(rewardPutDto.getChildId()).orElseThrow(
@@ -65,15 +64,13 @@ public class RewardService {
         reward.setRewardCondition(rewardPutDto.getRewardCondition());
         reward.setChild(child);
 
-        RewardResDto data = new RewardResDto(reward);
-        return data;
-
+        return new RewardResDto(reward);
     }
 
     // 보상 삭제
     @Transactional
-    public void deleteReward(int reward_id){
-        Reward reward = rewardRespository.findRewardById(reward_id).orElseThrow(
+    public void deleteReward(int rewardId){
+        Reward reward = rewardRespository.findRewardById(rewardId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_REWARD)
         );
         rewardRespository.delete(reward);
@@ -81,12 +78,11 @@ public class RewardService {
 
     // 보상 지급 완료
     @Transactional
-    public RewardResDto paidReward(int reward_id){
-        Reward reward = rewardRespository.findRewardById(reward_id).orElseThrow(
+    public RewardResDto paidReward(int rewardId){
+        Reward reward = rewardRespository.findRewardById(rewardId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_REWARD)
         );
-        RewardResDto data = new RewardResDto(reward);
-        return data;
+        return new RewardResDto(reward);
     }
 
 }
