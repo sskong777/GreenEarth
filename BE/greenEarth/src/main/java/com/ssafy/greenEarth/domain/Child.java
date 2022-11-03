@@ -25,6 +25,7 @@ public class Child {
     @Column(length = 25)
     private String realName;
 
+    @Column(columnDefinition = "TEXT")
     private String password;
 
     @Column(length = 25)
