@@ -84,28 +84,20 @@ public class AuthService {
     }
 
     public TokenDto tokenReissue(TokenDto tokenIssueDto) {
-        String reqAccessToken = tokenIssueDto.getAccessToken();
-        String reqRefreshToken = tokenIssueDto.getRefreshToken();
         // access token 유효성 검증
-        if (tokenProvider.isTokenValid(reqAccessToken).equals("invalid")) {
+        if (tokenProvider.isTokenValid(tokenIssueDto.getAccessToken()).equals("invalid")) {
             throw new BusinessException(INVALID_TOKEN);
         }
-        // access token 에서 사용자 정보 추출
-        int id = tokenProvider.getCurrentUserId(reqAccessToken);
-        Role role = tokenProvider.getCurrentUserRole(reqRefreshToken);
 
-        // 비교할 refresh token 추출
-        RefreshToken storedRefreshToken = refreshTokenRepository.findById(new RefreshTokenId(id, role))
+        // refresh token 비교
+        RefreshToken refreshToken = refreshTokenRepository.findByToken(tokenIssueDto.getRefreshToken())
                 .orElseThrow(() -> new BusinessException(NOT_EXIST_REFRESH_TOKEN));
 
         Map<String, String> resMap = new HashMap<>();
 
         // refresh token 비교 후 재발급
-        if (!reqRefreshToken.equals(storedRefreshToken.getToken())) {
-            throw new RuntimeException();
-        }
-        resMap.put("accessToken", createAccessToken(id, role));     // 재발급된 access token
-        resMap.put("refreshToken", storedRefreshToken.getToken());  // 기존 refresh token
+        resMap.put("accessToken", createAccessToken(refreshToken.getId().getSubjectId(), refreshToken.getId().getSubjectRole()));     // 재발급된 access token
+        resMap.put("refreshToken", refreshToken.getToken());  // 기존 refresh token
 
         return new TokenDto(resMap);
     }
