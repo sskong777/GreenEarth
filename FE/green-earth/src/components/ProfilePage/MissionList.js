@@ -14,8 +14,8 @@ const sortOptionList = [
 // 성공, 실패 여부 필터 정렬 리스트
 const filterOptionList = [
   { value: "0", name: "전부다" },
-  { value: "1", name: "성공한 미션" },
-  { value: "2", name: "실패한 미션" },
+  { value: "1", name: "완료한 미션" },
+  { value: "2", name: "미완료한 미션" },
 ];
 
 // 드롭다운을 컨트롤 하기 위한 함수
@@ -134,7 +134,7 @@ const MissionList = (data) => {
       </div>
       {/* 반복문 실행하여 MissionItem에 전달 */}
       {getProcessedMissionList().map((it) => (
-        <MissionItem key={it.logId} {...it} />
+        <MissionItem key={it.id} {...it} />
       ))}
     </div>
   );

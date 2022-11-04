@@ -17,7 +17,7 @@ const TodayMissionList = ({ childId }) => {
   // 오늘의 미션 Axios 요청
   useEffect(() => {
     todayMissionListCallback(childId);
-  }, [todayMissionList]);
+  }, []);
 
   // 미션이 설정되어 있지 않으면 설정 할 수 있게 분류
   const createTodayMission = (value) => {

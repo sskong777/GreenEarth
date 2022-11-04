@@ -33,12 +33,12 @@ export const useRewardCallback = () => {
 
   // 보상 설정 콜백 함수
   const rewardSubmitCallback = async (
-    rewardName,
+    name,
     rewardCondition,
     childId,
     parentNickname
   ) => {
-    console.log(rewardName, rewardCondition, childId, parentNickname);
+    console.log(name, rewardCondition, childId, parentNickname);
     axios({
       method: "post",
       url: `/api/reward/child/${childId}`,
@@ -47,7 +47,7 @@ export const useRewardCallback = () => {
         Authorization: `Bearer ${logInToken}`,
       },
       data: {
-        rewardName: rewardName,
+        name: name,
         rewardCondition: rewardCondition,
         childId: childId,
         parentNickname: parentNickname,
