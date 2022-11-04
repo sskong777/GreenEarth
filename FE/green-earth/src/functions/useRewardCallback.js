@@ -1,12 +1,22 @@
 import { useRecoilState } from "recoil";
+<<<<<<< Updated upstream
 import { rewardListState, logInTokenState } from "./../store/atoms";
+=======
+import { rewardListState } from "./../store/atoms";
+import { accessTokenState, refreshTokenState } from "../store/LoginStore";
+
+>>>>>>> Stashed changes
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const useRewardCallback = () => {
   const navigate = useNavigate();
 
+<<<<<<< Updated upstream
   const [logInToken, setLogInToken] = useRecoilState(logInTokenState);
+=======
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+>>>>>>> Stashed changes
   const [rewardList, setRewardList] = useRecoilState(rewardListState);
 
   // 보상 목록 조회 콜백 함수
@@ -16,7 +26,11 @@ export const useRewardCallback = () => {
       url: `/api/reward/child/${childId}`,
       headers: {
         "Content-Type": "application/json",
+<<<<<<< Updated upstream
         Authorization: `Bearer ${logInToken}`,
+=======
+        Authorization: `Bearer ${accessToken}`,
+>>>>>>> Stashed changes
       },
     })
       .then((response) => {
@@ -44,7 +58,11 @@ export const useRewardCallback = () => {
       url: `/api/reward/child/${childId}`,
       headers: {
         "Content-Type": "application/json",
+<<<<<<< Updated upstream
         Authorization: `Bearer ${logInToken}`,
+=======
+        Authorization: `Bearer ${accessToken}`,
+>>>>>>> Stashed changes
       },
       data: {
         name: name,
@@ -71,7 +89,11 @@ export const useRewardCallback = () => {
       url: `/api/reward/${rewardId}`,
       headers: {
         "Content-Type": "application/json",
+<<<<<<< Updated upstream
         Authorization: `Bearer ${logInToken}`,
+=======
+        Authorization: `Bearer ${accessToken}`,
+>>>>>>> Stashed changes
       },
     })
       .then((response) => {

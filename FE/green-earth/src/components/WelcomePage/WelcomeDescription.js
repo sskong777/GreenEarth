@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "animate.css";
+<<<<<<< Updated upstream
 import "../../style/WelcomeDescription.css";
+=======
+import "../../style/WelcomePage/WelcomeDescription.css";
+>>>>>>> Stashed changes
 
 const WelcomeDescription = () => {
   const navigate = useNavigate();

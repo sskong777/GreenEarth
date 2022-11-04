@@ -3,15 +3,24 @@ import {
   missionListState,
   todayMissionListState,
   missionOptionListState,
+<<<<<<< Updated upstream
   logInTokenState,
 } from "./../store/atoms";
+=======
+} from "./../store/atoms";
+import { accessTokenState, refreshTokenState } from "../store/LoginStore";
+>>>>>>> Stashed changes
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const useMissionCallback = () => {
   const navigate = useNavigate();
 
+<<<<<<< Updated upstream
   const [logInToken, setLogInToken] = useRecoilState(logInTokenState);
+=======
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+>>>>>>> Stashed changes
   const [missionList, setMissionList] = useRecoilState(missionListState);
   const [missionOptionList, setMissionOptionList] = useRecoilState(
     missionOptionListState
@@ -27,7 +36,11 @@ export const useMissionCallback = () => {
       url: `/api/mission/child/${childId}/log`,
       headers: {
         "Content-Type": "application/json",
+<<<<<<< Updated upstream
         Authorization: `Bearer ${logInToken}`,
+=======
+        Authorization: `Bearer ${accessToken}`,
+>>>>>>> Stashed changes
       },
     })
       .then((response) => {
@@ -49,7 +62,11 @@ export const useMissionCallback = () => {
       url: `/api/mission/child/${childId}/today`,
       headers: {
         "Content-Type": "application/json",
+<<<<<<< Updated upstream
         Authorization: `Bearer ${logInToken}`,
+=======
+        Authorization: `Bearer ${accessToken}`,
+>>>>>>> Stashed changes
       },
     })
       .then((response) => {
@@ -71,7 +88,11 @@ export const useMissionCallback = () => {
       url: "/api/mission",
       headers: {
         "Content-Type": "application/json",
+<<<<<<< Updated upstream
         Authorization: `Bearer ${logInToken}`,
+=======
+        Authorization: `Bearer ${accessToken}`,
+>>>>>>> Stashed changes
       },
     })
       .then((response) => {
@@ -93,7 +114,11 @@ export const useMissionCallback = () => {
       url: `/api/mission/child/${childId}`,
       headers: {
         "Content-Type": "application/json",
+<<<<<<< Updated upstream
         Authorization: `Bearer ${logInToken}`,
+=======
+        Authorization: `Bearer ${accessToken}`,
+>>>>>>> Stashed changes
       },
       data: {
         missionId: missionId,
@@ -117,7 +142,11 @@ export const useMissionCallback = () => {
       url: `/api/mission/log/${childId}`,
       headers: {
         "Content-Type": "application/json",
+<<<<<<< Updated upstream
         Authorization: `Bearer ${logInToken}`,
+=======
+        Authorization: `Bearer ${accessToken}`,
+>>>>>>> Stashed changes
       },
       data: {
         missionId: missionId,
@@ -141,7 +170,11 @@ export const useMissionCallback = () => {
       url: `/api/mission/log/${logId}/permit`,
       headers: {
         "Content-Type": "application/json",
+<<<<<<< Updated upstream
         Authorization: `Bearer ${logInToken}`,
+=======
+        Authorization: `Bearer ${accessToken}`,
+>>>>>>> Stashed changes
       },
     })
       .then((response) => {
@@ -162,7 +195,11 @@ export const useMissionCallback = () => {
       url: `/api/mission/log/${logId}/reject`,
       headers: {
         "Content-Type": "application/json",
+<<<<<<< Updated upstream
         Authorization: `Bearer ${logInToken}`,
+=======
+        Authorization: `Bearer ${accessToken}`,
+>>>>>>> Stashed changes
       },
     })
       .then((response) => {
@@ -183,7 +220,11 @@ export const useMissionCallback = () => {
       url: `/api/mission/log/${logId}/clear`,
       headers: {
         "Content-Type": "application/json",
+<<<<<<< Updated upstream
         Authorization: `Bearer ${logInToken}`,
+=======
+        Authorization: `Bearer ${accessToken}`,
+>>>>>>> Stashed changes
       },
     })
       .then((response) => {
