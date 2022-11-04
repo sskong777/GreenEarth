@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../../style/WelcomePage/WelcomeDefault.css";
+import "animate.css";
+import "./../../style/WelcomePage/WelcomeDefault.css";
 
 // 웰컴 페이지 기본 컴포넌트
 const WelcomeDefault = (props) => {
@@ -15,7 +16,10 @@ const WelcomeDefault = (props) => {
   return (
     <div className="WelcomeDefault">
       {/* 로고 이미지 */}
-      <img src={"assets/images/logo_main.png"} className="LogoImage" />
+      <img
+        src={"assets/images/new_logo_main.svg"}
+        className="LogoImage animate__animated animate__bounceIn"
+      />
 
       <div className="WelcomeBody">
         <div>
@@ -35,9 +39,9 @@ const WelcomeDefault = (props) => {
           </div>
 
           {/* 로그인으로 이동 */}
-          <div className="WelcomeButton">
-            <button onClick={() => navigate("/login")} className="Btn">
-              지구 구하러 가기
+          <div className="WelcomeButton mb-10">
+            <button onClick={() => navigate("/login")} className="BtnSkip">
+              SKIP
             </button>
           </div>
         </div>
