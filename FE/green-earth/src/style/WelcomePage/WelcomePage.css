@@ -5,6 +5,5 @@
 /* WelcomePage */
 
 .WelcomePage {
-  @apply flex flex-col justify-center items-center
-  bg-[#FFF8E1] min-h-full;
+  @apply w-252 h-[44rem] mx-auto;
 }
