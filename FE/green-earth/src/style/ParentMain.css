@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /* .Earth2{
 
     background-image: url('/public/galaxy.jpg');
@@ -32,6 +33,23 @@
   margin-top: 2%;
   justify-content: center;
 }
+=======
+.peoplelist {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  /* background-color: blue; */
+  /* background-image: url('/public/galaxy.jpg'); */
+  padding: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  /* margin-top: 2%; */
+  justify-content: center;
+}
+>>>>>>> Stashed changes
 
 .peoplelist::before {
   content: "";
@@ -48,11 +66,19 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+<<<<<<< Updated upstream
   width: 90%;
+=======
+  width: 100%;
+>>>>>>> Stashed changes
   background-color: white;
   position: relative;
   margin-left: 2%;
   margin-right: 2%;
+<<<<<<< Updated upstream
+=======
+  justify-content: space-evenly;
+>>>>>>> Stashed changes
 }
 .people::before {
   content: "";
@@ -68,6 +94,7 @@
 .canvasPerson {
   margin: 2%;
   background-color: white;
+<<<<<<< Updated upstream
   width: 16%;
   position: relative;
   height: 40%;
@@ -91,3 +118,32 @@
     position: absolute;
     left:450px;
   } */
+=======
+  width: 150px;
+  height: 18 0px;
+  position: relative;
+}
+
+.PersonCard {
+  margin: 10px;
+}
+
+.canvasPerson::before {
+  content: "";
+  opacity: 0.8;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: black;
+}
+
+/* .Earth {
+  position: relative;
+} */
+/* .canvasEarth {
+  position: absolute;
+  left:450px;
+} */
+>>>>>>> Stashed changes

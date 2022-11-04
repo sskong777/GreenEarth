@@ -22,7 +22,10 @@
   margin-top: auto;
   margin-bottom: auto;
   background-color: rgb(42, 42, 42);
+<<<<<<< Updated upstream
   margin-right: 10px;
+=======
+>>>>>>> Stashed changes
   position: relative;
   border: solid;
   border-color: rgb(255, 179, 0);
@@ -44,19 +47,28 @@
   width: 50px;
   margin-left: 3%;
   transform: rotate(15deg);
+<<<<<<< Updated upstream
+=======
+  top: 7px;
+>>>>>>> Stashed changes
 }
 .start {
   width: 50px;
   position: absolute;
   left: 7%;
   z-index: 3;
+<<<<<<< Updated upstream
   margin: 0.5%;
+=======
+  top: 7px;
+>>>>>>> Stashed changes
 }
 .end {
   width: 50px;
   position: absolute;
   left: 84%;
   z-index: 3;
+<<<<<<< Updated upstream
   margin: 0.5%;
 }
 
@@ -69,11 +81,28 @@
   z-index: 4;
 }
 
+=======
+  top: 7px;
+}
+.characterInfo {
+  font-weight: bold;
+  color: white;
+  size: 115px;
+  text-align: center;
+  margin: 2px;
+  z-index: 4;
+}
+
+>>>>>>> Stashed changes
 progress {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
+<<<<<<< Updated upstream
   margin-top: 2%;
+=======
+  top: 13px;
+>>>>>>> Stashed changes
   margin-left: 10%;
   position: relative;
 }
@@ -165,7 +194,11 @@ progress::before {
 
 .info {
   display: flex;
+<<<<<<< Updated upstream
   flex-direction: row;
+=======
+  flex-direction: column;
+>>>>>>> Stashed changes
   flex-wrap: wrap;
   width: 100%;
   /* background-color: blue; */
@@ -188,6 +221,16 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
+<<<<<<< Updated upstream
+=======
+}
+
+.infogroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
+>>>>>>> Stashed changes
 }
 .badges {
   display: flex;
@@ -256,7 +299,10 @@ progress::before {
   margin-top: auto;
   margin-bottom: auto;
   background-color: rgb(255, 247, 232);
+<<<<<<< Updated upstream
   margin-right: 10px;
+=======
+>>>>>>> Stashed changes
   position: relative;
   border: solid;
   border-color: rgb(255, 179, 0);
@@ -397,7 +443,11 @@ progress::before {
 
 .info10 {
   display: flex;
+<<<<<<< Updated upstream
   flex-direction: row;
+=======
+  flex-direction: column;
+>>>>>>> Stashed changes
   flex-wrap: wrap;
   width: 100%;
   /* background-color: blue; */
@@ -420,6 +470,16 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
+<<<<<<< Updated upstream
+=======
+}
+
+.infogroup10 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
+>>>>>>> Stashed changes
 }
 .badges10 {
   display: flex;
@@ -492,7 +552,10 @@ progress::before {
   margin-top: auto;
   margin-bottom: auto;
   background-color: rgb(69, 69, 69);
+<<<<<<< Updated upstream
   margin-right: 10px;
+=======
+>>>>>>> Stashed changes
   position: relative;
   border: solid;
   border-color: rgb(255, 179, 0);
@@ -633,7 +696,11 @@ progress::before {
 
 .info2 {
   display: flex;
+<<<<<<< Updated upstream
   flex-direction: row;
+=======
+  flex-direction: column;
+>>>>>>> Stashed changes
   flex-wrap: wrap;
   width: 100%;
   /* background-color: blue; */
@@ -656,6 +723,16 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
+<<<<<<< Updated upstream
+=======
+}
+
+.infogroup2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
+>>>>>>> Stashed changes
 }
 .badges2 {
   display: flex;
@@ -726,7 +803,10 @@ progress::before {
   margin-top: auto;
   margin-bottom: auto;
   background-color: rgb(88, 88, 88);
+<<<<<<< Updated upstream
   margin-right: 10px;
+=======
+>>>>>>> Stashed changes
   position: relative;
   border: solid;
   border-color: rgb(255, 179, 0);
@@ -753,7 +833,11 @@ progress::before {
 
 .info3 {
   display: flex;
+<<<<<<< Updated upstream
   flex-direction: row;
+=======
+  flex-direction: column;
+>>>>>>> Stashed changes
   flex-wrap: wrap;
   width: 100%;
   /* background-color: blue; */
@@ -776,6 +860,16 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
+<<<<<<< Updated upstream
+=======
+}
+
+.infogroup3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
+>>>>>>> Stashed changes
 }
 .badges3 {
   display: flex;
@@ -846,7 +940,10 @@ progress::before {
   margin-top: auto;
   margin-bottom: auto;
   background-color: rgb(180, 180, 180);
+<<<<<<< Updated upstream
   margin-right: 10px;
+=======
+>>>>>>> Stashed changes
   position: relative;
   border: solid;
   border-color: rgb(255, 179, 0);
@@ -873,7 +970,11 @@ progress::before {
 
 .info4 {
   display: flex;
+<<<<<<< Updated upstream
   flex-direction: row;
+=======
+  flex-direction: column;
+>>>>>>> Stashed changes
   flex-wrap: wrap;
   width: 100%;
   /* background-color: blue; */
@@ -896,6 +997,16 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
+<<<<<<< Updated upstream
+=======
+}
+
+.infogroup4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
+>>>>>>> Stashed changes
 }
 .badges4 {
   display: flex;
@@ -965,7 +1076,10 @@ progress::before {
   margin-top: auto;
   margin-bottom: auto;
   background-color: rgb(255, 255, 255);
+<<<<<<< Updated upstream
   margin-right: 10px;
+=======
+>>>>>>> Stashed changes
   position: relative;
   border: solid;
   border-color: rgb(255, 179, 0);
@@ -993,7 +1107,11 @@ progress::before {
 
 .info5 {
   display: flex;
+<<<<<<< Updated upstream
   flex-direction: row;
+=======
+  flex-direction: column;
+>>>>>>> Stashed changes
   flex-wrap: wrap;
   width: 100%;
   /* background-color: blue; */
@@ -1016,6 +1134,16 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
+<<<<<<< Updated upstream
+=======
+}
+
+.infogroup5 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
+>>>>>>> Stashed changes
 }
 .badges5 {
   display: flex;
@@ -1085,7 +1213,10 @@ progress::before {
   margin-top: auto;
   margin-bottom: auto;
   background-color: rgb(255, 255, 255);
+<<<<<<< Updated upstream
   margin-right: 10px;
+=======
+>>>>>>> Stashed changes
   position: relative;
   border: solid;
   border-color: rgb(255, 179, 0);
@@ -1112,7 +1243,11 @@ progress::before {
 
 .info6 {
   display: flex;
+<<<<<<< Updated upstream
   flex-direction: row;
+=======
+  flex-direction: column;
+>>>>>>> Stashed changes
   flex-wrap: wrap;
   width: 100%;
   /* background-color: blue; */
@@ -1135,6 +1270,16 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
+<<<<<<< Updated upstream
+=======
+}
+
+.infogroup6 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
+>>>>>>> Stashed changes
 }
 .badges6 {
   display: flex;
@@ -1204,7 +1349,10 @@ progress::before {
   margin-top: auto;
   margin-bottom: auto;
   background-color: rgb(255, 255, 255);
+<<<<<<< Updated upstream
   margin-right: 10px;
+=======
+>>>>>>> Stashed changes
   position: relative;
   border: solid;
   border-color: rgb(255, 179, 0);
@@ -1231,7 +1379,11 @@ progress::before {
 
 .info7 {
   display: flex;
+<<<<<<< Updated upstream
   flex-direction: row;
+=======
+  flex-direction: column;
+>>>>>>> Stashed changes
   flex-wrap: wrap;
   width: 100%;
   /* background-color: blue; */
@@ -1254,6 +1406,16 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
+<<<<<<< Updated upstream
+=======
+}
+
+.infogroup7 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
+>>>>>>> Stashed changes
 }
 .badges7 {
   display: flex;
@@ -1323,7 +1485,10 @@ progress::before {
   margin-top: auto;
   margin-bottom: auto;
   background-color: rgb(255, 255, 255);
+<<<<<<< Updated upstream
   margin-right: 10px;
+=======
+>>>>>>> Stashed changes
   position: relative;
   border: solid;
   border-color: rgb(255, 179, 0);
@@ -1350,7 +1515,11 @@ progress::before {
 
 .info8 {
   display: flex;
+<<<<<<< Updated upstream
   flex-direction: row;
+=======
+  flex-direction: column;
+>>>>>>> Stashed changes
   flex-wrap: wrap;
   width: 100%;
   /* background-color: blue; */
@@ -1373,6 +1542,16 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
+<<<<<<< Updated upstream
+=======
+}
+
+.infogroup8 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
+>>>>>>> Stashed changes
 }
 .badges8 {
   display: flex;
@@ -1442,7 +1621,10 @@ progress::before {
   margin-top: auto;
   margin-bottom: auto;
   background-color: rgb(255, 255, 255);
+<<<<<<< Updated upstream
   margin-right: 10px;
+=======
+>>>>>>> Stashed changes
   position: relative;
   border: solid;
   border-color: rgb(255, 179, 0);
@@ -1469,7 +1651,11 @@ progress::before {
 
 .info9 {
   display: flex;
+<<<<<<< Updated upstream
   flex-direction: row;
+=======
+  flex-direction: column;
+>>>>>>> Stashed changes
   flex-wrap: wrap;
   width: 100%;
   /* background-color: blue; */
@@ -1493,6 +1679,17 @@ progress::before {
   background-color: white;
   margin: 7%;
 }
+<<<<<<< Updated upstream
+=======
+
+.infogroup9 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
+}
+
+>>>>>>> Stashed changes
 .badges9 {
   display: flex;
   flex-direction: row;
@@ -1532,3 +1729,31 @@ progress::before {
   bottom: 0px;
   background-color: black;
 }
+<<<<<<< Updated upstream
+=======
+/* //////////////////////////////////////////////////////////////////////////// */
+
+/* @media (min-width: 1280px) {
+  .App {
+    width: 1270px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .App {
+    width: 95vw;
+  }
+}
+
+#root {
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.App {
+  min-height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+ */
+>>>>>>> Stashed changes

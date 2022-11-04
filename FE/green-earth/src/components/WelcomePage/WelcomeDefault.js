@@ -2,7 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import "animate.css";
+<<<<<<< Updated upstream
 import "../../style/WelcomeDefault.css";
+=======
+import "../../style/WelcomePage/WelcomeDefault.css";
+>>>>>>> Stashed changes
 
 // 웰컴 페이지 기본 컴포넌트
 const WelcomeDefault = (props) => {
