@@ -25,20 +25,18 @@ import java.util.List;
 @RequestMapping("mission")
 public class MissionController {
 
-    private final ChildRepository childRepository;
-    private final MissionRepository mIssionRepository;
     private final MissionService missionService;
 
     // 오늘의 미션생성
     @PostMapping("/child/{child_id}")
-    public ResponseEntity<MissionLogResDto> todayMissionCreate(@PathVariable("child_id") int child_id, @RequestBody MissionReqDto missionReqDto,
+    public ResponseEntity<MissionLogResDto> todayMissionCreate(@PathVariable("child_id") int childId, @RequestBody MissionReqDto missionReqDto,
                                                                HttpServletRequest request){
 
         int curUserId = (int) request.getAttribute("curUserId");
         Role curUserRole = (Role) request.getAttribute("curUserRole");
         log.info("현재 로그인한 유저 {}", curUserId);
         log.info("Role {}",curUserRole);
-        MissionLogResDto data = missionService.saveTodayMission(child_id, missionReqDto, curUserRole, curUserId);
+        MissionLogResDto data = missionService.saveTodayMission(childId, missionReqDto, curUserId);
 
         return new ResponseEntity<>(data, HttpStatus.CREATED);
     }
@@ -52,32 +50,32 @@ public class MissionController {
 
     // 미션 상세 조회
     @GetMapping("{mission_id}")
-    public ResponseEntity<MissionResDto> getMissionDetail(@PathVariable("mission_id") int mission_id){
-        MissionResDto data = missionService.getMissionDetail(mission_id);
+    public ResponseEntity<MissionResDto> getMissionDetail(@PathVariable("mission_id") int missionId){
+        MissionResDto data = missionService.getMissionDetail(missionId);
 
         return new ResponseEntity<>(data,HttpStatus.OK);
     }
 
     // 아이 미션 로그 조회
     @GetMapping("/child/{child_id}/log")
-    public ResponseEntity<List<MissionLogResDto>>  getmissionLogs(@PathVariable("child_id") int child_id){
-        List<MissionLogResDto> data = missionService.getMissionLogs(child_id);
+    public ResponseEntity<List<MissionLogResDto>>  getMissionLogs(@PathVariable("child_id") int childId){
+        List<MissionLogResDto> data = missionService.getMissionLogs(childId);
 
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     // 오늘의 미션 조회
     @GetMapping("/child/{child_id}/today")
-    public ResponseEntity<List<MissionLogResDto>>  getTodaymissionLogs(@PathVariable("child_id") int child_id){
-        List<MissionLogResDto> data = missionService.getTodayMissionLogs(child_id);
+    public ResponseEntity<List<MissionLogResDto>> getTodayMissionLogs(@PathVariable("child_id") int childId){
+        List<MissionLogResDto> data = missionService.getTodayMissionLogs(childId);
 
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     // 오늘의 미션 승인
     @PutMapping("log/{log_id}/permit")
-    public ResponseEntity<MissionLogResDto> permitTodayMission(@PathVariable("log_id") int log_id){
-        MissionLogResDto data = missionService.permitMission(log_id);
+    public ResponseEntity<MissionLogResDto> permitTodayMission(@PathVariable("log_id") int logId){
+        MissionLogResDto data = missionService.permitMission(logId);
 //        System.out.println(data);
         return new ResponseEntity<>(data, HttpStatus.OK);
 
@@ -85,8 +83,8 @@ public class MissionController {
 
     // 오늘의 미션 거절
     @PutMapping("log/{log_id}/reject")
-    public ResponseEntity<MissionLogResDto> rejectTodayMission(@PathVariable("log_id") int log_id){
-        MissionLogResDto data = missionService.rejectMission(log_id);
+    public ResponseEntity<MissionLogResDto> rejectTodayMission(@PathVariable("log_id") int logId){
+        MissionLogResDto data = missionService.rejectMission(logId);
 //        System.out.println(data);
         return new ResponseEntity<>(data, HttpStatus.OK);
 
@@ -94,23 +92,23 @@ public class MissionController {
 
     // 오늘의 미션 완료
     @PutMapping("log/{log_id}/clear")
-    public ResponseEntity<MissionLogResDto> clearTodayMission(@PathVariable("log_id") int log_id){
-        MissionLogResDto data = missionService.clearMission(log_id);
+    public ResponseEntity<MissionLogResDto> clearTodayMission(@PathVariable("log_id") int logId){
+        MissionLogResDto data = missionService.clearMission(logId);
         return new ResponseEntity<>(data, HttpStatus.OK);
 
     }
 
     // 오늘의 미션 수정
     @PutMapping("/log/{log_id}")
-    public ResponseEntity<MissionLogResDto> putTodayMission(@PathVariable("log_id") int log_id, @RequestBody MissionPutDto missionPutDto ){
-        MissionLogResDto data = missionService.updateTodayMission(log_id, missionPutDto);
+    public ResponseEntity<MissionLogResDto> putTodayMission(@PathVariable("log_id") int logId, @RequestBody MissionPutDto missionPutDto ){
+        MissionLogResDto data = missionService.updateTodayMission(logId, missionPutDto);
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
 
     // 오늘의 미션 삭제
     @DeleteMapping("/log/{log_id}")
-    public void deleteTodayMission(@PathVariable("log_id") int log_id) {
-        missionService.deleteTodayMission(log_id);
+    public void deleteTodayMission(@PathVariable("log_id") int logId) {
+        missionService.deleteTodayMission(logId);
     }
 }
