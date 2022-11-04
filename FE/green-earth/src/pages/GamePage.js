@@ -121,6 +121,7 @@ const GamePage = () => {
             )}
           </div>
         </div>
+
         {/* 게임 실제 화면 */}
         <div className="flex items-center">
           <div className="GamePagePlaySpace">
