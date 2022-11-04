@@ -316,7 +316,13 @@
 }
 
 .GamePageButton {
-  @apply w-40 h-16  text-2xl text-blackBrown font-binggrae font-semibold rounded-md 
+  @apply w-40 h-16  text-xl text-blackBrown font-binggrae font-semibold rounded-md 
+  bg-light hover:bg-light/90 active:bg-light/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-light/70;
+}
+
+.GamePageSongButton {
+  @apply w-40 h-16  text-lg text-blackBrown font-binggrae font-semibold rounded-md 
   bg-light hover:bg-light/90 active:bg-light/70
   outline outline-offset-2 outline-1 shadow-lg shadow-light/70;
 }
@@ -330,5 +336,6 @@
 }
 
 .GamePagePlaySpace {
-  @apply w-[62rem] ml-10 rounded-md bg-light;
+  @apply w-[62rem] h-[36rem] flex justify-center items-center ml-10 rounded-md 
+  bg-[#011d29] shadow-md shadow-[#011d29]/50;
 }

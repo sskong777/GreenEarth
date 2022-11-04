@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
 import {
@@ -75,6 +76,8 @@ const TodayMissionItem = ({ data }) => {
   );
   const [selected, setSelected] = useRecoilState(missionSelectState);
 
+  const { childId } = useParams();
+
   const {
     missionOptionListCallback,
     saveMissionCallback,
@@ -113,7 +116,7 @@ const TodayMissionItem = ({ data }) => {
   // 미션 설정 함수
   const handleClickMissionSubmit = () => {
     if (window.confirm("미션을 설정하시겠습니까?")) {
-      saveMissionCallback(data.childId, selected.id);
+      saveMissionCallback(childId, selected.id);
       console.log("미션 설정 완료");
     }
   };
@@ -121,7 +124,7 @@ const TodayMissionItem = ({ data }) => {
   // 미션 수정 함수
   const handleClickMissionEdit = () => {
     if (window.confirm("미션을 수정하시겠습니까?")) {
-      editMissionCallback(data.childId, selected.id);
+      editMissionCallback(data.child_id, selected.id);
       console.log("미션 수정 완료");
     }
   };
@@ -129,7 +132,7 @@ const TodayMissionItem = ({ data }) => {
   // 미션 승인 함수
   const handleClickMissionPermit = () => {
     if (window.confirm("미션을 승인하시겠습니까?")) {
-      permitMissionCallback(data.logId);
+      permitMissionCallback(data.id);
       console.log("미션 승인 완료");
     }
   };
@@ -137,7 +140,7 @@ const TodayMissionItem = ({ data }) => {
   // 미션 거절 함수
   const handleClickMissionReject = () => {
     if (window.confirm("미션을 거절하시겠습니까?")) {
-      rejectMissionCallback(data.logId);
+      rejectMissionCallback(data.id);
       console.log("미션 거절 완료");
     }
   };
