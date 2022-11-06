@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { memberInfoState } from "../store/atoms";
 
 import KidsSong from "../components/GamePage/KidsSong";
+import CardsPairing from "../components/GamePage/CardsPairing";
 
 import "animate.css";
 
@@ -29,6 +30,7 @@ const GamePage = () => {
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 
   const [isSong, setIsSong] = useState(false);
+  const [isCard, setIsCard] = useState(true);
   const [songValue, setSongValue] = useState(0);
 
   return (
@@ -60,7 +62,7 @@ const GamePage = () => {
               <>
                 <button
                   className="GamePageButton"
-                  onClick={() => setIsSong(true)}
+                  onClick={() => setIsSong(!isSong)}
                 >
                   동요세상
                 </button>
@@ -72,9 +74,9 @@ const GamePage = () => {
                 </button>
                 <button
                   className="GamePageButton my-5"
-                  onClick={() => navigate("/")}
+                  onClick={() => setIsCard(!isCard)}
                 >
-                  틀린그림찾기
+                  같은그림찾기
                 </button>
               </>
             )}
@@ -126,9 +128,7 @@ const GamePage = () => {
         <div className="flex items-center">
           <div className="GamePagePlaySpace">
             {isSong && <KidsSong songValue={videosInfo[songValue]} />}
-            {!isSong && (
-              <div className="text-light text-5xl">게임 화면 (제작중)</div>
-            )}
+            {!isSong && isCard && <CardsPairing />}
           </div>
         </div>
       </div>
