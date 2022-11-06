@@ -339,3 +339,52 @@
   @apply w-[62rem] h-[36rem] flex justify-center items-center ml-10 rounded-md 
   bg-[#011d29] shadow-md shadow-[#011d29]/50;
 }
+
+/* CardsPairing */
+
+.CardsPairing {
+  @apply flex justify-center items-center;
+}
+
+.board {
+  width: 650px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(6, 1fr);
+}
+.card-outer {
+  perspective: 500px;
+  height: 100px;
+}
+.card {
+  border-radius: 5px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+  transition: all 0.3s;
+}
+.card .front,
+.card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.card .front img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+.card .back {
+  background-color: #468;
+  transform: rotateY(180deg);
+}
+.card-outer.flipped .card {
+  transform: rotateY(0);
+}
+
+.stats {
+  @apply w-48 pl-10 items-center text-light text-2xl text-center;
+}
