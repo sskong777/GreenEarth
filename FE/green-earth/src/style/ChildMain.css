@@ -112,7 +112,18 @@ progress::before{
     width:100%;
     height:1000px;
     position: relative;
-    z-index: 1;
+    z-index: 100;
+}
+.canvasAstronaut{
+    /* background-color: black; */
+    /* background-image: url('/public/galaxy.jpg'); */
+    width:18%;
+    height:54%;
+    position: absolute;
+    top: 47%;
+    left: 77%;
+ 
+    z-index: 100;
 }
 /* .canvasEarth::before{
     content:"";
@@ -124,34 +135,64 @@ progress::before{
     bottom:0px;
     background-color: black;
 } */
-.game{
 
-    background-color: black;
-    position: relative;
-    text-align: center;
-    font-weight: bold;
-    font-size: 30px;
-    margin-right:auto;
-    margin-left:auto;
-    margin-top : 2%;
-    padding: 1%;
-    
-}
 .gameButton{
     color : green;
-    background-color: black;
-    position: relative;
+    position: absolute;
     text-align: center;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 0.5px;
+    width:150px;
+    height:50px;
     margin-right:auto;
-    margin-left:auto;
+    margin-left:23%;
+    margin-top:25%;
     padding: 1%;
+    z-index: 1000;
     
 }
 @keyframes blink-effect { 50% { opacity: 0; } } 
 .gameButton { 
     animation: blink-effect 1.5s step-end infinite; }
+
+
+.balloon {
+    position: relative;
+    background: white;
+    border-radius: .4em;
+    margin-top : 30px;
+    line-height: 30px;
+    width:150px;
+    height: 40px;
+    float: right;
+    margin-right:0px;
+    text-align: center;
+    left:30px;
+    padding:5px;
+    
+}
+
+.balloon:after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 80%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top-color: white;
+    border-bottom: 0;
+    border-right: 0;
+    margin-left: -10px;
+    margin-bottom: -20px;
+}
+@keyframes blink-effect { 50% { opacity: 0; } } 
+.balloon { 
+    animation: blink-effect 4s step-end infinite;
+    animation-duration: 4s; }
+
+
+
 /* 
 .blinking{
     -webkit-animation:blink 1.5s ease-in-out infinite alternate;
@@ -179,12 +220,13 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 100px;
+    padding: 120px;
     position : absolute;
     top: 0;
     left: 0;
     z-index: 2;
     margin-top: 2%
+   
     
 }
 
@@ -249,6 +291,8 @@ progress::before{
     bottom:0px;
     background-color: black
 }
+
+
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -364,6 +408,7 @@ progress::before{
     position: relative;
     z-index: 1;
 }
+
 /* .canvasEarth::before{
     content:"";
     opacity:0.8;
@@ -374,34 +419,7 @@ progress::before{
     bottom:0px;
     background-color: black;
 } */
-.game{
 
-    background-color: black;
-    position: relative;
-    text-align: center;
-    font-weight: bold;
-    font-size: 30px;
-    margin-right:auto;
-    margin-left:auto;
-    margin-top : 2%;
-    padding: 1%;
-    
-}
-.gameButton{
-    color : green;
-    background-color: black;
-    position: relative;
-    text-align: center;
-    font-weight: bold;
-    font-size: 30px;
-    margin-right:auto;
-    margin-left:auto;
-    padding: 1%;
-    
-}
-@keyframes blink-effect { 50% { opacity: 0; } } 
-.gameButton { 
-    animation: blink-effect 1.5s step-end infinite; }
 /* 
 .blinking{
     -webkit-animation:blink 1.5s ease-in-out infinite alternate;
@@ -429,7 +447,7 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 100px;
+    padding: 120px;
     position : absolute;
     top: 0;
     left: 0;
@@ -625,34 +643,7 @@ progress::before{
     bottom:0px;
     background-color: black;
 } */
-.game{
 
-    background-color: black;
-    position: relative;
-    text-align: center;
-    font-weight: bold;
-    font-size: 30px;
-    margin-right:auto;
-    margin-left:auto;
-    margin-top : 2%;
-    padding: 1%;
-    
-}
-.gameButton{
-    color : green;
-    background-color: black;
-    position: relative;
-    text-align: center;
-    font-weight: bold;
-    font-size: 30px;
-    margin-right:auto;
-    margin-left:auto;
-    padding: 1%;
-    
-}
-@keyframes blink-effect { 50% { opacity: 0; } } 
-.gameButton { 
-    animation: blink-effect 1.5s step-end infinite; }
 /* 
 .blinking{
     -webkit-animation:blink 1.5s ease-in-out infinite alternate;
@@ -680,7 +671,7 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 100px;
+    padding: 120px;
     position : absolute;
     top: 0;
     left: 0;
@@ -817,7 +808,7 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 100px;
+    padding: 120px;
     position : absolute;
     top: 0;
     left: 0;
@@ -954,7 +945,7 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 100px;
+    padding: 120px;
     position : absolute;
     top: 0;
     left: 0;
@@ -1089,7 +1080,7 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 100px;
+    padding: 120px;
     position : absolute;
     top: 0;
     left: 0;
@@ -1224,7 +1215,7 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 100px;
+    padding: 120px;
     position : absolute;
     top: 0;
     left: 0;
@@ -1358,7 +1349,7 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 100px;
+    padding: 120px;
     position : absolute;
     top: 0;
     left: 0;
@@ -1492,7 +1483,7 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 100px;
+    padding: 120px;
     position : absolute;
     top: 0;
     left: 0;
@@ -1626,7 +1617,7 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 100px;
+    padding: 120px;
     position : absolute;
     top: 0;
     left: 0;
