@@ -1,16 +1,12 @@
 import { useRecoilState } from "recoil";
 import { accessTokenState, refreshTokenState } from "../store/LoginStore";
-import {
-  logInTokenState,
-  memberInfoState,
-  childInfoState,
-} from "../store/atoms";
 
 import { useCommonCallback } from "./useCommonCallback";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+
+import { memberInfoState, childInfoState } from "../store/atoms";
 
 export const useAuthCallback = () => {
   const navigate = useNavigate();
@@ -21,6 +17,9 @@ export const useAuthCallback = () => {
 
   const [refreshToken, setRefreshToken] = useRecoilState(refreshTokenState);
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+
+  const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
+  const [childInfo, setChildInfo] = useRecoilState(childInfoState);
 
   const loginCallback = (id, password) => {
     api
@@ -65,8 +64,7 @@ export const useAuthCallback = () => {
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
-          // userInfoCallback(response.data.token)
-          // profileListCallback(response.data.token)
+          memberInfoCallback();
           navigate("/parent");
         }
       })
@@ -125,15 +123,9 @@ export const useAuthCallback = () => {
   };
 
   // 회원 정보 콜백 함수
-  const memberInfoCallback = async (token) => {
-    axios({
-      method: "get",
-      url: "/api/member",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token ? `Bearer ${token}` : `Bearer ${logInToken}`,
-      },
-    })
+  const memberInfoCallback = async () => {
+    api
+      .get(`/api/member`)
       .then((response) => {
         if (response.data) {
           setMemberInfo(response.data);
@@ -148,14 +140,8 @@ export const useAuthCallback = () => {
 
   // 아이 정보 콜백 함수
   const childInfoCallback = async (childId) => {
-    axios({
-      method: "get",
-      url: `/api/member/child/${childId}`,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${logInToken}`,
-      },
-    })
+    api
+      .get(`/api/member/child/${childId}`)
       .then((response) => {
         if (response.data) {
           setChildInfo(response.data);
