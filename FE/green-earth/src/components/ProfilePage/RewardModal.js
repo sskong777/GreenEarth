@@ -28,7 +28,7 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
       setRewardGoal(parseInt(rewardList[0].rewardCondition));
       setRewardGift(rewardList[0].rewardName);
     }
-  }, rewardList);
+  }, []);
 
   // 목표 보상갯수 설정 함수
   const handleClickRewardGoal = (e) => {
@@ -107,13 +107,12 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
                   <input
                     type="number"
                     value={rewardGoal}
-                    step="10"
-                    min={parseInt(mission) + 10}
+                    min={parseInt(mission) + 1}
                     onChange={handleClickRewardGoal}
                     className="ReawardModalInput"
                   />
                   <div className="text-lg text-blackBrown">
-                    ( 최소 {parseInt(mission) + 10}개부터 10개 단위로 설정
+                    ( 최소 {parseInt(mission) + 1}개부터 자유롭게 설정
                     가능합니다. )
                   </div>
                 </div>

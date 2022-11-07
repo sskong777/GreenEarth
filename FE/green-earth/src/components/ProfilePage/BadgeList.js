@@ -12,8 +12,8 @@ const badgeInfo = [
   { level: 6, title: "내가 제일 최고" },
   { level: 7, title: "내가 제일 최고" },
   { level: 8, title: "내가 제일 최고" },
-  { level: 9, title: "내가 제일 최고" },
-  { level: 10, title: "내가 제일 최고" },
+  // { level: 9, title: "내가 제일 최고" },
+  // { level: 10, title: "내가 제일 최고" },
 ];
 
 const BadgeList = ({ earthLevel }) => {
@@ -21,7 +21,7 @@ const BadgeList = ({ earthLevel }) => {
 
   // 레벨을 기준으로 획득 배지와 미획득 배지로 분류해서 저장
   const unlockBadge = badgeInfo.slice(0, childLevel);
-  const lockBadge = badgeInfo.slice(childLevel, 10);
+  const lockBadge = badgeInfo.slice(childLevel, 8);
 
   return (
     <div className="BadgeList">
