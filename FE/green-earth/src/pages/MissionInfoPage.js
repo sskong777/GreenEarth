@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
+
 import MissionInfo from "../components/MissionInfo";
+
 
 import "../style/MissionInfo.css";
 
