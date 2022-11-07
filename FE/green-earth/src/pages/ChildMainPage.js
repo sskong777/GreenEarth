@@ -38,17 +38,23 @@ import {Earth5} from "../components/ChildMainPage/Earth5"
 import {Earth6} from "../components/ChildMainPage/Earth6"
 import {Earth7} from "../components/ChildMainPage/Earth7"
 import {Earth8} from "../components/ChildMainPage/Earth8"
-import {Earth9} from "../components/ChildMainPage/Earth9"
-import {Earth10} from "../components/ChildMainPage/Earth10"
+
 
 function ChildMainPage() {
   
-  const level = 10
+  const level = 1
+
   const value = level*11.2
   const mileage = level*100+12
   const nickname = '어린왕자'
 
+  // useEffect(() => {
+  //     window.location.reload();
+  // }, []); //두 번째 인수로 빈 배열을 준다.
+
+
   if (level ===1 ){
+    
   return (
     <div>
       <Earth1 />
@@ -101,18 +107,7 @@ function ChildMainPage() {
       <Earth8 />
     </div>
   );}
-  else if (level === 9) {
-      return (
-      <div>
-        <Earth9 />
-      </div>
-  );}
-  else if (level === 10) {
-      return (
-      <div>
-        <Earth10 />
-      </div>
-  );}
+
   }
 
 

@@ -26,7 +26,7 @@ import {Child1, Child2, Child3, Child4, Child5, Child6, Child7, Child8, Child9, 
 import {Model9, Model10, Model11, Model12, Model13, Model14, Model15, Model16, Model17, Model18, Model19
 , Model90, Model100, Model110, Model120, Model130, Model140, Model150, Model160, Model170, Model180, Model190, Model20} from "../../Model.js/Badge"
 
-import { Model3, Model, Model0, Model00, Model000} from "../../Model.js/Space"
+import { Model3, Model, Model0, Model00, Model000, EarthLv8} from "../../Model.js/Space"
 
 import {Beluga} from "../../Model.js/Animal"
 
@@ -61,7 +61,7 @@ function Earth8() {
               <Suspense fallback={null}>
                   <ambientLight />
                   <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
-                  <Model3 />
+                  <Child2 />
                   <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
               </Suspense> 
               </Canvas>
@@ -260,34 +260,55 @@ function Earth8() {
                     <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                 </Suspense> 
                 </Canvas>}
-            </div>
+                </div>
+                </div>
+            
+                <div className= "Mission">
+                    <Mission />
+                    <div className="balloon">
+                        지구를 구하러가자
+                    </div>
+                    <div >
+                    
+                </div>
+                </div>
+            </div>    
         </div>
+        <Link to="game">
+        <div className = "canvasAstronaut">
+            {/* <div className = "gameButton blinking">
+                <Link to="/game">GAME</Link>
+            </div> */}
+            <Canvas id="astronaut" >
+                <Suspense fallback={null}>
+                <ambientLight />
+                <spotLight intensity={1} angle={0.1} penumbra={1} position={[100, 100,100]} castShadow />
+                {/* <Model000 /> */}
+                {/* <Child2 /> */}
+                {/* <Beluga/> */}
+                <Model0 />
+                <OrbitControls enablePan={false} enableZoom={false} rotateSpeed = {0.2} enableRotate={false} />
+                </Suspense> 
+            </Canvas>
+        </div>
+        </Link>
+        <div className = "canvasEarth">
           
-          <div>
-            <Mission />
-          </div>
-          </div>
-          <div className= "game">
-          <div className = "gameButton blinking">
-            <Link to="/game">GAME</Link>
-          </div>
-          </div>
-          
-      </div>
+            <Canvas id="earth" >
+                <Suspense fallback={null}>
+                <ambientLight />
+                <spotLight intensity={0.1} angle={0.1} penumbra={1} position={[100, 100,100]} castShadow />
+                <EarthLv8 />
+                {/* <Child2 /> */}
+                {/* <Beluga/> */}
+                {/* <Model0 /> */}
+                <OrbitControls enablePan={true} enableZoom={true} rotateSpeed = {0.2} enableRotate={true} />
+                </Suspense> 
+            </Canvas>
+        </div>
+        
       
-      <div className = "canvasEarth">
-          <Canvas id="earth" >
-              <Suspense fallback={null}>
-              <ambientLight />
-              <spotLight intensity={5} angle={0.1} penumbra={1} position={[10,15,10]} castShadow />        
-              <Model />
-       
-              <OrbitControls enablePan={true} enableZoom={true} rotateSpeed = {0.2} enableRotate={true} />
-              </Suspense> 
-          </Canvas>
-      </div>
-    
-  </div>
+    </div>
   )
 }
 export {Earth8}
