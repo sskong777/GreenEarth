@@ -1,0 +1,34 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* WelcomeDescription */
+.WelcomeDescription {
+  @apply relative flex flex-col justify-start items-center w-full h-[44rem];
+}
+
+.DescriptionHead {
+  @apply text-6xl text-light my-16;
+}
+
+.DescriptionBody {
+  @apply flex justify-between items-start;
+}
+
+.DescriptionImage {
+  @apply w-[30rem];
+}
+
+.DescriptionText {
+  @apply w-[32rem] text-lightGray text-2xl leading-relaxed break-keep pt-5 pl-10;
+}
+
+.DescriptionButton {
+  @apply flex justify-end w-full;
+}
+
+.DescriptionBtn {
+  @apply absolute bottom-10 right-0 w-56 h-16 text-light text-xl font-bold rounded-md 
+  bg-[#3faa35] hover:bg-[#3faa35]/90 active:bg-[#3faa35]/70
+  shadow-lg shadow-[#3faa35]/70;
+}

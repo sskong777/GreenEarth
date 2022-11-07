@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 import WelcomePage from "./pages/WelcomePage";
 import LogInPage from "./pages/LogInPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -12,10 +11,11 @@ import ProfilePage from "./pages/ProfilePage";
 import GamePage from "./pages/GamePage";
 import GamePicturePage from "./pages/GamePicturePage";
 import GameRecyclePage from "./pages/GameRecyclePage";
+import MissionInfoPage from "./pages/MissionInfoPage";
 
+import OauthRedirectPage from "./pages/OauthRedirectPage";
 
-function App() {
-
+const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
@@ -30,10 +30,13 @@ function App() {
           <Route path="/game" element={<GamePage />} />
           <Route path="/game/picture" element={<GamePicturePage />} />
           <Route path="/game/recycle" element={<GameRecyclePage />} />
+
+          <Route path="/oauth/redirect" element={<OauthRedirectPage />} />
+          <Route path="/mission" element={<MissionInfoPage />} />
         </Routes>
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
