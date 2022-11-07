@@ -1,10 +1,16 @@
 import { useRecoilState } from "recoil";
 import { accessTokenState, refreshTokenState } from "../store/LoginStore";
+import {
+  logInTokenState,
+  memberInfoState,
+  childInfoState,
+} from "../store/atoms";
 
 import { useCommonCallback } from "./useCommonCallback";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export const useAuthCallback = () => {
   const navigate = useNavigate();
@@ -118,11 +124,57 @@ export const useAuthCallback = () => {
     return response;
   };
 
+  // 회원 정보 콜백 함수
+  const memberInfoCallback = async (token) => {
+    axios({
+      method: "get",
+      url: "/api/member",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token ? `Bearer ${token}` : `Bearer ${logInToken}`,
+      },
+    })
+      .then((response) => {
+        if (response.data) {
+          setMemberInfo(response.data);
+          console.log("회원 정보가 조회되었습니다.");
+          console.log("memberInfo :", response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
+
+  // 아이 정보 콜백 함수
+  const childInfoCallback = async (childId) => {
+    axios({
+      method: "get",
+      url: `/api/member/child/${childId}`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${logInToken}`,
+      },
+    })
+      .then((response) => {
+        if (response.data) {
+          setChildInfo(response.data);
+          console.log("아이 정보가 조회되었습니다.");
+          console.log("childInfo :", response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
+
   return {
     loginCallback,
     logoutcallback,
     kakaoLoginCallback,
     signUpCallback,
     nickNameCheckCallback,
+    memberInfoCallback,
+    childInfoCallback,
   };
 };
