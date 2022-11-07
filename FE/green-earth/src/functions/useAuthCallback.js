@@ -33,15 +33,11 @@ export const useAuthCallback = () => {
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
-          // userInfoCallback(response.data.token)
-          // profileListCallback(response.data.token)
           navigate("/child");
         }
       })
       .catch((error) => {
         console.log(error.response.data);
-        // setModalContent(error.response.data?.Messege ? error.response.data?.Messege : '오류가 발생했습니다.')
-        // setModalOpen(true)
       });
   };
 
@@ -70,8 +66,6 @@ export const useAuthCallback = () => {
       })
       .catch((error) => {
         console.log(error.response.data);
-        // setModalContent(error.response.data?.Messege ? error.response.data?.Messege : '오류가 발생했습니다.')
-        // setModalOpen(true)
       });
   };
 
@@ -125,7 +119,7 @@ export const useAuthCallback = () => {
   // 회원 정보 콜백 함수
   const memberInfoCallback = async () => {
     api
-      .get(`/api/member`)
+      .get(`/member`)
       .then((response) => {
         if (response.data) {
           setMemberInfo(response.data);
@@ -141,7 +135,7 @@ export const useAuthCallback = () => {
   // 아이 정보 콜백 함수
   const childInfoCallback = async (childId) => {
     api
-      .get(`/api/member/child/${childId}`)
+      .get(`/member/child/${childId}`)
       .then((response) => {
         if (response.data) {
           setChildInfo(response.data);
