@@ -14,3 +14,9 @@ export const accessTokenState = atom({
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
+
+export const isRetryState = atom({
+  key: "isRetryState",
+  default: false,
+  effects_UNSTABLE: [],
+});
