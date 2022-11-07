@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { useAuthCallback } from "./../../functions/useAuthCallback";
 
+import { useNavigate } from "react-router-dom";
+
 import "../../style/LoginPage/LoginForm.css";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -73,7 +77,7 @@ const LoginForm = () => {
       <div>
         <button
           onClick={() => {
-            window.open(url);
+            window.location.href = `${url}`;
           }}
         >
           <img src={"assets/images/kakao_login_medium_wide.png"} />
