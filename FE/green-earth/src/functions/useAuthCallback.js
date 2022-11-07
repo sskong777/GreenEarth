@@ -60,7 +60,7 @@ export const useAuthCallback = () => {
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
-          memberInfoCallback();
+          // memberInfoCallback();
           navigate("/parent");
         }
       })
@@ -103,8 +103,7 @@ export const useAuthCallback = () => {
   const logoutcallback = () => {
     api.post(`/member/logout`).then((response) => {
       if (response) {
-        setRefreshToken("");
-        setAccessToken("");
+        window.localStorage.clear();
         console.log("로그아웃 되었습니다.");
         navigate("/");
       }
