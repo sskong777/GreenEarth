@@ -23,3 +23,23 @@
 .SignUpButton {
   @apply flex flex-col py-4 px-20 bg-cyan-500 text-white font-semibold rounded-lg shadow-md hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
 }
+
+.GenderDropdown {
+  @apply w-full relative select-none;
+}
+
+.GenderDropdownButton {
+  @apply flex justify-between items-center h-8 px-4 cursor-pointer rounded-md text-xl text-light font-medium text-center
+  bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
+  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
+}
+
+.GenderDropdownContent {
+  @apply absolute z-10 w-full top-1.15 left-0 p-2.5 rounded-md text-xl text-blackBrown font-medium 
+  bg-stoneRed-dropdown outline outline-offset-1 outline-1 shadow-lg shadow-stoneRed-dropdown;
+}
+
+.GenderDropdownItem {
+  @apply p-2.5 rounded-md cursor-pointer transition-all delay-75
+  hover:bg-stoneRed-dropdown-hover;
+}
