@@ -72,7 +72,82 @@ function Earth1() {
                     </div>
                 </div>
                 <div className = "badges">
-                    <div className = "canvasBadge">
+                    {level<1 && <div className = "badgeImg">
+                        <img className="badgeImage" alt="" src="/assets/images/1.png" />
+                        <div className = "lockImg">
+                            <img className="lockImage1" alt="" src="/assets/images/lock.png" />
+                        </div>
+                    </div>}
+                    {level>=1 && <div className = "badgeImg_unlock">
+                        <img className="badgeImage" alt="" src="/assets/images/1.png" />
+                    </div>}
+                    {level<2 && <div className = "badgeImg">
+                        <img className="badgeImage" alt="" src="/assets/images/2.png" />
+                        <div className = "lockImg">
+                            <img className="lockImage2" alt="" src="/assets/images/lock.png" />
+                        </div>
+                    </div>}
+                    {level>=2 && <div className = "badgeImg_unlock">
+                        <img className="badgeImage" alt="" src="/assets/images/2.png" />
+                    </div>}
+                    {level<3 && <div className = "badgeImg">
+                        <img className="badgeImage" alt="" src="/assets/images/3.png" />
+                        <div className = "lockImg">
+                            <img className="lockImage3" alt="" src="/assets/images/lock.png" />
+                        </div>
+                    </div>}
+                    {level>=3 && <div className = "badgeImg_unlock">
+                        <img className="badgeImage" alt="" src="/assets/images/3.png" />
+                    </div>}
+                    {level<4 && <div className = "badgeImg">
+                        <img className="badgeImage" alt="" src="/assets/images/4.png" />
+                        <div className = "lockImg">
+                            <img className="lockImage4" alt="" src="/assets/images/lock.png" />
+                        </div>
+                    </div>}
+                    {level>=4 && <div className = "badgeImg_unlock">
+                        <img className="badgeImage" alt="" src="/assets/images/4.png" />
+                    </div>}
+                    {level<5 && <div className = "badgeImg">
+                        <img className="badgeImage" alt="" src="/assets/images/5.png" />
+                        <div className = "lockImg">
+                            <img className="lockImage5" alt="" src="/assets/images/lock.png" />
+                        </div>
+                    </div>}
+                    {level>=5 && <div className = "badgeImg_unlock">
+                        <img className="badgeImage" alt="" src="/assets/images/5.png" />
+                    </div>}
+                    {level<6 && <div className = "badgeImg">
+                        <img className="badgeImage" alt="" src="/assets/images/6.png" />
+                        <div className = "lockImg">
+                            <img className="lockImage6" alt="" src="/assets/images/lock.png" />
+                        </div>
+                    </div>}
+                    {level>=6 && <div className = "badgeImg_unlock">
+                        <img className="badgeImage" alt="" src="/assets/images/6.png" />
+                    </div>}
+                    {level<7 && <div className = "badgeImg">
+                        <img className="badgeImage" alt="" src="/assets/images/7.png" />
+                        <div className = "lockImg">
+                            <img className="lockImage7" alt="" src="/assets/images/lock.png" />
+                        </div>
+                    </div>}
+                    {level>=7 && <div className = "badgeImg_unlock">
+                        <img className="badgeImage" alt="" src="/assets/images/7.png" />
+                    </div>}
+                    {level<8 && <div className = "badgeImg">
+                        <img className="badgeImage" alt="" src="/assets/images/8.png" />
+                        <div className = "lockImg">
+                            <img className="lockImage8" alt="" src="/assets/images/lock.png" />
+                        </div>
+                    </div>}
+                    {level>=8 && <div className = "badgeImg_unlock">
+                        <img className="badgeImage" alt="" src="/assets/images/8.png" />
+                    </div>}
+                    
+                   
+
+                    {/* <div className = "canvasBadge">
                         {level<1 && <Canvas  id="badge1" >
                         <Suspense fallback={null}>
                             <ambientLight />
@@ -262,7 +337,7 @@ function Earth1() {
                             <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                         </Suspense> 
                         </Canvas>}
-                    </div>
+                    </div> */}
                 </div>
             
                 <div className= "Mission">
