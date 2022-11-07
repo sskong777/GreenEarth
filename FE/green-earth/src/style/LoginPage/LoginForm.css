@@ -1,0 +1,25 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* LoginForm */
+
+.LoginForm {
+  @apply flex flex-col justify-center items-center space-y-10 min-w-full;
+}
+
+.LoginFormBody {
+  @apply flex flex-col w-full justify-center items-end space-y-5 max-w-[90%];
+}
+
+.LoginElement {
+  @apply flex flex-col rounded border-8 border-transparent outline outline-offset-2 outline-cyan-500 py-1 px-3 w-[35%];
+}
+
+.LoginButton {
+  @apply flex flex-col py-4 px-20 bg-cyan-500 text-white font-semibold rounded-lg shadow-md hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+}
+
+.LoginLine {
+  @apply flex flex-col w-full border-2 border-cyan-500;
+}

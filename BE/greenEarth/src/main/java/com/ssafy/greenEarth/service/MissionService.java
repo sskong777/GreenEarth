@@ -34,16 +34,16 @@ public class MissionService {
     // 오늘의 미션생성
     // 로그인한 부모 정보가 넘어오는지 확인 필요
     @Transactional
-    public MissionLogResDto saveTodayMission(int child_id, MissionReqDto missionReqDto, Role curUserRole, int curUserId) {
+    public MissionLogResDto saveTodayMission(int childId, MissionReqDto missionReqDto, int curUserId) {
         int missionId = missionReqDto.getMissionId();
         Mission mission = missionRepository.findMissionById(missionId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION)
         );
-        Child child = childRepository.findChildById(child_id).orElseThrow(
+        Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
-        Parent parent = parentRepository.findParentById(curUserId).orElseThrow(
+        Parent parent = parentRepository.findById(curUserId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
@@ -51,14 +51,13 @@ public class MissionService {
 
         MissionLog missionlog = new MissionLog(child, mission, parent, now);
         missionLogRepository.save(missionlog);
-        MissionLogResDto missionLogResDto = new MissionLogResDto(missionlog);
-        return missionLogResDto;
+        return new MissionLogResDto(missionlog);
     }
 
     // 아이 미션 로그 조회
     @Transactional
-    public List<MissionLogResDto> getMissionLogs(int child_id){
-        Child child = childRepository.findChildDetailById(child_id).orElseThrow(
+    public List<MissionLogResDto> getMissionLogs(int childId){
+        Child child = childRepository.findChildById(childId).orElseThrow(
                 ()-> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
@@ -75,8 +74,8 @@ public class MissionService {
 
     // 오늘의 미션 조회
     @Transactional
-    public List<MissionLogResDto> getTodayMissionLogs(int child_id){
-        Child child = childRepository.findChildDetailById(child_id).orElseThrow(
+    public List<MissionLogResDto> getTodayMissionLogs(int childId){
+        Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
@@ -99,24 +98,22 @@ public class MissionService {
     // DTO로 바꿔야함
     @Transactional
     public List<Mission> getAllMissions(){
-        List<Mission> missions = missionRepository.findAll();
-        return missions;
+        return missionRepository.findAll();
     }
 
     @Transactional
-    public MissionResDto getMissionDetail(int mission_id){
-        Mission mission = missionRepository.findMissionById(mission_id).orElseThrow(
+    public MissionResDto getMissionDetail(int missionId){
+        Mission mission = missionRepository.findMissionById(missionId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION)
         );
 
-        MissionResDto missionResDto = new MissionResDto(mission);
-        return missionResDto;
+        return new MissionResDto(mission);
     }
 
     // 오늘의 미션 승인
     @Transactional
-    public MissionLogResDto permitMission(int log_id){
-        MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
+    public MissionLogResDto permitMission(int logId){
+        MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
                 ()->new BusinessException(NOT_EXIST_MISSION_LOG)
         );
 
@@ -151,60 +148,54 @@ public class MissionService {
             child.setEarthLevel(greenEarth);
         }
 
-        MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
-
-        return missionLogResDto;
+        return new MissionLogResDto(missionLog);
     }
 
     // 오늘의 미션 거절
     @Transactional
-    public MissionLogResDto rejectMission(int log_id){
-        MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
+    public MissionLogResDto rejectMission(int logId){
+        MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
                 ()->new BusinessException(NOT_EXIST_MISSION_LOG)
         );
         // cleared_at -> null
         missionLog.setClearedAt(null);
 
-        MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
-
-        return missionLogResDto;
+        return new MissionLogResDto(missionLog);
     }
 
     // 오늘의 미션 완료
     @Transactional
-    public MissionLogResDto clearMission(int log_id){
-        MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
+    public MissionLogResDto clearMission(int logId){
+        MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION_LOG)
         );
         LocalDateTime now = LocalDateTime.now();
         missionLog.setClearedAt(now);
 
-        MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
-        return missionLogResDto;
+        return new MissionLogResDto(missionLog);
     }
 
     // 오늘의 미션 수정
     @Transactional
-    public MissionLogResDto updateTodayMission(int log_id, MissionPutDto missionPutDto){
+    public MissionLogResDto updateTodayMission(int logId, MissionPutDto missionPutDto){
         int MissionId  = missionPutDto.getMissionId();
         Mission updatedMission = missionRepository.findMissionById(MissionId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION)
         );
-        MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
+        MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION_LOG)
         );
 
         missionLog.setMission(updatedMission);
-        MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
-        return missionLogResDto;
+        return new MissionLogResDto(missionLog);
     }
 
 
 
 //  오늘의 미션 삭제
     @Transactional
-    public void deleteTodayMission(int log_id){
-        MissionLog missionLog = missionLogRepository.findMissionLogById(log_id).orElseThrow(
+    public void deleteTodayMission(int logId){
+        MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION_LOG)
         );
 

@@ -3,25 +3,15 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
-export const ChildrenInfoState = atom({
-  key: "ChildrenInfoState",
-  default: [],
+export const memberInfoState = atom({
+  key: "memberInfoState",
+  default: {},
   effects_UNSTABLE: [persistAtom],
 });
 
-export const ChildInfoState = atom({
-  key: "ChildInfoState",
-  default: {
-    childId: 2,
-    email: "tjrgus@naver.com",
-    realName: "홍석현",
-    gender: "남",
-    nickName: "석현짱",
-    mileage: "120",
-    clearedMission: "0",
-    earthLevel: "3",
-    parent: "정종일",
-  },
+export const childInfoState = atom({
+  key: "childInfoState",
+  default: {},
   effects_UNSTABLE: [persistAtom],
 });
 
@@ -31,9 +21,27 @@ export const missionListState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const missionItemState = atom({
-  key: "missionItemState",
-  default: {},
+export const missionOptionListState = atom({
+  key: "missionOptionListState",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const missionSelectState = atom({
+  key: "missionSelectState",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const todayMissionListState = atom({
+  key: "todayMissionListState",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const rewardListState = atom({
+  key: "rewardListState",
+  default: [],
   effects_UNSTABLE: [persistAtom],
 });
 
