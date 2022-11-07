@@ -1,6 +1,7 @@
 import "./../../style/style.css";
 
 export default function SingleCard({ card, handleChoice, flipped, disabled }) {
+  // 맞춰진 카드가 아닐 경우 실행
   const handleClick = () => {
     if (!disabled) {
       handleChoice(card);
@@ -8,12 +9,12 @@ export default function SingleCard({ card, handleChoice, flipped, disabled }) {
   };
 
   return (
-    <div className="card">
+    <div className="SingleCard">
       <div className={flipped ? "flipped" : ""}>
-        <img className="front" src={card.src} alt="card front" />
+        <img className="SingleCardFront" src={card.src} alt="card front" />
         <img
-          className="back"
-          src="/assets/cards/cover.png"
+          className="SingleCardBack"
+          src="./assets/cards/cover.png"
           onClick={handleClick}
           alt="card back"
         />

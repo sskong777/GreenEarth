@@ -4,12 +4,12 @@ import "./../../style/style.css";
 import SingleCard from "./SingleCard";
 
 const cardImages = [
-  { src: "/assets/cards/card_bus.png", matched: false },
-  { src: "/assets/cards/card_ecobag.png", matched: false },
-  { src: "/assets/cards/card_family.png", matched: false },
-  { src: "/assets/cards/card_plug.png", matched: false },
-  { src: "/assets/cards/card_recycle.png", matched: false },
-  { src: "/assets/cards/card_tree.png", matched: false },
+  { src: "./assets/cards/card_bus.png", matched: false },
+  { src: "./assets/cards/card_ecobag.png", matched: false },
+  { src: "./assets/cards/card_family.png", matched: false },
+  { src: "./assets/cards/card_plug.png", matched: false },
+  { src: "./assets/cards/card_recycle.png", matched: false },
+  { src: "./assets/cards/card_tree.png", matched: false },
 ];
 
 function CardsPairing() {
@@ -19,7 +19,7 @@ function CardsPairing() {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
 
-  // shuffle cards
+  // 카드 섞기
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
@@ -31,12 +31,12 @@ function CardsPairing() {
     setTurns(0);
   };
 
-  // handle a choice
+  // 카드 선택할 때 실행
   const handleChoice = (card) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
 
-  // compare 2 selected cards
+  // 두 카드가 맞는지 비교
   useEffect(() => {
     if (choiceOne && choiceTwo) {
       setDisabled(true);
@@ -57,9 +57,18 @@ function CardsPairing() {
     }
   }, [choiceOne, choiceTwo]);
 
-  console.log(cards);
+  // 모든 카드 맞췄을 경우 실행
+  useEffect(() => {
+    if (
+      cards.every((card) => {
+        return card.matched;
+      })
+    ) {
+      console.log("축하합니다!");
+    }
+  }, [cards]);
 
-  // reset choices & increase turn
+  // 1회 도전 완료 후 실행
   const resetTurn = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
@@ -67,17 +76,14 @@ function CardsPairing() {
     setDisabled(false);
   };
 
-  // start a new game automagically
+  // 시작 시 자동으로 카드 섞기
   useEffect(() => {
     shuffleCards();
   }, []);
 
   return (
-    <div className="App">
-      <h1>같은 그림 찾기</h1>
-      <button onClick={shuffleCards}>새 게임</button>
-
-      <div className="card-grid">
+    <div className="CardsPairing">
+      <div className="CardsPairingGrid">
         {cards.map((card) => (
           <SingleCard
             key={card.id}
@@ -88,7 +94,12 @@ function CardsPairing() {
           />
         ))}
       </div>
-      <p>도전 횟수 : {turns}</p>
+      <div className="ml-10 text-center">
+        <button className="CardsPairingButton" onClick={shuffleCards}>
+          새 게임
+        </button>
+        <div className="CardsPairingInfo">도전 횟수 : {turns}</div>
+      </div>
     </div>
   );
 }

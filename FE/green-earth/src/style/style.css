@@ -146,7 +146,7 @@
 /* BadgeList */
 
 .BadgeList {
-  @apply grid grid-cols-4 w-252 mx-auto;
+  @apply grid grid-cols-5 w-252 mx-auto;
 }
 
 /* BadgeItem */
@@ -343,63 +343,50 @@
 /* CardsPairing */
 
 .CardsPairing {
-  @apply flex justify-center items-center;
+  @apply w-[60rem] flex justify-center items-center;
 }
 
-button {
-  background: none;
-  border: 2px solid #fff;
-  padding: 6px 12px;
-  border-radius: 4px;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1em;
-}
-button:hover {
-  background: #c23866;
-  color: #fff;
+.CardsPairingButton {
+  @apply w-40 h-14  text-2xl text-blackBrown rounded-lg 
+  bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
 }
 
-.card-grid {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 20px;
+.CardsPairingInfo {
+  @apply mt-10 text-2xl text-light animate-pulse;
+}
+
+.CardsPairingGrid {
+  @apply grid grid-cols-4 gap-5;
 }
 
 /* SingleCard */
 
-.card {
-  position: relative;
+.SingleCard {
+  @apply relative w-40;
 }
 
-.card img {
-  width: 100%;
-  display: block;
-  border: 2px solid #fff;
-  border-radius: 6px;
+.SingleCard img {
+  @apply w-full block rounded-md border-4 border-light;
 }
 
-/* front of card - the picture */
-.card .front {
+.SingleCardFront {
+  position: absolute;
   transform: rotateY(90deg);
   transition: all ease-in 0.2s;
-  position: absolute;
 }
 
-.flipped .front {
+.SingleCardBack {
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+
+.flipped .SingleCardFront {
   transform: rotateY(0deg);
   transition-delay: 0.2s;
 }
 
-/* back of card - cover */
-.card .back {
-  transition: all ease-in 0.2s;
-  transition-delay: 0.2s;
-}
-
-.flipped .back {
+.flipped .SingleCardBack {
   transform: rotateY(90deg);
   transition-delay: 0s;
 }
