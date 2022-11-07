@@ -14,7 +14,7 @@ export const useRewardCallback = () => {
   // 보상 목록 조회 콜백 함수
   const rewardListCallback = async (childId) => {
     api
-      .get(`/api/reward/child/${childId}`)
+      .get(`/reward/child/${childId}`)
       .then((response) => {
         if (response.data) {
           setRewardList(response.data);
@@ -36,7 +36,7 @@ export const useRewardCallback = () => {
   ) => {
     console.log(name, rewardCondition, childId, parentNickname);
     api
-      .post(`/api/reward/child/${childId}`, {
+      .post(`/reward/child/${childId}`, {
         name: name,
         rewardCondition: rewardCondition,
         childId: childId,
@@ -56,7 +56,7 @@ export const useRewardCallback = () => {
   // 보상 지급 콜백 함수
   const rewardPayCallback = async (rewardId) => {
     api
-      .delete(`/api/reward/${rewardId}`)
+      .delete(`/reward/${rewardId}`)
       .then((response) => {
         if (response.data) {
           console.log("보상이 지급되었습니다.");

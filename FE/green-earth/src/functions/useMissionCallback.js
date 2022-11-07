@@ -24,7 +24,7 @@ export const useMissionCallback = () => {
   // 전체 미션 콜백 함수
   const missionListCallback = async (childId) => {
     api
-      .get(`/api/mission/child/${childId}/log`)
+      .get(`/mission/child/${childId}/log`)
       .then((response) => {
         if (response.data) {
           setMissionList(response.data);
@@ -40,7 +40,7 @@ export const useMissionCallback = () => {
   // 오늘의 미션 콜백 함수
   const todayMissionListCallback = async (childId) => {
     api
-      .get(`/api/mission/child/${childId}/today`)
+      .get(`/mission/child/${childId}/today`)
       .then((response) => {
         if (response.data) {
           setTodayMissionList(response.data);
@@ -56,7 +56,7 @@ export const useMissionCallback = () => {
   // 미션 종류 콜백 함수
   const missionOptionListCallback = async () => {
     api
-      .get(`/api/mission`)
+      .get(`/mission`)
       .then((response) => {
         if (response.data) {
           setMissionOptionList(response.data);
@@ -72,7 +72,7 @@ export const useMissionCallback = () => {
   // 미션 설정 콜백 함수
   const saveMissionCallback = async (childId, missionId) => {
     api
-      .post(`/api/mission/child/${childId}`, {
+      .post(`/mission/child/${childId}`, {
         missionId: missionId,
       })
       .then((response) => {
@@ -89,7 +89,7 @@ export const useMissionCallback = () => {
   // 미션 수정 콜백 함수
   const editMissionCallback = async (childId, missionId) => {
     api
-      .put(`/api/mission/log/${childId}`, {
+      .put(`/mission/log/${childId}`, {
         missionId: missionId,
       })
       .then((response) => {
@@ -106,7 +106,7 @@ export const useMissionCallback = () => {
   // 미션 승인 콜백 함수
   const permitMissionCallback = async (logId) => {
     api
-      .put(`/api/mission/log/${logId}/permit`)
+      .put(`/mission/log/${logId}/permit`)
       .then((response) => {
         if (response.data) {
           console.log("미션이 승인되었습니다.");
@@ -121,7 +121,7 @@ export const useMissionCallback = () => {
   // 미션 거절 콜백 함수
   const rejectMissionCallback = async (logId) => {
     api
-      .put(`/api/mission/log/${logId}/reject`)
+      .put(`/mission/log/${logId}/reject`)
       .then((response) => {
         if (response.data) {
           console.log("미션이 거절되었습니다.");
@@ -136,7 +136,7 @@ export const useMissionCallback = () => {
   // 아이 미션 승인 요청 콜백 함수
   const clearMissionCallback = async (logId) => {
     api
-      .put(`/api/mission/log/${logId}/clear`)
+      .put(`/mission/log/${logId}/clear`)
       .then((response) => {
         if (response.data) {
           console.log("미션 승인 요청이 전송되었습니다.");
