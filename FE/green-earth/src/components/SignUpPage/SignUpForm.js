@@ -3,19 +3,52 @@ import { useAuthCallback } from "./../../functions/useAuthCallback";
 
 import { useNavigate } from "react-router-dom";
 
+import DatePicker from "react-datepicker";
+import { ko } from "date-fns/esm/locale";
+import "react-datepicker/dist/react-datepicker.css";
+import { getMonth, getYear } from "date-fns";
+
 import "../../style/SignUpPage/SignUpForm.css";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
 
   const [nickname, setNickname] = useState("");
+
+  // 비밀번호 정규식(숫자만 4자리)
+  const regex = /^[0-9]{4}$/;
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [realName, setRealName] = useState("");
-  const [gender, setGender] = useState("");
-  const [birthday, setBirthday] = useState("");
-  const [avatar, setAvatar] = useState("");
 
+  // 성별 드롭다운
+  const genderOptions = ["MALE", "FEMALE"];
+  const [isGenderActive, setIsGenderActive] = useState(false);
+  const [gender, setGender] = useState("성별을 설정해 주세요.");
+
+  // 생일 선택용 달력
+  const [birthday, setBirthday] = useState(new Date());
+  const _ = require("lodash");
+  const years = _.range(1990, getYear(new Date()) + 1, 1);
+  const months = [
+    "1월",
+    "2월",
+    "3월",
+    "4월",
+    "5월",
+    "6월",
+    "7월",
+    "8월",
+    "9월",
+    "10월",
+    "11월",
+    "12월",
+  ];
+
+  // 아바타 숫자 랜덤
+  const avatar = _.random(1, 100);
+
+  // 이메일 중복 체크용 useState
   const [check, setCheck] = useState(true);
 
   const { signUpCallback, nickNameCheckCallback } = useAuthCallback();
@@ -36,6 +69,11 @@ const SignUpForm = () => {
       alert("비밀번호를 입력해주세요");
       return;
     }
+    if (!regex.test(password)) {
+      setPassword("");
+      alert("비밀번호는 4자리의 숫자만 가능합니다.");
+      return;
+    }
     if (!password2.trim()) {
       alert("비밀번호를 한번 더 입력해주세요");
       return;
@@ -44,16 +82,8 @@ const SignUpForm = () => {
       alert("이름을 입력해주세요");
       return;
     }
-    if (!gender.trim()) {
+    if (gender === "성별을 설정해 주세요.") {
       alert("성별을 입력해주세요");
-      return;
-    }
-    if (!birthday.trim()) {
-      alert("생일을 입력해주세요");
-      return;
-    }
-    if (!avatar.trim()) {
-      alert("아바타를 입력해주세요");
       return;
     }
     if (password !== password2) {
@@ -144,36 +174,77 @@ const SignUpForm = () => {
         {/* 성별 */}
         <div className="SignUpFormBodyElement">
           <label htmlFor="gender">성별</label>
-          <input
-            type="gender"
-            name="gender"
-            value={gender}
-            placeholder="성별을 입력하세요"
-            onChange={(e) => setGender(e.target.value)}
-          />
+          {/* Dropdown */}
+          <div className="GenderDropdown">
+            <div
+              className="GenderDropdownButton"
+              onClick={(e) => {
+                setIsGenderActive(!isGenderActive);
+              }}
+            >
+              {gender}
+            </div>
+
+            {isGenderActive && (
+              <div className="GenderDropdownContent">
+                {genderOptions.map((option, key) => (
+                  <div
+                    key={key}
+                    onClick={(e) => {
+                      setGender(option);
+                      setIsGenderActive(false);
+                    }}
+                    className="GenderDropdownItem"
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* 생일 */}
         <div className="SignUpFormBodyElement">
           <label htmlFor="birthday">생일</label>
-          <input
-            type="birthday"
-            name="birthday"
-            value={birthday}
-            placeholder="생일을 입력하세요"
-            onChange={(e) => setBirthday(e.target.value)}
-          />
-        </div>
+          <DatePicker
+            renderCustomHeader={({ date, changeYear, changeMonth }) => (
+              <div
+                style={{
+                  margin: 10,
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <select
+                  value={getYear(date)}
+                  onChange={({ target: { value } }) => changeYear(value)}
+                >
+                  {years.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
 
-        {/* 아바타 */}
-        <div className="SignUpFormBodyElement">
-          <label htmlFor="avatar">아바타</label>
-          <input
-            type="avatar"
-            name="avatar"
-            value={avatar}
-            placeholder="아바타를 입력하세요"
-            onChange={(e) => setAvatar(e.target.value)}
+                <select
+                  value={months[getMonth(date)]}
+                  onChange={({ target: { value } }) =>
+                    changeMonth(months.indexOf(value))
+                  }
+                >
+                  {months.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+            selected={birthday}
+            locale={ko}
+            dateFormat="yyyy년 MM월 dd일"
+            onChange={(date) => setBirthday(date)}
           />
         </div>
 
