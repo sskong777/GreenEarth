@@ -2,11 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
-import {
-  logInTokenState,
-  memberInfoState,
-  childInfoState,
-} from "../store/atoms";
+import { memberInfoState, childInfoState } from "../store/atoms";
 
 import { useAuthCallback } from "./../functions/useAuthCallback";
 import { useRewardCallback } from "./../functions/useRewardCallback";
@@ -26,7 +22,6 @@ const ProfilePage = () => {
   // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
   const [childInfo, setChildInfo] = useRecoilState(childInfoState);
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
-  const [loginToken, setLoginToken] = useRecoilState(logInTokenState);
 
   // 회원정보, 아이정보 Axios 요청
   const { memberInfoCallback, childInfoCallback } = useAuthCallback();
@@ -42,9 +37,6 @@ const ProfilePage = () => {
 
   // 프로필 페이지에 접근하면 해당 아이정보 Axios 요청
   useEffect(() => {
-    // 임시 (토큰 연동 시 삭제 예정)
-    memberInfoCallback(loginToken);
-
     childInfoCallback(childId);
   }, []);
 
