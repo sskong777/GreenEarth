@@ -1,82 +1,96 @@
-import { useState } from "react";
-import { shuffle } from "lodash";
+import { useEffect, useState } from "react";
 
 import "./../../style/style.css";
-import Images from "./Images";
+import SingleCard from "./SingleCard";
 
-const CardsPairing = () => {
-  const [cards, setCards] = useState(shuffle([...Images, ...Images]));
-  const [clicks, setClicks] = useState(0);
-  const [won, setWon] = useState(false);
-  const [activeCards, setActiveCards] = useState([]);
-  const [foundPairs, setFoundPairs] = useState([]);
+const cardImages = [
+  { src: "/assets/cards/card_bus.png", matched: false },
+  { src: "/assets/cards/card_ecobag.png", matched: false },
+  { src: "/assets/cards/card_family.png", matched: false },
+  { src: "/assets/cards/card_plug.png", matched: false },
+  { src: "/assets/cards/card_recycle.png", matched: false },
+  { src: "/assets/cards/card_tree.png", matched: false },
+];
 
-  function flipCard(index) {
-    if (won) {
-      setCards(shuffle([...Images, ...Images]));
-      setFoundPairs([]);
-      setWon(false);
-      setClicks(0);
-    }
-    if (activeCards.length === 0) {
-      setActiveCards([index]);
-    }
-    if (activeCards.length === 1) {
-      const firstIndex = activeCards[0];
-      const secondsIndex = index;
-      if (cards[firstIndex] === cards[secondsIndex]) {
-        if (foundPairs.length + 2 === cards.length) {
-          setWon(true);
-        }
-        setFoundPairs([...foundPairs, firstIndex, secondsIndex]);
+function CardsPairing() {
+  const [cards, setCards] = useState([]);
+  const [turns, setTurns] = useState(0);
+  const [choiceOne, setChoiceOne] = useState(null);
+  const [choiceTwo, setChoiceTwo] = useState(null);
+  const [disabled, setDisabled] = useState(false);
+
+  // shuffle cards
+  const shuffleCards = () => {
+    const shuffledCards = [...cardImages, ...cardImages]
+      .sort(() => Math.random() - 0.5)
+      .map((card) => ({ ...card, id: Math.random() }));
+
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setCards(shuffledCards);
+    setTurns(0);
+  };
+
+  // handle a choice
+  const handleChoice = (card) => {
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+  };
+
+  // compare 2 selected cards
+  useEffect(() => {
+    if (choiceOne && choiceTwo) {
+      setDisabled(true);
+      if (choiceOne.src === choiceTwo.src) {
+        setCards((prevCards) => {
+          return prevCards.map((card) => {
+            if (card.src === choiceOne.src) {
+              return { ...card, matched: true };
+            } else {
+              return card;
+            }
+          });
+        });
+        resetTurn();
+      } else {
+        setTimeout(() => resetTurn(), 1000);
       }
-      setActiveCards([...activeCards, index]);
     }
-    if (activeCards.length === 2) {
-      setActiveCards([index]);
-    }
-    setClicks(clicks + 1);
-  }
+  }, [choiceOne, choiceTwo]);
+
+  console.log(cards);
+
+  // reset choices & increase turn
+  const resetTurn = () => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setTurns((prevTurns) => prevTurns + 1);
+    setDisabled(false);
+  };
+
+  // start a new game automagically
+  useEffect(() => {
+    shuffleCards();
+  }, []);
 
   return (
-    <div className="CardsPairing">
-      <div className="board">
-        {cards.map((card, index) => {
-          const flippedToFront =
-            activeCards.indexOf(index) !== -1 ||
-            foundPairs.indexOf(index) !== -1;
-          return (
-            <div
-              className={"card-outer " + (flippedToFront ? "flipped" : "")}
-              onClick={() => flipCard(index)}
-              key={index}
-            >
-              <div className="card">
-                <div className="front">
-                  <img src={card} alt="" />
-                </div>
-                <div className="back" />
-              </div>
-            </div>
-          );
-        })}
+    <div className="App">
+      <h1>같은 그림 찾기</h1>
+      <button onClick={shuffleCards}>새 게임</button>
+
+      <div className="card-grid">
+        {cards.map((card) => (
+          <SingleCard
+            key={card.id}
+            card={card}
+            handleChoice={handleChoice}
+            flipped={card === choiceOne || card === choiceTwo || card.matched}
+            disabled={disabled}
+          />
+        ))}
       </div>
-      <div className="stats">
-        <div>
-          {won && (
-            <>
-              승리했습니다! 축하합니다!
-              <br />
-              아무카드를 선택하면 다시 시작합니다!
-              <br />
-            </>
-          )}
-        </div>
-        <div>클릭 수 : {clicks}</div>
-        <div>정답 수 : {foundPairs.length / 2}</div>
-      </div>
+      <p>도전 횟수 : {turns}</p>
     </div>
   );
-};
+}
 
 export default CardsPairing;
