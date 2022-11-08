@@ -19,6 +19,7 @@ import java.util.List;
 public class SwaggerConfig {
     // http://k7d206.p.ssafy.io/api/swagger-ui/index.html#/
     // http://localhost:8881/api/swagger-ui/index.html#/
+    // pull test
 
     @Bean
     public Docket api(){
