@@ -220,7 +220,7 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 120px;
+    padding: 100px;
     position : absolute;
     top: 0;
     left: 0;
@@ -271,6 +271,13 @@ progress::before{
     right:0px;
     bottom:0px;
     background-color: white;
+}
+.badgeImg_unlocked {
+    width: 90%;
+    height: 100%;
+    margin:5px;
+    position: relative;
+  
 }
 .badgeImg_unlock {
     width: 22%;

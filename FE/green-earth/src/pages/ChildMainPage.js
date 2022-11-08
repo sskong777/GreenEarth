@@ -44,9 +44,6 @@ function ChildMainPage() {
   
   const level = 1
 
-  const value = level*11.2
-  const mileage = level*100+12
-  const nickname = '어린왕자'
 
   // useEffect(() => {
   //     window.location.reload();

@@ -32,10 +32,11 @@ import {Beluga} from "../../Model.js/Animal"
 
 function Earth1() {
   
-  const level = 1
-  const value = level*11.2
-  const mileage = level*100+12
-  const nickname = '어린왕자'
+  
+    const level = 1
+    const value = level*13.7
+    const mileage = level*122+12
+    const nickname = '어린왕자'
 
 
 
@@ -79,7 +80,7 @@ function Earth1() {
                         </div>
                     </div>}
                     {level>=1 && <div className = "badgeImg_unlock">
-                        <img className="badgeImage" alt="" src="/assets/images/1.png" />
+                        <img className="badgeImg_unlocked" alt="" src="/assets/images/1.png" />
                     </div>}
                     {level<2 && <div className = "badgeImg">
                         <img className="badgeImage" alt="" src="/assets/images/2.png" />
@@ -88,7 +89,7 @@ function Earth1() {
                         </div>
                     </div>}
                     {level>=2 && <div className = "badgeImg_unlock">
-                        <img className="badgeImage" alt="" src="/assets/images/2.png" />
+                        <img className="badgeImg_unlocked" alt="" src="/assets/images/2.png" />
                     </div>}
                     {level<3 && <div className = "badgeImg">
                         <img className="badgeImage" alt="" src="/assets/images/3.png" />
@@ -97,7 +98,7 @@ function Earth1() {
                         </div>
                     </div>}
                     {level>=3 && <div className = "badgeImg_unlock">
-                        <img className="badgeImage" alt="" src="/assets/images/3.png" />
+                        <img className="badgeImg_unlocked" alt="" src="/assets/images/3.png" />
                     </div>}
                     {level<4 && <div className = "badgeImg">
                         <img className="badgeImage" alt="" src="/assets/images/4.png" />
@@ -106,7 +107,7 @@ function Earth1() {
                         </div>
                     </div>}
                     {level>=4 && <div className = "badgeImg_unlock">
-                        <img className="badgeImage" alt="" src="/assets/images/4.png" />
+                        <img className="badgeImg_unlocked" alt="" src="/assets/images/4.png" />
                     </div>}
                     {level<5 && <div className = "badgeImg">
                         <img className="badgeImage" alt="" src="/assets/images/5.png" />
@@ -115,7 +116,7 @@ function Earth1() {
                         </div>
                     </div>}
                     {level>=5 && <div className = "badgeImg_unlock">
-                        <img className="badgeImage" alt="" src="/assets/images/5.png" />
+                        <img className="badgeImg_unlocked" alt="" src="/assets/images/5.png" />
                     </div>}
                     {level<6 && <div className = "badgeImg">
                         <img className="badgeImage" alt="" src="/assets/images/6.png" />
@@ -124,7 +125,7 @@ function Earth1() {
                         </div>
                     </div>}
                     {level>=6 && <div className = "badgeImg_unlock">
-                        <img className="badgeImage" alt="" src="/assets/images/6.png" />
+                        <img className="badgeImg_unlocked" alt="" src="/assets/images/6.png" />
                     </div>}
                     {level<7 && <div className = "badgeImg">
                         <img className="badgeImage" alt="" src="/assets/images/7.png" />
@@ -133,7 +134,7 @@ function Earth1() {
                         </div>
                     </div>}
                     {level>=7 && <div className = "badgeImg_unlock">
-                        <img className="badgeImage" alt="" src="/assets/images/7.png" />
+                        <img className="badgeImg_unlocked" alt="" src="/assets/images/7.png" />
                     </div>}
                     {level<8 && <div className = "badgeImg">
                         <img className="badgeImage" alt="" src="/assets/images/8.png" />
@@ -142,8 +143,9 @@ function Earth1() {
                         </div>
                     </div>}
                     {level>=8 && <div className = "badgeImg_unlock">
-                        <img className="badgeImage" alt="" src="/assets/images/8.png" />
+                        <img className="badgeImg_unlocked" alt="" src="/assets/images/8.png" />
                     </div>}
+              
                     
                    
 
