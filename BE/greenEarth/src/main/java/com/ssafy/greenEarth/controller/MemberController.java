@@ -10,9 +10,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+
+import com.ssafy.greenEarth.exception.BusinessException;
+import static com.ssafy.greenEarth.exception.ErrorCode.*;
 
 @Api("MemberController")
 @Slf4j
@@ -46,9 +52,9 @@ public class MemberController {
 
     @ApiOperation(value = "아이 등록", notes = "아이 등록 및 현재 접속 중인 보호자 계정과 연결")
     @PostMapping("/signup")
-    public ResponseEntity<Child> signup(@RequestBody ChildRegisterDto childDto, HttpServletRequest request) {
+    public ResponseEntity<ChildProfileDto> signup(@Validated @RequestBody ChildRegisterDto childDto, HttpServletRequest request) {
         int curUserId = (int) request.getAttribute("curUserId");
-        Child data = memberService.registerChild(childDto, curUserId);
+        ChildProfileDto data = memberService.registerChild(childDto, curUserId);
         return new ResponseEntity<>(data, HttpStatus.CREATED);
     }
 
