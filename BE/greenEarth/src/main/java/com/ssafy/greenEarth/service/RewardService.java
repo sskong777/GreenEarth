@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.ssafy.greenEarth.exception.BusinessException;
 import static com.ssafy.greenEarth.exception.ErrorCode.*;
@@ -30,13 +31,8 @@ public class RewardService {
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
-        List<RewardResDto> data = new ArrayList<>();
-
-        List<Reward> rewards = child.getRewardList();
-        for (Reward reward : rewards){
-            RewardResDto rewardResDto = new RewardResDto(reward);
-            data.add(rewardResDto);
-        }
+        List<RewardResDto> data = child.getRewardList().stream()
+                .map(RewardResDto::new).collect(Collectors.toList());
         return data;
     }
 
@@ -46,7 +42,7 @@ public class RewardService {
         Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
-        Reward reward = rewardReqDto.toEntity(rewardReqDto, child);
+        Reward reward = rewardReqDto.toEntity(child);
         rewardRespository.save(reward);
         return new RewardResDto(reward);
     }
