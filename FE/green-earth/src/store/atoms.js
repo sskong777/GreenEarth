@@ -55,4 +55,3 @@ export const logInTokenState = atom({
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
-

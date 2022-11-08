@@ -57,7 +57,7 @@ public class AuthController {
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "카카오 로그인 인가 code 발급", notes = "사용자가 카카오 로그인 완료시 인가 code 넘어옴")
+    @ApiOperation(value = "카카오 OAuth 토큰 발급", notes = "인가 코드를 통해 카카오 OAuth 토큰 발급")
     @GetMapping("/login/adult")
     public ResponseEntity<HashMap<String, String>> adultLogin(@RequestParam String code) {
 
