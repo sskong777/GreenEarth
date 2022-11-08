@@ -29,8 +29,8 @@ public class ParentRegisterDto {
 
     public Parent toEntity() {
         return Parent.builder()
-                .email(this.getEmail())
-                .nickname(this.getNickname())
+                .email(getEmail())
+                .nickname(getNickname())
                 .role(Role.ROLE_PARENT)
                 .build();
     }
