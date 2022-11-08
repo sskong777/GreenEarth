@@ -220,7 +220,7 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 120px;
+    padding: 100px;
     position : absolute;
     top: 0;
     left: 0;
@@ -255,10 +255,11 @@ progress::before{
     display:flex;
     flex-direction: row;
     flex-wrap : wrap;
-    width: 50%;
+    width: 40%;
     /* background-color: white; */
     position: relative;
     margin-left:2%;
+    padding:5px;
     margin-right:2%
 }
 .badges::before{
@@ -271,6 +272,65 @@ progress::before{
     bottom:0px;
     background-color: white;
 }
+.badgeImg_unlocked {
+    width: 90%;
+    height: 100%;
+    margin:5px;
+    position: relative;
+  
+}
+.badgeImg_unlock {
+    width: 22%;
+    height: 40%;
+    margin:5px;
+    position: relative;
+  
+}
+.badgeImg_unlock::before{
+    content:"";
+    opacity:0.3;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background-color: black;
+
+}
+.badgeImage{
+    height: 100%;
+    margin:auto;
+}
+
+.badgeImg {
+    width: 22%;
+    height: 40%;
+    margin:5px;
+    position: relative;
+    
+}
+.badgeImg::before{
+    content:"";
+    opacity:0.3;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background-color: black;
+    z-index:20;
+}
+
+.lockImg {
+    margin-left:15%;
+    margin-top : 15%;
+    width: 70%;
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index:200;
+}
+
 
 .canvasBadge {
     margin : 2%;
@@ -279,8 +339,6 @@ progress::before{
     position: relative;
     height:40%;
 }
-
-
 .canvasBadge::before{
     content:"";
     opacity:0.3;
