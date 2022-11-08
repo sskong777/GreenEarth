@@ -157,7 +157,7 @@
 
 .BadgeItemImage {
   @apply flex justify-center items-center w-32 h-32 mt-3 mb-2 rounded-2xl 
-  bg-lightOrange shadow-lg shadow-lightOrange/50;
+  bg-[#061e30] shadow-lg shadow-[#061e30]/50;
 }
 
 .BadgeItemImageLock {
