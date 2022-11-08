@@ -46,7 +46,7 @@ public class RewardService {
         Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
-        Reward reward = rewardReqDto.toEntity(rewardReqDto, child);
+        Reward reward = rewardReqDto.toEntity(child);
         rewardRespository.save(reward);
         return new RewardResDto(reward);
     }
