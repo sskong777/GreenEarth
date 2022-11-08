@@ -50,8 +50,3 @@ export const missionInfoState = atom({
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
-export const logInTokenState = atom({
-  key: "logInTokenState",
-  default: "",
-  effects_UNSTABLE: [persistAtom],
-});
