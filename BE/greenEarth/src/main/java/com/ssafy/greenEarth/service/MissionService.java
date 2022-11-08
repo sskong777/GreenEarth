@@ -23,8 +23,11 @@ import static com.ssafy.greenEarth.exception.ErrorCode.*;
 public class MissionService {
 
     private final ChildRepository childRepository;
+
     private final MissionRepository missionRepository;
+
     private final MissionLogRepository missionLogRepository;
+
     private final ParentRepository parentRepository;
 
     private final GreenEarthRepository greenEarthRepository;
