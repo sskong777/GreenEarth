@@ -157,7 +157,7 @@
 
 .BadgeItemImage {
   @apply flex justify-center items-center w-32 h-32 mt-3 mb-2 rounded-2xl 
-  bg-lightOrange shadow-lg shadow-lightOrange/50;
+  bg-[#061e30] shadow-lg shadow-[#061e30]/50;
 }
 
 .BadgeItemImageLock {
@@ -338,4 +338,55 @@
 .GamePagePlaySpace {
   @apply w-[62rem] h-[36rem] flex justify-center items-center ml-10 rounded-md 
   bg-[#011d29] shadow-md shadow-[#011d29]/50;
+}
+
+/* CardsPairing */
+
+.CardsPairing {
+  @apply w-[60rem] flex justify-center items-center;
+}
+
+.CardsPairingButton {
+  @apply w-40 h-14  text-2xl text-blackBrown rounded-lg 
+  bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
+}
+
+.CardsPairingInfo {
+  @apply mt-10 text-2xl text-light animate-pulse;
+}
+
+.CardsPairingGrid {
+  @apply grid grid-cols-4 gap-5;
+}
+
+/* SingleCard */
+
+.SingleCard {
+  @apply relative w-40;
+}
+
+.SingleCard img {
+  @apply w-full block rounded-md border-4 border-light;
+}
+
+.SingleCardFront {
+  position: absolute;
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
+}
+
+.SingleCardBack {
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+
+.flipped .SingleCardFront {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+.flipped .SingleCardBack {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
 }
