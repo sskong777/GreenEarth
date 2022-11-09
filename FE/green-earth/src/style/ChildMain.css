@@ -220,7 +220,7 @@ progress::before{
     width: 100%;
     /* background-color: blue; */
     /* background-image: url('/public/galaxy.jpg'); */
-    padding: 100px;
+    padding: 120px;
     position : absolute;
     top: 0;
     left: 0;
@@ -255,12 +255,13 @@ progress::before{
     display:flex;
     flex-direction: row;
     flex-wrap : wrap;
-    width: 40%;
+    width: 50%;
+    height: 50%;
     /* background-color: white; */
     position: relative;
     margin-left:2%;
+    margin-right:2%;
     padding:5px;
-    margin-right:2%
 }
 .badges::before{
     content:"";
@@ -283,12 +284,13 @@ progress::before{
     width: 22%;
     height: 40%;
     margin:5px;
+    padding:5px;
     position: relative;
   
 }
 .badgeImg_unlock::before{
     content:"";
-    opacity:0.3;
+    opacity:0.4;
     position:absolute;
     top:0px;
     left:0px;
@@ -306,12 +308,13 @@ progress::before{
     width: 22%;
     height: 40%;
     margin:5px;
+    padding:5px;
     position: relative;
     
 }
 .badgeImg::before{
     content:"";
-    opacity:0.3;
+    opacity:0.4;
     position:absolute;
     top:0px;
     left:0px;
@@ -323,7 +326,7 @@ progress::before{
 
 .lockImg {
     margin-left:15%;
-    margin-top : 15%;
+
     width: 70%;
     position: absolute;
     top:0px;
@@ -351,230 +354,6 @@ progress::before{
 }
 
 
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
-
-
-.Earth10{
-    background-image: url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px;
-    
-    
-}
-.Earth10::before{
-    content:"";
-    opacity:0.8;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(rgb(28, 24, 50), rgb(117, 117, 212));
-
-}
-
-.canvasProfile10{
-    width:200px;
-    height:200px;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: rgb(255, 247, 232);;
-    position:relative;
-    border : solid;
-    border-color:  rgb(255, 179, 0);
-
-
-
-}
-.canvasProfile10::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
-}
-.Rocket {
-    position: relative;
-    width:50px;
-    margin-left:3%;
-    transform: rotate(15deg);
-}
-.start {
-    width:50px;
-    position: absolute;
-    left: 7%;
-    z-index: 3;
-    margin: 0.5%;
-}
-.end {
-    width:50px;
-    position : absolute;
-    left: 84%;
-    z-index: 3;
-    margin: 0.5%
-}
-
-.characterInfo10{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
-}
-
-progress {
-    -webkit-appearance: none;
-    appearance: none;
-    width:80%;
-    margin-top:2%;
-    margin-left:10%;
-    position: relative;
-}
-  
-progress::-webkit-progress-bar {
-    background-color: white;
-}
-
-progress::-webkit-progress-value {
-    background-color: green;
-}
-progress::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
-}
-.canvasEarth{
-    /* background-color: black; */
-    /* background-image: url('/public/galaxy.jpg'); */
-    width:100%;
-    height:1000px;
-    position: relative;
-    z-index: 1;
-}
-
-/* .canvasEarth::before{
-    content:"";
-    opacity:0.8;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black;
-} */
-
-/* 
-.blinking{
-    -webkit-animation:blink 1.5s ease-in-out infinite alternate;
-    -moz-animation:blink 1.5s ease-in-out infinite alternate;
-    animation:blink 1.5s ease-in-out infinite alternate;
-    }
-    @-webkit-keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-    @-moz-keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-    @keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-    } */
-
-.info10 {
-
-    display:flex;
-    flex-direction: column;
-    flex-wrap : wrap;
-    width: 100%;
-    /* background-color: blue; */
-    /* background-image: url('/public/galaxy.jpg'); */
-    padding: 120px;
-    position : absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    margin-top: 2%
-    
-}
-
-.info10::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
-}
-
-.infogroup10 {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-right:7%;
-}
-.badges10 {
-    display:flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    width: 50%;
-    /* background-color: white; */
-    position: relative;
-    margin-left:2%;
-    margin-right:2%
-}
-.badges10::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-}
-
-.canvasBadge10 {
-    margin : 2%;
-    /* background-color: white; */
-    width:16% ;
-    position: relative;
-    height:40%;
-}
-
-
-.canvasBadge10::before{
-    content:"";
-    opacity:0.3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black
-}
-
-/* //////////////////////////////////////////////////////////////////////////// */
-  
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -756,46 +535,6 @@ progress::before{
     justify-content: space-evenly;
     margin-right:7%;
 }
-.badges2 {
-    display:flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    width: 50%;
-    /* background-color: white; */
-    position: relative;
-    margin-left:2%;
-    margin-right:2%
-}
-.badges2::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-}
-
-.canvasBadge2 {
-    margin : 2%;
-    /* background-color: white; */
-    width:16% ;
-    position: relative;
-    height:40%;
-}
-
-
-.canvasBadge2::before{
-    content:"";
-    opacity:0.3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black
-}
 
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -892,46 +631,6 @@ progress::before{
     flex-direction: row;
     justify-content: space-evenly;
     margin-right:7%;
-}
-.badges3 {
-    display:flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    width: 50%;
-    /* background-color: white; */
-    position: relative;
-    margin-left:2%;
-    margin-right:2%
-}
-.badges3::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-}
-
-.canvasBadge3 {
-    margin : 2%;
-    /* background-color: white; */
-    width:16% ;
-    position: relative;
-    height:40%;
-}
-
-
-.canvasBadge3::before{
-    content:"";
-    opacity:0.3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -1030,46 +729,7 @@ progress::before{
     justify-content: space-evenly;
     margin-right:7%;
 }
-.badges4 {
-    display:flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    width: 50%;
-    /* background-color: white; */
-    position: relative;
-    margin-left:2%;
-    margin-right:2%
-}
-.badges4::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-}
 
-.canvasBadge4 {
-    margin : 2%;
-    /* background-color: white; */
-    width:16% ;
-    position: relative;
-    height:40%;
-}
-
-
-.canvasBadge4::before{
-    content:"";
-    opacity:0.3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black
-}
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -1165,46 +825,7 @@ progress::before{
     justify-content: space-evenly;
     margin-right:7%;
 }
-.badges5 {
-    display:flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    width: 50%;
-    /* background-color: white; */
-    position: relative;
-    margin-left:2%;
-    margin-right:2%
-}
-.badges5::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-}
 
-.canvasBadge5 {
-    margin : 2%;
-    /* background-color: white; */
-    width:16% ;
-    position: relative;
-    height:40%;
-}
-
-
-.canvasBadge5::before{
-    content:"";
-    opacity:0.3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black
-}
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -1300,46 +921,7 @@ progress::before{
     justify-content: space-evenly;
     margin-right:7%;
 }
-.badges6 {
-    display:flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    width: 50%;
-    /* background-color: white; */
-    position: relative;
-    margin-left:2%;
-    margin-right:2%
-}
-.badges6::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-}
 
-.canvasBadge6 {
-    margin : 2%;
-    /* background-color: white; */
-    width:16% ;
-    position: relative;
-    height:40%;
-}
-
-
-.canvasBadge6::before{
-    content:"";
-    opacity:0.3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black
-}
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -1434,46 +1016,7 @@ progress::before{
     justify-content: space-evenly;
     margin-right:7%;
 }
-.badges7 {
-    display:flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    width: 50%;
-    /* background-color: white; */
-    position: relative;
-    margin-left:2%;
-    margin-right:2%
-}
-.badges7::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-}
 
-.canvasBadge7 {
-    margin : 2%;
-    /* background-color: white; */
-    width:16% ;
-    position: relative;
-    height:40%;
-}
-
-
-.canvasBadge7::before{
-    content:"";
-    opacity:0.3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black
-}
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -1568,203 +1111,9 @@ progress::before{
     justify-content: space-evenly;
     margin-right:7%;
 }
-.badges8 {
-    display:flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    width: 50%;
-    /* background-color: white; */
-    position: relative;
-    margin-left:2%;
-    margin-right:2%
-}
-.badges8::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-}
 
-.canvasBadge8 {
-    margin : 2%;
-    /* background-color: white; */
-    width:16% ;
-    position: relative;
-    height:40%;
-}
-
-
-.canvasBadge8::before{
-    content:"";
-    opacity:0.3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black
-}
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
-
-.Earth9{
-    /* background-color: red; */
-    background-image: url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px;
-    
-    
-}
-.Earth9::before{
-    content:"";
-    opacity:0.3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
-
-}
-
-.canvasProfile9{
-    width:200px;
-    height:200px;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: rgb(255, 255, 255);
-    position:relative;
-    border : solid;
-    border-color:  rgb(255, 179, 0);
-
-
-}
-.canvasProfile9::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
-}
-
-.characterInfo9{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
-}
-
-.info9{
-
-    display:flex;
-    flex-direction: column;
-    flex-wrap : wrap;
-    width: 100%;
-    /* background-color: blue; */
-    /* background-image: url('/public/galaxy.jpg'); */
-    padding: 120px;
-    position : absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    margin-top: 2%
-    
-}
-
-.info9::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
-}
-
-.infogroup9 {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-right:7%;
-}
-
-.badges9 {
-    display:flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    width: 50%;
-    /* background-color: white; */
-    position: relative;
-    margin-left:2%;
-    margin-right:2%
-}
-.badges9::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-}
-
-.canvasBadge9 {
-    margin : 2%;
-    /* background-color: white; */
-    width:16% ;
-    position: relative;
-    height:40%;
-}
-
-
-.canvasBadge9::before{
-    content:"";
-    opacity:0.3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black
-}
-/* //////////////////////////////////////////////////////////////////////////// */
-  
-  /* @media (min-width: 1280px) {
-    .App {
-      width: 1270px;
-    }
-  }
-  
-  @media (max-width: 1280px) {
-    .App {
-      width: 95vw;
-    }
-  }
-  
-  #root {
-    background-color: white;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  }
-  
-  .App {
-    min-height: 100vh;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-   */
