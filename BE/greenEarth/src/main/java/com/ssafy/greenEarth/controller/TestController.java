@@ -1,5 +1,7 @@
 package com.ssafy.greenEarth.controller;
 
+import com.ssafy.greenEarth.dto.Mission.MissionLogResDto;
+import com.ssafy.greenEarth.service.MissionService;
 import com.ssafy.greenEarth.service.TestService;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Api("TestController")
 @Slf4j
 @RestController
@@ -21,9 +25,18 @@ public class TestController {
 
     private final TestService testService;
 
+    private final MissionService missionService;
+
     @GetMapping
     public ResponseEntity<String> testApi() {
         String testStr = testService.getTest();
         return new ResponseEntity<>(testStr, HttpStatus.OK);
+    }
+
+    @GetMapping("/mission")
+    public ResponseEntity<List<MissionLogResDto>> getTodayMissionLogs(){
+        List<MissionLogResDto> data = missionService.getTodayMissionLogs(1);
+
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 }

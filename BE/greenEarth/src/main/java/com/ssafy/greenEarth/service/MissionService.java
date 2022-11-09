@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,7 +38,9 @@ public class MissionService {
     // 로그인한 부모 정보가 넘어오는지 확인 필요
     @Transactional
     public MissionLogResDto saveTodayMission(int childId, MissionReqDto missionReqDto, int curUserId) {
+
         int missionId = missionReqDto.getMissionId();
+
         Mission mission = missionRepository.findMissionById(missionId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION)
         );
@@ -77,21 +78,10 @@ public class MissionService {
 
         String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 
-//        List<MissionLogResDto> data = new ArrayList<>();
-//        List<MissionLog> missionLogs = child.getMissionLogList();
-//        for (MissionLog missionLog : missionLogs){
-//            if (missionLog.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyyMMdd")).equals(now)){
-//                MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
-//                data.add(missionLogResDto);
-//            }
-//        }
-//        return data;
-
-        List<MissionLog> logList = child.getMissionLogList().stream()
+        return child.getMissionLogList().stream()
                 .filter(m -> m.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyyMMdd")).equals(now))
+                .map(MissionLogResDto::new)
                 .collect(Collectors.toList());
-
-        return logList.stream().map(MissionLogResDto::new).collect(Collectors.toList());
 
     }
 
@@ -152,7 +142,7 @@ public class MissionService {
     @Transactional
     public MissionLogResDto rejectMission(int logId){
         MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
-                ()->new BusinessException(NOT_EXIST_MISSION_LOG)
+                () -> new BusinessException(NOT_EXIST_MISSION_LOG)
         );
         // cleared_at -> null
         missionLog.setClearedAt(null);
@@ -192,7 +182,6 @@ public class MissionService {
         MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION_LOG)
         );
-
         missionLogRepository.delete(missionLog);
     }
 }
