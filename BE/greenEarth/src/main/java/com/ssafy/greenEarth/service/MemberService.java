@@ -64,12 +64,12 @@ public class MemberService {
     }
 
     @Transactional
-    public Child registerChild(ChildRegisterDto childDto, int parentId) {
+    public ChildProfileDto registerChild(ChildRegisterDto childDto, int parentId) {
         // 연결된 보호자 조회
         Parent parent = parentRepository.findById(parentId)
                 .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
         // 등록
-        return childRepository.save(childDto.toEntity(parent, passwordEncoder));
+        return new ChildProfileDto(childRepository.save(childDto.toEntity(parent, passwordEncoder)));
     }
 
     @Transactional
