@@ -53,6 +53,32 @@ export const useRewardCallback = () => {
       });
   };
 
+  // 보상 수정 콜백 함수
+  const rewardEditCallback = async (
+    rewardId,
+    rewardName,
+    rewardCondition,
+    childId
+  ) => {
+    console.log(rewardId, rewardName, rewardCondition, childId);
+    api
+      .put(`/reward/${rewardId}`, {
+        rewardId: rewardId,
+        rewardName: rewardName,
+        rewardCondition: rewardCondition,
+        childId: childId,
+      })
+      .then((response) => {
+        if (response.data) {
+          console.log("보상이 수정 되었습니다.");
+          console.log("reward :", response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
+
   // 보상 지급 콜백 함수
   const rewardPayCallback = async (rewardId) => {
     api
@@ -68,5 +94,10 @@ export const useRewardCallback = () => {
       });
   };
 
-  return { rewardListCallback, rewardSubmitCallback, rewardPayCallback };
+  return {
+    rewardListCallback,
+    rewardSubmitCallback,
+    rewardEditCallback,
+    rewardPayCallback,
+  };
 };
