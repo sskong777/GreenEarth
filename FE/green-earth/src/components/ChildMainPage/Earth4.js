@@ -134,16 +134,12 @@ function Earth4() {
         </div>
         <Link to="game">
         <div className = "canvasAstronaut">
-            {/* <div className = "gameButton blinking">
-                <Link to="/game">GAME</Link>
-            </div> */}
+
             <Canvas id="astronaut" >
                 <Suspense fallback={null}>
                 <ambientLight />
                 <spotLight intensity={1} angle={0.1} penumbra={1} position={[100, 100,100]} castShadow />
-                {/* <Model000 /> */}
-                {/* <Child2 /> */}
-                {/* <Beluga/> */}
+        
                 <Model0 />
                 <OrbitControls enablePan={false} enableZoom={false} rotateSpeed = {0.2} enableRotate={false} />
                 </Suspense> 
@@ -157,9 +153,7 @@ function Earth4() {
                 <ambientLight />
                 <spotLight intensity={0.1} angle={0.1} penumbra={1} position={[100, 100,100]} castShadow />
                 <EarthLv4 />
-                {/* <Child2 /> */}
-                {/* <Beluga/> */}
-                {/* <Model0 /> */}
+    
                 <OrbitControls enablePan={true} enableZoom={true} rotateSpeed = {0.2} enableRotate={true} />
                 </Suspense> 
             </Canvas>
