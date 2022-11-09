@@ -1,7 +1,6 @@
 package com.ssafy.greenEarth.service;
 
-import com.ssafy.greenEarth.domain.Child;
-import com.ssafy.greenEarth.domain.Reward;
+import com.ssafy.greenEarth.domain.*;
 import com.ssafy.greenEarth.dto.Reward.*;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.RewardRespository;
@@ -9,8 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.ssafy.greenEarth.exception.BusinessException;
 import static com.ssafy.greenEarth.exception.ErrorCode.*;
@@ -30,13 +29,8 @@ public class RewardService {
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
-        List<RewardResDto> data = new ArrayList<>();
-
-        List<Reward> rewards = child.getRewardList();
-        for (Reward reward : rewards){
-            RewardResDto rewardResDto = new RewardResDto(reward);
-            data.add(rewardResDto);
-        }
+        List<RewardResDto> data = child.getRewardList().stream()
+                .map(RewardResDto::new).collect(Collectors.toList());
         return data;
     }
 
@@ -46,9 +40,8 @@ public class RewardService {
         Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
-        Reward reward = rewardReqDto.toEntity(rewardReqDto, child);
-        rewardRespository.save(reward);
-        return new RewardResDto(reward);
+        Reward reward = rewardReqDto.toEntity(child);
+        return new RewardResDto(rewardRespository.save(reward));
     }
 
     // 보상 수정

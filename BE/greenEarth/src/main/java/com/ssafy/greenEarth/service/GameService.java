@@ -24,7 +24,9 @@ import static com.ssafy.greenEarth.exception.ErrorCode.NOT_EXIST_ACCOUNT;
 public class GameService {
 
     private final ChildRepository childRepository;
+
     private final GreenEarthLogRepository greenEarthLogRepository;
+
     private final GreenEarthRepository greenEarthRepository;
 
     // 마일리지 적립 및 지구 레벨 변화 로그 저장

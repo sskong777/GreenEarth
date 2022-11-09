@@ -10,8 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.ssafy.greenEarth.exception.BusinessException;
 import static com.ssafy.greenEarth.exception.ErrorCode.*;
@@ -23,8 +23,11 @@ import static com.ssafy.greenEarth.exception.ErrorCode.*;
 public class MissionService {
 
     private final ChildRepository childRepository;
+
     private final MissionRepository missionRepository;
+
     private final MissionLogRepository missionLogRepository;
+
     private final ParentRepository parentRepository;
 
     private final GreenEarthRepository greenEarthRepository;
@@ -35,23 +38,21 @@ public class MissionService {
     // 로그인한 부모 정보가 넘어오는지 확인 필요
     @Transactional
     public MissionLogResDto saveTodayMission(int childId, MissionReqDto missionReqDto, int curUserId) {
+
         int missionId = missionReqDto.getMissionId();
+
         Mission mission = missionRepository.findMissionById(missionId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION)
         );
         Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
-
         Parent parent = parentRepository.findById(curUserId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
-        LocalDateTime now = LocalDateTime.now();
-
-        MissionLog missionlog = new MissionLog(child, mission, parent, now);
-        missionLogRepository.save(missionlog);
-        return new MissionLogResDto(missionlog);
+        MissionLog missionlog = new MissionLog(child, mission, parent, LocalDateTime.now());
+        return new MissionLogResDto(missionLogRepository.save(missionlog));
     }
 
     // 아이 미션 로그 조회
@@ -61,13 +62,9 @@ public class MissionService {
                 ()-> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
-        List<MissionLogResDto> data = new ArrayList<>();
+        List<MissionLogResDto> data = child.getMissionLogList().stream()
+                .map(MissionLogResDto::new).collect(Collectors.toList());
 
-        List<MissionLog> missionLogs = child.getMissionLogList();
-        for (MissionLog missionLog : missionLogs){
-            MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
-            data.add(missionLogResDto);
-        }
         return data;
 
     }
@@ -79,18 +76,12 @@ public class MissionService {
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
-        List<MissionLogResDto> data = new ArrayList<>();
+        String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 
-        List<MissionLog> missionLogs = child.getMissionLogList();
-        for (MissionLog missionLog : missionLogs){
-            if (missionLog.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
-                    .equals(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")))){
-                MissionLogResDto missionLogResDto = new MissionLogResDto(missionLog);
-                data.add(missionLogResDto);
-            }
-
-        }
-        return data;
+        return child.getMissionLogList().stream()
+                .filter(m -> m.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyyMMdd")).equals(now))
+                .map(MissionLogResDto::new)
+                .collect(Collectors.toList());
 
     }
 
@@ -135,15 +126,11 @@ public class MissionService {
         child.setMileage(currentMileage);
 
         int beforeGreenEarth = child.getEarthLevel();
-        System.out.println(child.getMileage());
-        System.out.println(currentMileage);
         int greenEarth = greenEarthRepository.findFirstByMileage_condition(currentMileage);
 
         if(beforeGreenEarth < greenEarth){
             GreenEarthLogId greenEarthLogId = new GreenEarthLogId(child.getId(), greenEarth);
-            LocalDateTime now = LocalDateTime.now();
-
-            GreenEarthLog greenEarthLog = new GreenEarthLog(greenEarthLogId, now);
+            GreenEarthLog greenEarthLog = new GreenEarthLog(greenEarthLogId, LocalDateTime.now());
             greenEarthLogRepository.save(greenEarthLog);
             child.setEarthLevel(greenEarth);
         }
@@ -155,7 +142,7 @@ public class MissionService {
     @Transactional
     public MissionLogResDto rejectMission(int logId){
         MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
-                ()->new BusinessException(NOT_EXIST_MISSION_LOG)
+                () -> new BusinessException(NOT_EXIST_MISSION_LOG)
         );
         // cleared_at -> null
         missionLog.setClearedAt(null);
@@ -169,8 +156,7 @@ public class MissionService {
         MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION_LOG)
         );
-        LocalDateTime now = LocalDateTime.now();
-        missionLog.setClearedAt(now);
+        missionLog.setClearedAt(LocalDateTime.now());
 
         return new MissionLogResDto(missionLog);
     }
@@ -190,15 +176,12 @@ public class MissionService {
         return new MissionLogResDto(missionLog);
     }
 
-
-
-//  오늘의 미션 삭제
+    //  오늘의 미션 삭제
     @Transactional
     public void deleteTodayMission(int logId){
         MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION_LOG)
         );
-
         missionLogRepository.delete(missionLog);
     }
 }
