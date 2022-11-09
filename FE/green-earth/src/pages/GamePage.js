@@ -6,6 +6,7 @@ import { memberInfoState } from "../store/atoms";
 
 import KidsSong from "../components/GamePage/KidsSong";
 import CardsPairing from "../components/GamePage/CardsPairing";
+import GameTutorial from "../components/GamePage/GameTutorial";
 
 import "animate.css";
 
@@ -60,19 +61,19 @@ const GamePage = () => {
             {isTab == 3 ? (
               <>
                 <button
-                  className="GamePageButton animate__animated animate__bounceIn"
+                  className="GamePageSongButton animate__animated animate__bounceIn"
                   onClick={() => setSongValue(0)}
                 >
                   {videosInfo[0].title}
                 </button>
                 <button
-                  className="GamePageButton mt-5 animate__animated animate__bounceIn"
+                  className="GamePageSongButton mt-5 animate__animated animate__bounceIn"
                   onClick={() => setSongValue(1)}
                 >
                   {videosInfo[1].title}
                 </button>
                 <button
-                  className="GamePageButton my-5 animate__animated animate__bounceIn"
+                  className="GamePageSongButton my-5 animate__animated animate__bounceIn"
                   onClick={() => setSongValue(2)}
                 >
                   {videosInfo[2].title}
@@ -81,13 +82,13 @@ const GamePage = () => {
             ) : (
               <>
                 <button className="GamePageButton" onClick={() => setIsTab(1)}>
-                  같은그림찾기
+                  환상의 짝꿍
                 </button>
                 <button
                   className="GamePageButton mt-5"
                   onClick={() => setIsTab(2)}
                 >
-                  분리수거게임
+                  분리수거 왕
                 </button>
                 <button
                   className="GamePageButton my-5"
@@ -109,7 +110,7 @@ const GamePage = () => {
             ) : (
               <button
                 className="GamePageButtonBack"
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/child")}
               >
                 홈 화면
               </button>
@@ -120,11 +121,7 @@ const GamePage = () => {
         {/* 게임 실제 화면 */}
         <div className="flex items-center">
           <div className="GamePagePlaySpace">
-            {isTab === 0 && (
-              <div className="text-3xl text-light text-center">
-                게임튜토리얼 (제작중)
-              </div>
-            )}
+            {isTab === 0 && <GameTutorial />}
             {isTab === 1 && <CardsPairing />}
             {isTab === 2 && (
               <div className="text-3xl text-light text-center">

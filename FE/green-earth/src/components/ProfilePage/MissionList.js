@@ -133,9 +133,17 @@ const MissionList = (data) => {
         />
       </div>
       {/* 반복문 실행하여 MissionItem에 전달 */}
-      {getProcessedMissionList().map((it) => (
-        <MissionItem key={it.id} {...it} />
-      ))}
+      {data.missionList.length > 0 ? (
+        <>
+          {getProcessedMissionList().map((it) => (
+            <MissionItem key={it.id} {...it} />
+          ))}
+        </>
+      ) : (
+        <div className="text-4xl text-light text-center pt-14">
+          미션이 존재하지 않습니다.
+        </div>
+      )}
     </div>
   );
 };
