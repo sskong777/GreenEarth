@@ -8,8 +8,12 @@ import { useRewardCallback } from "./../../functions/useRewardCallback";
 const RewardModal = ({ setModalOpen, childInfo }) => {
   const [rewardList, setRewardList] = useRecoilState(rewardListState);
 
-  const { rewardListCallback, rewardSubmitCallback, rewardPayCallback } =
-    useRewardCallback();
+  const {
+    rewardListCallback,
+    rewardSubmitCallback,
+    rewardEditCallback,
+    rewardPayCallback,
+  } = useRewardCallback();
 
   const [rewardInfo, setRewardInfo] = useState("");
   const [rewardGoal, setRewardGoal] = useState("");
@@ -28,7 +32,7 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
       setRewardGoal(parseInt(rewardList[0].rewardCondition));
       setRewardGift(rewardList[0].rewardName);
     }
-  }, rewardList);
+  }, []);
 
   // 목표 보상갯수 설정 함수
   const handleClickRewardGoal = (e) => {
@@ -48,6 +52,19 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
         rewardGoal,
         childInfo.childId,
         childInfo.parent
+      );
+      setModalOpen(false);
+    }
+  };
+
+  // 보상 수정 요청 함수
+  const handleClickRewardEdit = () => {
+    if (window.confirm("보상을 수정하시겠습니까?")) {
+      rewardEditCallback(
+        rewardList[0].rewardId,
+        rewardGift,
+        rewardGoal,
+        childInfo.childId
       );
       setModalOpen(false);
     }
@@ -107,13 +124,12 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
                   <input
                     type="number"
                     value={rewardGoal}
-                    step="10"
-                    min={parseInt(mission) + 10}
+                    min={parseInt(mission) + 1}
                     onChange={handleClickRewardGoal}
                     className="ReawardModalInput"
                   />
                   <div className="text-lg text-blackBrown">
-                    ( 최소 {parseInt(mission) + 10}개부터 10개 단위로 설정
+                    ( 최소 {parseInt(mission) + 1}개부터 자유롭게 설정
                     가능합니다. )
                   </div>
                 </div>
@@ -141,7 +157,25 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
               >
                 닫기
               </button>
-              {!rewardList[0] && (
+
+              {/* 보상 정보가 있다면 조건에 따라 보상 지급과 보상 수정 버튼이, 없으면 설정 버튼 출력 */}
+              {rewardInfo ? (
+                childInfo.clearedMission >= rewardInfo.rewardCondition ? (
+                  <button
+                    className="ReawardModalButtonPay"
+                    onClick={handleClickRewardPay}
+                  >
+                    보상 지급
+                  </button>
+                ) : (
+                  <button
+                    className="ReawardModalButtonPay"
+                    onClick={handleClickRewardEdit}
+                  >
+                    보상 수정
+                  </button>
+                )
+              ) : (
                 <button
                   className="ReawardModalButton"
                   onClick={handleClickRewardSubmit}
@@ -149,15 +183,6 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
                   설정
                 </button>
               )}
-              {rewardList[0] &&
-                childInfo.clearedMission >= rewardList[0].rewardCondition && (
-                  <button
-                    className="ReawardModalButtonPay"
-                    onClick={handleClickRewardPay}
-                  >
-                    보상 지급
-                  </button>
-                )}
             </div>
           </div>
         </div>
