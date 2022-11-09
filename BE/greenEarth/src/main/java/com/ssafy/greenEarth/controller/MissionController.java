@@ -2,14 +2,10 @@ package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Mission;
 import com.ssafy.greenEarth.domain.Role;
-import com.ssafy.greenEarth.dto.*;
-import com.ssafy.greenEarth.dto.Mission.MissionLogResDto;
-import com.ssafy.greenEarth.dto.Mission.MissionPutDto;
-import com.ssafy.greenEarth.dto.Mission.MissionReqDto;
-import com.ssafy.greenEarth.dto.Mission.MissionResDto;
-import com.ssafy.greenEarth.repository.ChildRepository;
-import com.ssafy.greenEarth.repository.MissionRepository;
+import com.ssafy.greenEarth.dto.Mission.*;
 import com.ssafy.greenEarth.service.MissionService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -43,8 +39,8 @@ public class MissionController {
         return new ResponseEntity<>(data, HttpStatus.CREATED);
     }
 
-    @ApiOperation(value = "미션 전체 조회", notes = "미션 목록 전체 조회")
     // 미션 전체 조회
+    @ApiOperation(value = "미션 전체 조회", notes = "미션 목록 전체 조회")
     @GetMapping("")
     public ResponseEntity<List<Mission>> getAllMissions(){
         List<Mission> data = missionService.getAllMissions();
@@ -65,7 +61,6 @@ public class MissionController {
     @GetMapping("/child/{child_id}/log")
     public ResponseEntity<List<MissionLogResDto>>  getMissionLogs(@PathVariable("child_id") int childId){
         List<MissionLogResDto> data = missionService.getMissionLogs(childId);
-
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
