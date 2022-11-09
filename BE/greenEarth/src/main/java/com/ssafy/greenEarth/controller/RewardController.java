@@ -17,6 +17,7 @@ import java.util.List;
 public class RewardController {
 
     private final RewardService rewardService;
+
     // 보상 목록 조회
     @GetMapping("child/{child_id}")
     public ResponseEntity<List<RewardResDto>> getAllRewards(@PathVariable("child_id") int childId){
