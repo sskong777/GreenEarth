@@ -16,6 +16,12 @@ import end from '../../image/end.png'
 import { Color } from "three";
 import {useEffect, useState} from "react";
 
+import { useNavigate, useParams } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { memberInfoState, childInfoState } from "../../store/atoms";
+import { useAuthCallback } from "./../../functions/useAuthCallback";
+
+
 import {Child1, Child2, Child3, Child4, Child5, Child6, Child7, Child8, Child9, Child10, 
   Child11, Child12, Child13, Child14, Child15, Child16, Child17, Child18, Child19, Child20, 
   Child21, Child22, Child23, Child24, Child25, Child26, Child27, Child28, Child29, Child30,
@@ -28,10 +34,22 @@ import {Model9, Model10, Model11, Model12, Model13, Model14, Model15, Model16, M
 
 import { Model3, Model, Model0, Model00, Model000 , EarthLv6} from "../../Model.js/Space"
 
-import {Beluga} from "../../Model.js/Animal"
 
 function Earth6() {
+    const { childId } = useParams();
 
+    // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
+    const [childInfo, setChildInfo] = useRecoilState(childInfoState);
+    const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
+
+    // 회원정보, 아이정보 Axios 요청
+    const { memberInfoCallback, childInfoCallback } = useAuthCallback();
+
+    // 프로필 페이지에 접근하면 해당 아이정보 Axios 요청
+    useEffect(() => {
+    memberInfoCallback();
+    childInfoCallback(childId);
+    }, []);
     const level = 6
     const value = level*13.7
     const mileage = level*122+12
