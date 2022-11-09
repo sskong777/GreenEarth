@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { memberInfoState } from "../store/atoms";
 
 import KidsSong from "../components/GamePage/KidsSong";
+import CardsPairing from "../components/GamePage/CardsPairing";
 
 import "animate.css";
 
@@ -28,7 +29,7 @@ const GamePage = () => {
 
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 
-  const [isSong, setIsSong] = useState(false);
+  const [isTab, setIsTab] = useState(0);
   const [songValue, setSongValue] = useState(0);
 
   return (
@@ -56,31 +57,7 @@ const GamePage = () => {
 
           <div className="flex flex-col">
             {/* 게임 선택하기 */}
-            {!isSong && (
-              <>
-                <button
-                  className="GamePageButton"
-                  onClick={() => setIsSong(true)}
-                >
-                  동요세상
-                </button>
-                <button
-                  className="GamePageButton mt-5"
-                  onClick={() => navigate("/")}
-                >
-                  분리수거게임
-                </button>
-                <button
-                  className="GamePageButton my-5"
-                  onClick={() => navigate("/")}
-                >
-                  틀린그림찾기
-                </button>
-              </>
-            )}
-
-            {/* 동요 선택하기 */}
-            {isSong && (
+            {isTab == 3 ? (
               <>
                 <button
                   className="GamePageButton animate__animated animate__bounceIn"
@@ -101,13 +78,31 @@ const GamePage = () => {
                   {videosInfo[2].title}
                 </button>
               </>
+            ) : (
+              <>
+                <button className="GamePageButton" onClick={() => setIsTab(1)}>
+                  같은그림찾기
+                </button>
+                <button
+                  className="GamePageButton mt-5"
+                  onClick={() => setIsTab(2)}
+                >
+                  분리수거게임
+                </button>
+                <button
+                  className="GamePageButton my-5"
+                  onClick={() => setIsTab(3)}
+                >
+                  동요세상
+                </button>
+              </>
             )}
 
             {/* 뒤로가기 버튼 */}
-            {isSong ? (
+            {isTab === 3 ? (
               <button
                 className="GamePageButtonBack animate__animated animate__fadeIn"
-                onClick={() => setIsSong(false)}
+                onClick={() => setIsTab(0)}
               >
                 뒤로 가기
               </button>
@@ -121,13 +116,22 @@ const GamePage = () => {
             )}
           </div>
         </div>
+
         {/* 게임 실제 화면 */}
         <div className="flex items-center">
           <div className="GamePagePlaySpace">
-            {isSong && <KidsSong songValue={videosInfo[songValue]} />}
-            {!isSong && (
-              <div className="text-light text-5xl">게임 화면 (제작중)</div>
+            {isTab === 0 && (
+              <div className="text-3xl text-light text-center">
+                게임튜토리얼 (제작중)
+              </div>
             )}
+            {isTab === 1 && <CardsPairing />}
+            {isTab === 2 && (
+              <div className="text-3xl text-light text-center">
+                분리수거게임 (제작중)
+              </div>
+            )}
+            {isTab === 3 && <KidsSong songValue={videosInfo[songValue]} />}
           </div>
         </div>
       </div>
