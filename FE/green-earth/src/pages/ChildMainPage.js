@@ -17,7 +17,7 @@ import {Earth8} from "../components/ChildMainPage/Earth8"
 function ChildMainPage() {
   
 
-  const level = 1
+  const level = 8
   
 
 
