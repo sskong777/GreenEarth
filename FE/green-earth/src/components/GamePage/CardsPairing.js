@@ -4,12 +4,12 @@ import "./../../style/style.css";
 import SingleCard from "./SingleCard";
 
 const cardImages = [
-  { src: "./assets/cards/card_bus.png", matched: false },
-  { src: "./assets/cards/card_ecobag.png", matched: false },
-  { src: "./assets/cards/card_family.png", matched: false },
-  { src: "./assets/cards/card_plug.png", matched: false },
-  { src: "./assets/cards/card_recycle.png", matched: false },
-  { src: "./assets/cards/card_tree.png", matched: false },
+  { src: "./assets/games/ards/card_bus.png", matched: false },
+  { src: "./assets/games/cards/card_ecobag.png", matched: false },
+  { src: "./assets/games/cards/card_family.png", matched: false },
+  { src: "./assets/games/cards/card_plug.png", matched: false },
+  { src: "./assets/games/cards/card_recycle.png", matched: false },
+  { src: "./assets/games/cards/card_tree.png", matched: false },
 ];
 
 function CardsPairing() {

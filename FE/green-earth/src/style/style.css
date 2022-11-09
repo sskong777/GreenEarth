@@ -19,6 +19,11 @@
   src: url("./../../public/assets/fonts/Binggrae.ttf");
 }
 
+@font-face {
+  font-family: "DungGeunMo";
+  src: url("./../../public/assets/fonts/DungGeunMo.ttf");
+}
+
 /* ProfilePage */
 
 .ProfilePage {
@@ -310,19 +315,19 @@
 /* GamePage */
 
 .GamePageButtonBack {
-  @apply w-40 h-16 rounded-md text-2xl text-blackBrown font-binggrae font-semibold
+  @apply w-40 h-16 rounded-md text-2xl text-blackBrown font-dunggeunmo  font-semibold
   bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
   outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
 }
 
 .GamePageButton {
-  @apply w-40 h-16  text-xl text-blackBrown font-binggrae font-semibold rounded-md 
+  @apply w-40 h-16  text-2xl text-blackBrown font-dunggeunmo  font-semibold rounded-md 
   bg-light hover:bg-light/90 active:bg-light/70
   outline outline-offset-2 outline-1 shadow-lg shadow-light/70;
 }
 
 .GamePageSongButton {
-  @apply w-40 h-16  text-lg text-blackBrown font-binggrae font-semibold rounded-md 
+  @apply w-40 h-16  text-xl text-blackBrown font-dunggeunmo  font-semibold rounded-md 
   bg-light hover:bg-light/90 active:bg-light/70
   outline outline-offset-2 outline-1 shadow-lg shadow-light/70;
 }
@@ -347,13 +352,13 @@
 }
 
 .CardsPairingButton {
-  @apply w-40 h-14  text-2xl text-blackBrown rounded-lg 
+  @apply w-40 h-14  text-3xl text-blackBrown font-dunggeunmo rounded-md
   bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
   outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
 }
 
 .CardsPairingInfo {
-  @apply mt-10 text-2xl text-light animate-pulse;
+  @apply mt-10 text-2xl text-light font-dunggeunmo animate-pulse;
 }
 
 .CardsPairingGrid {
@@ -389,4 +394,10 @@
 .flipped .SingleCardBack {
   transform: rotateY(90deg);
   transition-delay: 0s;
+}
+
+/* GameTutorial */
+
+.GameTutorial {
+  @apply w-full h-full flex flex-col justify-start items-center font-dunggeunmo;
 }
