@@ -1,9 +1,8 @@
 package com.ssafy.greenEarth.controller;
 
-import com.ssafy.greenEarth.dto.Reward.RewardPutDto;
-import com.ssafy.greenEarth.dto.Reward.RewardReqDto;
-import com.ssafy.greenEarth.dto.Reward.RewardResDto;
+import com.ssafy.greenEarth.dto.Reward.*;
 import com.ssafy.greenEarth.service.RewardService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api("RewardController")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("reward")
@@ -45,7 +45,6 @@ public class RewardController {
     public ResponseEntity<RewardResDto> updateReward(@PathVariable("reward_id") int rewardId, @RequestBody RewardPutDto rewardPutDto){
         log.info("아이 보상 수정: {}", rewardId);
         RewardResDto data = rewardService.updateReward(rewardId,rewardPutDto);
-
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
@@ -56,7 +55,6 @@ public class RewardController {
         log.info("아이 보상 삭제: {}", rewardId);
         rewardService.deleteReward(rewardId);
     }
-
 
     // 보상 지급 완료
     @ApiOperation(value = "보상 지급 완료", notes = "아이 보상 지급을 완료한다.")

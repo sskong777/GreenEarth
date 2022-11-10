@@ -126,7 +126,7 @@ public class MissionService {
         child.setMileage(currentMileage);
 
         int beforeGreenEarth = child.getEarthLevel();
-        int greenEarth = greenEarthRepository.findFirstByMileage_condition(currentMileage);
+        int greenEarth = greenEarthRepository.findFirstByMileageCondition(currentMileage);
 
         if(beforeGreenEarth < greenEarth){
             GreenEarthLogId greenEarthLogId = new GreenEarthLogId(child.getId(), greenEarth);
