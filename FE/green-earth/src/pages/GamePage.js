@@ -7,6 +7,7 @@ import { memberInfoState } from "../store/atoms";
 import KidsSong from "../components/GamePage/KidsSong";
 import CardsPairing from "../components/GamePage/CardsPairing";
 import GameTutorial from "../components/GamePage/GameTutorial";
+import GameRecycle from "../components/GamePage/GameRecycle";
 
 import "animate.css";
 
@@ -123,11 +124,7 @@ const GamePage = () => {
           <div className="GamePagePlaySpace">
             {isTab === 0 && <GameTutorial />}
             {isTab === 1 && <CardsPairing />}
-            {isTab === 2 && (
-              <div className="text-3xl text-light text-center">
-                분리수거게임 (제작중)
-              </div>
-            )}
+            {isTab === 2 && <GameRecycle />}
             {isTab === 3 && <KidsSong songValue={videosInfo[songValue]} />}
           </div>
         </div>
