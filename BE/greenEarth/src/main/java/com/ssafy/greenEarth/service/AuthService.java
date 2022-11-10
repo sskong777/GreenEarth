@@ -36,10 +36,7 @@ public class AuthService {
         // id 와 role 에 해당하는 계정 존재하는지 확인
         if (role == Role.ROLE_CHILD && childRepository.existsById(id)) {
             return true;
-        } else if (role == Role.ROLE_PARENT && parentRepository.existsById(id)) {
-            return true;
-        }
-        return false;
+        } else return (role == Role.ROLE_PARENT && parentRepository.existsById(id));
     }
 
     public String createAccessToken(int id, Role role) {

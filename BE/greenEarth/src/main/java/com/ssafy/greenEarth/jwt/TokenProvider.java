@@ -16,14 +16,14 @@ public class TokenProvider {
 
     private final String SECRET_KEY;
 
-    private final long accessTokenValidityInMilliseconds;
+    private final long ACCESS_TOKEN_VALIDITY_IN_MILLISECONDS;
 
-    private final long refreshTokenValidityInMilliseconds;
+    private final long REFRESH_TOKEN_VALIDITY_IN_MILLISECONDS;
 
     public TokenProvider(@Value("${jwt.secretKey}") String secretKey) {
         this.SECRET_KEY = Base64.getEncoder().encodeToString(secretKey.getBytes());  // 비밀키 Base64로 인코딩하여 설정
-        this.accessTokenValidityInMilliseconds = JwtProperties.accessTokenValidityInSeconds * 1000;
-        this.refreshTokenValidityInMilliseconds = JwtProperties.refreshTokenValidityInSeconds * 1000;
+        this.ACCESS_TOKEN_VALIDITY_IN_MILLISECONDS = JwtProperties.ACCESS_TOKEN_VALIDITY_IN_SECONDS * 1000;
+        this.REFRESH_TOKEN_VALIDITY_IN_MILLISECONDS = JwtProperties.REFRESH_TOKEN_VALIDITY_IN_SECONDS * 1000;
     }
 
     // 토큰 생성 메소드
@@ -33,7 +33,7 @@ public class TokenProvider {
         claims.put("Role", currentUserRole);
 
         Date now = new Date();
-        Date accessTokenExpiresIn = new Date(now.getTime() + this.accessTokenValidityInMilliseconds);   // access token 만료 시간 설정
+        Date accessTokenExpiresIn = new Date(now.getTime() + this.ACCESS_TOKEN_VALIDITY_IN_MILLISECONDS);   // access token 만료 시간 설정
 
         // Access Token 생성
         return Jwts.builder()
@@ -47,7 +47,7 @@ public class TokenProvider {
 
     public String createRefreshToken() {
         Date now = new Date();
-        Date refreshTokenExpiresIn = new Date(now.getTime() + this.refreshTokenValidityInMilliseconds);   // refresh token 만료 시간 설정
+        Date refreshTokenExpiresIn = new Date(now.getTime() + this.REFRESH_TOKEN_VALIDITY_IN_MILLISECONDS);   // refresh token 만료 시간 설정
 
         // Refresh Token 생성
         return Jwts.builder()
