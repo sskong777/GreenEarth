@@ -10,7 +10,7 @@ import { memberInfoState, childInfoState } from "../store/atoms";
 
 export const useAuthCallback = () => {
   const navigate = useNavigate();
-  const baseUrl = "https://k7d206.p.ssafy.io/api";
+  const baseUrl = "https://내가그린지구.com/api";
   // const baseUrl = "http://localhost:8881/api";
 
   const { api } = useCommonCallback();

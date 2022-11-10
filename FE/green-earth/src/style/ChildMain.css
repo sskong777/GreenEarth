@@ -1,4 +1,8 @@
 
+.btn{
+    color: white;
+  }
+  
 .Earth{
     /* background-color: red; */
     background-image: url('/public/galaxy3.jpg');

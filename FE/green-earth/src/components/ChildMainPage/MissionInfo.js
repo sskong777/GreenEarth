@@ -1,10 +1,28 @@
-import "../style/MissionInfo.css";
+import "../../style/MissionInfo.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { memberInfoState, childInfoState, todayMissionListState , missionInfoState} from "../../store/atoms";
+
+import { useMissionCallback } from "./../../functions/useMissionCallback";
+
 const MissionInfo = () => {
-  const { missionName } = useParams();
+  
+  const { missionId } = useParams();
   const navigate = useNavigate();
+  // 미션정보
+  const [missionInfo, setMissionInfo] = useRecoilState(missionInfoState);
+  const { missionInfoCallback } = useMissionCallback();
+  
+  useEffect(() => {
+    missionInfoCallback(missionId);
+    console.log(missionId)
+}, []);
+
+const goBack = () => {
+  navigate("/child");
+};
   const script = [
     {
       index: 1,
@@ -65,23 +83,22 @@ const MissionInfo = () => {
 
   let num = 4;
 
-  const onClick = () => {
-    navigate("/child");
-  };
+  
 
   return (
     <div className="MissionForm">
       <div className="MissionTitle">
         {<h1>{script[num - 1].data.title}</h1>}
+        <h1>{missionInfo.name}</h1>
       </div>
       <div className="Info">
         <div className="MissionImage">
           <img src={script[num - 1].data.image1} className="MissionImage1" />
-
           <img src={script[num - 1].data.image2} className="MissionImage2" />
         </div>
         <div className="MissionContents">
           <h1>{script[num - 1].data.contents}</h1>
+          <h1>{missionId.description}</h1>
         </div>
       </div>
       <div className="Select">
@@ -89,7 +106,7 @@ const MissionInfo = () => {
           <button className="Select1">{script[num - 1].data.select1}</button>
         </div>
         <div>
-          <button className="Select2">돌아가기</button>
+          <button className="Select2" onClick={goBack}>돌아가기</button>
         </div>
       </div>
     </div>
