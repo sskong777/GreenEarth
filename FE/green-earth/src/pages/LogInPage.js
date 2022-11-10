@@ -9,11 +9,8 @@ const LogInPage = () => {
 
   return (
     <div className="LogInPage">
-      <img className="LogoImage" src={"assets/images/logo_main.png"} />
-
+      <img className="LogoImage" src={"assets/images/new_logo_main.svg"} />
       <LoginForm />
-
-      <button onClick={() => navigate("/")}>웰컴페이지로 이동</button>
     </div>
   );
 };
