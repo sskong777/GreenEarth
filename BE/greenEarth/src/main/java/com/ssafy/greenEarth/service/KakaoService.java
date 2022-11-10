@@ -3,8 +3,12 @@ package com.ssafy.greenEarth.service;
 import com.ssafy.greenEarth.domain.Role;
 import com.ssafy.greenEarth.dto.Member.ParentRegisterDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
@@ -14,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
+@Slf4j
 public class KakaoService {
 
     // 카카오 액세스 토큰 발급
@@ -46,8 +51,7 @@ public class KakaoService {
         );
 
         // 응답 정보 출력
-        System.out.println("response : ");
-        System.out.println(response);
+        log.info("response : {}", response);
 
         // JSON -> 액세스 토큰 파싱
         String tokenJson = response.getBody();
@@ -78,8 +82,8 @@ public class KakaoService {
         String email = body.getJSONObject("kakao_account").getString("email");
         String nickname = body.getJSONObject("properties").getString("nickname");
 
-        System.out.println(email);
-        System.out.println(nickname);
+        log.info(email);
+        log.info(nickname);
 
         // DTO 반환
         return new ParentRegisterDto(email, nickname, Role.ROLE_PARENT);
