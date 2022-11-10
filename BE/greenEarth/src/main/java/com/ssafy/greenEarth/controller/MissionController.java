@@ -2,14 +2,10 @@ package com.ssafy.greenEarth.controller;
 
 import com.ssafy.greenEarth.domain.Mission;
 import com.ssafy.greenEarth.domain.Role;
-import com.ssafy.greenEarth.dto.*;
-import com.ssafy.greenEarth.dto.Mission.MissionLogResDto;
-import com.ssafy.greenEarth.dto.Mission.MissionPutDto;
-import com.ssafy.greenEarth.dto.Mission.MissionReqDto;
-import com.ssafy.greenEarth.dto.Mission.MissionResDto;
-import com.ssafy.greenEarth.repository.ChildRepository;
-import com.ssafy.greenEarth.repository.MissionRepository;
+import com.ssafy.greenEarth.dto.Mission.*;
 import com.ssafy.greenEarth.service.MissionService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -31,7 +27,8 @@ public class MissionController {
     // 오늘의 미션생성
     @ApiOperation(value = "오늘의 미션 생성", notes = "아이 ID 받아서 미션 생성")
     @PostMapping("/child/{child_id}")
-    public ResponseEntity<MissionLogResDto> todayMissionCreate(@PathVariable("child_id") int childId, @RequestBody MissionReqDto missionReqDto,
+    public ResponseEntity<MissionLogResDto> todayMissionCreate(@PathVariable("child_id") int childId,
+                                                               @RequestBody MissionReqDto missionReqDto,
                                                                HttpServletRequest request){
 
         int curUserId = (int) request.getAttribute("curUserId");
