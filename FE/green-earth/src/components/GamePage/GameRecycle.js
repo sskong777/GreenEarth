@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   mygame: {
-    border: "10px solid #485922",
+    border: "10px solid #E9FBD2",
     margin: "10px",
     borderRadius: "10px",
   },
@@ -119,8 +119,8 @@ export const GameRecycle = () => {
   const mainPage = (ctx) => {
     //로고 그리기
     let mainlogo = new Image();
-    mainlogo.src = "/assets/games/main/mainlogo.png";
-    ctx.drawImage(mainlogo, 0, 0, canvasWidth, canvasHeight);
+    mainlogo.src = "/assets/games/main/recycle_cha.png";
+    ctx.drawImage(mainlogo, 100, 0, canvasWidth - 200, canvasHeight - 200);
 
     //게임 설명
     let subtitle = new Image();
@@ -134,10 +134,10 @@ export const GameRecycle = () => {
     canvas.onmousedown = (e) => {
       console.log(e.offsetX, e.offsetY);
       if (
-        e.offsetX > 361 &&
-        e.offsetX < 631 &&
-        e.offsetY < 530 &&
-        e.offsetY > 480
+        e.offsetX > 375 &&
+        e.offsetX < 615 &&
+        e.offsetY > 445 &&
+        e.offsetY < 545
       ) {
         setButtonSrc("/assets/games/main/clickedButton.png");
       }
@@ -153,7 +153,7 @@ export const GameRecycle = () => {
     ctx.drawImage(
       startButton,
       360,
-      480,
+      400,
       270,
       startButton.height * (270 / startButton.width)
     );
@@ -174,9 +174,13 @@ export const GameRecycle = () => {
     let items_tmp = items;
 
     //분류 창
-    let core = new Image();
-    core.src = "/assets/games/game/gameCore.png";
-    ctx.drawImage(core, 0, 0, canvasWidth, canvasHeight);
+    let recycle = new Image();
+    recycle.src = "/assets/games/game/recycleAnswer.png";
+    ctx.drawImage(recycle, -175, 275, canvasWidth - 200, canvasHeight - 150);
+
+    let waste = new Image();
+    waste.src = "/assets/games/game/wasteAnswer.png";
+    ctx.drawImage(waste, 375, 275, canvasWidth - 200, canvasHeight - 150);
 
     //파스퇴르
     //51 ,42
@@ -334,10 +338,10 @@ export const GameRecycle = () => {
         ]);
 
         if (
-          e.offsetX > 197 &&
-          e.offsetX < 409 &&
-          e.offsetY > 292 &&
-          e.offsetY < 431
+          e.offsetX > 25 &&
+          e.offsetX < 375 &&
+          e.offsetY > 400 &&
+          e.offsetY < 575
         ) {
           //분리수거 하기에다가 놓은 경우
           if (items_tmp[_selected].answer == 0) {
@@ -350,10 +354,10 @@ export const GameRecycle = () => {
             alert("다시 생각해 보세요!");
           }
         } else if (
-          e.offsetX > 417 &&
-          e.offsetX < 618 &&
-          e.offsetY > 293 &&
-          e.offsetY < 430
+          e.offsetX > 575 &&
+          e.offsetX < 990 &&
+          e.offsetY > 400 &&
+          e.offsetY < 575
         ) {
           //다시 가져가기에다가 놓은 경우
 
