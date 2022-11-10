@@ -1,6 +1,8 @@
 package com.ssafy.greenEarth.controller;
 
+import com.ssafy.greenEarth.dto.Game.MileageAddReqDto;
 import com.ssafy.greenEarth.dto.Mission.MissionLogResDto;
+import com.ssafy.greenEarth.repository.GreenEarthRepository;
 import com.ssafy.greenEarth.service.MissionService;
 import com.ssafy.greenEarth.service.TestService;
 import io.swagger.annotations.Api;
@@ -27,6 +29,8 @@ public class TestController {
 
     private final MissionService missionService;
 
+    private final GreenEarthRepository greenEarthRepository;
+
     @GetMapping
     public ResponseEntity<String> testApi() {
         String testStr = testService.getTest();
@@ -38,5 +42,10 @@ public class TestController {
         List<MissionLogResDto> data = missionService.getTodayMissionLogs(1);
 
         return new ResponseEntity<>(data, HttpStatus.OK);
+    }
+
+    @GetMapping("/level")
+    public int getLevel(MileageAddReqDto requestDto){
+        return greenEarthRepository.findFirstByMileageCondition(15);
     }
 }

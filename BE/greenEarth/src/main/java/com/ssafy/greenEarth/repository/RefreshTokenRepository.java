@@ -2,9 +2,7 @@ package com.ssafy.greenEarth.repository;
 
 import com.ssafy.greenEarth.domain.RefreshToken;
 import com.ssafy.greenEarth.domain.RefreshTokenId;
-import com.ssafy.greenEarth.domain.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 

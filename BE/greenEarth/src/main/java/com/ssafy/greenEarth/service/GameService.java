@@ -41,17 +41,14 @@ public class GameService {
         log.info(child.getNickname() + "에게 " + requestDto.getMileage() + "마일리지를 적립합니다.");
 
 
-        int curEarthLevel = greenEarthRepository.findFirstByMileage_condition(finalMileage);
+        int curEarthLevel = greenEarthRepository.findFirstByMileageCondition(finalMileage);
+        log.info("{}", curEarthLevel);
 
-        if (child.getEarthLevel() < 10) {
-            if (child.getEarthLevel() < curEarthLevel) {
-                greenEarthLogRepository.save(new GreenEarthLog(new GreenEarthLogId(childId, curEarthLevel), LocalDateTime.now()));
-
-                child.setEarthLevel(curEarthLevel);
-                log.info(child.getNickname() + "의 EarthLevel을 " + curEarthLevel + "(으)로 설정합니다.");
-            }
+        if (child.getEarthLevel() < 10 && child.getEarthLevel() < curEarthLevel) {
+            greenEarthLogRepository.save(new GreenEarthLog(new GreenEarthLogId(childId, curEarthLevel), LocalDateTime.now()));
+            child.setEarthLevel(curEarthLevel);
+            log.info(child.getNickname() + "의 Earth Level을 " + curEarthLevel + "(으)로 설정합니다.");
         }
-
         return new ChildProfileDto(childRepository.save(child));
     }
 }
