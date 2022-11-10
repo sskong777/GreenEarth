@@ -94,7 +94,7 @@ const GamePage = () => {
                   className="GamePageButton my-5"
                   onClick={() => setIsTab(3)}
                 >
-                  동요세상
+                  동요 세상
                 </button>
               </>
             )}

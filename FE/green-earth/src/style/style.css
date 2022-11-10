@@ -401,3 +401,73 @@
 .GameTutorial {
   @apply w-full h-full flex flex-col justify-start items-center font-dunggeunmo;
 }
+
+/* CardsPairingModal */
+
+.CardsPairingModal {
+  @apply flex justify-center items-center h-screen w-full z-10 fixed text-center font-dunggeunmo left-0 top-0 bg-black bg-opacity-70;
+}
+
+.CardsPairingModalBody {
+  @apply w-240 bg-[#82b7e1] rounded-md;
+}
+
+.CardsPairingModalContent {
+  @apply flex flex-col justify-center items-center;
+}
+
+.CardsPairingModalTitle {
+  @apply mb-5 text-light text-5xl text-center font-semibold;
+}
+
+.CardsPairingModalHeader {
+  @apply flex w-[54rem] mb-5 p-1
+  bg-[#bed8e5] rounded-md
+  outline outline-offset-2 outline-1 outline-gray-100 shadow-md shadow-[#bed8e5]/50;
+}
+
+.CardsPairingModalInfo {
+  @apply w-full text-center px-10 py-5;
+}
+
+.CardsPairingModalSetting {
+  @apply flex flex-col justify-center items-start;
+}
+
+.CardsPairingModalSettingSection {
+  @apply flex justify-center items-center my-3 text-darkBrown;
+}
+
+.CardsPairingModalButton {
+  @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
+  bg-green-800 hover:bg-green-800/50 active:bg-green-800/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-green-800/50;
+}
+
+.CardsPairingModalButtonClose {
+  @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
+  bg-[#c6471c] hover:bg-[#c6471c]/90 active:bg-[#c6471c]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#c6471c]/70;
+}
+
+.CardsPairingModalButtonPay {
+  @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
+  bg-[#28678a] hover:bg-[#28678a]/70 active:bg-[#28678a]/50
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#28678a]/50;
+}
+
+.CardsPairingModalInput {
+  @apply w-28 h-11 text-2xl mx-5 text-center rounded-md 
+  bg-light hover:bg-lightGray/70 active:bg-lightGray
+  outline outline-offset-2 outline-1 shadow-lg shadow-lightGray/50;
+}
+
+.CardsPairingModalInputGift {
+  @apply w-64 h-11 text-2xl mx-5 text-center text-darkBrown rounded-md 
+  bg-light hover:bg-lightGray/70 active:bg-lightGray
+  outline outline-offset-2 outline-1 shadow-lg shadow-lightGray/50;
+}
+
+.CardsPairingModalImage {
+  @apply w-[8.5rem] mx-1 rounded-md shadow-lg;
+}
