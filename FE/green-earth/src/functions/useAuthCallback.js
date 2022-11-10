@@ -10,8 +10,8 @@ import { memberInfoState, childInfoState } from "../store/atoms";
 
 export const useAuthCallback = () => {
   const navigate = useNavigate();
-  const baseUrl = "https://k7d206.p.ssafy.io/api";
-  // const baseUrl = "http://localhost:8881/api";
+  const baseURL = "https://내가그린지구.com/api";
+  // const baseURL = "http://localhost:8881/api";
 
   const { api } = useCommonCallback();
 
@@ -44,7 +44,7 @@ export const useAuthCallback = () => {
   const kakaoLoginCallback = async (code) => {
     axios({
       method: "get",
-      url: `${baseUrl}/member/login/adult?code=${code}`,
+      url: `${baseURL}/member/login/adult?code=${code}`,
       headers: {
         "Content-Type": "application/json",
         Accept: "*/*",
