@@ -78,6 +78,7 @@ export const useMissionCallback = () => {
       .then((response) => {
         if (response.data) {
           console.log("미션 정보가 등록되었습니다.");
+          // setTodayMissionList(response.data);
           console.log("mission :", response.data);
         }
       })
@@ -95,6 +96,7 @@ export const useMissionCallback = () => {
       .then((response) => {
         if (response.data) {
           console.log("미션 정보가 수정되었습니다.");
+          // setTodayMissionList(response.data);
           console.log("mission :", response.data);
         }
       })
@@ -110,6 +112,7 @@ export const useMissionCallback = () => {
       .then((response) => {
         if (response.data) {
           console.log("미션이 승인되었습니다.");
+          // setTodayMissionList(response.data);
           console.log("mission :", response.data);
         }
       })
@@ -125,6 +128,7 @@ export const useMissionCallback = () => {
       .then((response) => {
         if (response.data) {
           console.log("미션이 거절되었습니다.");
+          // setTodayMissionList(response.data);
           console.log("mission :", response.data);
         }
       })
