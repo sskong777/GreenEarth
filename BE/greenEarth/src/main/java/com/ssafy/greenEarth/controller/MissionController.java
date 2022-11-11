@@ -43,9 +43,9 @@ public class MissionController {
     @ApiOperation(value = "미션 전체 조회", notes = "미션 목록 전체 조회")
     // 미션 전체 조회
     @GetMapping("")
-    public ResponseEntity<List<Mission>> getAllMissions(){
+    public ResponseEntity<List<MissionResDto>> getAllMissions(){
         log.info("미션 전체 조회");
-        List<Mission> data = missionService.getAllMissions();
+        List<MissionResDto> data = missionService.getAllMissions();
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 

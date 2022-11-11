@@ -84,16 +84,16 @@ public class MissionService {
     }
 
     // 미션 전체 조회
-    // DTO로 바꿔야함
-    public List<Mission> getAllMissions(){
-        return missionRepository.findAll();
+    public List<MissionResDto> getAllMissions(){
+        return missionRepository.findAll().stream()
+                .map(MissionResDto::new).collect(Collectors.toList());
     }
 
+    // 미션 상세 조회
     public MissionResDto getMissionDetail(int missionId){
         Mission mission = missionRepository.findMissionById(missionId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION)
         );
-
         return new MissionResDto(mission);
     }
 
@@ -110,8 +110,10 @@ public class MissionService {
 
         // is_permit -> true
         missionLog.setPermitted(true);
+        missionLogRepository.save(missionLog);
+
         // cleared_mission 개수 + 1
-        child.setClearedMission(child.getClearedMission()+1);
+        child.setClearedMission(child.getClearedMission() + 1);
 
         // mileage 증가
         int beforeMileage = child.getMileage();

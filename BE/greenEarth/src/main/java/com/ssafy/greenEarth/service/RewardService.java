@@ -20,18 +20,16 @@ import static com.ssafy.greenEarth.exception.ErrorCode.*;
 public class RewardService {
 
     private final ChildRepository childRepository;
+
     private final RewardRepository rewardRepository;
 
     // 보상 목록 조회
-    @Transactional
     public List<RewardResDto> getRewards(int childId){
         Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
-
-        List<RewardResDto> data = child.getRewardList().stream()
+        return child.getRewardList().stream()
                 .map(RewardResDto::new).collect(Collectors.toList());
-        return data;
     }
 
     // 보상 작성
@@ -40,8 +38,7 @@ public class RewardService {
         Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
-        Reward reward = rewardReqDto.toEntity(child);
-        return new RewardResDto(rewardRepository.save(reward));
+        return new RewardResDto(rewardRepository.save(rewardReqDto.toEntity(child)));
     }
 
     // 보상 수정
@@ -53,11 +50,8 @@ public class RewardService {
         Child child = childRepository.findChildById(rewardPutDto.getChildId()).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
-        reward.setName(rewardPutDto.getRewardName());
-        reward.setRewardCondition(rewardPutDto.getRewardCondition());
-        reward.setChild(child);
-
-        return new RewardResDto(reward);
+        reward.updateReward(rewardPutDto, child);
+        return new RewardResDto(rewardRepository.save(reward));
     }
 
     // 보상 삭제
@@ -75,7 +69,8 @@ public class RewardService {
         Reward reward = rewardRepository.findRewardById(rewardId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_REWARD)
         );
-        return new RewardResDto(reward);
+        reward.setPaid();
+        return new RewardResDto(rewardRepository.save(reward));
     }
 
 }
