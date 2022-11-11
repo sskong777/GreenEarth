@@ -27,7 +27,7 @@ public class MissionController {
     // 오늘의 미션생성
     @ApiOperation(value = "오늘의 미션 생성", notes = "아이 ID 받아서 미션 생성")
     @PostMapping("/child/{child_id}")
-    public ResponseEntity<MissionLogResDto> todayMissionCreate(@PathVariable("child_id") int childId,
+    public ResponseEntity<List<MissionLogResDto>> todayMissionCreate(@PathVariable("child_id") int childId,
                                                                @RequestBody MissionReqDto missionReqDto,
                                                                HttpServletRequest request){
 
@@ -35,7 +35,7 @@ public class MissionController {
         Role curUserRole = (Role) request.getAttribute("curUserRole");
         log.info("현재 로그인한 유저 {}", curUserId);
         log.info("Role {}",curUserRole);
-        MissionLogResDto data = missionService.saveTodayMission(childId, missionReqDto, curUserId);
+        List<MissionLogResDto> data = missionService.saveTodayMission(childId, missionReqDto, curUserId);
 
         return new ResponseEntity<>(data, HttpStatus.CREATED);
     }
@@ -82,9 +82,9 @@ public class MissionController {
     // 오늘의 미션 승인
     @ApiOperation(value = "오늘의 미션 승인", notes = "미션 로그 ID받아서 승인여부 true로 변경")
     @PutMapping("log/{log_id}/permit")
-    public ResponseEntity<MissionLogResDto> permitTodayMission(@PathVariable("log_id") int logId){
+    public ResponseEntity<List<MissionLogResDto>> permitTodayMission(@PathVariable("log_id") int logId){
         log.info("log {}",logId);
-        MissionLogResDto data = missionService.permitMission(logId);
+        List<MissionLogResDto> data = missionService.permitMission(logId);
         return new ResponseEntity<>(data, HttpStatus.OK);
 
     }
@@ -92,9 +92,9 @@ public class MissionController {
     // 오늘의 미션 거절
     @ApiOperation(value = "오늘의 미션 거절", notes = "미션 로그 ID받아서 승인여부 false로 설정")
     @PutMapping("log/{log_id}/reject")
-    public ResponseEntity<MissionLogResDto> rejectTodayMission(@PathVariable("log_id") int logId){
+    public ResponseEntity<List<MissionLogResDto>> rejectTodayMission(@PathVariable("log_id") int logId){
         log.info("log {}",logId);
-        MissionLogResDto data = missionService.rejectMission(logId);
+        List<MissionLogResDto> data = missionService.rejectMission(logId);
         return new ResponseEntity<>(data, HttpStatus.OK);
 
     }
@@ -102,9 +102,9 @@ public class MissionController {
     // 오늘의 미션 완료
     @ApiOperation(value = "오늘의 미션 완료", notes = "미션 로그 ID받아서 미션 완료 시간 설정")
     @PutMapping("log/{log_id}/clear")
-    public ResponseEntity<MissionLogResDto> clearTodayMission(@PathVariable("log_id") int logId){
+    public ResponseEntity<List<MissionLogResDto>> clearTodayMission(@PathVariable("log_id") int logId){
         log.info("log {}",logId);
-        MissionLogResDto data = missionService.clearMission(logId);
+        List<MissionLogResDto> data = missionService.clearMission(logId);
         return new ResponseEntity<>(data, HttpStatus.OK);
 
     }
@@ -112,10 +112,10 @@ public class MissionController {
     // 오늘의 미션 수정
     @ApiOperation(value = "오늘의 미션 수정", notes = "미션 로그 ID받아서 승인여부 true로 변경")
     @PutMapping("/log/{log_id}")
-    public ResponseEntity<MissionLogResDto> putTodayMission(@PathVariable("log_id") int logId,
+    public ResponseEntity<List<MissionLogResDto>> putTodayMission(@PathVariable("log_id") int logId,
                                                             @RequestBody MissionPutDto missionPutDto ){
         log.info("log {}",logId);
-        MissionLogResDto data = missionService.updateTodayMission(logId, missionPutDto);
+        List<MissionLogResDto> data = missionService.updateTodayMission(logId, missionPutDto);
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
