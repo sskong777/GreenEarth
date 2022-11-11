@@ -1,6 +1,7 @@
 package com.ssafy.greenEarth.service;
 
 import com.ssafy.greenEarth.domain.*;
+import com.ssafy.greenEarth.dto.Member.ChildProfileDto;
 import com.ssafy.greenEarth.dto.Mission.*;
 import com.ssafy.greenEarth.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,7 @@ public class MissionService {
     // 오늘의 미션생성
     // 로그인한 부모 정보가 넘어오는지 확인 필요
     @Transactional
-    public MissionLogResDto saveTodayMission(int childId, MissionReqDto missionReqDto, int curUserId) {
+    public List<MissionLogResDto> saveTodayMission(int childId, MissionReqDto missionReqDto, int curUserId) {
 
         int missionId = missionReqDto.getMissionId();
 
@@ -52,25 +53,22 @@ public class MissionService {
         );
 
         MissionLog missionlog = new MissionLog(child, mission, parent, LocalDateTime.now());
-        return new MissionLogResDto(missionLogRepository.save(missionlog));
+        missionLogRepository.save(missionlog);
+        return getTodayMissionLogs(childId);
     }
 
     // 아이 미션 로그 조회
-    @Transactional
     public List<MissionLogResDto> getMissionLogs(int childId){
         Child child = childRepository.findChildById(childId).orElseThrow(
                 ()-> new BusinessException(NOT_EXIST_ACCOUNT)
         );
 
-        List<MissionLogResDto> data = child.getMissionLogList().stream()
+        return child.getMissionLogList().stream()
                 .map(MissionLogResDto::new).collect(Collectors.toList());
-
-        return data;
 
     }
 
     // 오늘의 미션 조회
-    @Transactional
     public List<MissionLogResDto> getTodayMissionLogs(int childId){
         Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
@@ -87,12 +85,10 @@ public class MissionService {
 
     // 미션 전체 조회
     // DTO로 바꿔야함
-    @Transactional
     public List<Mission> getAllMissions(){
         return missionRepository.findAll();
     }
 
-    @Transactional
     public MissionResDto getMissionDetail(int missionId){
         Mission mission = missionRepository.findMissionById(missionId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION)
@@ -103,7 +99,7 @@ public class MissionService {
 
     // 오늘의 미션 승인
     @Transactional
-    public MissionLogResDto permitMission(int logId){
+    public List<MissionLogResDto> permitMission(int logId){
         MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
                 ()->new BusinessException(NOT_EXIST_MISSION_LOG)
         );
@@ -115,8 +111,7 @@ public class MissionService {
         // is_permit -> true
         missionLog.setPermitted(true);
         // cleared_mission 개수 + 1
-        int currentMissionCount = child.getClearedMission();
-        child.setClearedMission(currentMissionCount+1);
+        child.setClearedMission(child.getClearedMission()+1);
 
         // mileage 증가
         int beforeMileage = child.getMileage();
@@ -128,42 +123,44 @@ public class MissionService {
         int beforeGreenEarth = child.getEarthLevel();
         int greenEarth = greenEarthRepository.findFirstByMileageCondition(currentMileage);
 
-        if(beforeGreenEarth < greenEarth){
-            GreenEarthLogId greenEarthLogId = new GreenEarthLogId(child.getId(), greenEarth);
-            GreenEarthLog greenEarthLog = new GreenEarthLog(greenEarthLogId, LocalDateTime.now());
-            greenEarthLogRepository.save(greenEarthLog);
+        if (beforeGreenEarth < 10 && beforeGreenEarth < greenEarth) {
+            greenEarthLogRepository.save(new GreenEarthLog(new GreenEarthLogId(child.getId(), greenEarth), LocalDateTime.now()));
             child.setEarthLevel(greenEarth);
+            log.info(child.getNickname() + "의 Earth Level을 " + greenEarth + "(으)로 설정합니다.");
         }
+        childRepository.save(child);
 
-        return new MissionLogResDto(missionLog);
+        return getTodayMissionLogs(child.getId());
     }
 
     // 오늘의 미션 거절
     @Transactional
-    public MissionLogResDto rejectMission(int logId){
+    public List<MissionLogResDto> rejectMission(int logId){
         MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION_LOG)
         );
         // cleared_at -> null
         missionLog.setClearedAt(null);
+        missionLogRepository.save(missionLog);
 
-        return new MissionLogResDto(missionLog);
+        return getTodayMissionLogs(missionLog.getChild().getId());
     }
 
     // 오늘의 미션 완료
     @Transactional
-    public MissionLogResDto clearMission(int logId){
+    public List<MissionLogResDto> clearMission(int logId){
         MissionLog missionLog = missionLogRepository.findMissionLogById(logId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION_LOG)
         );
         missionLog.setClearedAt(LocalDateTime.now());
+        missionLogRepository.save(missionLog);
 
-        return new MissionLogResDto(missionLog);
+        return getTodayMissionLogs(missionLog.getChild().getId());
     }
 
     // 오늘의 미션 수정
     @Transactional
-    public MissionLogResDto updateTodayMission(int logId, MissionPutDto missionPutDto){
+    public List<MissionLogResDto> updateTodayMission(int logId, MissionPutDto missionPutDto){
         int MissionId  = missionPutDto.getMissionId();
         Mission updatedMission = missionRepository.findMissionById(MissionId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_MISSION)
@@ -173,7 +170,9 @@ public class MissionService {
         );
 
         missionLog.setMission(updatedMission);
-        return new MissionLogResDto(missionLog);
+        missionLogRepository.save(missionLog);
+
+        return getTodayMissionLogs(missionLog.getChild().getId());
     }
 
     //  오늘의 미션 삭제
