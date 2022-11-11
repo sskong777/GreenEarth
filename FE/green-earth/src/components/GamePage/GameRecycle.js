@@ -1,6 +1,9 @@
 import React, { useRef, useEffect, useState, useLayoutEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
+import RecycleFailModal from "./RecycleFailModal";
+import RecycleSuccessModal from "./RecycleSuccessModal";
+
 const useStyles = makeStyles((theme) => ({
   mygame: {
     border: "10px solid #E9FBD2",
@@ -13,6 +16,13 @@ export const GameRecycle = () => {
   const classes = useStyles();
 
   const canvasRef = useRef(null);
+
+  // 생명
+  const [life, setLife] = useState(3);
+  // 생명 이미지
+  const [lifeCount, setLifeCount] = useState(
+    "/assets/games/game/heart_full.png"
+  );
 
   //캔버스 관련 변수
 
@@ -41,48 +51,48 @@ export const GameRecycle = () => {
     {
       name: "아이시스",
       current: [0, 0], //현재좌표
-      loc1: [155, 85], //좌측 상단 모서리 좌표
-      loc2: [203, 234], //우측 하단 모서리 좌표
+      loc1: [190, 100], //좌측 상단 모서리 좌표
+      loc2: [250, 250], //우측 하단 모서리 좌표
       answer: 0,
       success: false,
     },
     {
       name: "떡볶이",
       current: [0, 0], //현재좌표
-      loc1: [240, 113], //좌측 상단 모서리 좌표
-      loc2: [391, 228], //우측 하단 모서리 좌표
+      loc1: [290, 115], //좌측 상단 모서리 좌표
+      loc2: [440, 265], //우측 하단 모서리 좌표
       answer: 1,
       success: false,
     },
     {
       name: "자일리톨",
       current: [0, 0], //현재좌표
-      loc1: [424, 25], //좌측 상단 모서리 좌표
-      loc2: [502, 133], //우측 하단 모서리 좌표
+      loc1: [525, 25], //좌측 상단 모서리 좌표
+      loc2: [600, 146], //우측 하단 모서리 좌표
       answer: 0,
       success: false,
     },
     {
       name: "자껍",
       current: [0, 0], //현재좌표
-      loc1: [526, 47], //좌측 상단 모서리 좌표
-      loc2: [634, 128], //우측 하단 모서리 좌표
+      loc1: [640, 45], //좌측 상단 모서리 좌표
+      loc2: [755, 105], //우측 하단 모서리 좌표
       answer: 0,
       success: false,
     },
     {
       name: "알약",
       current: [0, 0], //현재좌표
-      loc1: [484, 167], //좌측 상단 모서리 좌표
-      loc2: [621, 254], //우측 하단 모서리 좌표
+      loc1: [590, 220], //좌측 상단 모서리 좌표
+      loc2: [680, 265], //우측 하단 모서리 좌표
       answer: 1,
       success: false,
     },
     {
       name: "좋은 물",
       current: [0, 0], //현재좌표
-      loc1: [671, 65], //좌측 상단 모서리 좌표
-      loc2: [751, 233], //우측 하단 모서리 좌표
+      loc1: [835, 70], //좌측 상단 모서리 좌표
+      loc2: [900, 260], //우측 하단 모서리 좌표
       answer: 1,
       success: false,
     },
@@ -113,6 +123,7 @@ export const GameRecycle = () => {
       descriptionPage(ctx);
     } else if (nowPage == "success") {
       successPage(ctx);
+    } else if (nowPage == "fail") {
     }
   };
 
@@ -172,6 +183,11 @@ export const GameRecycle = () => {
     }
 
     let items_tmp = items;
+
+    // 라이프 그리기
+    let lifeImage = new Image();
+    lifeImage.src = `${lifeCount}`;
+    ctx.drawImage(lifeImage, 0, 0, canvasWidth, canvasHeight);
 
     //분류 창
     let recycle = new Image();
@@ -351,6 +367,7 @@ export const GameRecycle = () => {
             setdescNum(_selected);
             setnowPage("description");
           } else {
+            setLife(life - 1);
             alert("다시 생각해 보세요!");
           }
         } else if (
@@ -368,6 +385,7 @@ export const GameRecycle = () => {
             setdescNum(_selected);
             setnowPage("description");
           } else {
+            setLife(life - 1);
             alert("다시 생각해 보세요!");
           }
         }
@@ -450,13 +468,40 @@ export const GameRecycle = () => {
     };
   }, [draw]);
 
+  useEffect(() => {
+    if (life == 0) {
+      setnowPage("fail");
+    } else if (life == 2 || life == 1) {
+      setLifeCount(`/assets/games/game/heart_${life}.png`);
+      alert("라이프가 감소하였습니다!");
+    }
+  }, [life]);
+
   return (
-    <canvas
-      ref={canvasRef}
-      className={classes.mygame}
-      width={992}
-      height={576}
-    />
+    <div>
+      <canvas
+        ref={canvasRef}
+        className={classes.mygame}
+        width={992}
+        height={576}
+      />
+
+      {!life && (
+        <RecycleFailModal
+          setnowPage={setnowPage}
+          setLife={setLife}
+          setLifeCount={setLifeCount}
+        />
+      )}
+
+      {nowPage == "success" && (
+        <RecycleSuccessModal
+          setnowPage={setnowPage}
+          setLife={setLife}
+          setLifeCount={setLifeCount}
+        />
+      )}
+    </div>
   );
 };
 
