@@ -19,6 +19,11 @@
   src: url("./../../public/assets/fonts/Binggrae.ttf");
 }
 
+@font-face {
+  font-family: "DungGeunMo";
+  src: url("./../../public/assets/fonts/DungGeunMo.ttf");
+}
+
 /* ProfilePage */
 
 .ProfilePage {
@@ -26,37 +31,43 @@
 }
 
 .ProfileHeader {
-  @apply flex justify-center items-start mt-8 mb-6;
+  @apply flex justify-center items-start pt-6 pb-6;
 }
 
 .ProfileMenu {
-  @apply flex justify-center items-center mb-7;
+  @apply flex justify-center items-center pb-4;
 }
 
 .ProfileInfo {
-  @apply flex justify-start items-center w-100 h-40 ml-6 mr-12 pl-5 rounded-md text-xl text-amber-900 leading-relaxed 
-  bg-light outline outline-offset-2 outline-1 shadow-lg shadow-light/50;
+  @apply flex justify-start items-center w-100 h-40 ml-6 pl-5 rounded-md text-xl text-darkBrown leading-relaxed 
+  bg-[#fff8e6] outline outline-offset-2 outline-1 shadow-lg shadow-[#fff8e6]/50;
 }
 
 .ChildImage {
   @apply w-40 h-40 mb-2 rounded-md 
-  bg-light outline outline-offset-2 outline-1 shadow-lg shadow-light/50;
+  bg-[#fff8e6] outline outline-offset-2 outline-1 shadow-md shadow-[#fff8e6]/50;
 }
 
 .ChildImageName {
-  @apply text-center text-xl text-amber-900;
+  @apply text-center text-xl text-light;
 }
 
 .ProfileHeaderButton {
-  @apply w-40 h-40 ml-6 rounded-md text-3xl text-amber-900 font-binggrae font-semibold
-  bg-darkBeige hover:bg-darkBeige-hover active:bg-darkBeige-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-darkBeige/50;
+  @apply w-[13rem] h-18 ml-6 rounded-md text-3xl text-blackBrown font-binggrae font-semibold
+  bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
+}
+
+.ProfileHeaderRewardButton {
+  @apply w-[27.5rem] h-18 ml-6 mt-4 rounded-md text-3xl text-blackBrown font-binggrae font-semibold
+  bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
 }
 
 .ProfileMenuButton {
-  @apply w-80 h-18 rounded-md text-2xl text-light font-medium
-  bg-darkRed hover:bg-darkRed-hover active:bg-darkRed-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-darkRed/50;
+  @apply w-80 h-16 rounded-md text-2xl text-light font-medium
+  bg-[#22505e] hover:bg-[#22505e]/90 active:bg-[#22505e]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#22505e]/70;
 }
 
 /* TodayMissonList */
@@ -66,7 +77,7 @@
 }
 
 .TodayHeader {
-  @apply mt-4 mb-6 text-4xl text-darkBrown font-semibold;
+  @apply mt-4 mb-6 text-4xl text-light font-semibold;
 }
 
 /* TodayMissonItem */
@@ -75,30 +86,60 @@
   @apply flex justify-center items-center mb-5;
 }
 
+.TodayItemButtonDoubleReject {
+  @apply w-26 h-16 ml-4 rounded-md text-2xl text-light font-medium 
+  bg-[#c01223] hover:bg-[#c01223]/70 active:bg-[#c01223]/50
+  outline outline-offset-1 outline-1 shadow-lg shadow-[#c01223]/50;
+}
+
+.TodayItemButtonDoublePermit {
+  @apply w-26 h-16 ml-4 rounded-md text-2xl text-light font-medium 
+  bg-[#0f7835] hover:bg-[#0f7835]/70 active:bg-[#0f7835]/50
+  outline outline-offset-1 outline-1 shadow-lg shadow-[#0f7835]/50;
+}
+
 .TodayItemButtonSingle {
-  @apply w-56 h-16 ml-6 rounded-md text-2xl text-light font-medium 
-  bg-oceanBlue hover:bg-oceanBlue-hover active:bg-oceanBlue-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-oceanBlue/50;
+  @apply w-56 h-16 ml-4 rounded-md text-2xl text-light font-medium 
+  bg-[#223e10] cursor-not-allowed
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#0f7835]/70;
+}
+
+.TodayItemButtonSingleEdit {
+  @apply w-56 h-16 ml-4 rounded-md text-2xl text-light font-medium 
+  bg-[#f9750d] hover:bg-[#f9750d]/90 active:bg-[#f9750d]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#f9750d]/70;
+}
+
+.TodayItemButtonSingleSubmit {
+  @apply w-56 h-16 ml-4 rounded-md text-2xl text-light font-medium 
+  bg-[#0d3d3f] hover:bg-[#0d3d3f]/90 active:bg-[#0d3d3f]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#0d3d3f]/70;
 }
 
 .TodayItem {
   @apply flex justify-between items-center w-188 h-16 px-6 rounded-md text-2xl text-light font-medium text-center
-    bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
-}
-
-.TodayDropdown {
-  @apply w-188 relative select-none;
-}
-
-.TodayDropdownButton {
-  @apply flex justify-between items-center h-16 px-6 cursor-pointer rounded-md text-2xl text-light font-medium text-center
   bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
   outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
 }
 
+.TodayDropdown {
+  @apply w-188 relative select-none mr-2;
+}
+
+.TodayMissionItemComplete {
+  @apply w-188 mr-2 flex justify-between items-center h-16 px-6 rounded-md text-2xl text-light font-medium text-center
+  bg-[#e1d7b4] hover:bg-[#e1d7b4]/90
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#e1d7b4]/70;
+}
+
+.TodayDropdownButton {
+  @apply flex justify-between items-center h-16 px-6 cursor-pointer rounded-md text-2xl text-light font-medium text-center
+  bg-[#e1d7b4] hover:bg-[#e1d7b4]/90 active:bg-[#e1d7b4]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#e1d7b4]/70;
+}
+
 .TodayDropdownContent {
-  @apply absolute w-full top-1.15 left-0 p-2.5 rounded-md text-xl text-blackBrown font-medium 
+  @apply absolute w-full top-1.15 left-0 p-2.5 z-10 rounded-md text-xl text-blackBrown font-medium 
   bg-stoneRed-dropdown outline outline-offset-1 outline-1 shadow-lg shadow-stoneRed-dropdown;
 }
 
@@ -120,17 +161,17 @@
 }
 
 .BadgeItemImage {
-  @apply flex justify-center items-center w-34 h-34 mt-3 mb-2 rounded-2xl 
-  bg-lightOrange shadow-lg shadow-lightOrange/50;
+  @apply flex justify-center items-center w-32 h-32 mt-3 mb-2 rounded-2xl 
+  bg-[#061e30] shadow-lg shadow-[#061e30]/50;
 }
 
 .BadgeItemImageLock {
-  @apply flex justify-center items-center w-34 h-34 mt-3 mb-2 rounded-2xl 
+  @apply flex justify-center items-center w-32 h-32 mt-3 mb-2 rounded-2xl 
   bg-lightGray shadow-lg shadow-lightGray/50;
 }
 
 .BadgeItemTitle {
-  @apply text-xl text-blackBrown font-medium;
+  @apply text-xl text-light font-medium;
 }
 
 /* MissionComponent */
@@ -144,13 +185,13 @@
 }
 
 .MissionComponentToday {
-  @apply text-3xl text-darkBrown font-semibold;
+  @apply text-3xl text-light font-semibold;
 }
 
 .MissionComponentButton {
   @apply w-20 h-12 rounded-md text-3xl text-light font-medium
-  bg-darkRed hover:bg-darkRed-hover active:bg-darkRed-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-darkRed/50;
+  bg-[#0d3d3f] hover:bg-[#0d3d3f]/90 active:bg-[#0d3d3f]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#0d3d3f]/70;
 }
 
 /* MissionList */
@@ -164,9 +205,9 @@
 }
 
 .MissionDropdownButton {
-  @apply flex justify-between items-center h-14 px-6 cursor-pointer rounded-md text-xl text-light font-medium text-center
+  @apply flex justify-between items-center h-14 px-6 cursor-pointer rounded-md text-xl text-blackBrown font-medium text-center
   bg-stoneRed hover:bg-stoneRed-hover active:bg-stoneRed-active
-  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#ecdf90]/70;
 }
 
 .MissionDropdownContent {
@@ -188,15 +229,15 @@
 /* MissionItem */
 
 .MissionItem {
-  @apply flex justify-between items-center w-252 h-14 px-6 my-3 rounded-md text-xl text-light font-medium text-center
-  bg-stoneRed
-  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
+  @apply flex justify-between items-center w-252 h-14 px-6 my-4 rounded-md text-xl text-light font-medium text-center
+  bg-[#c01223]
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#c01223]/50;
 }
 
 .MissionItemComplete {
-  @apply flex justify-between items-center w-252 h-14 px-6 my-3 rounded-md text-xl text-light font-medium text-center
-  bg-green-100
-  outline outline-offset-2 outline-1 shadow-lg shadow-stoneRed/50;
+  @apply flex justify-between items-center w-252 h-14 px-6 my-4 rounded-md text-xl text-light font-medium text-center
+  bg-[#0f7835]
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#0f7835]/50;
 }
 
 /* ReawardModal */
@@ -206,17 +247,227 @@
 }
 
 .ReawardModalBody {
-  @apply w-252 bg-white rounded-md;
+  @apply w-240 bg-[#fffee0] rounded-md;
 }
 
 .ReawardModalContent {
-  @apply flex justify-center items-center p-4;
+  @apply flex flex-col justify-center items-center py-3 my-5;
+}
+
+.ReawardModalTitle {
+  @apply mb-5 text-blackBrown text-4xl text-center font-bold;
+}
+
+.ReawardModalHeader {
+  @apply flex w-208 items-start justify-start mb-5 p-4
+  bg-[#efe0c3] rounded-md
+  outline outline-offset-2 outline-1 outline-gray-100 shadow-md shadow-light/50;
+}
+
+.ReawardModalInfo {
+  @apply w-full text-left px-10 mt-5;
+}
+
+.ReawardModalSetting {
+  @apply flex flex-col justify-center items-start;
+}
+
+.ReawardModalSettingSection {
+  @apply flex justify-center items-center my-3 text-darkBrown;
 }
 
 .ReawardModalButton {
-  @apply bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150;
+  @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
+  bg-green-800 hover:bg-green-800/50 active:bg-green-800/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-green-800/50;
 }
 
-.ReawardModalBackground {
-  @apply opacity-25 fixed inset-0 z-40 bg-black;
+.ReawardModalButtonClose {
+  @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
+  bg-darkRed hover:bg-darkRed-hover active:bg-darkRed-active
+  outline outline-offset-2 outline-1 shadow-lg shadow-darkRed/50;
+}
+
+.ReawardModalButtonPay {
+  @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
+  bg-[#28678a] hover:bg-[#28678a]/70 active:bg-[#28678a]/50
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#28678a]/50;
+}
+
+.ReawardModalInput {
+  @apply w-28 h-11 text-2xl mx-5 text-center rounded-md 
+  bg-light hover:bg-lightGray/70 active:bg-lightGray
+  outline outline-offset-2 outline-1 shadow-lg shadow-lightGray/50;
+}
+
+.ReawardModalInputGift {
+  @apply w-64 h-11 text-2xl mx-5 text-center text-darkBrown rounded-md 
+  bg-light hover:bg-lightGray/70 active:bg-lightGray
+  outline outline-offset-2 outline-1 shadow-lg shadow-lightGray/50;
+}
+
+/* RewardModalChild */
+
+.ReawardModalChildInfo {
+  @apply w-full h-40 flex justify-center items-center text-3xl;
+}
+
+/* GamePage */
+
+.GamePageButtonBack {
+  @apply w-40 h-16 rounded-md text-2xl text-blackBrown font-dunggeunmo  font-semibold
+  bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
+}
+
+.GamePageButton {
+  @apply w-40 h-16  text-2xl text-blackBrown font-dunggeunmo  font-semibold rounded-md 
+  bg-light hover:bg-light/90 active:bg-light/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-light/70;
+}
+
+.GamePageSongButton {
+  @apply w-40 h-16  text-xl text-blackBrown font-dunggeunmo  font-semibold rounded-md 
+  bg-light hover:bg-light/90 active:bg-light/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-light/70;
+}
+
+.GamePageNavBar {
+  @apply flex flex-col justify-between ml-3;
+}
+
+.GamePageBody {
+  @apply flex w-full h-[35rem];
+}
+
+.GamePagePlaySpace {
+  @apply w-[62rem] h-[36rem] flex justify-center items-center ml-10 rounded-md 
+  bg-[#011d29] shadow-md shadow-[#011d29]/50;
+}
+
+/* CardsPairing */
+
+.CardsPairing {
+  @apply w-[60rem] flex justify-center items-center;
+}
+
+.CardsPairingButton {
+  @apply w-40 h-14  text-3xl text-blackBrown font-dunggeunmo rounded-md
+  bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
+}
+
+.CardsPairingInfo {
+  @apply mt-10 text-2xl text-light font-dunggeunmo animate-pulse;
+}
+
+.CardsPairingGrid {
+  @apply grid grid-cols-4 gap-5;
+}
+
+/* SingleCard */
+
+.SingleCard {
+  @apply relative w-40;
+}
+
+.SingleCard img {
+  @apply w-full block rounded-md border-4 border-light;
+}
+
+.SingleCardFront {
+  position: absolute;
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
+}
+
+.SingleCardBack {
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+
+.flipped .SingleCardFront {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+.flipped .SingleCardBack {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}
+
+/* GameTutorial */
+
+.GameTutorial {
+  @apply w-full h-full flex flex-col justify-start items-center font-dunggeunmo;
+}
+
+/* CardsPairingModal */
+
+.CardsPairingModal {
+  @apply flex justify-center items-center h-screen w-full z-10 fixed text-center font-dunggeunmo left-0 top-0 bg-black bg-opacity-70;
+}
+
+.CardsPairingModalBody {
+  @apply w-240 bg-[#82b7e1] rounded-md;
+}
+
+.CardsPairingModalContent {
+  @apply flex flex-col justify-center items-center;
+}
+
+.CardsPairingModalTitle {
+  @apply mb-5 text-light text-5xl text-center font-semibold;
+}
+
+.CardsPairingModalHeader {
+  @apply flex w-[54rem] mb-5 p-1
+  bg-[#bed8e5] rounded-md
+  outline outline-offset-2 outline-1 outline-gray-100 shadow-md shadow-[#bed8e5]/50;
+}
+
+.CardsPairingModalInfo {
+  @apply w-full text-center px-10 py-5;
+}
+
+.CardsPairingModalSetting {
+  @apply flex flex-col justify-center items-start;
+}
+
+.CardsPairingModalSettingSection {
+  @apply flex justify-center items-center my-3 text-darkBrown;
+}
+
+.CardsPairingModalButton {
+  @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
+  bg-green-800 hover:bg-green-800/50 active:bg-green-800/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-green-800/50;
+}
+
+.CardsPairingModalButtonClose {
+  @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
+  bg-[#c6471c] hover:bg-[#c6471c]/90 active:bg-[#c6471c]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#c6471c]/70;
+}
+
+.CardsPairingModalButtonPay {
+  @apply w-40 h-14 mx-5 rounded-md text-2xl text-light font-medium
+  bg-[#28678a] hover:bg-[#28678a]/70 active:bg-[#28678a]/50
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#28678a]/50;
+}
+
+.CardsPairingModalInput {
+  @apply w-28 h-11 text-2xl mx-5 text-center rounded-md 
+  bg-light hover:bg-lightGray/70 active:bg-lightGray
+  outline outline-offset-2 outline-1 shadow-lg shadow-lightGray/50;
+}
+
+.CardsPairingModalInputGift {
+  @apply w-64 h-11 text-2xl mx-5 text-center text-darkBrown rounded-md 
+  bg-light hover:bg-lightGray/70 active:bg-lightGray
+  outline outline-offset-2 outline-1 shadow-lg shadow-lightGray/50;
+}
+
+.CardsPairingModalImage {
+  @apply w-[8.5rem] mx-1 rounded-md shadow-lg;
 }

@@ -2,11 +2,8 @@ package com.ssafy.greenEarth.service;
 
 import com.ssafy.greenEarth.domain.*;
 import com.ssafy.greenEarth.dto.Auth.*;
-import com.ssafy.greenEarth.dto.Auth.TokenDto;
 import com.ssafy.greenEarth.jwt.TokenProvider;
-import com.ssafy.greenEarth.repository.ChildRepository;
-import com.ssafy.greenEarth.repository.ParentRepository;
-import com.ssafy.greenEarth.repository.RefreshTokenRepository;
+import com.ssafy.greenEarth.repository.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,12 +33,10 @@ public class AuthService {
     private final RefreshTokenRepository refreshTokenRepository;
 
     public Boolean isCurAccountExist(int id, Role role) {
+        // id 와 role 에 해당하는 계정 존재하는지 확인
         if (role == Role.ROLE_CHILD && childRepository.existsById(id)) {
             return true;
-        } else if (role == Role.ROLE_PARENT && parentRepository.existsById(id)) {
-            return true;
-        }
-        return false;
+        } else return (role == Role.ROLE_PARENT && parentRepository.existsById(id));
     }
 
     public String createAccessToken(int id, Role role) {

@@ -27,11 +27,12 @@ public class RewardReqDto {
     @Schema(description = "아이 PK")
     private int childId;
 
-    public Reward toEntity(RewardReqDto rewardReqDto, Child child) {
+    public Reward toEntity(Child child) {
         return Reward.builder()
-                .name(rewardReqDto.getName())
-                .rewardCondition(rewardReqDto.getRewardCondition())
-                .parentNickname(rewardReqDto.getParentNickname())
+                .name(getName())
+                .rewardCondition(getRewardCondition())
+                .parentNickname(getParentNickname())
+                .isPaid(false)
                 .child(child)
                 .build();
 
