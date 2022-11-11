@@ -9,11 +9,23 @@ const SignUpPage = () => {
 
   return (
     <div className="SignUpPage">
-      <img className="LogoImage" src={"assets/images/logo_main.png"} />
+      <div className="SignUpPageHeader">
+        <img
+          className="w-100 mt-12 mb-6 animate-pulse"
+          src={"assets/images/new_logo_main.svg"}
+        />
+        <div className="text-5xl text-light mb-6">회원 가입</div>
 
-      <SignUpForm />
-
-      <button onClick={() => navigate("/")}>웰컴페이지로 이동</button>
+        <div className="mb-1">지금 아이 계정을 생성하시면</div>
+        <div>다양한 서비스를 경험하실 수 있습니다.</div>
+        <img
+          className="w-[22rem] mt-12 ml-10"
+          src={"assets/images/signupkids.png"}
+        />
+      </div>
+      <div>
+        <SignUpForm />
+      </div>
     </div>
   );
 };

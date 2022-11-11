@@ -88,9 +88,9 @@ export const useMissionCallback = () => {
   };
 
   // 미션 수정 콜백 함수
-  const editMissionCallback = async (childId, missionId) => {
+  const editMissionCallback = async (logId, missionId) => {
     api
-      .put(`/mission/log/${childId}`, {
+      .put(`/mission/log/${logId}`, {
         missionId: missionId,
       })
       .then((response) => {

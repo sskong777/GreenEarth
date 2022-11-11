@@ -5,19 +5,23 @@
 /* LoginForm */
 
 .LoginForm {
-  @apply flex flex-col justify-center items-center space-y-10 min-w-full;
+  @apply flex flex-col justify-center items-start;
 }
 
 .LoginFormBody {
-  @apply flex flex-col w-full justify-center items-end space-y-5 max-w-[90%];
+  @apply flex flex-col mt-10 justify-center items-start;
 }
 
 .LoginElement {
-  @apply flex flex-col rounded border-8 border-transparent outline outline-offset-2 outline-cyan-500 py-1 px-3 w-[35%];
+  @apply w-100 h-16 p-5 my-2 rounded-md text-xl text-[#417e98] placeholder:text-[#417e98] font-medium
+  bg-[#b1e4fa] hover:bg-[#b1e4fa]/70 active:bg-[#b1e4fa]/50
+  outline outline-offset-2 outline-1 shadow-md shadow-[#b1e4fa]/50;
 }
 
 .LoginButton {
-  @apply flex flex-col py-4 px-20 bg-cyan-500 text-white font-semibold rounded-lg shadow-md hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+  @apply w-100 h-16 p-5 mt-5 mb-14 rounded-md text-2xl text-light placeholder:text-[#417e98] font-semibold
+  bg-[#7ea5f4] hover:bg-[#7ea5f4]/70 active:bg-[#7ea5f4]/50
+  outline outline-offset-2 outline-1 outline-[#b1e4fa] shadow-md shadow-[#7ea5f4]/50;
 }
 
 .LoginLine {
