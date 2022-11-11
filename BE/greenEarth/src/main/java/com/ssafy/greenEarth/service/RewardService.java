@@ -1,16 +1,15 @@
 package com.ssafy.greenEarth.service;
 
-import com.ssafy.greenEarth.domain.Child;
-import com.ssafy.greenEarth.domain.Reward;
+import com.ssafy.greenEarth.domain.*;
 import com.ssafy.greenEarth.dto.Reward.*;
 import com.ssafy.greenEarth.repository.ChildRepository;
-import com.ssafy.greenEarth.repository.RewardRespository;
+import com.ssafy.greenEarth.repository.RewardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.ssafy.greenEarth.exception.BusinessException;
 import static com.ssafy.greenEarth.exception.ErrorCode.*;
@@ -21,23 +20,16 @@ import static com.ssafy.greenEarth.exception.ErrorCode.*;
 public class RewardService {
 
     private final ChildRepository childRepository;
-    private final RewardRespository rewardRespository;
+
+    private final RewardRepository rewardRepository;
 
     // 보상 목록 조회
-    @Transactional
     public List<RewardResDto> getRewards(int childId){
         Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
-
-        List<RewardResDto> data = new ArrayList<>();
-
-        List<Reward> rewards = child.getRewardList();
-        for (Reward reward : rewards){
-            RewardResDto rewardResDto = new RewardResDto(reward);
-            data.add(rewardResDto);
-        }
-        return data;
+        return child.getRewardList().stream()
+                .map(RewardResDto::new).collect(Collectors.toList());
     }
 
     // 보상 작성
@@ -46,43 +38,39 @@ public class RewardService {
         Child child = childRepository.findChildById(childId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
-        Reward reward = rewardReqDto.toEntity(rewardReqDto, child);
-        rewardRespository.save(reward);
-        return new RewardResDto(reward);
+        return new RewardResDto(rewardRepository.save(rewardReqDto.toEntity(child)));
     }
 
     // 보상 수정
     @Transactional
     public RewardResDto updateReward(int rewardId, RewardPutDto rewardPutDto){
-        Reward reward = rewardRespository.findRewardById(rewardId).orElseThrow(
+        Reward reward = rewardRepository.findRewardById(rewardId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_REWARD)
         );
         Child child = childRepository.findChildById(rewardPutDto.getChildId()).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_ACCOUNT)
         );
-        reward.setName(rewardPutDto.getRewardName());
-        reward.setRewardCondition(rewardPutDto.getRewardCondition());
-        reward.setChild(child);
-
-        return new RewardResDto(reward);
+        reward.updateReward(rewardPutDto, child);
+        return new RewardResDto(rewardRepository.save(reward));
     }
 
     // 보상 삭제
     @Transactional
     public void deleteReward(int rewardId){
-        Reward reward = rewardRespository.findRewardById(rewardId).orElseThrow(
+        Reward reward = rewardRepository.findRewardById(rewardId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_REWARD)
         );
-        rewardRespository.delete(reward);
+        rewardRepository.delete(reward);
     }
 
     // 보상 지급 완료
     @Transactional
     public RewardResDto paidReward(int rewardId){
-        Reward reward = rewardRespository.findRewardById(rewardId).orElseThrow(
+        Reward reward = rewardRepository.findRewardById(rewardId).orElseThrow(
                 () -> new BusinessException(NOT_EXIST_REWARD)
         );
-        return new RewardResDto(reward);
+        reward.setPaid();
+        return new RewardResDto(rewardRepository.save(reward));
     }
 
 }

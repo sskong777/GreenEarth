@@ -17,8 +17,7 @@ import java.util.List;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-    // http://k7d206.p.ssafy.io/api/swagger-ui/index.html#/
-    // http://localhost:8881/api/swagger-ui/index.html#/
+    // http://내가그린지구.com/api/swagger-ui/index.html#/
 
     @Bean
     public Docket api(){

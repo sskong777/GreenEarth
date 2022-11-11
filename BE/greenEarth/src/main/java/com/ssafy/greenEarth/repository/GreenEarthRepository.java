@@ -13,6 +13,7 @@ public interface GreenEarthRepository extends JpaRepository<GreenEarth, Integer>
             "ORDER BY g.green_earth_id " +
             "DESC LIMIT 1",
             nativeQuery = true)
-    int findFirstByMileage_condition(@Param("mileage") int mileage);
+//    @Query("select g.id from GreenEarth g where g.mileageCondition <= :mileage order by g.id desc ")
+    int findFirstByMileageCondition(@Param("mileage") int mileage);
 
 }
