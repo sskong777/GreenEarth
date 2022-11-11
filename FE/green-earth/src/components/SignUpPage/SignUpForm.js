@@ -45,9 +45,6 @@ const SignUpForm = () => {
     "12월",
   ];
 
-  // 아바타 숫자 랜덤
-  const avatar = _.random(1, 100);
-
   // 이메일 중복 체크용 useState
   const [check, setCheck] = useState(true);
 
@@ -94,7 +91,7 @@ const SignUpForm = () => {
       alert("닉네임 중복 체크를 해주세요");
       return;
     } else {
-      signUpCallback(nickname, password, realName, gender, birthday, avatar);
+      signUpCallback(nickname, password, realName, gender, birthday);
     }
   };
 
