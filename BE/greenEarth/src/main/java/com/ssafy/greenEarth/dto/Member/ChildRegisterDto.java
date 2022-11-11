@@ -39,11 +39,7 @@ public class ChildRegisterDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
 
-    @NotNull(message = "아이 아바타 번호를 입력해주세요")
-    @Schema(description = "아이 회원가입 아바타 번호")
-    private int avatar;
-
-    public Child toEntity(Parent parent, PasswordEncoder passwordEncoder) {
+    public Child toEntity(int avatarNum, Parent parent, PasswordEncoder passwordEncoder) {
         return Child.builder()
                 .password(passwordEncoder.encode(getPassword()))
                 .gender(getGender())
@@ -53,7 +49,7 @@ public class ChildRegisterDto {
                 .clearedMission(0)
                 .earthLevel(1)
                 .birthday(getBirthday())
-                .avatar(getAvatar())
+                .avatar(avatarNum)
                 .role(Role.ROLE_CHILD)
                 .parent(parent)
                 .build();
