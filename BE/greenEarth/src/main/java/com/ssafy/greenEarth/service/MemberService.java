@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
+import java.util.Random;
 
 import com.ssafy.greenEarth.exception.BusinessException;
 import static com.ssafy.greenEarth.exception.ErrorCode.*;
@@ -69,7 +70,9 @@ public class MemberService {
         Parent parent = parentRepository.findById(parentId)
                 .orElseThrow(() -> new BusinessException(NOT_EXIST_ACCOUNT));
         // 등록
-        return new ChildProfileDto(childRepository.save(childDto.toEntity(parent, passwordEncoder)));
+        return new ChildProfileDto(childRepository.save(
+                childDto.toEntity(randomAvatar(childDto.getGender()), parent, passwordEncoder)
+        ));
     }
 
     @Transactional
@@ -95,8 +98,18 @@ public class MemberService {
     public void deleteProfile(int id, Role role) {
         if (role == Role.ROLE_PARENT) {
             parentRepository.deleteById(id);
-        }else {
+        } else {
             childRepository.deleteById(id);
         }
+    }
+
+    public int randomAvatar(Gender gender) {
+        Random random = new Random();
+        if (gender.equals(Gender.FEMALE)) {
+            return random.nextInt(10) + 1;  // 1 ~ 10
+        } else {
+            return random.nextInt(10) + 11;  // 11 ~ 20
+        }
+
     }
 }
