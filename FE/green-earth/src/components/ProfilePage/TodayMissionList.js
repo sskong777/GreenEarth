@@ -14,8 +14,6 @@ const TodayMissionList = ({ childId }) => {
 
   const { todayMissionListCallback } = useMissionCallback();
 
-  console.log("td :", todayMissionList);
-
   // 오늘의 미션 Axios 요청
   useEffect(() => {
     todayMissionListCallback(childId);
