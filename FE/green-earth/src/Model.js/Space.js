@@ -2800,7 +2800,7 @@ function EarthLv7(props) {
 
 function EarthLv8(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/model/earth33/final8.gltf')
+  const { nodes, materials, animations } = useGLTF('/model/earth33/final8-2.gltf')
   const { actions } = useAnimations(animations, group)
   useEffect(() => {
     Object.keys(actions).forEach((key) => {
@@ -3724,14 +3724,6 @@ function EarthLv8(props) {
           <mesh name="Cylinder007_4" geometry={nodes.Cylinder007_4.geometry} material={materials['Reeds1_2.002']} />
           <mesh name="Cylinder007_5" geometry={nodes.Cylinder007_5.geometry} material={materials['Reeds1_1.002']} />
         </group>
-        <group name="Mushrooms_grass3003" position={[1.64, 0.3, 0.76]} rotation={[0.29, -0.91, -0.92]} scale={0.05}>
-          <mesh name="Cylinder008" geometry={nodes.Cylinder008.geometry} material={materials['Rock1_1.004']} />
-          <mesh name="Cylinder008_1" geometry={nodes.Cylinder008_1.geometry} material={materials['Mushroom5_1.009']} />
-          <mesh name="Cylinder008_2" geometry={nodes.Cylinder008_2.geometry} material={materials['Mushroom5_2.009']} />
-          <mesh name="Cylinder008_3" geometry={nodes.Cylinder008_3.geometry} material={materials['Grass1_1.004']} />
-          <mesh name="Cylinder008_4" geometry={nodes.Cylinder008_4.geometry} material={materials['Reeds1_2.003']} />
-          <mesh name="Cylinder008_5" geometry={nodes.Cylinder008_5.geometry} material={materials['Reeds1_1.003']} />
-        </group>
         <group name="Mushroom4_2" position={[-1.02, 0.09, 0.07]} rotation={[-1.58, 0.33, 1.58]} scale={0.01}>
           <mesh name="Cylinder055" geometry={nodes.Cylinder055.geometry} material={materials.Mushroom4_1} />
           <mesh name="Cylinder055_1" geometry={nodes.Cylinder055_1.geometry} material={materials.Mushroom4_2} />
@@ -3773,6 +3765,6 @@ function EarthLv8(props) {
     </group>
   )
 }
-
+  
 
   export { Model0, Model00, EarthLv2, EarthLv3, EarthLv4, EarthLv5, EarthLv6, EarthLv7, EarthLv8}

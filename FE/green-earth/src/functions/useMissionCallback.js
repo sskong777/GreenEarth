@@ -3,6 +3,7 @@ import {
   missionListState,
   todayMissionListState,
   missionOptionListState,
+  missionInfoState,
 } from "./../store/atoms";
 import { useNavigate } from "react-router-dom";
 
@@ -20,6 +21,7 @@ export const useMissionCallback = () => {
   const [todayMissionList, setTodayMissionList] = useRecoilState(
     todayMissionListState
   );
+  const [missionInfo, setMissionInfo] = useRecoilState(missionInfoState);
 
   // 전체 미션 콜백 함수
   const missionListCallback = async (childId) => {
@@ -139,6 +141,7 @@ export const useMissionCallback = () => {
       .put(`/mission/log/${logId}/clear`)
       .then((response) => {
         if (response.data) {
+          navigate("/child");
           console.log("미션 승인 요청이 전송되었습니다.");
           console.log("mission :", response.data);
         }
@@ -147,6 +150,23 @@ export const useMissionCallback = () => {
         console.log(error.response.data);
       });
   };
+
+  //  미션 정보 콜백 함수
+  const missionInfoCallback = async (missionId) => {
+    api
+      .get(`/mission/${missionId}`)
+      .then((response) => {
+        if (response.data) {
+          setMissionInfo(response.data);
+          console.log("미션 정보가 조회되었습니다.");
+          console.log("MissionInfo :", response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
+
 
   return {
     missionListCallback,
@@ -157,5 +177,6 @@ export const useMissionCallback = () => {
     permitMissionCallback,
     rejectMissionCallback,
     clearMissionCallback,
+    missionInfoCallback,
   };
 };

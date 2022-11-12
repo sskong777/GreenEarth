@@ -1,11 +1,14 @@
+.btn{
+    color: white;
+}
+
 
 .Earth{
     /* background-color: red; */
     background-image: url('/public/galaxy3.jpg');
     position:relative;
-    height:720px;
-    
-    
+    height:720px;  
+
 }
 
 .Earth::before{
