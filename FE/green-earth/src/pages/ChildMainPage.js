@@ -31,12 +31,13 @@ function ChildMainPage() {
     // 회원정보, 아이정보 Axios 요청
     const { memberInfoCallback } = useAuthCallback();
 
+    const { logoutcallback } = useAuthCallback();
+
     // 페이지에 접근하면 해당 아이정보 Axios 요청
     useEffect(() => {
-    memberInfoCallback();
-    }, []);
-
-    const { logoutcallback } = useAuthCallback();
+      memberInfoCallback();
+      console.log(memberInfo)
+      }, []);
 
   if (memberInfo.isParent === false && memberInfo.earthLevel ===1 ){
     
@@ -44,7 +45,7 @@ function ChildMainPage() {
     <div>
       <div className= "btn">
         <button onClick={logoutcallback} >로그아웃임시</button>
-        </div>
+      </div>
       <Earth1 />
     </div>
     
