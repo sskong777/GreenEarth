@@ -1,76 +1,81 @@
 import React, { Component } from 'react';
-import "../../style/Mission.css";
-import {
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Typography,
-  } from "@material-tailwind/react";
+import "../../style/ChildMainPage/Mission.css";
+
+
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { memberInfoState, childInfoState, todayMissionListState , missionInfoState} from "../../store/atoms";
+import { useAuthCallback } from "./../../functions/useAuthCallback";
+import { useMissionCallback } from "./../../functions/useMissionCallback";
+
+
+
+
+
+const TodayMissionComponent = () => {
+    const navigate = useNavigate();
+    const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
+    const { memberInfoCallback } = useAuthCallback();
+
    
-const level =10
+    // 오늘의 미션
+    const [todayMissionList, setTodayMissionList] = useRecoilState(todayMissionListState);
+    const { todayMissionListCallback } = useMissionCallback();
 
-class Mission extends Component {
-    render() {
-        if (level===1){
-        return (
-            <div className="Missions">
-                <div className="Title">
-                    MISSION
-                </div>
-                <div >
-                    <Subject done= "true" desc="음식 남기지 않기"></Subject>
-                    <Subject done= "false" desc="종이타월 대신 개인 손수건 사용하기"></Subject>
-                    <Subject done= "false" desc="양치컵 사용하기"></Subject>
-                </div> 
 
-            </div>
-        );} else if (level===10) {
-            return (
-                <div className="Missions">
-                    <div className="Title10">
-                        MISSION
-                    </div>
-                    <div >
-                        <Subject done= "true" desc="음식 남기지 않기"></Subject>
-                        <Subject done= "false" desc="종이타월 대신 개인 손수건 사용하기"></Subject>
-                        <Subject done= "false" desc="양치컵 사용하기"></Subject>
-                    </div> 
+     // 현재 회원의 미션 목록 Axios 요청
+    useEffect(() => {
+        memberInfoCallback();
+        todayMissionListCallback(memberInfo.childId);
+    }, []);
     
+    // onclick 파라미터 전달
+    const handleClickMissionInfo1 = () => { 
+        navigate(`/mission/${todayMissionList[0]['mission']['id']}`, { state: { value: todayMissionList[0]['id'] } });
+      };
+    const handleClickMissionInfo2 = () => {
+        navigate(`/mission/${todayMissionList[1]['mission']['id']}`, { state: { value: todayMissionList[1]['id']} } );
+    };
+    const handleClickMissionInfo3 = () => {
+        navigate(`/mission/${todayMissionList[2]['mission']['id']}`, { state: { value: todayMissionList[2]['id'] }});
+      }; 
+
+
+    return (
+        <div className="Missions">
+            <div className="Title">
+                MISSION
+            </div>
+            <div className='Mission1'>
+                <div className='mission1'  onClick = {handleClickMissionInfo1}>
+                    {todayMissionList[0] && !todayMissionList[0]['clearedAt'] && <h1>{todayMissionList[0].mission.name}</h1>}
                 </div>
-            );
+                <div className='mission2' onClick = {handleClickMissionInfo2}>
+                    {todayMissionList[1] && !todayMissionList[1]['clearedAt'] && <h1>{todayMissionList[1].mission.name}</h1>}
+                </div>
+                <div className='mission3'  onClick = {handleClickMissionInfo3}>
+                    {todayMissionList[2] && !todayMissionList[2]['clearedAt'] && <h1>{todayMissionList[2].mission.name}</h1> }
+                </div>
+            </div> 
+            <div className='Mission2'>
+                <div className='mission1' onclick = {handleClickMissionInfo1}>
+                    {todayMissionList[0] && todayMissionList[0]['clearedAt'] && <h1>{todayMissionList[0].mission.name}</h1>}
+                </div>
+                <div className='mission2' onclick = {handleClickMissionInfo2}>
+                    {todayMissionList[1] && todayMissionList[1]['clearedAt'] && <h1>{todayMissionList[1].mission.name}</h1>}
+                </div>
+                <div className='mission3'onclick = {handleClickMissionInfo3}>
+                    {todayMissionList[2] && todayMissionList[2]['clearedAt'] && <h1>{todayMissionList[2].mission.name}</h1> }
+                </div>
+            </div> 
 
-        }
-    }
-}
+        </div>
+    );
+} 
 
-class Subject extends Component {
-    render(){
-        if (this.props.done =="false"){
-        return(
-            <header>
-                <Card className="Mission" >
-                    <CardHeader>
-                        <Typography >
-                            <h1>{this.props.desc}</h1>
-                        </Typography>
-                    </CardHeader>   
-                </Card>
-            </header>
-        );} else {
-            return (
-                <header>
-                <Card className="Mission2" >
-                    <CardHeader>
-                        <Typography >
-                            <h1>{this.props.desc}</h1>
-                        </Typography>
-                    </CardHeader>   
-                </Card>
-            </header>
-            )
-        }
-    }
-}
 
-export default Mission;
+
+
+
+export default TodayMissionComponent;
