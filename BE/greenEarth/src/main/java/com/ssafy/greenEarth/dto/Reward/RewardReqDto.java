@@ -32,6 +32,7 @@ public class RewardReqDto {
                 .name(getName())
                 .rewardCondition(getRewardCondition())
                 .parentNickname(getParentNickname())
+                .isPaid(false)
                 .child(child)
                 .build();
 

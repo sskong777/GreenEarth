@@ -117,7 +117,7 @@ const TodayMissionItem = ({ data }) => {
   // 미션 설정 함수
   const handleClickMissionSubmit = () => {
     if (window.confirm("미션을 설정하시겠습니까?")) {
-      saveMissionCallback(childId, selected.id);
+      saveMissionCallback(childId, selected.missionId);
       console.log("미션 설정 완료");
     }
   };
@@ -125,7 +125,7 @@ const TodayMissionItem = ({ data }) => {
   // 미션 수정 함수
   const handleClickMissionEdit = () => {
     if (window.confirm("미션을 수정하시겠습니까?")) {
-      editMissionCallback(data.child_id, selected.id);
+      editMissionCallback(data.id, selected.missionId);
       console.log("미션 수정 완료");
     }
   };

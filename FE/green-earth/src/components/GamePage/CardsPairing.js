@@ -1,23 +1,30 @@
 import { useEffect, useState } from "react";
 
+import { useGameCallback } from "./../../functions/useGameCallback";
+
+import CardsPairingModal from "./CardsPairingModal";
+
 import "./../../style/style.css";
 import SingleCard from "./SingleCard";
 
 const cardImages = [
-  { src: "./assets/cards/card_bus.png", matched: false },
-  { src: "./assets/cards/card_ecobag.png", matched: false },
-  { src: "./assets/cards/card_family.png", matched: false },
-  { src: "./assets/cards/card_plug.png", matched: false },
-  { src: "./assets/cards/card_recycle.png", matched: false },
-  { src: "./assets/cards/card_tree.png", matched: false },
+  { src: "./assets/games/cards/card_bus.png", matched: false },
+  { src: "./assets/games/cards/card_ecobag.png", matched: false },
+  { src: "./assets/games/cards/card_family.png", matched: false },
+  { src: "./assets/games/cards/card_plug.png", matched: false },
+  { src: "./assets/games/cards/card_recycle.png", matched: false },
+  { src: "./assets/games/cards/card_tree.png", matched: false },
 ];
 
 function CardsPairing() {
+  const { gameSuccessCallback } = useGameCallback();
+
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
+  const [modalCardOpen, setModalCardOpen] = useState(false);
 
   // 카드 섞기
   const shuffleCards = () => {
@@ -60,11 +67,13 @@ function CardsPairing() {
   // 모든 카드 맞췄을 경우 실행
   useEffect(() => {
     if (
+      cards.length > 0 &&
       cards.every((card) => {
         return card.matched;
       })
     ) {
-      console.log("축하합니다!");
+      // gameSuccessCallback(10);
+      setModalCardOpen(true);
     }
   }, [cards]);
 
@@ -83,6 +92,13 @@ function CardsPairing() {
 
   return (
     <div className="CardsPairing">
+      {modalCardOpen && (
+        <CardsPairingModal
+          setModalCardOpen={setModalCardOpen}
+          shuffleCards={shuffleCards}
+          turns={turns}
+        />
+      )}
       <div className="CardsPairingGrid">
         {cards.map((card) => (
           <SingleCard
