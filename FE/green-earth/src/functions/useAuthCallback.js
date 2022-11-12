@@ -69,14 +69,7 @@ export const useAuthCallback = () => {
       });
   };
 
-  const signUpCallback = (
-    nickname,
-    password,
-    realName,
-    gender,
-    birthday,
-    avatar
-  ) => {
+  const signUpCallback = (nickname, password, realName, gender, birthday) => {
     api
       .post(`/member/signup`, {
         nickname: nickname,
@@ -84,7 +77,6 @@ export const useAuthCallback = () => {
         realName: realName,
         gender: gender,
         birthday: birthday,
-        avatar: avatar,
       })
       .then((response) => {
         if (response.data) {
