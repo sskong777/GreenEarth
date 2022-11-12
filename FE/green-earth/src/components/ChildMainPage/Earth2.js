@@ -300,7 +300,7 @@ function Earth2() {
             </div>
         </div>
           
-        <Link to="game">
+        <Link to="/game">
         <div className = "canvasAstronaut">
 
             <Canvas id="astronaut" >
