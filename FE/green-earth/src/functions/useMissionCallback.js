@@ -141,6 +141,7 @@ export const useMissionCallback = () => {
       .put(`/mission/log/${logId}/clear`)
       .then((response) => {
         if (response.data) {
+          navigate("/child");
           console.log("미션 승인 요청이 전송되었습니다.");
           console.log("mission :", response.data);
         }

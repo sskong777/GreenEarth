@@ -19,7 +19,7 @@ const MissionInfo = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  //const number = location.state.value;
+  const log_id = location.state.value;
 
   // 미션정보
   const [missionInfo, setMissionInfo] = useRecoilState(missionInfoState);
@@ -34,11 +34,6 @@ const MissionInfo = () => {
   useEffect(() => {
     missionInfoCallback(missionId);
     todayMissionListCallback(memberInfo.childId);
-    // console.log(Object.keys(todayMissionList))
-    // console.log(missionInfo)
-    //console.log(number)
-    console.log(memberInfo)
-    console.log(missionId)
   }, []);
 
 
@@ -50,7 +45,7 @@ const MissionInfo = () => {
   // 미션 완료 함수
   const handleClickMissionClear = () => {
     if (window.confirm("미션을 완료하시겠습니까?")) {
-      clearMissionCallback();
+      clearMissionCallback(log_id);
       console.log("미션 완료");
     }
   };

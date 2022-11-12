@@ -34,7 +34,6 @@ function ChildMainPage() {
     // 페이지에 접근하면 해당 아이정보 Axios 요청
     useEffect(() => {
     memberInfoCallback();
-    console.log(memberInfo)
     }, []);
 
     const { logoutcallback } = useAuthCallback();
