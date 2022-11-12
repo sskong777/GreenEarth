@@ -61,7 +61,6 @@ const navigate = useNavigate();
 
     useEffect(() => {
     memberInfoCallback();
-    console.log(memberInfo)
   }, []);
 
     // 아이 회원 프로필 페이지 이동 함수
