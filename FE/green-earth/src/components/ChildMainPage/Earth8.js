@@ -1,5 +1,5 @@
 
-import "../../style/ChildMain.css";
+import "../../style/ChildMainPage/ChildMain.css";
 import { Link } from "react-router-dom";
 import {Suspense } from 'react'
 import {Canvas} from '@react-three/fiber'

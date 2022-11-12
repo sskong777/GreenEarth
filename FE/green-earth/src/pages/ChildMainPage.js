@@ -1,5 +1,5 @@
 
-import "../style/ChildMain.css";
+import "../style/ChildMainPage/ChildMain.css";
 
 
 
@@ -20,8 +20,6 @@ import { useRecoilState } from "recoil";
 import { memberInfoState, childInfoState } from "../store/atoms";
 import { useAuthCallback } from "./../functions/useAuthCallback";
 
-
-
 function ChildMainPage() {
   
 
@@ -31,19 +29,19 @@ function ChildMainPage() {
     // 회원정보, 아이정보 Axios 요청
     const { memberInfoCallback } = useAuthCallback();
 
-    // 프로필 페이지에 접근하면 해당 아이정보 Axios 요청
+    // 페이지에 접근하면 해당 아이정보 Axios 요청
     useEffect(() => {
     memberInfoCallback();
+    console.log(memberInfo)
     }, []);
-    // 로그아웃 버튼(임시)
+
     const { logoutcallback } = useAuthCallback();
 
-  
   if (memberInfo.isParent === false && memberInfo.earthLevel ===1 ){
     
   return (
     <div>
-        <div className= "btn">
+      <div className= "btn">
         <button onClick={logoutcallback} >로그아웃임시</button>
         </div>
       <Earth1 />
