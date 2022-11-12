@@ -5,11 +5,13 @@
 /* SignUpForm */
 
 .SignUpForm {
-  @apply flex flex-col justify-center items-start;
+  @apply flex justify-center items-start mt-4 mr-3;
 }
 
 .NicknameCheckForm {
-  @apply flex flex-col items-start py-2 px-8 bg-rose-500 text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-opacity-75;
+  @apply flex items-center justify-center w-[5.5rem] h-[3.8rem] mt-12 ml-5 rounded-md text-2xl text-light font-semibold
+  bg-[#01001f] hover:bg-[#01001f]/70 active:bg-[#01001f]/50
+  outline outline-offset-1 outline-1 outline-[#b1e4fa] shadow-md shadow-[#01001f]/50;
 }
 
 .SignUpFormBody {
@@ -23,7 +25,7 @@
 }
 
 .SignUpButton {
-  @apply w-100 h-16 p-5 mt-5 mb-14 rounded-md text-2xl text-light placeholder:text-[#417e98] font-semibold
+  @apply w-100 h-16 p-5 mt-8 mb-14 rounded-md text-2xl text-light placeholder:text-[#417e98] font-semibold
   bg-[#7ea5f4] hover:bg-[#7ea5f4]/70 active:bg-[#7ea5f4]/50
   outline outline-offset-2 outline-1 outline-[#b1e4fa] shadow-md shadow-[#7ea5f4]/50;
 }
@@ -39,11 +41,17 @@
 }
 
 .GenderDropdownContent {
-  @apply absolute z-10 w-full top-1.15 left-0 p-2.5 rounded-md text-xl text-blackBrown font-medium 
+  @apply absolute z-10 w-full top-1.15 left-0 p-2.5 rounded-md text-xl text-[#0d3c61] font-medium 
   bg-[#e8f8f8] outline outline-offset-1 outline-1 shadow-lg shadow-[#e8f8f8]/50;
 }
 
 .GenderDropdownItem {
   @apply p-2.5 rounded-md cursor-pointer transition-all delay-75
   hover:bg-[#b2c9d7];
+}
+
+.SignUpDate {
+  @apply w-100 h-16 p-5 my-2 rounded-md text-xl text-[#417e98] placeholder:text-[#417e98] font-medium
+  bg-[#b1e4fa] hover:bg-[#b1e4fa]/70 active:bg-[#b1e4fa]/50
+  outline outline-offset-2 outline-1 shadow-md shadow-[#b1e4fa]/50;
 }
