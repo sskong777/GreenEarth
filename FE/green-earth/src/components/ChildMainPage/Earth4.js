@@ -288,7 +288,7 @@ function Earth4() {
                 </div>
             </div>    
         </div>
-        <Link to="game">
+        <Link to="/game">
         <div className = "canvasAstronaut">
 
             <Canvas id="astronaut" >
