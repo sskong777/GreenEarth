@@ -1,5 +1,5 @@
 
-import "../style/ParentMain.css";
+import "../style/ParentMainPage/ParentMain.css";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {
@@ -15,21 +15,13 @@ import {useRef} from 'react'
 import {Suspense } from 'react'
 import {Canvas} from '@react-three/fiber'
 import {OrbitControls, useGLTF,useAnimations } from '@react-three/drei'
-import Mission from '../components/ChildMainPage/Mission.js'
-import rocket from '../image/rocket.png'
-import start from '../image/start.png'
-import end from '../image/end.png'
-import { Color } from "three";
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import WelcomePage from "./WelcomePage";
-// import useAnimations from 'react-useanimations';
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { memberInfoState, childInfoState } from "../store/atoms";
+import { memberInfoState} from "../store/atoms";
 import { useAuthCallback } from "./../functions/useAuthCallback";
-import { useRewardCallback } from "./../functions/useRewardCallback";
+
 
 import { Model3, Model, Model0, Model00, Model000, EarthLv8} from "../Model.js/Space"
 
@@ -57,14 +49,15 @@ return (
 function ParentMainPage() {
 
 const navigate = useNavigate();
-  // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
+    // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
     const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 
-  // 회원정보, 아이정보 Axios 요청
+    // 회원정보, 아이정보 Axios 요청
     const { memberInfoCallback } = useAuthCallback();
 
-   // 로그아웃 버튼(임시)
+    // 로그아웃 버튼(임시)
     const { logoutcallback } = useAuthCallback();
+    // 페이지에 접근하면 해당 아이정보 Axios 요청
 
     useEffect(() => {
     memberInfoCallback();
@@ -499,7 +492,7 @@ const navigate = useNavigate();
                                 <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                             </Suspense> 
                             </Canvas>}
-                            {memberInfo.childList[2].avatar === 70 && <Canvas id="person" >
+                            {memberInfo.childList[2].avatar === 2 && <Canvas id="person" >
                             <Suspense fallback={null}>
                                 <ambientLight />
                                 <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
@@ -1069,7 +1062,7 @@ const navigate = useNavigate();
             <Canvas id="person" >
                 <Suspense fallback={null}>
                 <ambientLight />
-                <spotLight intensity={5} angle={0.1} penumbra={1} position={[10,15,10]} castShadow />        
+                <spotLight intensity={0.1} angle={0.1} penumbra={1} position={[10,15,10]} castShadow />        
                 <EarthLv8 />
                 <OrbitControls enablePan={true} enableZoom={true} rotateSpeed = {0.2} enableRotate={true} />
                 </Suspense> 

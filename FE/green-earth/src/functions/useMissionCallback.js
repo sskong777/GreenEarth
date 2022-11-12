@@ -153,10 +153,10 @@ export const useMissionCallback = () => {
   //  미션 정보 콜백 함수
   const missionInfoCallback = async (missionId) => {
     api
-      .get(`/mission/child/${missionId}`)
+      .get(`/mission/${missionId}`)
       .then((response) => {
         if (response.data) {
-          setTodayMissionList(response.data);
+          setMissionInfo(response.data);
           console.log("미션 정보가 조회되었습니다.");
           console.log("MissionInfo :", response.data);
         }
@@ -165,6 +165,8 @@ export const useMissionCallback = () => {
         console.log(error.response.data);
       });
   };
+
+
   return {
     missionListCallback,
     todayMissionListCallback,
