@@ -58,10 +58,10 @@
   outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
 }
 
-.ProfileHeaderRewardButton {
-  @apply w-[27.5rem] h-18 ml-6 mt-4 rounded-md text-3xl text-blackBrown font-binggrae font-semibold
-  bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
-  outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
+.ProfileHeaderLogoutButton {
+  @apply w-[13rem] h-18 ml-6 mt-4 rounded-md text-3xl text-light font-binggrae font-semibold
+  bg-darkRed hover:bg-darkRed-hover active:bg-darkRed-active
+  outline outline-darkRed-active outline-offset-2 outline-1 shadow-lg shadow-darkRed/50;
 }
 
 .ProfileMenuButton {

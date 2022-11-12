@@ -51,7 +51,7 @@ const GamePage = () => {
             <div className="ChildImage">
               <img src="./../assets/images/girl1.svg" />
             </div>
-            <div className="ChildImageName">
+            <div className="ChildImageName font-dunggeunmo">
               Lv.{memberInfo.earthLevel} {memberInfo.realName}
             </div>
           </div>
