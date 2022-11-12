@@ -123,8 +123,9 @@ const TodayMissionItem = ({ data }) => {
 
   // 미션 수정 함수
   const handleClickMissionEdit = () => {
+    console.log(selected.id);
     if (window.confirm("미션을 수정하시겠습니까?")) {
-      editMissionCallback(data.child_id, selected.id);
+      editMissionCallback(data.id, selected.id);
       console.log("미션 수정 완료");
     }
   };
