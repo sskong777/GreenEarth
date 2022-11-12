@@ -102,7 +102,7 @@ const navigate = useNavigate();
                       <CardHeader>
                           <Typography >
                           <div className = "canvasPerson">
-                          {memberInfo.childList[0].avatar === 90 && <Canvas id="person" >
+                          {memberInfo.childList[0].avatar === 1 && <Canvas id="person" >
                             <Suspense fallback={null}>
                                 <ambientLight />
                                 <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />

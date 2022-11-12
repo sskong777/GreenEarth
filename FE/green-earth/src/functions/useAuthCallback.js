@@ -62,7 +62,7 @@ export const useAuthCallback = () => {
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
-          // memberInfoCallback();
+          memberInfoCallback();
           navigate("/parent");
         }
       })

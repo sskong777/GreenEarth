@@ -28,19 +28,17 @@ const TodayMissionComponent = () => {
     useEffect(() => {
         memberInfoCallback();
         todayMissionListCallback(memberInfo.childId);
-        console.log(Object.keys(todayMissionList)[0])
-        //console.log(todayMissionList[0]['mission']['id'])
     }, []);
     
     // onclick 파라미터 전달
     const handleClickMissionInfo1 = () => { 
-        navigate(`/mission/${todayMissionList[0]['mission']['id']}`, { state: { value: 1234 } });
+        navigate(`/mission/${todayMissionList[0]['mission']['id']}`, { state: { value: todayMissionList[0]['id'] } });
       };
     const handleClickMissionInfo2 = () => {
-        navigate(`/mission/${todayMissionList[1]['mission']['id']}`, { state: { value: 1234 } } );
+        navigate(`/mission/${todayMissionList[1]['mission']['id']}`, { state: { value: todayMissionList[1]['id']} } );
     };
     const handleClickMissionInfo3 = () => {
-        navigate(`/mission/${todayMissionList[2]['mission']['id']}`, { state: { value: 1234 } });
+        navigate(`/mission/${todayMissionList[2]['mission']['id']}`, { state: { value: todayMissionList[2]['id'] }});
       }; 
 
 
@@ -50,25 +48,25 @@ const TodayMissionComponent = () => {
                 MISSION
             </div>
             <div className='Mission1'>
-                <div className='mission1'  data = {Object.keys(todayMissionList)[0]} onClick = {handleClickMissionInfo1}>
-                    {todayMissionList[0] && !todayMissionList[0]['permitted'] && <h1>{todayMissionList[0].mission.name}</h1>}
+                <div className='mission1'  onClick = {handleClickMissionInfo1}>
+                    {todayMissionList[0] && !todayMissionList[0]['clearedAt'] && <h1>{todayMissionList[0].mission.name}</h1>}
                 </div>
-                <div className='mission2' data = {Object.keys(todayMissionList)[1]} onClick = {handleClickMissionInfo2}>
-                    {todayMissionList[1] && !todayMissionList[1]['permitted'] && <h1>{todayMissionList[1].mission.name}</h1>}
+                <div className='mission2' onClick = {handleClickMissionInfo2}>
+                    {todayMissionList[1] && !todayMissionList[1]['clearedAt'] && <h1>{todayMissionList[1].mission.name}</h1>}
                 </div>
-                <div className='mission3' data = {Object.keys(todayMissionList)[2]}  onClick = {handleClickMissionInfo3}>
-                    {todayMissionList[2] && !todayMissionList[2]['permitted'] && <h1>{todayMissionList[2].mission.name}</h1> }
+                <div className='mission3'  onClick = {handleClickMissionInfo3}>
+                    {todayMissionList[2] && !todayMissionList[2]['clearedAt'] && <h1>{todayMissionList[2].mission.name}</h1> }
                 </div>
             </div> 
             <div className='Mission2'>
                 <div className='mission1' onclick = {handleClickMissionInfo1}>
-                    {todayMissionList[0] && todayMissionList[0]['permitted'] && <h1>{todayMissionList[0].mission.name}</h1>}
+                    {todayMissionList[0] && todayMissionList[0]['clearedAt'] && <h1>{todayMissionList[0].mission.name}</h1>}
                 </div>
                 <div className='mission2' onclick = {handleClickMissionInfo2}>
-                    {todayMissionList[1] && todayMissionList[1]['permitted'] && <h1>{todayMissionList[1].mission.name}</h1>}
+                    {todayMissionList[1] && todayMissionList[1]['clearedAt'] && <h1>{todayMissionList[1].mission.name}</h1>}
                 </div>
                 <div className='mission3'onclick = {handleClickMissionInfo3}>
-                    {todayMissionList[2] && todayMissionList[2]['permitted'] && <h1>{todayMissionList[2].mission.name}</h1> }
+                    {todayMissionList[2] && todayMissionList[2]['clearedAt'] && <h1>{todayMissionList[2].mission.name}</h1> }
                 </div>
             </div> 
 
