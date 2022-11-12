@@ -1,7 +1,6 @@
 
 
 
-
 .peoplelist {
 
     display:flex;
@@ -36,7 +35,7 @@
     flex-direction: row;
     flex-wrap : wrap;
     width: 100%;
-    background-color: white;
+   
     position: relative;
     margin-left:2%;
     margin-right:2%;
@@ -44,7 +43,7 @@
 }
 .people::before{
     content:"";
-    opacity:0.9;
+    opacity:0.2;
     position:absolute;
     top:0px;
     left:0px;
@@ -53,9 +52,9 @@
     background-color: black;
 }
 
+
 .canvasPerson {
     margin : 2%;
-    background-color: white;
     width:150px;
     height: 18  0px;
     position: relative;
@@ -70,7 +69,7 @@
 
 .canvasPerson::before{
     content:"";
-    opacity:0.8;
+    opacity:0.5;
     position:absolute;
     top:0px;
     left:0px;
