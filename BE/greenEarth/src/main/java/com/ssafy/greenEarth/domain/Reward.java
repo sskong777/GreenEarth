@@ -1,14 +1,15 @@
 package com.ssafy.greenEarth.domain;
 
+import com.ssafy.greenEarth.dto.Reward.RewardPutDto;
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "rewards")
 public class Reward {
 
@@ -29,11 +30,15 @@ public class Reward {
     @JoinColumn(name = "child_id")
     private Child child;
 
-    public Reward(int id, String name, int rewardCondition, String parentNickname, Child child) {
-        this.id = id;
-        this.name = name;
-        this.rewardCondition = rewardCondition;
-        this.parentNickname = parentNickname;
+    private Boolean isPaid;
+
+    public void setPaid() {
+        this.isPaid = true;
+    }
+
+    public void updateReward(RewardPutDto rewardPutDto, Child child) {
+        this.name = rewardPutDto.getRewardName();
+        this.rewardCondition = rewardPutDto.getRewardCondition();
         this.child = child;
     }
 }

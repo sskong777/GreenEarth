@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         sans: ["BinggraeDark", "Arial", "sans-serif"],
         binggrae: ["Binggrae", "sans-serif"],
+        dunggeunmo: ["DungGeunMo", "sans-serif"],
       },
       colors: {
         light: "#FDFDFD",
