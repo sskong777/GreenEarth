@@ -273,9 +273,7 @@ function Earth6() {
             
                 <div className= "Mission">
                     <Mission />
-                    <div className="balloon">
-                        지구를 구하러가자
-                    </div>
+                   
                     <div >
                     
                 </div>
@@ -284,7 +282,9 @@ function Earth6() {
         </div>
         <Link to="/game">
         <div className = "canvasAstronaut">
-
+            <div className="balloon">
+                지구를 구하러가자
+            </div>
             <Canvas id="astronaut" >
                 <Suspense fallback={null}>
                 <ambientLight />
