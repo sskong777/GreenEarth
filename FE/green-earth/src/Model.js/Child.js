@@ -15,7 +15,20 @@ import {useEffect, useState} from "react";
 
 
 
-
+function Plus(props) {
+const { nodes, materials } = useGLTF('/model/plus/scene.gltf')
+return (
+    <group {...props} dispose={null} position={[-0.2, 1, 0]} rotation={[-Math.PI / 1, 0, 0]} scale={0.015}>
+    <group rotation={[-Math.PI / 2, 0, 0]}>
+        <group rotation={[Math.PI / 2, 0, 0]}>
+        <group position={[11.48, 0, -2.38]} rotation={[-Math.PI / 2, 0, 0]} >
+            <mesh geometry={nodes.Box001__0.geometry} material={materials.RootNode} />
+        </group>
+        </group>
+    </group>
+    </group>
+)
+}
 
 function Child1(props) {
   const group = useRef()
@@ -7148,4 +7161,4 @@ export {Child1, Child2, Child3, Child4, Child5, Child6, Child7, Child8, Child9, 
     Child21, Child22, Child23, Child24, Child25, Child26, Child27, Child28, Child29, Child30,
     Child31, Child32, Child33, Child34, Child35, Child36, Child37, Child38, Child39, Child40, 
     Child41, Child42, Child43, Child44, Child45, Child46, Child47, Child48, Child49, Child50,
-    Child51, Child52, Child53, Child54, Child55}
+    Child51, Child52, Child53, Child54, Child55, Plus}
