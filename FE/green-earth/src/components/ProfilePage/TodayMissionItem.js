@@ -94,6 +94,7 @@ const TodayMissionItem = ({ data }) => {
   // 미션 종류 Axios 요청
   useEffect(() => {
     missionOptionListCallback();
+    console.log(data)
   }, []);
 
   // 만약 data가 있다면 아래 조건문 실행

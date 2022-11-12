@@ -15,6 +15,7 @@ import MissionInfoPage from "./pages/MissionInfoPage";
 
 import OauthRedirectPage from "./pages/OauthRedirectPage";
 
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -30,9 +31,8 @@ const App = () => {
           <Route path="/game" element={<GamePage />} />
           <Route path="/game/picture" element={<GamePicturePage />} />
           <Route path="/game/recycle" element={<GameRecyclePage />} />
-
           <Route path="/oauth/redirect" element={<OauthRedirectPage />} />
-          <Route path="/mission" element={<MissionInfoPage />} />
+          <Route path="/mission/:missionId" element={<MissionInfoPage />} />
         </Routes>
       </div>
     </BrowserRouter>
