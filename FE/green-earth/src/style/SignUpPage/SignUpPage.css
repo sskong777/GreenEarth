@@ -5,9 +5,9 @@
 /* SignUpPage */
 
 .SignUpPage {
-  @apply w-full h-full flex justify-around items-start;
+  @apply w-full h-full flex justify-between items-start;
 }
 
 .SignUpPageHeader {
-  @apply text-lightGray text-2xl font-semibold;
+  @apply text-lightGray text-2xl font-semibold ml-16;
 }

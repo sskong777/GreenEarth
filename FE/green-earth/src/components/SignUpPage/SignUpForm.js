@@ -22,7 +22,7 @@ const SignUpForm = () => {
   const [realName, setRealName] = useState("");
 
   // 성별 드롭다운
-  const genderOptions = ["MALE", "FEMALE"];
+  const genderOptions = ["왕자님", "공주님"];
   const [isGenderActive, setIsGenderActive] = useState(false);
   const [gender, setGender] = useState("성별을 선택해 주세요.");
 
@@ -57,6 +57,7 @@ const SignUpForm = () => {
   useEffect(() => {
     setCheck(true);
   }, [nickname]);
+  console.log(gender);
 
   //   회원 정보 검사
   const submitHandler = (e) => {
@@ -94,6 +95,12 @@ const SignUpForm = () => {
       alert("닉네임 중복 체크를 해주세요");
       return;
     } else {
+      if (gender === "왕자님") {
+        setGender("MALE");
+      }
+      if (gender === "공주님") {
+        setGender("FEMALE");
+      }
       signUpCallback(nickname, password, realName, gender, birthday, avatar);
     }
   };
@@ -121,130 +128,135 @@ const SignUpForm = () => {
 
   return (
     <div className="SignUpForm">
-      {/* 회원가입 폼 */}
-      <form className="SignUpFormBody" method="post" onSubmit={submitHandler}>
-        {/* 아이디(닉네임) */}
-        <input
-          type="nickname"
-          name="nickname"
-          value={nickname}
-          placeholder="아이디를 입력하세요."
-          onChange={(e) => setNickname(e.target.value)}
-          className="SignUpFormBodyElement"
-        />
+      <div>
+        {/* 회원가입 폼 */}
+        <form className="SignUpFormBody" method="post" onSubmit={submitHandler}>
+          {/* 아이디(닉네임) */}
+          <input
+            type="nickname"
+            name="nickname"
+            value={nickname}
+            placeholder="아이디를 입력하세요."
+            onChange={(e) => setNickname(e.target.value)}
+            className="SignUpFormBodyElement"
+          />
 
-        {/* 비밀번호 */}
-        <input
-          type="password"
-          name="password"
-          value={password}
-          placeholder="비밀번호를 입력하세요."
-          onChange={(e) => setPassword(e.target.value)}
-          className="SignUpFormBodyElement"
-        />
+          {/* 비밀번호 */}
+          <input
+            type="password"
+            name="password"
+            value={password}
+            placeholder="비밀번호를 입력하세요."
+            onChange={(e) => setPassword(e.target.value)}
+            className="SignUpFormBodyElement"
+          />
 
-        {/* 비밀번호 확인 */}
-        <input
-          type="password"
-          name="password2"
-          value={password2}
-          placeholder="비밀번호를 한번 더 입력하세요."
-          onChange={(e) => setPassword2(e.target.value)}
-          className="SignUpFormBodyElement"
-        />
+          {/* 비밀번호 확인 */}
+          <input
+            type="password"
+            name="password2"
+            value={password2}
+            placeholder="비밀번호를 한번 더 입력하세요."
+            onChange={(e) => setPassword2(e.target.value)}
+            className="SignUpFormBodyElement"
+          />
 
-        {/* 이름 */}
-        <input
-          type="realName"
-          name="realName"
-          value={realName}
-          placeholder="이름을 입력하세요."
-          onChange={(e) => setRealName(e.target.value)}
-          className="SignUpFormBodyElement"
-        />
+          {/* 이름 */}
+          <input
+            type="realName"
+            name="realName"
+            value={realName}
+            placeholder="이름을 입력하세요."
+            onChange={(e) => setRealName(e.target.value)}
+            className="SignUpFormBodyElement"
+          />
 
-        {/* 성별 */}
-        <div className="GenderDropdown">
-          <div
-            className="GenderDropdownButton"
-            onClick={(e) => {
-              setIsGenderActive(!isGenderActive);
-            }}
-          >
-            {gender}
-          </div>
-
-          {isGenderActive && (
-            <div className="GenderDropdownContent">
-              {genderOptions.map((option, key) => (
-                <div
-                  key={key}
-                  onClick={(e) => {
-                    setGender(option);
-                    setIsGenderActive(false);
-                  }}
-                  className="GenderDropdownItem"
-                >
-                  {option}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* 생일 */}
-        <DatePicker
-          renderCustomHeader={({ date, changeYear, changeMonth }) => (
+          {/* 성별 */}
+          <div className="GenderDropdown">
             <div
-              style={{
-                margin: 10,
-                display: "flex",
-                justifyContent: "center",
+              className="GenderDropdownButton"
+              onClick={(e) => {
+                setIsGenderActive(!isGenderActive);
               }}
             >
-              <select
-                value={getYear(date)}
-                onChange={({ target: { value } }) => changeYear(value)}
-              >
-                {years.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                value={months[getMonth(date)]}
-                onChange={({ target: { value } }) =>
-                  changeMonth(months.indexOf(value))
-                }
-              >
-                {months.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
+              {gender}
             </div>
-          )}
-          selected={birthday}
-          locale={ko}
-          dateFormat="yyyy년 MM월 dd일"
-          onChange={(date) => setBirthday(date)}
-        />
 
-        {/* 버튼 */}
-        <button className="SignUpButton">회원 가입</button>
-      </form>
+            {isGenderActive && (
+              <div className="GenderDropdownContent">
+                {genderOptions.map((option, key) => (
+                  <div
+                    key={key}
+                    onClick={(e) => {
+                      setGender(option);
+                      setIsGenderActive(false);
+                    }}
+                    className="GenderDropdownItem"
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
-      {/* 아이디(닉네임) 중복 확인 버튼 */}
-      <form
-        className="NicknameCheckForm"
-        method="get"
-        onSubmit={nicknameCheckHandler}
-      >
-        <button>중복 확인</button>
-      </form>
+          {/* 생일 */}
+          <DatePicker
+            className="SignUpDate"
+            renderCustomHeader={({ date, changeYear, changeMonth }) => (
+              <div
+                style={{
+                  margin: 10,
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <select
+                  value={getYear(date)}
+                  onChange={({ target: { value } }) => changeYear(value)}
+                >
+                  {years.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+
+                <select
+                  value={months[getMonth(date)]}
+                  onChange={({ target: { value } }) =>
+                    changeMonth(months.indexOf(value))
+                  }
+                >
+                  {months.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+            selected={birthday}
+            locale={ko}
+            dateFormat="yyyy년 MM월 dd일"
+            onChange={(date) => setBirthday(date)}
+          />
+          <div className="text-lightGray pl-1">생년월일을 선택해 주세요.</div>
+
+          {/* 버튼 */}
+          <button className="SignUpButton">회원 가입</button>
+        </form>
+      </div>
+      <div>
+        {/* 아이디(닉네임) 중복 확인 버튼 */}
+        <form
+          className="NicknameCheckForm"
+          method="get"
+          onSubmit={nicknameCheckHandler}
+        >
+          <button>확인</button>
+        </form>
+      </div>
     </div>
   );
 };
