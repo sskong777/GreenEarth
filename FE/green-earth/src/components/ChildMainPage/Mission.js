@@ -28,6 +28,7 @@ const TodayMissionComponent = () => {
     useEffect(() => {
         memberInfoCallback();
         todayMissionListCallback(memberInfo.childId);
+        console.log(todayMissionList)
     }, []);
     
     // onclick 파라미터 전달
