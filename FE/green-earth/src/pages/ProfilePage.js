@@ -24,7 +24,8 @@ const ProfilePage = () => {
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 
   // 회원정보, 아이정보 Axios 요청
-  const { memberInfoCallback, childInfoCallback } = useAuthCallback();
+  const { memberInfoCallback, childInfoCallback, logoutcallback } =
+    useAuthCallback();
   const { rewardListCallback } = useRewardCallback();
 
   // 컴포넌트 전환을 위해 배지버튼과 과거미션버튼 상태 확인
@@ -68,6 +69,12 @@ const ProfilePage = () => {
   const handleClickRewardChildButton = () => {
     rewardListCallback(childId);
     setModalChildOpen(true);
+  };
+
+  // 로그아웃 함수
+  const handleClickLogoutButton = () => {
+    logoutcallback();
+    navigate("/", { replace: true });
   };
 
   return (
@@ -135,10 +142,16 @@ const ProfilePage = () => {
           {!memberInfo.isParent && (
             <div>
               <button
-                className="ProfileHeaderRewardButton"
+                className="ProfileHeaderButton mt-4"
                 onClick={handleClickRewardChildButton}
               >
-                보상 확인하러 가기
+                보상 확인
+              </button>
+              <button
+                className="ProfileHeaderLogoutButton"
+                onClick={handleClickLogoutButton}
+              >
+                로그아웃
               </button>
             </div>
           )}

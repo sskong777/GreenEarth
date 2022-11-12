@@ -39,50 +39,52 @@ const LoginForm = () => {
 
   return (
     <div className="LoginForm">
-      <h1>환영합니다!</h1>
-      <h2>아이 회원은 아이디로 로그인, 보호자는 카카오 로그인 하세요</h2>
+      <div className="text-light text-5xl mt-16 mb-10">환영합니다!</div>
+      <div className="text-lightGray text-xl">
+        아이 회원은 아이디로 로그인하시고
+      </div>
+      <div className="text-lightGray text-xl">
+        보호자 회원은 카카오로 간편하게 로그인하세요.
+      </div>
 
       <form method="post" onSubmit={submitHandler} className="LoginFormBody">
         {/* 아이디 */}
-        <div className="LoginElement">
-          <input
-            type="id"
-            name="id"
-            value={id}
-            placeholder="아이디를 입력하세요"
-            onChange={(e) => setId(e.target.value)}
-          />
-        </div>
+        <input
+          type="id"
+          name="id"
+          value={id}
+          placeholder="아이디를 입력하세요."
+          onChange={(e) => setId(e.target.value)}
+          className="LoginElement"
+        />
 
         {/* 비밀번호 */}
-        <div className="LoginElement">
-          <input
-            type="password"
-            name="password"
-            value={password}
-            placeholder="비밀번호를 입력하세요"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+        <input
+          type="password"
+          name="password"
+          value={password}
+          placeholder="비밀번호를 입력하세요."
+          onChange={(e) => setPassword(e.target.value)}
+          className="LoginElement"
+        />
 
         {/* 버튼 */}
-        <div>
-          <button className="LoginButton">로그인</button>
-        </div>
+        <button className="LoginButton">로그인</button>
       </form>
 
-      <div className="LoginLine"></div>
+      {/* <div className="LoginLine"></div> */}
 
       {/* 카카오 로그인 */}
-      <div>
-        <button
-          onClick={() => {
-            window.location.href = `${url}`;
-          }}
-        >
-          <img src={"assets/images/kakao_login_medium_wide.png"} />
-        </button>
+      <div className="text-lightGray text-xl ml-1 mb-5">
+        ――――――― 보호자 로그인 ―――――――
       </div>
+      <button
+        onClick={() => {
+          window.location.href = `${url}`;
+        }}
+      >
+        <img src={"assets/images/kakaologin.svg"} />
+      </button>
     </div>
   );
 };
