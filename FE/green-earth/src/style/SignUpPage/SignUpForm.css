@@ -25,9 +25,16 @@
 }
 
 .SignUpButton {
-  @apply w-100 h-16 p-5 mt-8 mb-14 rounded-md text-2xl text-light placeholder:text-[#417e98] font-semibold
+  @apply flex justify-center items-center w-100 h-16 p-5 mt-8 rounded-md text-2xl text-light
+  font-semibold
   bg-[#7ea5f4] hover:bg-[#7ea5f4]/70 active:bg-[#7ea5f4]/50
   outline outline-offset-2 outline-1 outline-[#b1e4fa] shadow-md shadow-[#7ea5f4]/50;
+}
+
+.SignUpBackButton {
+  @apply flex justify-center items-center w-100 h-16 p-5 mt-5 mb-14 rounded-md text-2xl text-light font-semibold
+  bg-[#94969a] hover:bg-[#94969a]/70 active:bg-[#94969a]/50
+  outline outline-offset-2 outline-1 outline-[#b1e4fa] shadow-md shadow-[#94969a]/50;
 }
 
 .GenderDropdown {
