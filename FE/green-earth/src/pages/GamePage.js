@@ -9,6 +9,68 @@ import CardsPairing from "../components/GamePage/CardsPairing";
 import GameTutorial from "../components/GamePage/GameTutorial";
 import GameRecycle from "../components/GamePage/GameRecycle";
 
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
+import { OrbitControls } from "@react-three/drei";
+
+import {
+  Child1,
+  Child2,
+  Child3,
+  Child4,
+  Child5,
+  Child6,
+  Child7,
+  Child8,
+  Child9,
+  Child10,
+  Child11,
+  Child12,
+  Child13,
+  Child14,
+  Child15,
+  Child16,
+  Child17,
+  Child18,
+  Child19,
+  Child20,
+  Child21,
+  Child22,
+  Child23,
+  Child24,
+  Child25,
+  Child26,
+  Child27,
+  Child28,
+  Child29,
+  Child30,
+  Child31,
+  Child32,
+  Child33,
+  Child34,
+  Child35,
+  Child36,
+  Child37,
+  Child38,
+  Child39,
+  Child40,
+  Child41,
+  Child42,
+  Child43,
+  Child44,
+  Child45,
+  Child46,
+  Child47,
+  Child48,
+  Child49,
+  Child50,
+  Child51,
+  Child52,
+  Child53,
+  Child54,
+  Child55,
+} from "./../Model.js/Child";
+
 import "animate.css";
 
 const videosInfo = [
@@ -24,33 +86,457 @@ const videosInfo = [
     title: "쓰레기차송",
     url: "https://youtu.be/ygS3kbFhhQ8",
   },
+  {
+    title: "미스터온실가스",
+    url: "https://youtu.be/RDc2qXJS8F4",
+  },
 ];
 
 const GamePage = () => {
   const navigate = useNavigate();
 
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
+  console.log(memberInfo.avatar);
 
   const [isTab, setIsTab] = useState(0);
   const [songValue, setSongValue] = useState(0);
 
+  const handleClickChildProfile = () => {
+    navigate(`/profile/${memberInfo.childId}`);
+  };
+
   return (
     <div className="GamePage pt-8 pb-5">
-      <div className="pb-10">
+      <div className="GamePageHeader">
         {/* 내가 Green 지구 로고 */}
         <img
           src={"assets/images/new_logo_main.svg"}
-          className="w-64 ml-5 cursor-pointer"
+          className="w-64 cursor-pointer"
           onClick={() => navigate("/child")}
         />
+        {/* 뒤로가기 버튼 */}
+        {isTab === 4 ? (
+          <button
+            className="GamePageButtonBack animate__animated animate__fadeIn mr-2"
+            onClick={() => setIsTab(0)}
+          >
+            뒤로 가기
+          </button>
+        ) : (
+          <button
+            className="GamePageButtonBack"
+            onClick={() => navigate("/child")}
+          >
+            홈 화면
+          </button>
+        )}
       </div>
       <div className="GamePageBody">
         {/* 게임 페이지 왼쪽 내브바 */}
         <div className="GamePageNavBar">
           {/* 아이 프로필 정보 */}
           <div>
-            <div className="ChildImage">
-              <img src="./../assets/images/girl1.svg" />
+            <div className="canvasProfileNew" onClick={handleClickChildProfile}>
+              {memberInfo.avatar === 1 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child1 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 2 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child2 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 3 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child3 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 4 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child4 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 5 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child5 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 6 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child6 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 7 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child7 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 8 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child8 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 9 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child9 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 10 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child10 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 11 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child30 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 12 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child31 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 13 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child32 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 14 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child33 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 15 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child34 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 16 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child35 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 17 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child36 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 18 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child37 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 19 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child38 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
+              {memberInfo.avatar === 20 && (
+                <Canvas id="person">
+                  <Suspense fallback={null}>
+                    <ambientLight />
+                    <spotLight
+                      intensity={5}
+                      angle={0.1}
+                      penumbra={5}
+                      position={[500, 500, 500]}
+                      castShadow
+                    />
+                    <Child39 />
+                    <OrbitControls
+                      enablePan={false}
+                      enableZoom={false}
+                      enableRotate={false}
+                    />
+                  </Suspense>
+                </Canvas>
+              )}
             </div>
             <div className="ChildImageName font-dunggeunmo">
               Lv.{memberInfo.earthLevel} {memberInfo.realName}
@@ -59,7 +545,7 @@ const GamePage = () => {
 
           <div className="flex flex-col">
             {/* 게임 선택하기 */}
-            {isTab == 3 ? (
+            {isTab == 4 ? (
               <>
                 <button
                   className="GamePageSongButton animate__animated animate__bounceIn"
@@ -74,10 +560,16 @@ const GamePage = () => {
                   {videosInfo[1].title}
                 </button>
                 <button
-                  className="GamePageSongButton my-5 animate__animated animate__bounceIn"
+                  className="GamePageSongButton mt-5 animate__animated animate__bounceIn"
                   onClick={() => setSongValue(2)}
                 >
                   {videosInfo[2].title}
+                </button>
+                <button
+                  className="GamePageSongButton mt-5 animate__animated animate__bounceIn"
+                  onClick={() => setSongValue(3)}
+                >
+                  {videosInfo[3].title}
                 </button>
               </>
             ) : (
@@ -92,29 +584,18 @@ const GamePage = () => {
                   분리수거 왕
                 </button>
                 <button
-                  className="GamePageButton my-5"
+                  className="GamePageButton mt-5"
                   onClick={() => setIsTab(3)}
+                >
+                  지구 특공대
+                </button>
+                <button
+                  className="GamePageButton mt-5"
+                  onClick={() => setIsTab(4)}
                 >
                   동요 세상
                 </button>
               </>
-            )}
-
-            {/* 뒤로가기 버튼 */}
-            {isTab === 3 ? (
-              <button
-                className="GamePageButtonBack animate__animated animate__fadeIn"
-                onClick={() => setIsTab(0)}
-              >
-                뒤로 가기
-              </button>
-            ) : (
-              <button
-                className="GamePageButtonBack"
-                onClick={() => navigate("/child")}
-              >
-                홈 화면
-              </button>
             )}
           </div>
         </div>
@@ -125,7 +606,8 @@ const GamePage = () => {
             {isTab === 0 && <GameTutorial />}
             {isTab === 1 && <CardsPairing />}
             {isTab === 2 && <GameRecycle />}
-            {isTab === 3 && <KidsSong songValue={videosInfo[songValue]} />}
+            {isTab === 3 && <CardsPairing />}
+            {isTab === 4 && <KidsSong songValue={videosInfo[songValue]} />}
           </div>
         </div>
       </div>
