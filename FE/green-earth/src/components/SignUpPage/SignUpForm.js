@@ -241,7 +241,7 @@ const SignUpForm = () => {
           <div className="text-lightGray pl-1">생년월일을 선택해 주세요.</div>
 
           {/* 버튼 */}
-          <button className="SignUpButton">회원 가입</button>
+          <button className="SignUpButton mb-14">회원 가입</button>
         </form>
       </div>
       <div>

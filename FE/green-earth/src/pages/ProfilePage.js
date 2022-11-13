@@ -81,7 +81,7 @@ const ProfilePage = () => {
   // URL을 통해 childId 획득
   const { childId } = useParams();
 
-  // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
+  // Recoil에 저장되어 있는 아이정보, 회원정보 불러오기
   const [childInfo, setChildInfo] = useRecoilState(childInfoState);
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 

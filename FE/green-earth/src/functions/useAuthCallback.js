@@ -141,6 +141,24 @@ export const useAuthCallback = () => {
       });
   };
 
+  // 회원 수정 콜백 함수
+  const accountEditCallback = async (childId, nickname) => {
+    api
+      .put(`/member/child/${childId}`, {
+        nickname: nickname,
+      })
+      .then((response) => {
+        if (response.data) {
+          setChildInfo(response.data);
+          console.log("아이 정보가 수정되었습니다.");
+          console.log("childInfo :", response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
+
   return {
     loginCallback,
     logoutcallback,
@@ -149,5 +167,6 @@ export const useAuthCallback = () => {
     nickNameCheckCallback,
     memberInfoCallback,
     childInfoCallback,
+    accountEditCallback,
   };
 };
