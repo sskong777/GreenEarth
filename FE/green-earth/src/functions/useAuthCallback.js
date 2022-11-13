@@ -14,7 +14,6 @@ export const useAuthCallback = () => {
   const baseURL = "https://내가그린지구.com/api";
   // const baseURL = "http://localhost:8881/api";
 
-
   const { api } = useCommonCallback();
 
   const [refreshToken, setRefreshToken] = useRecoilState(refreshTokenState);
@@ -35,6 +34,7 @@ export const useAuthCallback = () => {
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
+          memberInfoCallback();
           navigate("/child");
         }
       })
@@ -56,14 +56,14 @@ export const useAuthCallback = () => {
         withCredentials: true,
       },
     })
-      .then( async (response) => {
+      .then(async (response) => {
         if (response.data) {
           console.log(response.data);
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
-          // memberInfoCallback();
-          navigate("/parent" );
+          memberInfoCallback();
+          navigate("/parent");
         }
       })
       .catch((error) => {
