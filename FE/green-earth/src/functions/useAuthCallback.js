@@ -56,14 +56,18 @@ export const useAuthCallback = () => {
         withCredentials: true,
       },
     })
-      .then(async (response) => {
+
+
+      .then( async (response) => {
+
+
         if (response.data) {
           console.log(response.data);
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
-          memberInfoCallback();
-          navigate("/parent");
+          // memberInfoCallback();
+          navigate("/parent" );
         }
       })
       .catch((error) => {
@@ -72,6 +76,7 @@ export const useAuthCallback = () => {
   };
 
   const signUpCallback = (nickname, password, realName, gender, birthday) => {
+    console.log(nickname, password, realName, gender, birthday);
     api
       .post(`/member/signup`, {
         nickname: nickname,

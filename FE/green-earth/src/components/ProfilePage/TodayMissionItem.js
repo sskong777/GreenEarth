@@ -94,7 +94,7 @@ const TodayMissionItem = ({ data }) => {
   // 미션 종류 Axios 요청
   useEffect(() => {
     missionOptionListCallback();
-    console.log(data)
+    console.log(data);
   }, []);
 
   // 만약 data가 있다면 아래 조건문 실행
@@ -105,7 +105,7 @@ const TodayMissionItem = ({ data }) => {
         setIsCleared(true);
       }
       // 승인 완료된 미션이라면 true로 변경
-      if (data.isPermitted) {
+      if (data.permitted) {
         setIsPermitted(true);
       }
       // data가 없을 경우 IsCreated를 true로 변경
