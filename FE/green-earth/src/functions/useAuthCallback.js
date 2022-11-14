@@ -57,7 +57,9 @@ export const useAuthCallback = () => {
       },
     })
 
+
       .then( async (response) => {
+
 
         if (response.data) {
           console.log(response.data);
