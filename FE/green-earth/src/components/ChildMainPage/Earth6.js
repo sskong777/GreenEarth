@@ -235,7 +235,7 @@ function Earth6() {
                     </Suspense> 
                     </Canvas>}
           <div className='characterInfo6'>
-          <div >Lv.{memberInfo.earthLevel}   {memberInfo.nickname} </div>
+          <div >Lv.{memberInfo.earthLevel}   {memberInfo.realName} </div>
           </div>
           </div>
           <div className = "badges">
