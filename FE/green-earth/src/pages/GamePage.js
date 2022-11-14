@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { redirect, useNavigate } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
 import { memberInfoState } from "../store/atoms";
@@ -97,10 +97,16 @@ const GamePage = () => {
   const navigate = useNavigate();
 
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
-  console.log(memberInfo.avatar);
 
   const [isTab, setIsTab] = useState(0);
   const [songValue, setSongValue] = useState(0);
+
+  // useEffect(() => {
+  //   if (memberInfo.isParent) {
+  //     alert("아이 회원만 이용 가능합니다.");
+  //     navigate("/parent", { replace: true });
+  //   }
+  // }, []);
 
   const handleClickChildProfile = () => {
     navigate(`/profile/${memberInfo.childId}`);
@@ -309,7 +315,7 @@ const GamePage = () => {
                       position={[500, 500, 500]}
                       castShadow
                     />
-                    <Child9 />
+                    <Child15 />
                     <OrbitControls
                       enablePan={false}
                       enableZoom={false}

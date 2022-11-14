@@ -3,10 +3,7 @@
 }
 
 .Earth {
-  /* background-color: red; */
-  background-image: url("/public/galaxy3.jpg");
-  position: relative;
-  height: 720px;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
 }
 
 .Earth::before {
@@ -17,7 +14,7 @@
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background: linear-gradient(black, rgb(5, 5, 67));
+  /* background: linear-gradient(black, rgb(5, 5, 67)); */
 }
 
 .canvasProfile {
@@ -348,10 +345,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth2 {
-  /* background-color: red; */
-  background-image: url("/public/galaxy3.jpg");
-  position: relative;
-  height: 720px;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
 }
 .Earth2::before {
   content: "";
@@ -361,7 +355,7 @@ progress::before {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background: linear-gradient(black, rgb(5, 5, 67));
+  /* background: linear-gradient(black, rgb(5, 5, 67)); */
 }
 
 .canvasProfile2 {
@@ -488,10 +482,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth3 {
-  /* background-color: red; */
-  background-image: url("/public/galaxy3.jpg");
-  position: relative;
-  height: 720px;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
 }
 .Earth3::before {
   content: "";
@@ -501,7 +492,7 @@ progress::before {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background: linear-gradient(black, rgb(5, 5, 67));
+  /* background: linear-gradient(black, rgb(5, 5, 67)); */
 }
 
 .canvasProfile3 {
@@ -575,10 +566,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth4 {
-  /* background-color: red; */
-  background-image: url("/public/galaxy3.jpg");
-  position: relative;
-  height: 720px;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
 }
 .Earth4::before {
   content: "";
@@ -588,7 +576,7 @@ progress::before {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background: linear-gradient(black, rgb(5, 5, 67));
+  /* background: linear-gradient(black, rgb(5, 5, 67)); */
 }
 
 .canvasProfile4 {
@@ -662,10 +650,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth5 {
-  /* background-color: red; */
-  background-image: url("/public/galaxy3.jpg");
-  position: relative;
-  height: 720px;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
 }
 .Earth5::before {
   content: "";
@@ -675,7 +660,7 @@ progress::before {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background: linear-gradient(black, rgb(5, 5, 67));
+  /* background: linear-gradient(black, rgb(5, 5, 67)); */
 }
 
 .canvasProfile5 {
@@ -750,10 +735,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth6 {
-  /* background-color: red; */
-  background-image: url("/public/galaxy3.jpg");
-  position: relative;
-  height: 720px;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
 }
 .Earth6::before {
   content: "";
@@ -763,7 +745,7 @@ progress::before {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background: linear-gradient(black, rgb(5, 5, 67));
+  /* background: linear-gradient(black, rgb(5, 5, 67)); */
 }
 
 .canvasProfile6 {
@@ -837,10 +819,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth7 {
-  /* background-color: red; */
-  background-image: url("/public/galaxy3.jpg");
-  position: relative;
-  height: 720px;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
 }
 .Earth7::before {
   content: "";
@@ -850,7 +829,7 @@ progress::before {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background: linear-gradient(black, rgb(5, 5, 67));
+  /* background: linear-gradient(black, rgb(5, 5, 67)); */
 }
 
 .canvasProfile7 {
@@ -924,10 +903,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth8 {
-  /* background-color: red; */
-  background-image: url("/public/galaxy3.jpg");
-  position: relative;
-  height: 720px;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
 }
 .Earth8::before {
   content: "";
@@ -937,7 +913,7 @@ progress::before {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background: linear-gradient(black, rgb(5, 5, 67));
+  /* background: linear-gradient(black, rgb(5, 5, 67)); */
 }
 
 .canvasProfile8 {

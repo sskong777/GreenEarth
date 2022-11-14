@@ -77,7 +77,7 @@
 }
 
 .TodayHeader {
-  @apply mt-4 mb-6 text-4xl text-light font-semibold;
+  @apply my-6 text-4xl text-light font-semibold;
 }
 
 /* TodayMissonItem */
@@ -181,7 +181,7 @@
 }
 
 .MissionComponentHeader {
-  @apply flex justify-between items-center mt-4 mb-6;
+  @apply flex justify-between items-center my-4;
 }
 
 .MissionComponentToday {
@@ -197,7 +197,7 @@
 /* MissionList */
 
 .MissionListHeader {
-  @apply flex justify-between items-center mb-6;
+  @apply flex justify-between items-center mb-4;
 }
 
 .MissionDropdown {
@@ -321,7 +321,7 @@
 }
 
 .GamePageHeader {
-  @apply flex justify-between items-center mx-5 pb-7;
+  @apply flex justify-between items-center mx-6 pb-7;
 }
 
 .GamePageButton {
@@ -337,7 +337,7 @@
 }
 
 .GamePageNavBar {
-  @apply flex flex-col justify-between ml-3;
+  @apply flex flex-col justify-between ml-5;
 }
 
 .GamePageBody {
@@ -345,7 +345,7 @@
 }
 
 .GamePagePlaySpace {
-  @apply w-[62rem] h-[36rem] flex justify-center items-center ml-10 rounded-md 
+  @apply w-[58.5rem] h-[35rem] flex justify-center items-center ml-5 rounded-md 
   bg-[#011d29] shadow-md shadow-[#011d29]/50;
 }
 

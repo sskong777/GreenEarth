@@ -22,7 +22,7 @@ import { useAuthCallback } from "./../functions/useAuthCallback";
 
 function ChildMainPage() {
   
-
+    const navigate = useNavigate();
 
     // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
     const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
@@ -39,13 +39,13 @@ function ChildMainPage() {
       console.log(memberInfo)
       }, []);
 
+
+
+
   if (memberInfo.isParent === false && memberInfo.earthLevel ===1 ){
     
   return (
     <div>
-      <div className= "btn">
-        <button onClick={logoutcallback} >로그아웃임시</button>
-      </div>
       <Earth1 />
     </div>
     

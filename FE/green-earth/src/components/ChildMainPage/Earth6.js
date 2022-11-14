@@ -50,8 +50,8 @@ function Earth6() {
     memberInfoCallback();
     }, []);
     const level = 6
-    const value = level*13.7
-    const mileage = level*122+12
+    const value = level*14
+    const mileage = level*121+12
 
 
   return (
@@ -142,7 +142,7 @@ function Earth6() {
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
-                        <Child9 />
+                        <Child15 />
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
                     </Canvas>}
@@ -235,7 +235,7 @@ function Earth6() {
                     </Suspense> 
                     </Canvas>}
           <div className='characterInfo6'>
-          <div >Lv.{memberInfo.earthLevel}   {memberInfo.nickname} </div>
+          <div >Lv.{memberInfo.earthLevel}   {memberInfo.realName} </div>
           </div>
           </div>
           <div className = "badges">

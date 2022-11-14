@@ -8,8 +8,8 @@ const KidsSong = ({ songValue }) => {
         url={songValue.url}
         controls={false}
         playing={true}
-        width="960px"
-        height="540px"
+        width="900px"
+        height="506px"
       />
     </div>
   );
