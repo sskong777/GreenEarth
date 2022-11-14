@@ -244,7 +244,7 @@ function Earth1() {
               
                 
                     <div className='characterInfo'>
-                        <div >Lv.{memberInfo.earthLevel}   {memberInfo.nickname} </div>
+                        <div >Lv.{memberInfo.earthLevel}   {memberInfo.realName} </div>
                         {/* <div >Lv.{childInfo.earthLevel} {childInfo.realName} </div> */}
                     </div>
                 </div>
