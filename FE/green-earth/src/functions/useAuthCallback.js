@@ -72,6 +72,7 @@ export const useAuthCallback = () => {
   };
 
   const signUpCallback = (nickname, password, realName, gender, birthday) => {
+    console.log(nickname, password, realName, gender, birthday);
     api
       .post(`/member/signup`, {
         nickname: nickname,

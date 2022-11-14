@@ -20,13 +20,13 @@ const TodayMissionList = ({ childId }) => {
   }, []);
 
   // 미션이 설정되어 있지 않으면 설정 할 수 있게 분류
-  const createTodayMission = (value) => {
-    let answer = [];
-    for (let i = 0; i < value; i++) {
-      answer.push(<TodayMissionItem key={i} />);
-    }
-    return answer;
-  };
+  // const createTodayMission = (value) => {
+  //   let answer = [];
+  //   for (let i = 0; i < value; i++) {
+  //     answer.push(<TodayMissionItem key={i} />);
+  //   }
+  //   return answer;
+  // };
 
   return (
     <div className="TodayMissionList">
@@ -34,7 +34,7 @@ const TodayMissionList = ({ childId }) => {
       {todayMissionList.map((it, idx) => (
         <TodayMissionItem key={idx} data={it} />
       ))}
-      {createTodayMission(3 - todayMissionList.length)}
+      {todayMissionList.length < 3 && <TodayMissionItem />}
     </div>
   );
 };
