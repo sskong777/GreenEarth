@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import WelcomePage from "./pages/WelcomePage";
 import LogInPage from "./pages/LogInPage";
@@ -14,7 +14,6 @@ import GameRecyclePage from "./pages/GameRecyclePage";
 import MissionInfoPage from "./pages/MissionInfoPage";
 
 import OauthRedirectPage from "./pages/OauthRedirectPage";
-
 
 const App = () => {
   return (
@@ -33,6 +32,8 @@ const App = () => {
           <Route path="/game/recycle" element={<GameRecyclePage />} />
           <Route path="/oauth/redirect" element={<OauthRedirectPage />} />
           <Route path="/mission/:missionId" element={<MissionInfoPage />} />
+          {/* 404 리다이렉트 */}
+          <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
       </div>
     </BrowserRouter>
