@@ -71,6 +71,7 @@ function ParentMain(props) {
     // 페이지에 접근하면 해당 유저 정보Axios 요청
     useEffect(() => {
         memberInfoCallback();
+        console.log(props.data.childList['0'])
         }, []);
     
 
@@ -79,10 +80,7 @@ function ParentMain(props) {
   return (
 
     <div>
-        <div className= "btn">
-        <button onClick={logoutcallback} >로그아웃임시</button>
-        </div>
-    <div className='Earth2'>
+    <div className='Earth2' >
         <h1>
         </h1>
   
@@ -163,7 +161,7 @@ function ParentMain(props) {
                             <Suspense fallback={null}>
                                 <ambientLight />
                                 <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
-                                <Child9 />
+                                <Child15 />
                                 <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                             </Suspense> 
                             </Canvas>}
@@ -257,7 +255,12 @@ function ParentMain(props) {
                             </Canvas>}
                         </div>
                           </Typography>
-                      </CardHeader>   
+                      </CardHeader>  
+                      <CardBody>
+                        <div className="childNickName" >
+                            Lv.{props.data.childList['0'].earthLevel}  {props.data.childList['0'].nickname}
+                        </div>
+                      </CardBody> 
                   </Card>
               </header>}
               { !props.data.childList['0'] && <Link to="/signup">
@@ -354,7 +357,7 @@ function ParentMain(props) {
                             <Suspense fallback={null}>
                                 <ambientLight />
                                 <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
-                                <Child9 />
+                                <Child15 />
                                 <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                             </Suspense> 
                             </Canvas>}
@@ -449,6 +452,11 @@ function ParentMain(props) {
                         </div>
                           </Typography>
                       </CardHeader>   
+                      <CardBody>
+                        <div className="childNickName" >
+                            Lv.{props.data.childList['1'].earthLevel}  {props.data.childList['1'].nickname}
+                        </div>
+                      </CardBody> 
                   </Card>
               </header>}
               { !props.data.childList['1']  && <Link to="/signup">
@@ -545,7 +553,7 @@ function ParentMain(props) {
                             <Suspense fallback={null}>
                                 <ambientLight />
                                 <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
-                                <Child9 />
+                                <Child15 />
                                 <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                             </Suspense> 
                             </Canvas>}
@@ -640,6 +648,11 @@ function ParentMain(props) {
                         </div>
                           </Typography>
                       </CardHeader>   
+                      <CardBody>
+                        <div className="childNickName" >
+                            Lv.{props.data.childList['2'].earthLevel}  {props.data.childList['2'].nickname}
+                        </div>
+                      </CardBody> 
                   </Card>
               </header>}
               { !props.data.childList['2'] && <Link to="/signup">
@@ -658,7 +671,12 @@ function ParentMain(props) {
                             </Canvas>
                         </div>
                           </Typography>
-                      </CardHeader>   
+                      </CardHeader> 
+                      <CardBody>
+                        <div className="childNickName" >
+                            Lv.{props.data.childList['2'].earthLevel}  {props.data.childList['2'].nickname}
+                        </div>
+                      </CardBody>   
                   </Card>
               </header>
               </Link>}
@@ -736,7 +754,7 @@ function ParentMain(props) {
                             <Suspense fallback={null}>
                                 <ambientLight />
                                 <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
-                                <Child9 />
+                                <Child15 />
                                 <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                             </Suspense> 
                             </Canvas>}
@@ -831,6 +849,11 @@ function ParentMain(props) {
                         </div>
                           </Typography>
                       </CardHeader>   
+                      <CardBody>
+                        <div className="childNickName" >
+                            Lv.{props.data.childList['3'].earthLevel}  {props.data.childList['3'].nickname}
+                        </div>
+                      </CardBody> 
                   </Card>
               </header>}
               { !props.data.childList['3'] && <Link to="/signup">
@@ -927,7 +950,7 @@ function ParentMain(props) {
                             <Suspense fallback={null}>
                                 <ambientLight />
                                 <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
-                                <Child9 />
+                                <Child15 />
                                 <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                             </Suspense> 
                             </Canvas>}
@@ -1022,6 +1045,11 @@ function ParentMain(props) {
                         </div>
                           </Typography>
                       </CardHeader>   
+                      <CardBody>
+                        <div className="childNickName" >
+                            Lv.{props.data.childList['4'].earthLevel}  {props.data.childList['4'].nickname}
+                        </div>
+                      </CardBody> 
                   </Card>
               </header>}
               { !props.data.childList['4'] && <Link to="/signup">
@@ -1051,7 +1079,7 @@ function ParentMain(props) {
             
         </div>
         
-        <div className = "canvasEarth">
+        <div className = "canvasEarth" onClick={logoutcallback}>
             <Canvas id="person" >
                 <Suspense fallback={null}>
                 <ambientLight />

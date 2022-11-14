@@ -7,8 +7,10 @@
     /* background-color: red; */
     background-image: url('/public/galaxy3.jpg');
     position:relative;
-    height:720px;  
-
+    height:720px; 
+    width: 1180px; 
+    float:left;
+    right: 30px;
 }
 
 .Earth::before{
@@ -53,6 +55,7 @@
     margin-left:3%;
     transform: rotate(15deg);
     top: 7px;
+    z-index: 6
 }
 .start {
     width:50px;
@@ -229,8 +232,8 @@ progress::before{
     top: 0;
     left: 0;
     z-index: 2;
-    margin-top: 2%
-   
+    margin-top: 2%;
+
     
 }
 
@@ -285,10 +288,10 @@ progress::before{
   
 }
 .badgeImg_unlock {
-    width: 22%;
+    width: 22.6%;
     height: 40%;
     margin:5px;
-    padding:5px;
+    /* padding:2px; */
     position: relative;
   
 }
@@ -309,7 +312,7 @@ progress::before{
 }
 
 .badgeImg {
-    width: 22%;
+    width: 22.6%;
     height: 40%;
     margin:5px;
     padding:5px;
@@ -330,7 +333,6 @@ progress::before{
 
 .lockImg {
     margin-left:15%;
-
     width: 70%;
     position: absolute;
     top:0px;
@@ -372,7 +374,10 @@ progress::before{
     background-image: url('/public/galaxy3.jpg');
     position:relative;
     height:720px;
-    
+    width: 1180px; 
+    margin:auto;
+    float:left;
+    right: 30px;
     
 }
 .Earth2::before{
@@ -525,6 +530,9 @@ progress::before{
     background-image: url('/public/galaxy3.jpg');
     position:relative;
     height:720px;
+    width: 1180px; 
+    float:left;
+    right: 30px;
     
     
 }
@@ -621,7 +629,9 @@ progress::before{
     background-image: url('/public/galaxy3.jpg');
     position:relative;
     height:720px;
-    
+    width: 1180px; 
+    float:left;
+    right: 30px;
     
 }
 .Earth4::before{
@@ -717,8 +727,10 @@ progress::before{
     /* background-color: red; */
     background-image: url('/public/galaxy3.jpg');
     position:relative;
-    height:720px;
-    
+    height:720px;  
+    width: 1180px; 
+    float:left;
+    right: 30px;
     
 }
 .Earth5::before{
@@ -814,8 +826,9 @@ progress::before{
     background-image: url('/public/galaxy3.jpg');
     position:relative;
     height:720px;
-    
-    
+    width: 1180px; 
+    float:left;
+    right: 30px;
 }
 .Earth6::before{
     content:"";
@@ -909,8 +922,9 @@ progress::before{
     background-image: url('/public/galaxy3.jpg');
     position:relative;
     height:720px;
-    
-    
+    width: 1180px; 
+    float:left;
+    right: 30px;
 }
 .Earth7::before{
     content:"";
@@ -1004,8 +1018,9 @@ progress::before{
     background-image : url('/public/galaxy3.jpg');
     position:relative;
     height:720px;
-    
-    
+    width: 1180px; 
+    float:left;
+    right: 30px;
 }
 .Earth8::before{
     content:"";
@@ -1064,7 +1079,7 @@ progress::before{
     top: 0;
     left: 0;
     z-index: 2;
-    margin-top: 2%
+    margin-top: 2%;
     
 }
 
