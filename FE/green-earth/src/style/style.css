@@ -315,9 +315,13 @@
 /* GamePage */
 
 .GamePageButtonBack {
-  @apply w-40 h-16 rounded-md text-2xl text-blackBrown font-dunggeunmo  font-semibold
+  @apply w-40 h-[3.8rem] rounded-md text-2xl text-blackBrown font-dunggeunmo  font-semibold
   bg-[#ffd859] hover:bg-[#ffd859]/90 active:bg-[#ffd859]/70
   outline outline-offset-2 outline-1 shadow-lg shadow-[#ffd859]/70;
+}
+
+.GamePageHeader {
+  @apply flex justify-between items-center mx-5 pb-7;
 }
 
 .GamePageButton {
@@ -328,8 +332,8 @@
 
 .GamePageSongButton {
   @apply w-40 h-16  text-xl text-blackBrown font-dunggeunmo  font-semibold rounded-md 
-  bg-light hover:bg-light/90 active:bg-light/70
-  outline outline-offset-2 outline-1 shadow-lg shadow-light/70;
+  bg-[#fcccfc] hover:bg-[#fcccfc]/90 active:bg-[#fcccfc]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#fcccfc]/70;
 }
 
 .GamePageNavBar {
@@ -343,6 +347,11 @@
 .GamePagePlaySpace {
   @apply w-[62rem] h-[36rem] flex justify-center items-center ml-10 rounded-md 
   bg-[#011d29] shadow-md shadow-[#011d29]/50;
+}
+
+.canvasProfileNew {
+  @apply w-40 h-40 mb-2 rounded-md 
+  bg-[#011d29] outline outline-offset-2 outline-1 shadow-md shadow-[#011d29]/50;
 }
 
 /* CardsPairing */
