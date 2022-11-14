@@ -27,8 +27,8 @@ export const GameRecycle = () => {
   //캔버스 관련 변수
 
   //가로 세로
-  const canvasWidth = 992;
-  const canvasHeight = 576;
+  const canvasWidth = 936;
+  const canvasHeight = 560;
 
   //현재 페이지
   const [nowPage, setnowPage] = useState("main");
@@ -43,56 +43,56 @@ export const GameRecycle = () => {
     {
       name: "파스퇴르",
       current: [0, 0], //현재좌표
-      loc1: [51, 42], //좌측 상단 모서리 좌표
-      loc2: [118, 228], //우측 하단 모서리 좌표
+      loc1: [50, 40], //좌측 상단 모서리 좌표
+      loc2: [125, 250], //우측 하단 모서리 좌표
       answer: 0,
       success: false,
     },
     {
       name: "아이시스",
       current: [0, 0], //현재좌표
-      loc1: [190, 100], //좌측 상단 모서리 좌표
-      loc2: [250, 250], //우측 하단 모서리 좌표
+      loc1: [165, 80], //좌측 상단 모서리 좌표
+      loc2: [220, 270], //우측 하단 모서리 좌표
       answer: 0,
       success: false,
     },
     {
       name: "떡볶이",
       current: [0, 0], //현재좌표
-      loc1: [290, 115], //좌측 상단 모서리 좌표
-      loc2: [440, 265], //우측 하단 모서리 좌표
+      loc1: [270, 120], //좌측 상단 모서리 좌표
+      loc2: [425, 255], //우측 하단 모서리 좌표
       answer: 1,
       success: false,
     },
     {
       name: "자일리톨",
       current: [0, 0], //현재좌표
-      loc1: [525, 25], //좌측 상단 모서리 좌표
-      loc2: [600, 146], //우측 하단 모서리 좌표
+      loc1: [485, 20], //좌측 상단 모서리 좌표
+      loc2: [560, 145], //우측 하단 모서리 좌표
       answer: 0,
       success: false,
     },
     {
       name: "자껍",
       current: [0, 0], //현재좌표
-      loc1: [640, 45], //좌측 상단 모서리 좌표
-      loc2: [755, 105], //우측 하단 모서리 좌표
+      loc1: [610, 40], //좌측 상단 모서리 좌표
+      loc2: [715, 125], //우측 하단 모서리 좌표
       answer: 0,
       success: false,
     },
     {
       name: "알약",
       current: [0, 0], //현재좌표
-      loc1: [590, 220], //좌측 상단 모서리 좌표
-      loc2: [680, 265], //우측 하단 모서리 좌표
+      loc1: [560, 210], //좌측 상단 모서리 좌표
+      loc2: [690, 270], //우측 하단 모서리 좌표
       answer: 1,
       success: false,
     },
     {
       name: "좋은 물",
       current: [0, 0], //현재좌표
-      loc1: [835, 70], //좌측 상단 모서리 좌표
-      loc2: [900, 260], //우측 하단 모서리 좌표
+      loc1: [785, 70], //좌측 상단 모서리 좌표
+      loc2: [850, 255], //우측 하단 모서리 좌표
       answer: 1,
       success: false,
     },
@@ -130,12 +130,12 @@ export const GameRecycle = () => {
   const mainPage = (ctx) => {
     //로고 그리기
     let mainlogo = new Image();
-    mainlogo.src = "/assets/games/main/recycle_cha.png";
-    ctx.drawImage(mainlogo, 100, 0, canvasWidth - 200, canvasHeight - 200);
+    mainlogo.src = "/assets/games/main/recycleMainLogo.png";
+    ctx.drawImage(mainlogo, 0, 0, canvasWidth, canvasHeight);
 
     //게임 설명
     let subtitle = new Image();
-    subtitle.src = "/assets/games/main/subtitle.png";
+    subtitle.src = "/assets/games/main/recycleDisc.png";
     ctx.drawImage(subtitle, 0, 0, canvasWidth, canvasHeight);
 
     //시작 버튼
@@ -145,10 +145,10 @@ export const GameRecycle = () => {
     canvas.onmousedown = (e) => {
       console.log(e.offsetX, e.offsetY);
       if (
-        e.offsetX > 375 &&
-        e.offsetX < 615 &&
-        e.offsetY > 445 &&
-        e.offsetY < 545
+        e.offsetX > 330 &&
+        e.offsetX < 590 &&
+        e.offsetY > 420 &&
+        e.offsetY < 515
       ) {
         setButtonSrc("/assets/games/main/clickedButton.png");
       }
@@ -161,13 +161,7 @@ export const GameRecycle = () => {
     };
 
     startButton.src = buttonSrc;
-    ctx.drawImage(
-      startButton,
-      360,
-      400,
-      270,
-      startButton.height * (270 / startButton.width)
-    );
+    ctx.drawImage(startButton, 0, 0, canvasWidth, canvasHeight);
   };
 
   const gamePage = (ctx) => {
@@ -190,13 +184,9 @@ export const GameRecycle = () => {
     ctx.drawImage(lifeImage, 0, 0, canvasWidth, canvasHeight);
 
     //분류 창
-    let recycle = new Image();
-    recycle.src = "/assets/games/game/recycleAnswer.png";
-    ctx.drawImage(recycle, -175, 275, canvasWidth - 200, canvasHeight - 150);
-
     let waste = new Image();
-    waste.src = "/assets/games/game/wasteAnswer.png";
-    ctx.drawImage(waste, 375, 275, canvasWidth - 200, canvasHeight - 150);
+    waste.src = "/assets/games/game/waste.png";
+    ctx.drawImage(waste, 0, 0, canvasWidth, canvasHeight);
 
     //파스퇴르
     //51 ,42
@@ -309,6 +299,7 @@ export const GameRecycle = () => {
 
     const canvas = canvasRef.current;
     canvas.onmousedown = (e) => {
+      console.log(e.offsetX, e.offsetY);
       let items_tmp = items;
       let _selected = -1;
       for (let i = 0; i < 7; i++) {
@@ -354,10 +345,10 @@ export const GameRecycle = () => {
         ]);
 
         if (
-          e.offsetX > 25 &&
-          e.offsetX < 375 &&
-          e.offsetY > 400 &&
-          e.offsetY < 575
+          e.offsetX > 0 &&
+          e.offsetX < 380 &&
+          e.offsetY > 300 &&
+          e.offsetY < 550
         ) {
           //분리수거 하기에다가 놓은 경우
           if (items_tmp[_selected].answer == 0) {
@@ -371,10 +362,10 @@ export const GameRecycle = () => {
             alert("다시 생각해 보세요!");
           }
         } else if (
-          e.offsetX > 575 &&
-          e.offsetX < 990 &&
-          e.offsetY > 400 &&
-          e.offsetY < 575
+          e.offsetX > 550 &&
+          e.offsetX < 935 &&
+          e.offsetY > 300 &&
+          e.offsetY < 550
         ) {
           //다시 가져가기에다가 놓은 경우
 
@@ -418,13 +409,13 @@ export const GameRecycle = () => {
 
   const descriptionPage = (ctx) => {
     let descItems = [
-      "파스퇴르_설명.png",
-      "아이시스_설명.png",
-      "떡볶이_설명.png",
-      "자일리톨_설명.png",
-      "자껍_설명.png",
-      "알약_설명.png",
-      "좋은물_설명.png",
+      "description.png",
+      "description.png",
+      "description.png",
+      "description.png",
+      "description.png",
+      "description.png",
+      "description.png",
     ];
     let descBackg = new Image();
     descBackg.src = "/assets/games/description/" + descItems[descNum];
@@ -436,10 +427,10 @@ export const GameRecycle = () => {
       //738 , 387
       //801 , 448
       if (
-        e.offsetX > 890 &&
-        e.offsetX < 960 &&
-        e.offsetY > 470 &&
-        e.offsetY < 540
+        e.offsetX > 760 &&
+        e.offsetX < 880 &&
+        e.offsetY > 40 &&
+        e.offsetY < 130
       ) {
         setnowPage("game");
       }
@@ -482,8 +473,8 @@ export const GameRecycle = () => {
       <canvas
         ref={canvasRef}
         className={classes.mygame}
-        width={992}
-        height={576}
+        width={936}
+        height={560}
       />
 
       {!life && (

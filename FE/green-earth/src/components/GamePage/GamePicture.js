@@ -50,8 +50,8 @@ export const GamePicture = () => {
   //캔버스 관련 변수
 
   //가로 세로
-  const canvasWidth = 992;
-  const canvasHeight = 576;
+  const canvasWidth = 936;
+  const canvasHeight = 560;
 
   //현재 페이지
   const [nowPage, setnowPage] = useState("main");
@@ -446,8 +446,8 @@ export const GamePicture = () => {
       <canvas
         ref={canvasRef}
         className={classes.mygame}
-        width={992}
-        height={576}
+        width={936}
+        height={560}
       />
 
       {!life && <PictureFailModal setnowPage={setnowPage} setLife={setLife} />}
