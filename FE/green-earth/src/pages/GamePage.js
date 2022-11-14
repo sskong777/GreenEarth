@@ -314,7 +314,7 @@ const GamePage = () => {
                       position={[500, 500, 500]}
                       castShadow
                     />
-                    <Child9 />
+                    <Child15 />
                     <OrbitControls
                       enablePan={false}
                       enableZoom={false}
