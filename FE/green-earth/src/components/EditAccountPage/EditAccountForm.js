@@ -46,8 +46,7 @@ const EditAccountForm = ({ childInfo }) => {
     if (check) {
       alert("아이디 중복 체크를 해주세요");
       return;
-    }
-    if (window.confirm("아이디를 수정하시겠습니까?")) {
+    } else if (window.confirm("아이디를 수정하시겠습니까?")) {
       accountEditCallback(childInfo.childId, nickname);
     }
   };
@@ -79,26 +78,30 @@ const EditAccountForm = ({ childInfo }) => {
         {/* 회원수정 폼 */}
         <form className="SignUpFormBody" method="post" onSubmit={submitHandler}>
           {/* 아이디(닉네임) */}
+          <div className="text-lightGray pl-1">아이디</div>
           <input
             type="nickname"
             name="nickname"
             value={nickname}
             placeholder="아이디를 입력하세요."
             onChange={(e) => setNickname(e.target.value)}
-            className="SignUpFormBodyElement mt-10"
+            className="SignUpFormBodyElement"
           />
 
           {/* 이름 */}
+          <div className="text-lightGray pl-1 mt-1">이름</div>
           <div className="SignUpFormBodyElement"> {childInfo.realName}</div>
 
           {/* 성별 */}
+          <div className="text-lightGray pl-1 mt-1">성별</div>
           <div className="SignUpFormBodyElement"> {gender}</div>
 
           {/* 생일 */}
+          <div className="text-lightGray pl-1 mt-1">생년월일</div>
           <div className="SignUpFormBodyElement"> {birthday}</div>
 
           {/* 버튼 */}
-          <button className="SignUpButton mt-20">회원 수정</button>
+          <button className="SignUpButton mt-14">회원 수정</button>
         </form>
         <button className="SignUpBackButton" onClick={() => navigate(-1)}>
           뒤로 가기
@@ -107,7 +110,7 @@ const EditAccountForm = ({ childInfo }) => {
       <div>
         {/* 아이디(닉네임) 중복 확인 버튼 */}
         <form
-          className="NicknameCheckForm mt-20"
+          className="NicknameCheckForm mt-18"
           method="get"
           onSubmit={nicknameCheckHandler}
         >
