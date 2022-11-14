@@ -51,8 +51,8 @@ function Earth7() {
     }, []);
   
     const level = 7
-    const value = level*13.7
-    const mileage = level*122+12
+    const value = level*14
+    const mileage = level*121+12
 
 
   return (
@@ -143,7 +143,7 @@ function Earth7() {
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
-                        <Child9 />
+                        <Child15 />
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
                     </Canvas>}
