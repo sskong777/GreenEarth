@@ -237,7 +237,7 @@ function Earth2() {
                     </Suspense> 
                     </Canvas>}
                     <div className='characterInfo2'>
-                        <div >Lv.{memberInfo.earthLevel}   {memberInfo.nickname} </div>
+                        <div >Lv.{memberInfo.earthLevel}   {memberInfo.realName} </div>
                     </div>
                 </div>
                 
