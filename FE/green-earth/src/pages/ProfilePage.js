@@ -81,7 +81,7 @@ const ProfilePage = () => {
   // URL을 통해 childId 획득
   const { childId } = useParams();
 
-  // Recoil에 저장되어 있는 아이정보, 회원정보 불러오기
+  // Recoil에 저장되어 있는 아이정보, 회원정보, 보상정보 불러오기
   const [childInfo, setChildInfo] = useRecoilState(childInfoState);
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 
@@ -102,6 +102,7 @@ const ProfilePage = () => {
   useEffect(() => {
     memberInfoCallback();
     childInfoCallback(childId);
+    rewardListCallback(childId);
   }, []);
 
   // 아이 회원 수정 페이지 이동 함수
@@ -158,7 +159,7 @@ const ProfilePage = () => {
         {/* 아이 프로필 사진과 이름 */}
         <div>
           <div className="canvasProfileNew">
-            {memberInfo.avatar === 1 && (
+            {childInfo.avatar === 1 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -178,7 +179,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 2 && (
+            {childInfo.avatar === 2 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -198,7 +199,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 3 && (
+            {childInfo.avatar === 3 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -218,7 +219,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 4 && (
+            {childInfo.avatar === 4 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -238,7 +239,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 5 && (
+            {childInfo.avatar === 5 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -258,7 +259,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 6 && (
+            {childInfo.avatar === 6 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -278,7 +279,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 7 && (
+            {childInfo.avatar === 7 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -298,7 +299,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 8 && (
+            {childInfo.avatar === 8 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -318,7 +319,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 9 && (
+            {childInfo.avatar === 9 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -338,7 +339,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 10 && (
+            {childInfo.avatar === 10 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -358,7 +359,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 11 && (
+            {childInfo.avatar === 11 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -378,7 +379,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 12 && (
+            {childInfo.avatar === 12 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -398,7 +399,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 13 && (
+            {childInfo.avatar === 13 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -418,7 +419,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 14 && (
+            {childInfo.avatar === 14 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -438,7 +439,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 15 && (
+            {childInfo.avatar === 15 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -458,7 +459,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 16 && (
+            {childInfo.avatar === 16 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -478,7 +479,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 17 && (
+            {childInfo.avatar === 17 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -498,7 +499,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 18 && (
+            {childInfo.avatar === 18 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -518,7 +519,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 19 && (
+            {childInfo.avatar === 19 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
@@ -538,7 +539,7 @@ const ProfilePage = () => {
                 </Suspense>
               </Canvas>
             )}
-            {memberInfo.avatar === 20 && (
+            {childInfo.avatar === 20 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
                   <ambientLight />
