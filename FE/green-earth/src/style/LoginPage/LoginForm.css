@@ -9,7 +9,7 @@
 }
 
 .LoginFormBody {
-  @apply flex flex-col mt-10 justify-center items-start;
+  @apply flex flex-col mt-6 justify-center items-start;
 }
 
 .LoginElement {

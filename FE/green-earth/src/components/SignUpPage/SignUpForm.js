@@ -54,7 +54,6 @@ const SignUpForm = () => {
   useEffect(() => {
     setCheck(true);
   }, [nickname]);
-  console.log(gender);
 
   //   회원 정보 검사
   const submitHandler = (e) => {
@@ -91,14 +90,12 @@ const SignUpForm = () => {
     if (check) {
       alert("닉네임 중복 체크를 해주세요");
       return;
-    } else {
+    } else if (window.confirm("회원가입을 하시겠습니까?")) {
       if (gender === "왕자님") {
-        setGender("MALE");
+        signUpCallback(nickname, password, realName, "MALE", birthday);
+      } else {
+        signUpCallback(nickname, password, realName, "FEMALE", birthday);
       }
-      if (gender === "공주님") {
-        setGender("FEMALE");
-      }
-      signUpCallback(nickname, password, realName, gender, birthday);
     }
   };
 
@@ -112,11 +109,11 @@ const SignUpForm = () => {
     nickNameCheckCallback(nickname).then((response) => {
       const text = response.data;
       if (text === "사용할 수 있는 닉네임입니다.") {
-        alert("사용할 수 있는 닉네임입니다");
+        alert("사용할 수 있는 아이디입니다");
         setCheck(false);
         return;
       } else if (text === "이미 존재하는 닉네임입니다.") {
-        alert("사용할 수 없는 닉네임입니다.");
+        alert("사용할 수 없는 아이디입니다.");
         setNickname("");
         return;
       }
@@ -124,7 +121,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="SignUpForm">
+    <div className="SignUpForm mt-4">
       <div>
         {/* 회원가입 폼 */}
         <form className="SignUpFormBody" method="post" onSubmit={submitHandler}>

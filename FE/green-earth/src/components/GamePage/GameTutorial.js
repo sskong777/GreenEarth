@@ -10,7 +10,7 @@ const GameTutorial = () => {
         </div>
       </div>
       <div className="flex w-full h-full justify-start items-center">
-        <div className="w-80 mt-26 text-light text-4xl animate-bounce">
+        <div className="w-80 h-full mb-3 flex flex-col justify-end text-light text-4xl animate-bounce">
           <div>← 원하시는</div>
           <div className="mt-10">← 게임을</div>
           <div className="my-10">← 클릭하세요!</div>

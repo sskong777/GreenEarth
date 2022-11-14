@@ -8,25 +8,25 @@ body {
   font-family: "BinggraeBold", "Arial", "sans-serif";
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1180px) {
   .App {
-    width: 1270px;
+    width: 1170px;
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1180px) {
   .App {
     width: 98vw;
   }
 }
 
-@media (min-height: 720px) {
+@media (min-height: 820px) {
   .App {
-    height: 710px;
+    height: 810px;
   }
 }
 
-@media (max-height: 720px) {
+@media (max-height: 820px) {
   .App {
     height: 98vh;
   }
@@ -38,7 +38,7 @@ body {
   border-radius: 5px;
 }
 
-.App {
+/* .App {
   padding-left: 20px;
   padding-right: 20px;
-}
+} */
