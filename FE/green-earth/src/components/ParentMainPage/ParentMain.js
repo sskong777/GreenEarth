@@ -670,12 +670,7 @@ function ParentMain(props) {
                             </Canvas>
                         </div>
                           </Typography>
-                      </CardHeader> 
-                      <CardBody>
-                        <div className="childNickName" >
-                            Lv.{props.data.childList['2'].earthLevel}  {props.data.childList['2'].nickname}
-                        </div>
-                      </CardBody>   
+                      </CardHeader>   
                   </Card>
               </header>
               </Link>}
