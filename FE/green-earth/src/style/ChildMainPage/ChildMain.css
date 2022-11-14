@@ -7,6 +7,8 @@
   background-image: url("/public/galaxy3.jpg");
   position: relative;
   height: 720px;
+  width: 1200px; 
+  right:10px;
 }
 
 .Earth::before {
@@ -43,50 +45,7 @@
 }
 
 
-.Earth{
-    /* background-color: red; */
-    background-image: url('/public/galaxy3.jpg');
-    position:relative;
-    height:720px; 
-    width: 1180px; 
-    float:left;
-    right: 30px;
-}
 
-.Earth::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
-}
-
-.canvasProfile{
-    width:200px;
-    height:200px;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: rgb(42, 42, 42);
-    position:relative;
-    border : solid;
-    border-color:  rgb(255, 179, 0);
-
-
-}
-
-.canvasProfile::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
-}
 
 
 .Rocket {
@@ -411,7 +370,7 @@ progress::before{
     width: 1180px; 
     margin:auto;
     float:left;
-    right: 30px;
+    right:10px;
     
 }
 .Earth2::before{
@@ -560,7 +519,7 @@ progress::before {
     height:720px;
     width: 1180px; 
     float:left;
-    right: 30px;
+    right: 10px;
     
     
 }
@@ -654,7 +613,7 @@ progress::before {
     height:720px;
     width: 1180px; 
     float:left;
-    right: 30px;
+    right: 10px;
     
 }
 .Earth4::before {
@@ -747,7 +706,7 @@ progress::before {
     height:720px;  
     width: 1180px; 
     float:left;
-    right: 30px;
+    right: 10px;
     
 }
 .Earth5::before {
@@ -841,7 +800,7 @@ progress::before {
     height:720px;
     width: 1180px; 
     float:left;
-    right: 30px;
+    right: 10px;
 }
 .Earth6::before{
     content:"";
@@ -937,7 +896,7 @@ progress::before {
     height:720px;
     width: 1180px; 
     float:left;
-    right: 30px;
+    right: 10px;
 }
 .Earth7::before{
     content:"";
@@ -1033,7 +992,7 @@ progress::before {
     height:720px;
     width: 1180px; 
     float:left;
-    right: 30px;
+    right: 10px;
 }
 .Earth8::before{
     content:"";
