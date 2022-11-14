@@ -34,7 +34,6 @@ import { Model0, Model00} from "../../Model.js/Space"
 
 function Earth1() {
     const navigate = useNavigate();
-    // URL을 통해 childId 획득
     
 
     // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
@@ -56,8 +55,8 @@ function Earth1() {
     }, []);
     
     const level = 1
-    const value = level*13.7
-    const mileage = level*122+12
+    const value = level*14
+    const mileage = level*121+12
 
 
 
@@ -149,7 +148,7 @@ function Earth1() {
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
-                        <Child9 />
+                        <Child15 />
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
                     </Canvas>}
