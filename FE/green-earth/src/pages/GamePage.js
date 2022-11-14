@@ -8,6 +8,7 @@ import KidsSong from "../components/GamePage/KidsSong";
 import CardsPairing from "../components/GamePage/CardsPairing";
 import GameTutorial from "../components/GamePage/GameTutorial";
 import GameRecycle from "../components/GamePage/GameRecycle";
+import GamePicture from "../components/GamePage/GamePicture";
 
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
@@ -606,7 +607,7 @@ const GamePage = () => {
             {isTab === 0 && <GameTutorial />}
             {isTab === 1 && <CardsPairing />}
             {isTab === 2 && <GameRecycle />}
-            {isTab === 3 && <CardsPairing />}
+            {isTab === 3 && <GamePicture />}
             {isTab === 4 && <KidsSong songValue={videosInfo[songValue]} />}
           </div>
         </div>
