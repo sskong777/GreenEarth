@@ -257,7 +257,7 @@ function ParentMain(props) {
                       </CardHeader>  
                       <CardBody>
                         <div className="childNickName" >
-                            Lv.{props.data.childList['0'].earthLevel}  {props.data.childList['0'].nickname}
+                            Lv.{props.data.childList['0'].earthLevel}  {props.data.childList['0'].realName}
                         </div>
                       </CardBody> 
                   </Card>
@@ -453,7 +453,7 @@ function ParentMain(props) {
                       </CardHeader>   
                       <CardBody>
                         <div className="childNickName" >
-                            Lv.{props.data.childList['1'].earthLevel}  {props.data.childList['1'].nickname}
+                            Lv.{props.data.childList['1'].earthLevel}  {props.data.childList['1'].realName}
                         </div>
                       </CardBody> 
                   </Card>
@@ -649,7 +649,7 @@ function ParentMain(props) {
                       </CardHeader>   
                       <CardBody>
                         <div className="childNickName" >
-                            Lv.{props.data.childList['2'].earthLevel}  {props.data.childList['2'].nickname}
+                            Lv.{props.data.childList['2'].earthLevel}  {props.data.childList['2'].realName}
                         </div>
                       </CardBody> 
                   </Card>
@@ -850,7 +850,7 @@ function ParentMain(props) {
                       </CardHeader>   
                       <CardBody>
                         <div className="childNickName" >
-                            Lv.{props.data.childList['3'].earthLevel}  {props.data.childList['3'].nickname}
+                            Lv.{props.data.childList['3'].earthLevel}  {props.data.childList['3'].realName}
                         </div>
                       </CardBody> 
                   </Card>
@@ -1046,7 +1046,7 @@ function ParentMain(props) {
                       </CardHeader>   
                       <CardBody>
                         <div className="childNickName" >
-                            Lv.{props.data.childList['4'].earthLevel}  {props.data.childList['4'].nickname}
+                            Lv.{props.data.childList['4'].earthLevel}  {props.data.childList['4'].realName}
                         </div>
                       </CardBody> 
                   </Card>
