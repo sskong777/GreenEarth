@@ -14,7 +14,6 @@ export const useAuthCallback = () => {
   const baseURL = "https://내가그린지구.com/api";
   // const baseURL = "http://localhost:8881/api";
 
-
   const { api } = useCommonCallback();
 
   const [refreshToken, setRefreshToken] = useRecoilState(refreshTokenState);
@@ -35,6 +34,7 @@ export const useAuthCallback = () => {
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
+          memberInfoCallback();
           navigate("/child");
         }
       })
@@ -56,7 +56,9 @@ export const useAuthCallback = () => {
         withCredentials: true,
       },
     })
+
       .then( async (response) => {
+
         if (response.data) {
           console.log(response.data);
           console.log("로그인되었습니다.");
@@ -141,6 +143,24 @@ export const useAuthCallback = () => {
       });
   };
 
+  // 회원 수정 콜백 함수
+  const accountEditCallback = async (childId, nickname) => {
+    api
+      .put(`/member/child/${childId}`, {
+        nickname: nickname,
+      })
+      .then((response) => {
+        if (response.data) {
+          setChildInfo(response.data);
+          console.log("아이 정보가 수정되었습니다.");
+          console.log("childInfo :", response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
+
   return {
     loginCallback,
     logoutcallback,
@@ -149,5 +169,6 @@ export const useAuthCallback = () => {
     nickNameCheckCallback,
     memberInfoCallback,
     childInfoCallback,
+    accountEditCallback,
   };
 };

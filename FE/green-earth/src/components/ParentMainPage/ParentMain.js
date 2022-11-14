@@ -71,7 +71,7 @@ function ParentMain(props) {
     // 페이지에 접근하면 해당 유저 정보Axios 요청
     useEffect(() => {
         memberInfoCallback();
-        console.log(props.data.childList['0'])
+
         }, []);
     
 

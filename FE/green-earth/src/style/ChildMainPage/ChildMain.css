@@ -1,5 +1,45 @@
-.btn{
-    color: white;
+.btn {
+  color: white;
+}
+
+.Earth {
+  /* background-color: red; */
+  background-image: url("/public/galaxy3.jpg");
+  position: relative;
+  height: 720px;
+}
+
+.Earth::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
+}
+
+.canvasProfile {
+  width: 200px;
+  height: 200px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgb(42, 42, 42);
+  position: relative;
+  border: solid;
+  border-color: rgb(255, 179, 0);
+}
+
+.canvasProfile::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
 
 
@@ -58,44 +98,39 @@
     z-index: 6
 }
 .start {
-    width:50px;
-    position: absolute;
-    left: 7%;
-    z-index: 3;
-    top: 7px;
-    
+  width: 50px;
+  position: absolute;
+  left: 7%;
+  z-index: 3;
+  top: 7px;
 }
 .end {
-    width:50px;
-    position : absolute;
-    left: 84%;
-    z-index: 3;
-    top: 7px;
+  width: 50px;
+  position: absolute;
+  left: 84%;
+  z-index: 3;
+  top: 7px;
 }
-.characterInfo{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
+.characterInfo {
+  font-weight: bold;
+  color: white;
+  size: 115px;
+  text-align: center;
+  margin: 2px;
+  z-index: 4;
 }
-
-
-
-
 
 progress {
-    -webkit-appearance: none;
-    appearance: none;
-    width:100%;
-    top: 13px;
-    margin-left:10%;
-    position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  top: 13px;
+  margin-left: 10%;
+  position: relative;
 }
-  
+
 progress::-webkit-progress-bar {
-    background-color: white;
+  background-color: white;
 }
 
 progress::-webkit-progress-value {
@@ -142,25 +177,28 @@ progress::before{
     background-color: black;
 } */
 
-.gameButton{
-    color : green;
-    position: absolute;
-    text-align: center;
-    font-weight: bold;
-    font-size: 0.5px;
-    width:150px;
-    height:50px;
-    margin-right:auto;
-    margin-left:23%;
-    margin-top:25%;
-    padding: 1%;
-    z-index: 1000;
-    
+.gameButton {
+  color: green;
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.5px;
+  width: 150px;
+  height: 50px;
+  margin-right: auto;
+  margin-left: 23%;
+  margin-top: 25%;
+  padding: 1%;
+  z-index: 1000;
 }
-@keyframes blink-effect { 50% { opacity: 0; } } 
-.gameButton { 
-    animation: blink-effect 1.5s step-end infinite; }
-
+@keyframes blink-effect {
+  50% {
+    opacity: 0;
+  }
+}
+.gameButton {
+  animation: blink-effect 1.5s step-end infinite;
+}
 
 .balloon {
     position: relative;
@@ -253,42 +291,41 @@ progress::before{
 }
 
 .infogroup {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-right:7%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
 }
 .badges {
-    display:flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    width: 50%;
-    height: 50%;
-    /* background-color: white; */
-    position: relative;
-    margin-left:2%;
-    margin-right:2%;
-    padding:5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50%;
+  height: 50%;
+  /* background-color: white; */
+  position: relative;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 5px;
 }
-.badges::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
+.badges::before {
+  content: "";
+  opacity: 0.1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: white;
 }
 .badgeImg_unlocked {
-    width: 90%;
-    height: 100%;
-    margin:5px;
-    position: relative;
-  
+  width: 90%;
+  height: 100%;
+  margin: 5px;
+  position: relative;
 }
 .badgeImg_unlock {
-    width: 22.6%;
+    width: 22.5%;
     height: 40%;
     margin:5px;
     /* padding:2px; */
@@ -340,26 +377,23 @@ progress::before{
     z-index:200;
 }
 
-
 .canvasBadge {
-    margin : 2%;
-    /* background-color: white; */
-    width:16% ;
-    position: relative;
-    height:40%;
+  margin: 2%;
+  /* background-color: white; */
+  width: 16%;
+  position: relative;
+  height: 40%;
 }
-.canvasBadge::before{
-    content:"";
-    opacity:0.3;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black
+.canvasBadge::before {
+  content: "";
+  opacity: 0.3;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: black;
 }
-
-
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -415,107 +449,101 @@ progress::before{
     background:  linear-gradient(black, rgb(5, 5, 67));
 }
 .Rocket {
-    position: relative;
-    width:50px;
-    margin-left:3%;
-    transform: rotate(15deg);
+  position: relative;
+  width: 50px;
+  margin-left: 3%;
+  transform: rotate(15deg);
 }
 .start {
-    width:50px;
-    position: absolute;
-    left: 7%;
-    z-index: 3;
-    margin: 0.5%;
+  width: 50px;
+  position: absolute;
+  left: 7%;
+  z-index: 3;
+  margin: 0.5%;
 }
 .end {
-    width:50px;
-    position : absolute;
-    left: 84%;
-    z-index: 3;
-    margin: 0.5%
+  width: 50px;
+  position: absolute;
+  left: 84%;
+  z-index: 3;
+  margin: 0.5%;
 }
 
-.characterInfo2{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
+.characterInfo2 {
+  font-weight: bold;
+  color: white;
+  size: 115px;
+  text-align: center;
+  margin: 2px;
+  z-index: 4;
 }
 
 progress {
-    -webkit-appearance: none;
-    appearance: none;
-    width:80%;
-    margin-top:2%;
-    margin-left:10%;
-    position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80%;
+  margin-top: 2%;
+  margin-left: 10%;
+  position: relative;
 }
-  
+
 progress::-webkit-progress-bar {
-    background-color: white;
+  background-color: white;
 }
 
 progress::-webkit-progress-value {
-    background-color: green;
+  background-color: green;
 }
-progress::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
+progress::before {
+  content: "";
+  opacity: 0.1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: white;
+  margin: 7%;
 }
-.canvasEarth{
-
-    width:100%;
-    height:1000px;
-    position: relative;
-    z-index: 1;
+.canvasEarth {
+  width: 100%;
+  height: 1000px;
+  position: relative;
+  z-index: 1;
 }
-
-
 
 .info2 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
 
-    display:flex;
-    flex-direction: column;
-    flex-wrap : wrap;
-    width: 100%;
-
-    padding: 120px;
-    position : absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    margin-top: 2%
-    
+  padding: 120px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  margin-top: 2%;
 }
 
-.info2::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
+.info2::before {
+  content: "";
+  opacity: 0.1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: white;
+  margin: 7%;
 }
 
 .infogroup2 {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-right:7%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
 }
-
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -536,84 +564,79 @@ progress::before{
     
     
 }
-.Earth3::before{
-    content:"";
-    opacity:0.8;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
-
+.Earth3::before {
+  content: "";
+  opacity: 0.8;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
 
-.canvasProfile3{
-    width:200px;
-    height:200px;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: rgb(88, 88, 88);
-    position:relative;
-    border : solid;
-    border-color:  rgb(255, 179, 0);
-
-
+.canvasProfile3 {
+  width: 200px;
+  height: 200px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgb(88, 88, 88);
+  position: relative;
+  border: solid;
+  border-color: rgb(255, 179, 0);
 }
 
-.canvasProfile3::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
+.canvasProfile3::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
-.characterInfo3{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
+.characterInfo3 {
+  font-weight: bold;
+  color: white;
+  size: 115px;
+  text-align: center;
+  margin: 2px;
+  z-index: 4;
 }
 
 .info3 {
-
-    display:flex;
-    flex-direction: column;
-    flex-wrap : wrap;
-    width: 100%;
-    /* background-color: blue; */
-    /* background-image: url('/public/galaxy.jpg'); */
-    padding: 120px;
-    position : absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    margin-top: 2%
-    
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  /* background-color: blue; */
+  /* background-image: url('/public/galaxy.jpg'); */
+  padding: 120px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  margin-top: 2%;
 }
 
-.info3::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
+.info3::before {
+  content: "";
+  opacity: 0.1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: white;
+  margin: 7%;
 }
 
 .infogroup3 {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-right:7%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -634,85 +657,79 @@ progress::before{
     right: 30px;
     
 }
-.Earth4::before{
-    content:"";
-    opacity:0.7;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
-
+.Earth4::before {
+  content: "";
+  opacity: 0.7;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
 
-.canvasProfile4{
-    width:200px;
-    height:200px;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: rgb(180, 180, 180);
-    position:relative;
-    border : solid;
-    border-color:  rgb(255, 179, 0);
-
-
+.canvasProfile4 {
+  width: 200px;
+  height: 200px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgb(180, 180, 180);
+  position: relative;
+  border: solid;
+  border-color: rgb(255, 179, 0);
 }
-.canvasProfile4::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
+.canvasProfile4::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
 
-
-.characterInfo4{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
+.characterInfo4 {
+  font-weight: bold;
+  color: white;
+  size: 115px;
+  text-align: center;
+  margin: 2px;
+  z-index: 4;
 }
 
 .info4 {
-
-    display:flex;
-    flex-direction: column;
-    flex-wrap : wrap;
-    width: 100%;
-    /* background-color: blue; */
-    /* background-image: url('/public/galaxy.jpg'); */
-    padding: 120px;
-    position : absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    margin-top: 2%
-    
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  /* background-color: blue; */
+  /* background-image: url('/public/galaxy.jpg'); */
+  padding: 120px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  margin-top: 2%;
 }
 
-.info4::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
+.info4::before {
+  content: "";
+  opacity: 0.1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: white;
+  margin: 7%;
 }
 
 .infogroup4 {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-right:7%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -733,84 +750,80 @@ progress::before{
     right: 30px;
     
 }
-.Earth5::before{
-    content:"";
-    opacity:0.7;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
-
+.Earth5::before {
+  content: "";
+  opacity: 0.7;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
 
-.canvasProfile5{
-    width:200px;
-    height:200px;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: rgb(255, 255, 255);
-    position:relative;
-    border : solid;
-    border-color:  rgb(255, 179, 0);
+.canvasProfile5 {
+  width: 200px;
+  height: 200px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  border: solid;
+  border-color: rgb(255, 179, 0);
 }
 
-.canvasProfile5::before{
-    content:"";
-    opacity:0.9;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:  linear-gradient(black, rgb(5, 5, 67));
+.canvasProfile5::before {
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: linear-gradient(black, rgb(5, 5, 67));
 }
 
-
-.characterInfo5{
-    font-weight: bold;
-    color: white;
-    size: 115px;
-    text-align: center;
-    margin:2px;
-    z-index: 4;
+.characterInfo5 {
+  font-weight: bold;
+  color: white;
+  size: 115px;
+  text-align: center;
+  margin: 2px;
+  z-index: 4;
 }
 
 .info5 {
-
-    display:flex;
-    flex-direction: column;
-    flex-wrap : wrap;
-    width: 100%;
-    /* background-color: blue; */
-    /* background-image: url('/public/galaxy.jpg'); */
-    padding: 120px;
-    position : absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    margin-top: 2%
-    
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  /* background-color: blue; */
+  /* background-image: url('/public/galaxy.jpg'); */
+  padding: 120px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  margin-top: 2%;
 }
 
-.info5::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
+.info5::before {
+  content: "";
+  opacity: 0.1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: white;
+  margin: 7%;
 }
 
 .infogroup5 {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-right:7%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -904,10 +917,10 @@ progress::before{
 }
 
 .infogroup6 {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-right:7%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -1000,10 +1013,10 @@ progress::before{
 }
 
 .infogroup7 {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-right:7%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -1096,10 +1109,10 @@ progress::before{
 }
 
 .infogroup8 {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-right:7%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 7%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
