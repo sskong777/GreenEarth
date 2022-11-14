@@ -71,7 +71,6 @@ import {
 
 const RewardModal = ({ setModalChildOpen, childInfo }) => {
   const [rewardList, setRewardList] = useRecoilState(rewardListState);
-  const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 
   const { rewardListCallback } = useRewardCallback();
 
@@ -92,7 +91,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
       setRewardGoal(parseInt(rewardList[0].rewardCondition));
       setRewardGift(rewardList[0].rewardName);
     }
-  }, rewardList);
+  }, [rewardList]);
 
   return (
     <>
@@ -105,7 +104,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                 {/* 아이 프로필 정보 */}
                 <div className="flex flex-col">
                   <div className="canvasProfileNew">
-                    {memberInfo.avatar === 1 && (
+                    {childInfo.avatar === 1 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -125,7 +124,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 2 && (
+                    {childInfo.avatar === 2 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -145,7 +144,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 3 && (
+                    {childInfo.avatar === 3 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -165,7 +164,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 4 && (
+                    {childInfo.avatar === 4 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -185,7 +184,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 5 && (
+                    {childInfo.avatar === 5 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -205,7 +204,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 6 && (
+                    {childInfo.avatar === 6 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -225,7 +224,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 7 && (
+                    {childInfo.avatar === 7 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -245,7 +244,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 8 && (
+                    {childInfo.avatar === 8 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -265,7 +264,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 9 && (
+                    {childInfo.avatar === 9 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -285,7 +284,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 10 && (
+                    {childInfo.avatar === 10 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -305,7 +304,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 11 && (
+                    {childInfo.avatar === 11 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -325,7 +324,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 12 && (
+                    {childInfo.avatar === 12 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -345,7 +344,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 13 && (
+                    {childInfo.avatar === 13 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -365,7 +364,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 14 && (
+                    {childInfo.avatar === 14 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -385,7 +384,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 15 && (
+                    {childInfo.avatar === 15 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -405,7 +404,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 16 && (
+                    {childInfo.avatar === 16 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -425,7 +424,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 17 && (
+                    {childInfo.avatar === 17 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -445,7 +444,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 18 && (
+                    {childInfo.avatar === 18 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -465,7 +464,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 19 && (
+                    {childInfo.avatar === 19 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -485,7 +484,7 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                         </Suspense>
                       </Canvas>
                     )}
-                    {memberInfo.avatar === 20 && (
+                    {childInfo.avatar === 20 && (
                       <Canvas id="person">
                         <Suspense fallback={null}>
                           <ambientLight />
@@ -519,9 +518,11 @@ const RewardModal = ({ setModalChildOpen, childInfo }) => {
                   {/* 보상정보가 있다면 보상 관련 안내 */}
                   {rewardInfo ? (
                     <div className="text-2xl text-darkBrown mt-6">
-                      <div>총 {rewardGoal}개의 미션을 달성하면,</div>
+                      <div>
+                        총 {rewardInfo.rewardCondition}개의 미션을 달성하면,
+                      </div>
                       <div className="text-center mt-2">
-                        보상으로 {rewardGift}이(가) 제공 됩니다.
+                        보상으로 {rewardInfo.rewardName}이(가) 제공 됩니다.
                       </div>
                     </div>
                   ) : (

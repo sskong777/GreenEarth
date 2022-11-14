@@ -10,7 +10,7 @@ body {
 
 @media (min-width: 1180px) {
   .App {
-    width: 1270px;
+    width: 1170px;
   }
 }
 
@@ -20,13 +20,13 @@ body {
   }
 }
 
-@media (min-height: 720px) {
+@media (min-height: 820px) {
   .App {
-    height: 710px;
+    height: 810px;
   }
 }
 
-@media (max-height: 720px) {
+@media (max-height: 820px) {
   .App {
     height: 98vh;
   }
@@ -38,7 +38,7 @@ body {
   border-radius: 5px;
 }
 
-.App {
+/* .App {
   padding-left: 20px;
   padding-right: 20px;
-}
+} */
