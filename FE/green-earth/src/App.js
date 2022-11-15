@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import WelcomePage from "./pages/WelcomePage";
 import LogInPage from "./pages/LogInPage";
@@ -30,9 +30,10 @@ const App = () => {
           <Route path="/game" element={<GamePage />} />
           <Route path="/game/picture" element={<GamePicturePage />} />
           <Route path="/game/recycle" element={<GameRecyclePage />} />
-
           <Route path="/oauth/redirect" element={<OauthRedirectPage />} />
-          <Route path="/mission" element={<MissionInfoPage />} />
+          <Route path="/mission/:missionId" element={<MissionInfoPage />} />
+          {/* 404 리다이렉트 */}
+          <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
       </div>
     </BrowserRouter>

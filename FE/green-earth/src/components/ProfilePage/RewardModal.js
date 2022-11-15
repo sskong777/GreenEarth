@@ -1,9 +1,71 @@
 import { useState, useEffect } from "react";
 
 import { useRecoilState } from "recoil";
-import { rewardListState } from "../../store/atoms";
+import { rewardListState, memberInfoState } from "../../store/atoms";
 
 import { useRewardCallback } from "./../../functions/useRewardCallback";
+
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
+import { OrbitControls } from "@react-three/drei";
+
+import {
+  Child1,
+  Child2,
+  Child3,
+  Child4,
+  Child5,
+  Child6,
+  Child7,
+  Child8,
+  Child9,
+  Child10,
+  Child11,
+  Child12,
+  Child13,
+  Child14,
+  Child15,
+  Child16,
+  Child17,
+  Child18,
+  Child19,
+  Child20,
+  Child21,
+  Child22,
+  Child23,
+  Child24,
+  Child25,
+  Child26,
+  Child27,
+  Child28,
+  Child29,
+  Child30,
+  Child31,
+  Child32,
+  Child33,
+  Child34,
+  Child35,
+  Child36,
+  Child37,
+  Child38,
+  Child39,
+  Child40,
+  Child41,
+  Child42,
+  Child43,
+  Child44,
+  Child45,
+  Child46,
+  Child47,
+  Child48,
+  Child49,
+  Child50,
+  Child51,
+  Child52,
+  Child53,
+  Child54,
+  Child55,
+} from "./../../Model.js/Child";
 
 const RewardModal = ({ setModalOpen, childInfo }) => {
   const [rewardList, setRewardList] = useRecoilState(rewardListState);
@@ -32,7 +94,7 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
       setRewardGoal(parseInt(rewardList[0].rewardCondition));
       setRewardGift(rewardList[0].rewardName);
     }
-  }, []);
+  }, [rewardList]);
 
   // 목표 보상갯수 설정 함수
   const handleClickRewardGoal = (e) => {
@@ -61,7 +123,7 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
   const handleClickRewardEdit = () => {
     if (window.confirm("보상을 수정하시겠습니까?")) {
       rewardEditCallback(
-        rewardList[0].rewardId,
+        rewardList[0].id,
         rewardGift,
         rewardGoal,
         childInfo.childId
@@ -73,7 +135,7 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
   // 보상 지급 완료 함수
   const handleClickRewardPay = () => {
     if (window.confirm("보상을 지급하시겠습니까?")) {
-      rewardPayCallback(rewardList[0].rewardId);
+      rewardPayCallback(rewardList[0].id);
       setModalOpen(false);
     }
   };
@@ -87,8 +149,407 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
               <div className="ReawardModalTitle">보상 설정</div>
               <div className="ReawardModalHeader">
                 <div className="flex flex-col">
-                  <div className="ChildImage">
-                    <img src="./../assets/images/girl1.svg" />
+                  <div className="canvasProfileNew">
+                    {childInfo.avatar === 1 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child1 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 2 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child2 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 3 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child3 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 4 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child4 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 5 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child5 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 6 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child6 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 7 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child7 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 8 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child8 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 9 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child9 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 10 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child10 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 11 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child30 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 12 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child31 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 13 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child32 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 14 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child33 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 15 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child34 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 16 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child35 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 17 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child36 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 18 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child37 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 19 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child38 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
+                    {childInfo.avatar === 20 && (
+                      <Canvas id="person">
+                        <Suspense fallback={null}>
+                          <ambientLight />
+                          <spotLight
+                            intensity={5}
+                            angle={0.1}
+                            penumbra={5}
+                            position={[500, 500, 500]}
+                            castShadow
+                          />
+                          <Child39 />
+                          <OrbitControls
+                            enablePan={false}
+                            enableZoom={false}
+                            enableRotate={false}
+                          />
+                        </Suspense>
+                      </Canvas>
+                    )}
                   </div>
                   <div className="text-center text-xl text-blackBrown">
                     Lv.{childInfo.earthLevel} {childInfo.realName}
@@ -102,9 +563,11 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
                   {/* 보상 정보가 있다면 보상 정보 안내 */}
                   {rewardInfo ? (
                     <div className="text-2xl text-darkBrown mt-6">
-                      <div>총 {rewardGoal}개의 미션을 달성하면,</div>
+                      <div>
+                        총 {rewardInfo.rewardCondition}개의 미션을 달성하면,
+                      </div>
                       <div className="text-center mt-2">
-                        보상으로 {rewardGift}이(가) 제공 됩니다.
+                        보상으로 {rewardInfo.rewardName}이(가) 제공 됩니다.
                       </div>
                     </div>
                   ) : (

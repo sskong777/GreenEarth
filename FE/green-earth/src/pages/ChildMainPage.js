@@ -1,5 +1,5 @@
 
-import "../style/ChildMain.css";
+import "../style/ChildMainPage/ChildMain.css";
 
 
 
@@ -14,14 +14,35 @@ import {Earth7} from "../components/ChildMainPage/Earth7"
 import {Earth8} from "../components/ChildMainPage/Earth8"
 
 
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { memberInfoState, childInfoState } from "../store/atoms";
+import { useAuthCallback } from "./../functions/useAuthCallback";
+
 function ChildMainPage() {
   
+    const navigate = useNavigate();
 
-  const level = 8
-  
+    // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
+    const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 
 
-  if (level ===1 ){
+    // 회원정보, 아이정보 Axios 요청
+    const { memberInfoCallback } = useAuthCallback();
+
+    const { logoutcallback } = useAuthCallback();
+
+    // 페이지에 접근하면 해당 아이정보 Axios 요청
+    useEffect(() => {
+      memberInfoCallback();
+      console.log(memberInfo)
+      }, []);
+
+
+
+
+  if (memberInfo.isParent === false && memberInfo.earthLevel ===1 ){
     
   return (
     <div>
@@ -29,47 +50,47 @@ function ChildMainPage() {
     </div>
     
   );} 
-  else if (level === 2) {
+  else if (memberInfo.isParent === false &&  memberInfo.earthLevel === 2) {
     return (
     <div>
       <Earth2 />
     </div>
   
   );}
-  else if (level === 3) {
+  else if ( memberInfo.isParent === false && memberInfo.earthLevel === 3) {
     return (
     <div>
       <Earth3 />
     </div>
       
   );}
-  else if (level === 4) {
+  else if (memberInfo.isParent === false &&  memberInfo.earthLevel === 4) {
       return (
       <div>
         <Earth4 />
       </div>
       
   );}
-  else if (level === 5) {
+  else if (memberInfo.isParent === false &&  memberInfo.earthLevel === 5) {
   return (
       <div>
         <Earth5 />
       </div>
       
 ); }
-  else if (level === 6) {
+  else if (memberInfo.isParent === false &&  memberInfo.earthLevel === 6) {
   return (
       <div>
         <Earth6 />
       </div>
   );}
-  else if (level === 7) {
+  else if (memberInfo.isParent === false &&  memberInfo.earthLevel === 7) {
   return (
     <div>
       <Earth7 />
     </div>
   );}
-  else if (level === 8) {
+  else if (memberInfo.isParent === false && memberInfo.earthLevel === 8) {
       return (
     <div>
       <Earth8 />
