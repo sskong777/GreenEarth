@@ -1,5 +1,7 @@
 
-import "../../style/ChildMain.css";
+
+import "../../style/ChildMainPage/ChildMain.css";
+
 
 import { Link } from "react-router-dom";
 
@@ -15,7 +17,7 @@ import {useEffect, useState} from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { memberInfoState, childInfoState } from "../../store/atoms";
+import { memberInfoState } from "../../store/atoms";
 import { useAuthCallback } from "./../../functions/useAuthCallback";
 
 import {Child1, Child2, Child3, Child4, Child5, Child6, Child7, Child8, Child9, Child10, 
@@ -25,33 +27,36 @@ import {Child1, Child2, Child3, Child4, Child5, Child6, Child7, Child8, Child9, 
   Child41, Child42, Child43, Child44, Child45, Child46, Child47, Child48, Child49, Child50,
   Child51, Child52, Child53, Child54, Child55} from "../../Model.js/Child"
 
-import {Model9, Model10, Model11, Model12, Model13, Model14, Model15, Model16, Model17, Model18, Model19
-, Model90, Model100, Model110, Model120, Model130, Model140, Model150, Model160, Model170, Model180, Model190, Model20} from "../../Model.js/Badge"
 
 import { Model0, Model00} from "../../Model.js/Space"
 
 
+
 function Earth1() {
-    // URL을 통해 childId 획득
-    const { childId } = useParams();
+    const navigate = useNavigate();
+    
 
     // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
-    const [childInfo, setChildInfo] = useRecoilState(childInfoState);
     const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 
     // 회원정보, 아이정보 Axios 요청
-    const { memberInfoCallback, childInfoCallback } = useAuthCallback();
+    const { memberInfoCallback} = useAuthCallback();
+
+    const handleClickChildProfile = () => {
+        navigate(`/profile/${memberInfo.childId}`);
+      };
+
+
 
     // 프로필 페이지에 접근하면 해당 아이정보 Axios 요청
     useEffect(() => {
     memberInfoCallback();
-    childInfoCallback(childId);
+    console.log(memberInfo)
     }, []);
     
     const level = 1
-    const value = level*13.7
-    const mileage = level*122+12
-    const nickname = '어린왕자'
+    const value = level*14
+    const mileage = level*121+12
 
 
 
@@ -74,17 +79,172 @@ function Earth1() {
      
         <div className= "info"  >
             <div className= "infogroup">
-                <div className = "canvasProfile">
-                    <Canvas   id="person" >
+                <div className = "canvasProfile" onClick={handleClickChildProfile}>
+                    {memberInfo.avatar === 1 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child1 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 2 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child2 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 3 && <Canvas id="person" >
                     <Suspense fallback={null}>
                         <ambientLight />
                         <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
                         <Child3 />
                         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
                     </Suspense> 
-                    </Canvas>
+                    </Canvas>}
+                    {memberInfo.avatar === 4 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child4 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 5 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child5 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 6 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child6 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 7 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child7 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 8 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child8 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 9 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child15 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 10 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child10 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 11 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child30 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 12 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child31 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 13 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child32 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 14 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child33 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 15 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child34 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 16 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child35 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 17 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child36 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 18 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child37 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 19 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child38 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+                    {memberInfo.avatar === 20 && <Canvas id="person" >
+                    <Suspense fallback={null}>
+                        <ambientLight />
+                        <spotLight intensity={5} angle={0.1} penumbra={5} position={[500,500,500]} castShadow />
+                        <Child39 />
+                        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}  />
+                    </Suspense> 
+                    </Canvas>}
+            
+              
+                
                     <div className='characterInfo'>
-                        <div >Lv.{level}   {nickname} </div>
+                        <div >Lv.{memberInfo.earthLevel}   {memberInfo.realName} </div>
                         {/* <div >Lv.{childInfo.earthLevel} {childInfo.realName} </div> */}
                     </div>
                 </div>
@@ -140,18 +300,18 @@ function Earth1() {
             
                 <div className= "Mission">
                     <Mission />
-                    <div className="balloon">
-                        지구를 구하러가자
-                    </div>
+     
                     <div >
                     
                 </div>
                 </div>
             </div>    
         </div>
-        <Link to="game">
+        <Link to="/game">
         <div className = "canvasAstronaut">
-
+            <div className="balloon">
+                지구를 구하러가자
+            </div>
             <Canvas id="astronaut" >
                 <Suspense fallback={null}>
                 <ambientLight />

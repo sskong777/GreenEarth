@@ -8,13 +8,13 @@ body {
   font-family: "BinggraeBold", "Arial", "sans-serif";
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1180px) {
   .App {
-    width: 1270px;
+    width: 1170px;
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1180px) {
   .App {
     width: 98vw;
   }
@@ -34,11 +34,11 @@ body {
 
 #root {
   background: linear-gradient(#1d3a72, #076fa6);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(151, 153, 83, 0.2) 0px 14px 39px 0px;
   border-radius: 5px;
 }
 
-.App {
+/* .App {
   padding-left: 20px;
   padding-right: 20px;
-}
+} */

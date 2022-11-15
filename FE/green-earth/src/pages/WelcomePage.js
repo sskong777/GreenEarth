@@ -21,8 +21,6 @@ const WelcomePage = () => {
       {!description && <WelcomeDefault setDescription={setDescription} />}
       {/* 지구를 살리는 방법 설명 컴포넌트 */}
       {description && <WelcomeDescription />}
-      {/* 로그아웃 버튼(임시) */}
-      <button onClick={logoutcallback}>로그아웃임시</button>
     </div>
   );
 };
