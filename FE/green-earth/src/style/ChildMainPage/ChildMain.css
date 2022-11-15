@@ -201,7 +201,6 @@ progress::before {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-right: 5%;
 }
 .badges {
   display: flex;
