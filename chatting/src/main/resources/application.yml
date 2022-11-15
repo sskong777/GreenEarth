@@ -1,0 +1,40 @@
+server:
+  port: 8081
+
+spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/je_chatting?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    username: admin
+#    password: ad1212min
+
+#  jpa:
+#    defer-datasource-initialization: true
+#    hibernate:
+#      ddl-auto: create
+#      naming:
+#        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+#      use-new-id-generator-mappings: false
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        show_sql: true
+#        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#    open-in-view: false
+#    generate-ddl: false
+#    database: mysql
+
+  # Kafka 통신 설정
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: testGroup1
+    template:
+      default-topic: testTopic
+
+logging:
+  level:
+    root: info
+    org.hibernate.sql: debug
