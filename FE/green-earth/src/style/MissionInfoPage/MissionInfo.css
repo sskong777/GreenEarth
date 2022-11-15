@@ -9,7 +9,7 @@
   @apply h-full w-252 mx-auto;
 }
 .MissionTitle {
-  @apply h-[5.5rem] flex flex-col  justify-center items-center  mt-4 border-4 border-black bg-light text-[#05173d] rounded-md text-4xl;
+  @apply h-[5rem] flex flex-col  justify-center items-center mt-1 border-4 border-black bg-light text-[#05173d] rounded-md text-4xl;
 }
 
 .Info {
@@ -17,7 +17,7 @@
 }
 
 .MissionImage {
-  @apply flex justify-evenly my-4 h-1/4 space-x-6;
+  @apply flex justify-evenly my-2 h-1/4 space-x-6;
 }
 
 .MissionImage1 {
@@ -32,7 +32,7 @@
 }
 
 .Select {
-  @apply flex justify-center mt-4;
+  @apply flex justify-center mt-3;
 }
 
 .Select1 {

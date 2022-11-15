@@ -26,6 +26,7 @@
   position: relative;
   border: solid;
   border-color: rgb(255, 179, 0);
+  border-radius: 10px;
 }
 
 .canvasProfile::before {
@@ -37,6 +38,7 @@
   right: 0px;
   bottom: 0px;
   background: linear-gradient(black, rgb(5, 5, 67));
+  border-radius: 10px;
 }
 
 .Rocket {
@@ -65,8 +67,9 @@
   color: white;
   size: 115px;
   text-align: center;
-  margin: 2px;
+  margin: 10px;
   z-index: 4;
+  font-size: 18px;
 }
 
 progress {
@@ -166,7 +169,6 @@ progress::before {
   animation-duration: 4s;
 }
 
-
 .info {
   display: flex;
   flex-direction: column;
@@ -192,13 +194,13 @@ progress::before {
   bottom: 0px;
   background-color: white;
   margin: 7%;
+  border-radius: 10px;
 }
 
 .infogroup {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-right: 5%;
 }
 .badges {
   display: flex;
@@ -221,6 +223,7 @@ progress::before {
   right: 0px;
   bottom: 0px;
   background-color: white;
+  border-radius: 5px;
 }
 .badgeImg_unlocked {
   width: 90%;
@@ -244,6 +247,7 @@ progress::before {
   right: 0px;
   bottom: 0px;
   background-color: black;
+  border-radius: 5px;
 }
 .badgeImage {
   height: 100%;
@@ -267,6 +271,7 @@ progress::before {
   bottom: 0px;
   background-color: black;
   z-index: 20;
+  border-radius: 5px;
 }
 
 .lockImg {

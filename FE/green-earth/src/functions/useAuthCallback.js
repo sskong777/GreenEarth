@@ -56,18 +56,14 @@ export const useAuthCallback = () => {
         withCredentials: true,
       },
     })
-
-
-      .then( async (response) => {
-
-
+      .then(async (response) => {
         if (response.data) {
           console.log(response.data);
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
           // memberInfoCallback();
-          navigate("/parent" );
+          navigate("/parent");
         }
       })
       .catch((error) => {
