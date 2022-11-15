@@ -49,7 +49,7 @@
     text-align: center;
 
 }
-.Mission h1{
+.Mission1 h1{
     color: rgb(53, 53, 232);
     text-align: center;
     width:100%;
@@ -74,4 +74,12 @@
     justify-content: center;
     text-align: center;
     text-decoration:line-through;
+}
+
+.Mission3 h1{
+    color: white;
+    margin-top:10px;
+    background-color: rgb(12, 12, 13);
+    height:60px;
+    line-height: 60px;
 }
