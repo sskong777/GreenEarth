@@ -1,92 +1,88 @@
-.childNickName{
+.childNickName {
   color: white;
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: -10px;
 }
-
 
 .peoplelist {
-
-    display:flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    width: 100%;
-    /* background-color: blue; */
-    /* background-image: url('/public/galaxy.jpg'); */
-    padding: 100px;
-    position : absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    /* margin-top: 2%; */
-    justify-content: center;
-    
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  /* background-color: blue; */
+  /* background-image: url('/public/galaxy.jpg'); */
+  padding: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  /* margin-top: 2%; */
+  justify-content: center;
 }
 
-.peoplelist::before{
-    content:"";
-    opacity:0.1;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: white;
-    margin:7%;
+.peoplelist::before {
+  content: "";
+  opacity: 0.1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: white;
+  margin: 7%;
+  border-radius: 10px;
 }
 .people {
-    display:flex;
-    flex-direction: row;
-    flex-wrap : wrap;
-    width: 100%;
-   
-    position: relative;
-    margin-left:2%;
-    margin-right:2%;
-    justify-content: space-evenly;
-}
-.people::before{
-    content:"";
-    opacity:0.2;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black;
-}
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 
+  position: relative;
+  margin-left: 2%;
+  margin-right: 2%;
+  justify-content: space-between;
+}
+/* .people::before {
+  content: "";
+  opacity: 0.2;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: black;
+  border-radius: 10px;
+} */
 
 .canvasPerson {
-    margin : 2%;
-    width:150px;
-    height: 18  0px;
-    position: relative;
-
+  margin: 2%;
+  width: 150px;
+  height: 18 0px;
+  position: relative;
 }
 
 .PersonCard {
-  margin:10px;
- 
-
+  margin: 10px;
 }
 
-.canvasPerson::before{
-    content:"";
-    opacity:0.5;
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background-color: black;
+.canvasPerson::before {
+  content: "";
+  opacity: 0.5;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: black;
+  border-radius: 10px;
 }
 
-  /* .Earth {
+/* .Earth {
     position: relative;
   } */
-  /* .canvasEarth {
+/* .canvasEarth {
     position: absolute;
     left:450px;
   } */
-  
-  
