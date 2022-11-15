@@ -1,6 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
+import ReactHowler from "react-howler";
+
 import WelcomePage from "./pages/WelcomePage";
 import LogInPage from "./pages/LogInPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -36,6 +38,12 @@ const App = () => {
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
       </div>
+      {/* 내가Green지구 BGM */}
+      <ReactHowler
+        src="assets/sounds/toypiano.mp3"
+        playing={true}
+        loop={true}
+      />
     </BrowserRouter>
   );
 };
