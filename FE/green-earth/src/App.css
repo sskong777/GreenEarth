@@ -20,13 +20,13 @@ body {
   }
 }
 
-@media (min-height: 820px) {
+@media (min-height: 720px) {
   .App {
-    height: 810px;
+    height: 710px;
   }
 }
 
-@media (max-height: 820px) {
+@media (max-height: 720px) {
   .App {
     height: 98vh;
   }
@@ -34,7 +34,7 @@ body {
 
 #root {
   background: linear-gradient(#1d3a72, #076fa6);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(151, 153, 83, 0.2) 0px 14px 39px 0px;
   border-radius: 5px;
 }
 
