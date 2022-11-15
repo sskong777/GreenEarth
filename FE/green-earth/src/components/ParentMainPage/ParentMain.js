@@ -81,6 +81,7 @@ function ParentMain(props) {
     <div>
     <div className='Earth2' >
         <h1>
+        hi
         </h1>
   
         <div className= "peoplelist"  >
@@ -1073,7 +1074,7 @@ function ParentMain(props) {
             
         </div>
         
-        <div className = "canvasEarth" onClick={logoutcallback}>
+        {/* <div className = "canvasEarth" onClick={logoutcallback}>
             <Canvas id="person" >
                 <Suspense fallback={null}>
                 <ambientLight />
@@ -1082,7 +1083,7 @@ function ParentMain(props) {
                 <OrbitControls enablePan={true} enableZoom={true} rotateSpeed = {0.2} enableRotate={true} />
                 </Suspense> 
             </Canvas>
-        </div>
+        </div> */}
       
     </div>
     </div>
