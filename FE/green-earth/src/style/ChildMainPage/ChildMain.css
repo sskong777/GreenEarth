@@ -229,8 +229,8 @@ progress::before {
   position: relative;
 }
 .badgeImg_unlock {
-  width: 22.3%;
-  height: 40%;
+  width: 22.1%;
+  height: 39%;
   margin: 5px;
   padding: 5px;
   position: relative;
@@ -251,8 +251,8 @@ progress::before {
 }
 
 .badgeImg {
-  width: 22.3%;
-  height: 40%;
+  width: 22.1%;
+  height: 39%;
   margin: 5px;
   padding: 5px;
   position: relative;
