@@ -9,7 +9,7 @@ const RecycleSuccessModal = ({ setnowPage, setLife, setLifeCount }) => {
   const handleClickCardsPairingButton = (e) => {
     setnowPage("main");
     setLife(3);
-    setLifeCount("/assets/games/game/heart_full.png");
+    setLifeCount("/assets/games/gameRecycle/heart_full.png");
   };
 
   // 게임 홈화면 이동 버튼
