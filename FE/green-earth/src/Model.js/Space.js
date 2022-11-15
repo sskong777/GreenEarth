@@ -2808,7 +2808,7 @@ function EarthLv8(props) {
    });
    }, []);
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} dispose={null} >
       <group name="Scene"position={[-0.1, -0.15, -0.5]} rotation={[Math.PI / 0.1, 1.7, -0.2]} scale={1.7}>
       <group name="Planet" position={[0.03, 0.07, -0.04]} rotation={[Math.PI / 2, 0, -0.27]} scale={0.01}>
       <group name="Bushes" position={[-59.56, 45.9, -11.47]}>
