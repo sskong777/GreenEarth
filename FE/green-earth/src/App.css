@@ -6,6 +6,7 @@ body {
   min-height: 100vh;
   margin: 0px;
   font-family: "BinggraeBold", "Arial", "sans-serif";
+  overscroll-behavior-y: none;
 }
 
 @media (min-width: 1180px) {
