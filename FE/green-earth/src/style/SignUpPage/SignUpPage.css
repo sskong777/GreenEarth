@@ -5,9 +5,9 @@
 /* SignUpPage */
 
 .SignUpPage {
-  @apply flex flex-col justify-center items-center space-y-5;
+  @apply w-full h-full flex justify-between items-start;
 }
 
-.LogoImage {
-  @apply w-2/3;
+.SignUpPageHeader {
+  @apply text-lightGray text-2xl font-semibold ml-16;
 }

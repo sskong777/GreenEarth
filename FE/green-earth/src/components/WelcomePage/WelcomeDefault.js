@@ -39,7 +39,7 @@ const WelcomeDefault = (props) => {
           </div>
 
           {/* 로그인으로 이동 */}
-          <div className="WelcomeButton mb-10">
+          <div className="WelcomeButton mb-16">
             <button onClick={() => navigate("/login")} className="BtnSkip">
               SKIP
             </button>

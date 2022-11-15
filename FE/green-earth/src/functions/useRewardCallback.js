@@ -46,6 +46,7 @@ export const useRewardCallback = () => {
         if (response.data) {
           console.log("보상이 등록 되었습니다.");
           console.log("reward :", response.data);
+          setRewardList(response.data);
         }
       })
       .catch((error) => {
@@ -65,13 +66,14 @@ export const useRewardCallback = () => {
       .put(`/reward/${rewardId}`, {
         rewardId: rewardId,
         rewardName: rewardName,
-        rewardCondition: rewardCondition,
+        rewardCondition: parseInt(rewardCondition),
         childId: childId,
       })
       .then((response) => {
         if (response.data) {
           console.log("보상이 수정 되었습니다.");
           console.log("reward :", response.data);
+          setRewardList(response.data);
         }
       })
       .catch((error) => {
@@ -87,6 +89,7 @@ export const useRewardCallback = () => {
         if (response.data) {
           console.log("보상이 지급되었습니다.");
           console.log("reward :", response.data);
+          setRewardList(response.data);
         }
       })
       .catch((error) => {

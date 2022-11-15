@@ -3,6 +3,7 @@ import {
   missionListState,
   todayMissionListState,
   missionOptionListState,
+  missionInfoState,
 } from "./../store/atoms";
 import { useNavigate } from "react-router-dom";
 
@@ -20,6 +21,7 @@ export const useMissionCallback = () => {
   const [todayMissionList, setTodayMissionList] = useRecoilState(
     todayMissionListState
   );
+  const [missionInfo, setMissionInfo] = useRecoilState(missionInfoState);
 
   // 전체 미션 콜백 함수
   const missionListCallback = async (childId) => {
@@ -79,6 +81,7 @@ export const useMissionCallback = () => {
         if (response.data) {
           console.log("미션 정보가 등록되었습니다.");
           console.log("mission :", response.data);
+          navigate(0);
         }
       })
       .catch((error) => {
@@ -87,15 +90,16 @@ export const useMissionCallback = () => {
   };
 
   // 미션 수정 콜백 함수
-  const editMissionCallback = async (childId, missionId) => {
+  const editMissionCallback = async (logId, missionId) => {
     api
-      .put(`/mission/log/${childId}`, {
+      .put(`/mission/log/${logId}`, {
         missionId: missionId,
       })
       .then((response) => {
         if (response.data) {
           console.log("미션 정보가 수정되었습니다.");
           console.log("mission :", response.data);
+          navigate(0);
         }
       })
       .catch((error) => {
@@ -111,6 +115,7 @@ export const useMissionCallback = () => {
         if (response.data) {
           console.log("미션이 승인되었습니다.");
           console.log("mission :", response.data);
+          navigate(0);
         }
       })
       .catch((error) => {
@@ -126,6 +131,7 @@ export const useMissionCallback = () => {
         if (response.data) {
           console.log("미션이 거절되었습니다.");
           console.log("mission :", response.data);
+          navigate(0);
         }
       })
       .catch((error) => {
@@ -139,8 +145,25 @@ export const useMissionCallback = () => {
       .put(`/mission/log/${logId}/clear`)
       .then((response) => {
         if (response.data) {
+          navigate("/child");
           console.log("미션 승인 요청이 전송되었습니다.");
           console.log("mission :", response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
+
+  //  미션 정보 콜백 함수
+  const missionInfoCallback = async (missionId) => {
+    api
+      .get(`/mission/${missionId}`)
+      .then((response) => {
+        if (response.data) {
+          setMissionInfo(response.data);
+          console.log("미션 정보가 조회되었습니다.");
+          console.log("MissionInfo :", response.data);
         }
       })
       .catch((error) => {
@@ -157,5 +180,6 @@ export const useMissionCallback = () => {
     permitMissionCallback,
     rejectMissionCallback,
     clearMissionCallback,
+    missionInfoCallback,
   };
 };

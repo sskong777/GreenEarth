@@ -10,6 +10,7 @@ import { memberInfoState, childInfoState } from "../store/atoms";
 
 export const useAuthCallback = () => {
   const navigate = useNavigate();
+
   const baseURL = "https://내가그린지구.com/api";
   // const baseURL = "http://localhost:8881/api";
 
@@ -33,6 +34,7 @@ export const useAuthCallback = () => {
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
+          memberInfoCallback();
           navigate("/child");
         }
       })
@@ -54,14 +56,18 @@ export const useAuthCallback = () => {
         withCredentials: true,
       },
     })
-      .then((response) => {
+
+
+      .then( async (response) => {
+
+
         if (response.data) {
           console.log(response.data);
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
           // memberInfoCallback();
-          navigate("/parent");
+          navigate("/parent" );
         }
       })
       .catch((error) => {
@@ -69,14 +75,8 @@ export const useAuthCallback = () => {
       });
   };
 
-  const signUpCallback = (
-    nickname,
-    password,
-    realName,
-    gender,
-    birthday,
-    avatar
-  ) => {
+  const signUpCallback = (nickname, password, realName, gender, birthday) => {
+    console.log(nickname, password, realName, gender, birthday);
     api
       .post(`/member/signup`, {
         nickname: nickname,
@@ -84,7 +84,6 @@ export const useAuthCallback = () => {
         realName: realName,
         gender: gender,
         birthday: birthday,
-        avatar: avatar,
       })
       .then((response) => {
         if (response.data) {
@@ -147,6 +146,24 @@ export const useAuthCallback = () => {
       });
   };
 
+  // 회원 수정 콜백 함수
+  const accountEditCallback = async (childId, nickname) => {
+    api
+      .put(`/member/child/${childId}`, {
+        nickname: nickname,
+      })
+      .then((response) => {
+        if (response.data) {
+          setChildInfo(response.data);
+          console.log("아이 정보가 수정되었습니다.");
+          console.log("childInfo :", response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  };
+
   return {
     loginCallback,
     logoutcallback,
@@ -155,5 +172,6 @@ export const useAuthCallback = () => {
     nickNameCheckCallback,
     memberInfoCallback,
     childInfoCallback,
+    accountEditCallback,
   };
 };
