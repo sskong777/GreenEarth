@@ -97,7 +97,7 @@ function ParentMain(props) {
   // 회원정보, 아이정보 Axios 요청
   const { memberInfoCallback } = useAuthCallback();
 
-  // 로그아웃 버튼(임시)
+  // 로그아웃 버튼
   const { logoutcallback } = useAuthCallback();
 
   // 아이 회원 프로필 페이지 이동 함수
@@ -125,6 +125,17 @@ function ParentMain(props) {
   return (
     <div>
       <div className="Earth2">
+        <div className="GamePageHeader px-16 pt-3">
+          {/* 내가 Green 지구 로고 */}
+          <img
+            src={"assets/images/new_logo_main.svg"}
+            className="w-64 cursor-pointer"
+            onClick={() => navigate("/child")}
+          />
+          <button className="ParentMainLogoutButton" onClick={logoutcallback}>
+            로그아웃
+          </button>
+        </div>
         <div className="peoplelist">
           <div className="people">
             {props.data.childList["0"] && (
@@ -2380,7 +2391,7 @@ function ParentMain(props) {
           </div>
         </div>
 
-        <div className="canvasEarth" onClick={logoutcallback}>
+        <div className="canvasEarth">
           <Canvas id="person">
             <Suspense fallback={null}>
               <ambientLight />
