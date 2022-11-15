@@ -51,7 +51,7 @@ function Earth6() {
     }, []);
     const level = 6
     const value = level*14
-    const mileage = level*121+12
+    const mileage = level*119+12
 
 
   return (
