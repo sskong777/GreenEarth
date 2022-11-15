@@ -5,9 +5,9 @@
 /* LogInPage */
 
 .LogInPage {
-  @apply flex flex-col justify-center items-center;
+  @apply w-full h-full flex justify-around items-start;
 }
 
-.LogoImage {
-  @apply w-2/3;
+.LogInPageHeader {
+  @apply text-light text-3xl font-semibold;
 }
