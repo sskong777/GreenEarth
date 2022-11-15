@@ -58,6 +58,7 @@ const TodayMissionComponent = () => {
                 <div className='mission3'  onClick = {handleClickMissionInfo3}>
                     {todayMissionList[2] && !todayMissionList[2]['clearedAt'] && <h1>{todayMissionList[2].mission.name}</h1> }
                 </div>
+                
             </div> 
             <div className='Mission2'>
                 <div className='mission1' onclick = {handleClickMissionInfo1}>
@@ -69,7 +70,11 @@ const TodayMissionComponent = () => {
                 <div className='mission3'onclick = {handleClickMissionInfo3}>
                     {todayMissionList[2] && todayMissionList[2]['clearedAt'] && <h1>{todayMissionList[2].mission.name}</h1> }
                 </div>
+                
             </div> 
+            <div className='Mission3'  >
+                {todayMissionList.length === 0 && <h1>오늘의 임무가 없습니다</h1> }
+            </div>
 
         </div>
     );
