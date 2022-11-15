@@ -21,7 +21,7 @@ export const GameRecycle = () => {
   const [life, setLife] = useState(3);
   // 생명 이미지
   const [lifeCount, setLifeCount] = useState(
-    "/assets/games/game/heart_full.png"
+    "/assets/games/gameRecycle/heart_full.png"
   );
 
   //캔버스 관련 변수
@@ -35,65 +35,49 @@ export const GameRecycle = () => {
 
   //타이틀 버튼 구현
   const [buttonSrc, setButtonSrc] = useState(
-    "/assets/games/main/startButton.png"
+    "/assets/games/gameRecycle/main/startButton.png"
   );
 
   //아이템들 정보
   const [items, setitems] = useState([
     {
-      name: "파스퇴르",
+      name: "can",
       current: [0, 0], //현재좌표
-      loc1: [50, 40], //좌측 상단 모서리 좌표
-      loc2: [125, 250], //우측 하단 모서리 좌표
+      loc1: [40, 105], //좌측 상단 모서리 좌표
+      loc2: [170, 200], //우측 하단 모서리 좌표
       answer: 0,
       success: false,
     },
     {
-      name: "아이시스",
+      name: "label_bottle",
       current: [0, 0], //현재좌표
-      loc1: [165, 80], //좌측 상단 모서리 좌표
-      loc2: [220, 270], //우측 하단 모서리 좌표
-      answer: 0,
-      success: false,
-    },
-    {
-      name: "떡볶이",
-      current: [0, 0], //현재좌표
-      loc1: [270, 120], //좌측 상단 모서리 좌표
-      loc2: [425, 255], //우측 하단 모서리 좌표
+      loc1: [245, 40], //좌측 상단 모서리 좌표
+      loc2: [300, 205], //우측 하단 모서리 좌표
       answer: 1,
       success: false,
     },
     {
-      name: "자일리톨",
+      name: "pill",
       current: [0, 0], //현재좌표
-      loc1: [485, 20], //좌측 상단 모서리 좌표
-      loc2: [560, 145], //우측 하단 모서리 좌표
-      answer: 0,
-      success: false,
-    },
-    {
-      name: "자껍",
-      current: [0, 0], //현재좌표
-      loc1: [610, 40], //좌측 상단 모서리 좌표
-      loc2: [715, 125], //우측 하단 모서리 좌표
-      answer: 0,
-      success: false,
-    },
-    {
-      name: "알약",
-      current: [0, 0], //현재좌표
-      loc1: [560, 210], //좌측 상단 모서리 좌표
-      loc2: [690, 270], //우측 하단 모서리 좌표
+      loc1: [760, 170], //좌측 상단 모서리 좌표
+      loc2: [900, 245], //우측 하단 모서리 좌표
       answer: 1,
       success: false,
     },
     {
-      name: "좋은 물",
+      name: "plastic",
       current: [0, 0], //현재좌표
-      loc1: [785, 70], //좌측 상단 모서리 좌표
-      loc2: [850, 255], //우측 하단 모서리 좌표
-      answer: 1,
+      loc1: [380, 100], //좌측 상단 모서리 좌표
+      loc2: [585, 165], //우측 하단 모서리 좌표
+      answer: 0,
+      success: false,
+    },
+    {
+      name: "vinyl",
+      current: [0, 0], //현재좌표
+      loc1: [605, 100], //좌측 상단 모서리 좌표
+      loc2: [735, 220], //우측 하단 모서리 좌표
+      answer: 0,
       success: false,
     },
   ]);
@@ -129,14 +113,14 @@ export const GameRecycle = () => {
 
   const mainPage = (ctx) => {
     //로고 그리기
-    let mainlogo = new Image();
-    mainlogo.src = "/assets/games/main/recycleMainLogo.png";
-    ctx.drawImage(mainlogo, 0, 0, canvasWidth, canvasHeight);
+    let recycleMainLogo = new Image();
+    recycleMainLogo.src = "/assets/games/gameRecycle/main/recycleMainLogo.png";
+    ctx.drawImage(recycleMainLogo, 0, 0, canvasWidth, canvasHeight);
 
     //게임 설명
-    let subtitle = new Image();
-    subtitle.src = "/assets/games/main/recycleDisc.png";
-    ctx.drawImage(subtitle, 0, 0, canvasWidth, canvasHeight);
+    let recycleDisc = new Image();
+    recycleDisc.src = "/assets/games/gameRecycle/main/recycleDisc.png";
+    ctx.drawImage(recycleDisc, 0, 0, canvasWidth, canvasHeight);
 
     //시작 버튼
     let startButton = new Image();
@@ -150,12 +134,12 @@ export const GameRecycle = () => {
         e.offsetY > 420 &&
         e.offsetY < 515
       ) {
-        setButtonSrc("/assets/games/main/clickedButton.png");
+        setButtonSrc("/assets/games/gameRecycle/main/clickedButton.png");
       }
     };
     canvas.onmouseup = (e) => {
-      if (buttonSrc == "/assets/games/main/clickedButton.png") {
-        setButtonSrc("/assets/games/main/startButton.png");
+      if (buttonSrc == "/assets/games/gameRecycle/main/clickedButton.png") {
+        setButtonSrc("/assets/games/gameRecycle/main/startButton.png");
         setnowPage("game");
       }
     };
@@ -166,7 +150,7 @@ export const GameRecycle = () => {
 
   const gamePage = (ctx) => {
     let isEnd = true;
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 5; i++) {
       if (!items[i].success) {
         isEnd = false;
         break;
@@ -185,17 +169,15 @@ export const GameRecycle = () => {
 
     //분류 창
     let waste = new Image();
-    waste.src = "/assets/games/game/waste.png";
+    waste.src = "/assets/games/gameRecycle/waste.png";
     ctx.drawImage(waste, 0, 0, canvasWidth, canvasHeight);
 
-    //파스퇴르
-    //51 ,42
-    //118,228
+    // can
     if (!items_tmp[0].success) {
-      let past = new Image();
-      past.src = "/assets/games/game/things/파스퇴르.png";
+      let can = new Image();
+      can.src = "/assets/games/gameRecycle/things/can.png";
       ctx.drawImage(
-        past,
+        can,
         items_tmp[0].current[0],
         items_tmp[0].current[1],
         canvasWidth,
@@ -203,14 +185,12 @@ export const GameRecycle = () => {
       );
     }
 
-    //아이시스
-    //155 , 85
-    //203 , 234
+    // label bottle
     if (!items_tmp[1].success) {
-      let icis = new Image();
-      icis.src = "/assets/games/game/things/아이시스.png";
+      let label_bottle = new Image();
+      label_bottle.src = "/assets/games/gameRecycle/things/label_bottle.png";
       ctx.drawImage(
-        icis,
+        label_bottle,
         items_tmp[1].current[0],
         items_tmp[1].current[1],
         canvasWidth,
@@ -218,15 +198,12 @@ export const GameRecycle = () => {
       );
     }
 
-    //떡볶이
-    //240 , 113
-    //391 , 228
-
+    // pill
     if (!items_tmp[2].success) {
-      let dduck = new Image();
-      dduck.src = "/assets/games/game/things/떡볶이.png";
+      let pill = new Image();
+      pill.src = "/assets/games/gameRecycle/things/pill.png";
       ctx.drawImage(
-        dduck,
+        pill,
         items_tmp[2].current[0],
         items_tmp[2].current[1],
         canvasWidth,
@@ -234,64 +211,27 @@ export const GameRecycle = () => {
       );
     }
 
-    //자일리톨
-    //424 , 25
-    //502 , 133
-
+    // plastic
     if (!items_tmp[3].success) {
-      let xi = new Image();
-      xi.src = "/assets/games/game/things/자일리톨.png";
+      let plastic = new Image();
+      plastic.src = "/assets/games/gameRecycle/things/plastic.png";
       ctx.drawImage(
-        xi,
+        plastic,
         items_tmp[3].current[0],
         items_tmp[3].current[1],
         canvasWidth,
         canvasHeight
       );
     }
-    //자껍
-    //526 , 47
-    //634 , 128
 
+    // vinyl
     if (!items_tmp[4].success) {
-      let xi_g = new Image();
-      xi_g.src = "/assets/games/game/things/자껍.png";
+      let vinyl = new Image();
+      vinyl.src = "/assets/games/gameRecycle/things/vinyl.png";
       ctx.drawImage(
-        xi_g,
+        vinyl,
         items_tmp[4].current[0],
         items_tmp[4].current[1],
-        canvasWidth,
-        canvasHeight
-      );
-    }
-
-    //알약
-    //484 , 167
-    //621 , 254
-
-    if (!items_tmp[5].success) {
-      let drug = new Image();
-      drug.src = "/assets/games/game/things/알약.png";
-      ctx.drawImage(
-        drug,
-        items_tmp[5].current[0],
-        items_tmp[5].current[1],
-        canvasWidth,
-        canvasHeight
-      );
-    }
-
-    //좋은물
-    //671 , 65
-    //751 , 233
-
-    if (!items_tmp[6].success) {
-      let water = new Image();
-      water.src = "/assets/games/game/things/좋은물.png";
-      ctx.drawImage(
-        water,
-        items_tmp[6].current[0],
-        items_tmp[6].current[1],
         canvasWidth,
         canvasHeight
       );
@@ -302,7 +242,7 @@ export const GameRecycle = () => {
       console.log(e.offsetX, e.offsetY);
       let items_tmp = items;
       let _selected = -1;
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 5; i++) {
         if (!items_tmp[i].success) {
           //성공된건 생략
           if (
@@ -326,12 +266,6 @@ export const GameRecycle = () => {
       }
     };
     canvas.onmouseup = (e) => {
-      //분리수거 하기
-      //197 , 292
-      //409 , 431
-      //다시 가져가기
-      //417 , 293
-      //618 , 430
       if (selected != -1) {
         const _selected = selected;
         let items_tmp = items;
@@ -409,23 +343,20 @@ export const GameRecycle = () => {
 
   const descriptionPage = (ctx) => {
     let descItems = [
-      "description.png",
-      "description.png",
-      "description.png",
-      "description.png",
-      "description.png",
-      "description.png",
-      "description.png",
+      "canDesc.png",
+      "label_bottleDesc.png",
+      "pillDesc.png",
+      "plasticDesc.png",
+      "vinylDesc.png",
     ];
     let descBackg = new Image();
-    descBackg.src = "/assets/games/description/" + descItems[descNum];
+    descBackg.src =
+      "/assets/games/gameRecycle/description/" + descItems[descNum];
     ctx.drawImage(descBackg, 0, 0, canvasWidth, canvasHeight);
 
     const canvas = canvasRef.current;
     canvas.onmousedown = (e) => {
       //나가기버튼
-      //738 , 387
-      //801 , 448
       if (
         e.offsetX > 760 &&
         e.offsetX < 880 &&
@@ -438,7 +369,7 @@ export const GameRecycle = () => {
   };
   const successPage = (ctx) => {
     let successBackg = new Image();
-    successBackg.src = "/assets/games/success/success.png";
+    successBackg.src = "/assets/games/gameRecycle/success/success.png";
     ctx.drawImage(successBackg, 0, 0, canvasWidth, canvasHeight);
   };
 
@@ -463,7 +394,7 @@ export const GameRecycle = () => {
     if (life == 0) {
       setnowPage("fail");
     } else if (life == 2 || life == 1) {
-      setLifeCount(`/assets/games/game/heart_${life}.png`);
+      setLifeCount(`/assets/games/gameRecycle/heart_${life}.png`);
       alert("라이프가 감소하였습니다!");
     }
   }, [life]);
