@@ -11,17 +11,23 @@ import java.time.format.DateTimeFormatter;
 @NoArgsConstructor
 public class ChatNotice implements Serializable {
 
+    private NoticeType type;
+
     private String username;
 
     private String notice;
 
     private final LocalDateTime sendAt = LocalDateTime.now();
 
+    public enum NoticeType {
+        JOIN, LEAVE
+    }
+
     public void setJoinNotice() {
         this.notice = username + "님이 뛰어들어왔어요!";
     }
 
-    public void setExitNotice(String username) {
+    public void setLeaveNotice() {
         this.notice = username + "님이 뛰쳐나갔어요!";
     }
 

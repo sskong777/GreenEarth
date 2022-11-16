@@ -19,7 +19,7 @@ public class ChatController {
     private final ChatProducer chatProducer;
 
     @MessageMapping("/notice")
-    public void sendJoinNotice(ChatNotice chatNotice) {
-        chatProducer.sendJoinNotice(this.KAFKA_TOPIC, chatNotice);
+    public void sendNotice(ChatNotice chatNotice) {
+        chatProducer.sendNotice(this.KAFKA_TOPIC, chatNotice);
     }
 }

@@ -13,8 +13,12 @@ public class ChatProducer {
 
     private final KafkaTemplate<String, ChatNotice> noticeKafkaTemplate;
 
-    public void sendJoinNotice(String topic, ChatNotice chatNotice) {
-        chatNotice.setJoinNotice();
+    public void sendNotice(String topic, ChatNotice chatNotice) {
+        if (chatNotice.getType().equals(ChatNotice.NoticeType.JOIN)) {
+            chatNotice.setJoinNotice();
+        } else {
+            chatNotice.setLeaveNotice();
+        }
         log.info("{}", chatNotice.toString());
         this.noticeKafkaTemplate.send(topic, chatNotice);
     }
