@@ -34,14 +34,14 @@ public class ChatConsumerConfig {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, ChatNotice> NoticeListenerContainerFactory() {
+    public ConcurrentKafkaListenerContainerFactory<String, ChatNotice> noticeListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, ChatNotice> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(NoticeConsumerFactory());
+        factory.setConsumerFactory(noticeConsumerFactory());
         return factory;
     }
 
     @Bean
-    public ConsumerFactory<String, ChatNotice> NoticeConsumerFactory() {
+    public ConsumerFactory<String, ChatNotice> noticeConsumerFactory() {
         Map<String, Object> configMap = new HashMap<>();
         configMap.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, this.KAFKA_BROKER);
         configMap.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);

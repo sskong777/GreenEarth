@@ -35,19 +35,19 @@ public class ChatProducerConfig {
     }
 
     @Bean
-    public ProducerFactory<String, ChatNotice> ProducerFactory() {
-        return new DefaultKafkaProducerFactory<>(ProducerConfiguration(),
+    public ProducerFactory<String, ChatNotice> noticeProducerFactory() {
+        return new DefaultKafkaProducerFactory<>(producerConfiguration(),
                 new StringSerializer(),
                 new JsonSerializer<>());
     }
 
     @Bean
     public KafkaTemplate<String, ChatNotice> noticeKafkaTemplate() {
-        return new KafkaTemplate<>(ProducerFactory());
+        return new KafkaTemplate<>(noticeProducerFactory());
     }
 
     @Bean
-    public Map<String, Object> ProducerConfiguration() {
+    public Map<String, Object> producerConfiguration() {
         Map<String, Object> configMap = new HashMap<>();
         configMap.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, this.KAFKA_BROKER);
         configMap.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
