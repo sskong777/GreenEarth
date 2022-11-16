@@ -294,7 +294,7 @@ function Earth8() {
         </Link>
         <div className = "canvasEarth">
           
-            <Canvas id="earth" width="400" height="300">
+            <Canvas id="earth" width="10" height="10">
                 <Suspense fallback={null}>
                 <ambientLight />
                 <spotLight intensity={0.1} angle={0.1} penumbra={1} position={[100, 100,100]} castShadow />
