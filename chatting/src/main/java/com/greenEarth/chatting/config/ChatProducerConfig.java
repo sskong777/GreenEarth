@@ -38,7 +38,7 @@ public class ChatProducerConfig {
     public ProducerFactory<String, ChatNotice> ProducerFactory() {
         return new DefaultKafkaProducerFactory<>(ProducerConfiguration(),
                 new StringSerializer(),
-                new JsonSerializer<>());
+                new JsonSerializer<ChatNotice>());
     }
 
     @Bean

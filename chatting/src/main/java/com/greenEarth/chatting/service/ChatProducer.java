@@ -14,9 +14,8 @@ public class ChatProducer {
     private final KafkaTemplate<String, ChatNotice> kafkaTemplate;
 
     public void sendJoinNotice(String topic, ChatNotice notice) {
-        String username = "종일";
-        notice.setJoinNotice(username);
+        notice.setJoinNotice();
         log.info("{}", notice.getNotice());
-//        this.kafkaTemplate.send(topic, notice);
+        this.kafkaTemplate.send(topic, notice);
     }
 }
