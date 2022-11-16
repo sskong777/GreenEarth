@@ -6,7 +6,7 @@ import RecycleSuccessModal from "./RecycleSuccessModal";
 
 const useStyles = makeStyles((theme) => ({
   mygame: {
-    border: "10px solid #E9FBD2",
+    border: "4px solid #E9FBD2",
     margin: "10px",
     borderRadius: "10px",
   },
