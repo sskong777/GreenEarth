@@ -3761,6 +3761,4 @@ function EarthLv8(props) {
     </group>
   )
 }
-
-
   export { Model0, Model00, EarthLv2, EarthLv3, EarthLv4, EarthLv5, EarthLv6, EarthLv7, EarthLv8}
