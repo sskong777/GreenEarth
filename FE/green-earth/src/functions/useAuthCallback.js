@@ -1,18 +1,21 @@
+import { useRef } from "react";
 import { useRecoilState } from "recoil";
 import { accessTokenState, refreshTokenState } from "../store/LoginStore";
 
 import { useCommonCallback } from "./useCommonCallback";
 
 import axios from "axios";
+import SockJsClient from "react-stomp";
 import { useNavigate } from "react-router-dom";
 
 import { memberInfoState, childInfoState } from "../store/atoms";
 
 export const useAuthCallback = () => {
   const navigate = useNavigate();
+  const $websocket = useRef(null);
 
-  const baseURL = "https://내가그린지구.com/api";
-  // const baseURL = "http://localhost:8881/api";
+  // const baseURL = "https://내가그린지구.com/api";
+  const baseURL = "http://localhost:8881/api";
 
   const { api } = useCommonCallback();
 
