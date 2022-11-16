@@ -1,7 +1,7 @@
 server:
-  port: 8081
+  port: 8080
   servlet:
-    context-path: /api
+    context-Path: /api
 
 spring:
 #  datasource:
@@ -32,9 +32,9 @@ spring:
       bootstrap-servers: localhost:9092
     consumer:
       bootstrap-servers: localhost:9092
-      group-id: greenUsGroup
+      group-id: testGroup1
     template:
-      default-topic: greenUsChat
+      default-topic: testTopic
 
 logging:
   level:
