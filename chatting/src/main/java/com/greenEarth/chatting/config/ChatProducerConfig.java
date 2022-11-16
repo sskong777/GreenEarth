@@ -38,11 +38,11 @@ public class ChatProducerConfig {
     public ProducerFactory<String, ChatNotice> ProducerFactory() {
         return new DefaultKafkaProducerFactory<>(ProducerConfiguration(),
                 new StringSerializer(),
-                new JsonSerializer<ChatNotice>());
+                new JsonSerializer<>());
     }
 
     @Bean
-    public KafkaTemplate<String, ChatNotice> kafkaTemplate() {
+    public KafkaTemplate<String, ChatNotice> noticeKafkaTemplate() {
         return new KafkaTemplate<>(ProducerFactory());
     }
 

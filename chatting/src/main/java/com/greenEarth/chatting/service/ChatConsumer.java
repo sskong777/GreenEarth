@@ -16,10 +16,10 @@ public class ChatConsumer {
 
     @KafkaListener(
             topics = "${spring.kafka.template.default-topic}",
-            groupId = "${spring.kafka.consumer.group-id}"
+            containerFactory = "NoticeListenerContainerFactory"
     )
-    public void receive(ChatNotice notice) {
-        log.info("received notice: {}", notice.getNotice());
-        messagingTemplate.convertAndSend("/room/" + notice.getUsername(), notice);
+    public void receive(ChatNotice chatNotice) {
+        log.info("received notice: {}", chatNotice.toString());
+        messagingTemplate.convertAndSend("/room/" + chatNotice.getUsername(), chatNotice);
     }
 }

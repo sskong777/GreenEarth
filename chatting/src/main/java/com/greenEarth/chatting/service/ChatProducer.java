@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ChatProducer {
 
-    private final KafkaTemplate<String, ChatNotice> kafkaTemplate;
+    private final KafkaTemplate<String, ChatNotice> noticeKafkaTemplate;
 
-    public void sendJoinNotice(String topic, ChatNotice notice) {
-        notice.setJoinNotice();
-        log.info("{}", notice.getNotice());
-        this.kafkaTemplate.send(topic, notice);
+    public void sendJoinNotice(String topic, ChatNotice chatNotice) {
+        chatNotice.setJoinNotice();
+        log.info("{}", chatNotice.toString());
+        this.noticeKafkaTemplate.send(topic, chatNotice);
     }
 }
