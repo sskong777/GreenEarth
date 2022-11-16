@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import RecycleFailModal from "./RecycleFailModal";
 import RecycleSuccessModal from "./RecycleSuccessModal";
 
+import swal from "sweetalert";
+
 const useStyles = makeStyles((theme) => ({
   mygame: {
     border: "10px solid #E9FBD2",
@@ -293,7 +295,6 @@ export const GameRecycle = () => {
             setnowPage("description");
           } else {
             setLife(life - 1);
-            alert("다시 생각해 보세요!");
           }
         } else if (
           e.offsetX > 550 &&
@@ -311,7 +312,6 @@ export const GameRecycle = () => {
             setnowPage("description");
           } else {
             setLife(life - 1);
-            alert("다시 생각해 보세요!");
           }
         }
       }
@@ -395,7 +395,12 @@ export const GameRecycle = () => {
       setnowPage("fail");
     } else if (life == 2 || life == 1) {
       setLifeCount(`/assets/games/gameRecycle/heart_${life}.png`);
-      alert("라이프가 감소하였습니다!");
+      swal({
+        title: "라이프가 감소하였습니다!",
+        text: "다시 생각해 보세요!",
+        icon: "warning",
+        button: "돌아가기",
+      });
     }
   }, [life]);
 
