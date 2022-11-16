@@ -1,7 +1,9 @@
 package com.ssafy.greenEarth.service;
 
-import com.ssafy.greenEarth.domain.*;
+import com.ssafy.greenEarth.domain.Child;
+import com.ssafy.greenEarth.domain.Reward;
 import com.ssafy.greenEarth.dto.Reward.*;
+import com.ssafy.greenEarth.exception.BusinessException;
 import com.ssafy.greenEarth.repository.ChildRepository;
 import com.ssafy.greenEarth.repository.RewardRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.ssafy.greenEarth.exception.BusinessException;
-import static com.ssafy.greenEarth.exception.ErrorCode.*;
+import static com.ssafy.greenEarth.exception.ErrorCode.NOT_EXIST_ACCOUNT;
+import static com.ssafy.greenEarth.exception.ErrorCode.NOT_EXIST_REWARD;
 
 @RequiredArgsConstructor
 @Service
