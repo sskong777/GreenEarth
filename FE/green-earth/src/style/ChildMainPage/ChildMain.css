@@ -868,6 +868,7 @@ progress::before {
 .Earth8 {
   @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
 }
+
 .Earth8::before {
   content: "";
   opacity: 0.5;
