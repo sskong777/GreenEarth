@@ -2,6 +2,10 @@
 #FROM openjdk:11-jdk-alpine
 FROM adoptopenjdk/openjdk11
 
+CMD chmod +x gradlew
+
+CMD ./gradlew clean build
+
 ARG JAR_FILE=build/libs/chatting-0.0.1-SNAPSHOT.jar
 
 # jar 파일 경로는 직접 입력해주세요..
