@@ -14,6 +14,7 @@ import GamePage from "./pages/GamePage";
 import GamePicturePage from "./pages/GamePicturePage";
 import GameRecyclePage from "./pages/GameRecyclePage";
 import MissionInfoPage from "./pages/MissionInfoPage";
+import ChattingPage from "./pages/ChattingPage";
 
 import OauthRedirectPage from "./pages/OauthRedirectPage";
 
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/game/recycle" element={<GameRecyclePage />} />
           <Route path="/oauth/redirect" element={<OauthRedirectPage />} />
           <Route path="/mission/:missionId" element={<MissionInfoPage />} />
+          <Route path="/chat" element={<ChattingPage />} />
           {/* 404 리다이렉트 */}
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>

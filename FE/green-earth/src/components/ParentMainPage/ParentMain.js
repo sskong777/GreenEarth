@@ -132,6 +132,9 @@ function ParentMain(props) {
             className="w-64 cursor-pointer"
             onClick={() => navigate("/child")}
           />
+          <button className="ParentMainLogoutButton" onClick={() => navigate("/chat")}>
+            대화하기
+          </button>
           <button className="ParentMainLogoutButton" onClick={logoutcallback}>
             로그아웃
           </button>
