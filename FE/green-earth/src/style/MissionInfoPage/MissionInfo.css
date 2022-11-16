@@ -6,10 +6,10 @@
   @apply bg-blue-100  p-2 h-full w-full rounded-md;
 }
 .MissionForm {
-  @apply h-full w-252 mx-auto;
+  @apply flex flex-col justify-center h-full w-252 mx-auto;
 }
 .MissionTitle {
-  @apply h-[5rem] flex flex-col  justify-center items-center mt-1 border-4 border-black bg-light text-[#05173d] rounded-md text-4xl;
+  @apply h-[4.5rem] flex flex-col  justify-center items-center mt-1 border-4 border-black bg-light text-[#05173d] rounded-md py-1 text-3xl;
 }
 
 .Info {
@@ -17,18 +17,18 @@
 }
 
 .MissionImage {
-  @apply flex justify-evenly my-2 h-1/4 space-x-6;
+  @apply flex justify-evenly my-2 h-full space-x-6;
 }
 
 .MissionImage1 {
-  @apply h-64 w-96 mr-8 rounded-md;
+  @apply w-96 h-64 mr-12 rounded-md;
 }
 .MissionImage2 {
-  @apply h-64 w-96 ml-8 rounded-md;
+  @apply w-96 h-64 ml-12 rounded-md;
 }
 
 .MissionContents {
-  @apply w-208 max-w-screen-lg text-[#05173d] text-xl leading-relaxed break-keep mb-3;
+  @apply w-[53rem] max-w-screen-lg text-[#05173d] text-xl leading-relaxed break-keep mb-3;
 }
 
 .Select {
@@ -36,9 +36,9 @@
 }
 
 .Select1 {
-  @apply border-4 border-black bg-light rounded-md h-16 text-3xl text-[#05173d] text-center mx-2 px-6;
+  @apply border-4 border-black bg-light rounded-md h-14 text-2xl text-[#05173d] text-center mx-2 px-6;
 }
 
 .Select2 {
-  @apply border-4 border-black bg-light rounded-md h-16 text-3xl text-[#05173d] mx-2 px-6;
+  @apply border-4 border-black bg-light rounded-md h-14 text-2xl text-[#05173d] mx-2 px-6;
 }
