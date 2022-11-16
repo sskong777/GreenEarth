@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
 #  datasource:
@@ -32,7 +32,7 @@ spring:
       bootstrap-servers: localhost:9092
       group-id: testGroup1
     template:
-      default-topic: testTopic
+      default-topic: Topic
 
 logging:
   level:
