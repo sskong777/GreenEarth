@@ -2800,7 +2800,7 @@ function EarthLv7(props) {
 
 function EarthLv8(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/model/earth33/final8-4.gltf')
+  const { nodes, materials, animations } = useGLTF('/model/earth33/final6666.gltf')
   const { actions } = useAnimations(animations, group)
   useEffect(() => {
     Object.keys(actions).forEach((key) => {
@@ -3359,7 +3359,7 @@ function EarthLv8(props) {
           <primitive object={nodes.root_1} />
           <skinnedMesh name="Hare001" geometry={nodes.Hare001.geometry} material={materials['M_Hare.001']} skeleton={nodes.Hare001.skeleton} morphTargetDictionary={nodes.Hare001.morphTargetDictionary} morphTargetInfluences={nodes.Hare001.morphTargetInfluences} />
         </group>
-        <group name="Rig003" position={[-0.56, 0.12, -0.85]} rotation={[-0.86, -0.58, 0.22]} scale={0.05}>
+        <group name="Rig003" position={[-0.56, 0.12, -0.9]} rotation={[-0.86, -0.58, 0.22]} scale={0.05}>
           <primitive object={nodes.root_22} />
           <skinnedMesh name="Hare_LOD0001" geometry={nodes.Hare_LOD0001.geometry} material={materials['M_Hare.004']} skeleton={nodes.Hare_LOD0001.skeleton} morphTargetDictionary={nodes.Hare_LOD0001.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD0001.morphTargetInfluences} />
           <skinnedMesh name="Hare_LOD1001" geometry={nodes.Hare_LOD1001.geometry} material={materials['M_Hare.004']} skeleton={nodes.Hare_LOD1001.skeleton} morphTargetDictionary={nodes.Hare_LOD1001.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD1001.morphTargetInfluences} />
@@ -3473,7 +3473,7 @@ function EarthLv8(props) {
           <skinnedMesh name="Beluga_LOD2003" geometry={nodes.Beluga_LOD2003.geometry} material={materials['M_Beluga.008']} skeleton={nodes.Beluga_LOD2003.skeleton} morphTargetDictionary={nodes.Beluga_LOD2003.morphTargetDictionary} morphTargetInfluences={nodes.Beluga_LOD2003.morphTargetInfluences} />
           <skinnedMesh name="Beluga_LOD3003" geometry={nodes.Beluga_LOD3003.geometry} material={materials['M_Beluga.008']} skeleton={nodes.Beluga_LOD3003.skeleton} morphTargetDictionary={nodes.Beluga_LOD3003.morphTargetDictionary} morphTargetInfluences={nodes.Beluga_LOD3003.morphTargetInfluences} />
         </group>
-        <group name="Rig033" position={[-1.08, -0.06, -0.03]} rotation={[0.97, -0.05, 1.25]} scale={0.08}>
+        <group name="Rig033" position={[-1.16, -0.06, -0.03]} rotation={[0.97, -0.05, 1.25]} scale={0.08}>
           <primitive object={nodes.root_32} />
           <skinnedMesh name="Antelope_LOD0" geometry={nodes.Antelope_LOD0.geometry} material={materials.M_Antelope} skeleton={nodes.Antelope_LOD0.skeleton} morphTargetDictionary={nodes.Antelope_LOD0.morphTargetDictionary} morphTargetInfluences={nodes.Antelope_LOD0.morphTargetInfluences} />
           <skinnedMesh name="Antelope_LOD1" geometry={nodes.Antelope_LOD1.geometry} material={materials.M_Antelope} skeleton={nodes.Antelope_LOD1.skeleton} morphTargetDictionary={nodes.Antelope_LOD1.morphTargetDictionary} morphTargetInfluences={nodes.Antelope_LOD1.morphTargetInfluences} />
@@ -3723,6 +3723,14 @@ function EarthLv8(props) {
           <mesh name="Cylinder007_3" geometry={nodes.Cylinder007_3.geometry} material={materials['Grass1_1.003']} />
           <mesh name="Cylinder007_4" geometry={nodes.Cylinder007_4.geometry} material={materials['Reeds1_2.002']} />
           <mesh name="Cylinder007_5" geometry={nodes.Cylinder007_5.geometry} material={materials['Reeds1_1.002']} />
+        </group>
+        <group name="Mushrooms_grass3003" position={[1.64, 0.3, 0.76]} rotation={[0.29, -0.91, -0.92]} scale={0.05}>
+          <mesh name="Cylinder008" geometry={nodes.Cylinder008.geometry} material={materials['Rock1_1.004']} />
+          <mesh name="Cylinder008_1" geometry={nodes.Cylinder008_1.geometry} material={materials['Mushroom5_1.009']} />
+          <mesh name="Cylinder008_2" geometry={nodes.Cylinder008_2.geometry} material={materials['Mushroom5_2.009']} />
+          <mesh name="Cylinder008_3" geometry={nodes.Cylinder008_3.geometry} material={materials['Grass1_1.004']} />
+          <mesh name="Cylinder008_4" geometry={nodes.Cylinder008_4.geometry} material={materials['Reeds1_2.003']} />
+          <mesh name="Cylinder008_5" geometry={nodes.Cylinder008_5.geometry} material={materials['Reeds1_1.003']} />
         </group>
         <group name="Mushroom4_2" position={[-1.02, 0.09, 0.07]} rotation={[-1.58, 0.33, 1.58]} scale={0.01}>
           <mesh name="Cylinder055" geometry={nodes.Cylinder055.geometry} material={materials.Mushroom4_1} />
