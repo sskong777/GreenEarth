@@ -35,7 +35,7 @@ export const useAuthCallback = () => {
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
           memberInfoCallback();
-          navigate("/child");
+          navigate("/child", { replace: true });
         }
       })
       .catch((error) => {
@@ -63,7 +63,7 @@ export const useAuthCallback = () => {
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
           // memberInfoCallback();
-          navigate("/parent");
+          navigate("/parent", { replace: true });
         }
       })
       .catch((error) => {
@@ -84,7 +84,7 @@ export const useAuthCallback = () => {
       .then((response) => {
         if (response.data) {
           console.log("회원 가입이 완료되었습니다.");
-          navigate("/parent");
+          navigate("/parent", { replace: true });
         }
       })
       .catch((error) => {
@@ -100,7 +100,7 @@ export const useAuthCallback = () => {
       if (response) {
         window.localStorage.clear();
         console.log("로그아웃 되었습니다.");
-        navigate("/");
+        navigate("/", { replace: true });
       }
     });
   };
