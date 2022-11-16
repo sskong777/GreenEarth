@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @NoArgsConstructor
@@ -14,7 +15,7 @@ public class ChatNotice implements Serializable {
 
     private String notice;
 
-    private final LocalDateTime sendAt = LocalDateTime.now();   // 전송 시각
+    private final LocalDateTime sendAt = LocalDateTime.now();
 
     public void setJoinNotice() {
         this.notice = username + "님이 뛰어들어왔어요!";
@@ -22,6 +23,12 @@ public class ChatNotice implements Serializable {
 
     public void setExitNotice(String username) {
         this.notice = username + "님이 뛰쳐나갔어요!";
+    }
+
+    @Override
+    public String toString() {
+        return String.format("{ %s: %s [%s] }", username, notice,
+                sendAt.format(DateTimeFormatter.ofPattern("yy-MM-dd(EEE) hh:mm:ss a")));
     }
 
 }

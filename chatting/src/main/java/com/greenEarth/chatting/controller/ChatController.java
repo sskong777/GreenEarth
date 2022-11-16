@@ -16,10 +16,10 @@ public class ChatController {
     @Value("${spring.kafka.template.default-topic}")
     private String KAFKA_TOPIC;
 
-    private final ChatProducer ChatProducer;
+    private final ChatProducer chatProducer;
 
     @MessageMapping("/notice")
-    public void sendJoinNotice(ChatNotice notice) {
-        ChatProducer.sendJoinNotice(this.KAFKA_TOPIC, notice);
+    public void sendJoinNotice(ChatNotice chatNotice) {
+        chatProducer.sendJoinNotice(this.KAFKA_TOPIC, chatNotice);
     }
 }

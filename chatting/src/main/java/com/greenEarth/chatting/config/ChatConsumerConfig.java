@@ -19,13 +19,13 @@ import java.util.Map;
 @Slf4j
 @EnableKafka
 @Configuration
-public class ChatConsumeConfig {
+public class ChatConsumerConfig {
 
     private final String KAFKA_BROKER;  // (브로커로서의) 카프카 실행 주소
 
     private final String KAFKA_GROUP;   // consumer 식별할 수 있는 그룹
 
-    public ChatConsumeConfig(
+    public ChatConsumerConfig(
             @Value("${spring.kafka.consumer.bootstrap-servers}") String kafka_broker,
             @Value("${spring.kafka.consumer.group-id}") String kafka_group) {
         this.KAFKA_BROKER = kafka_broker;
@@ -34,7 +34,7 @@ public class ChatConsumeConfig {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, ChatNotice> ListenerContainerFactory() {
+    public ConcurrentKafkaListenerContainerFactory<String, ChatNotice> NoticeListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, ChatNotice> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(NoticeConsumerFactory());
         return factory;
