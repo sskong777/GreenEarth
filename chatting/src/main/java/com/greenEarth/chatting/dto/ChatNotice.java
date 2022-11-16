@@ -11,12 +11,12 @@ public class ChatNotice {
 
     private final LocalDateTime sendAt = LocalDateTime.now();   // 전송 시각
 
-    public void setOpenNotice() {
-        this.notice = "관리자에게 상담을 요청한 상태입니다. 잠시만 기다려주세요!";
+    public void setJoinNotice(String username) {
+        this.notice = username + "님이 뛰어들어왔어요!";
     }
 
-    public void setCloseNotice() {
-        this.notice = "상담이 끝났어요!";
+    public void setExitNotice(String username) {
+        this.notice = username + "님이 뛰쳐나갔어요!";
     }
 
 }
