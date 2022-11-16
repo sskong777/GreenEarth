@@ -15,6 +15,8 @@ public class ChatNotice implements Serializable {
 
     private String username;
 
+    private String roomId;
+
     private String notice;
 
     private final LocalDateTime sendAt = LocalDateTime.now();

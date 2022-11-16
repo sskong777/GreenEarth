@@ -1,5 +1,6 @@
 package com.greenEarth.chatting.controller;
 
+import com.greenEarth.chatting.dto.ChatMessage;
 import com.greenEarth.chatting.dto.ChatNotice;
 import com.greenEarth.chatting.service.ChatProducer;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,12 @@ public class ChatController {
     private final ChatProducer chatProducer;
 
     @MessageMapping("/notice")
-    public void sendNotice(ChatNotice chatNotice) {
-        chatProducer.sendNotice(this.KAFKA_TOPIC, chatNotice);
+    public void sendNotice(ChatNotice notice) {
+        chatProducer.sendNotice(this.KAFKA_TOPIC, notice);
+    }
+
+    @MessageMapping("/message")
+    public void sendMessage(ChatMessage message) {
+        chatProducer.sendMessage(this.KAFKA_TOPIC, message);
     }
 }

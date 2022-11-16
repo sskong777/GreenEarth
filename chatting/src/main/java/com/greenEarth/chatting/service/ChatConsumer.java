@@ -1,5 +1,6 @@
 package com.greenEarth.chatting.service;
 
+import com.greenEarth.chatting.dto.ChatMessage;
 import com.greenEarth.chatting.dto.ChatNotice;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,10 +17,19 @@ public class ChatConsumer {
 
     @KafkaListener(
             topics = "${spring.kafka.template.default-topic}",
-            containerFactory = "NoticeListenerContainerFactory"
+            containerFactory = "noticeListenerContainerFactory"
     )
-    public void receive(ChatNotice chatNotice) {
-        log.info("received notice: {}", chatNotice.toString());
-        messagingTemplate.convertAndSend("/room/" + chatNotice.getUsername(), chatNotice);
+    public void receiveNotice(ChatNotice notice) {
+        log.info("received notice: {}", notice.toString());
+        messagingTemplate.convertAndSend("/room/" + notice.getRoomId(), notice);
+    }
+
+    @KafkaListener(
+            topics = "${spring.kafka.template.default-topic}",
+            containerFactory = "messageListenerContainerFactory"
+    )
+    public void receiveMessage(ChatMessage message) {
+        log.info("received message: {}", message.toString());
+        messagingTemplate.convertAndSend("/room/" + message.getRoomId(), message);
     }
 }
