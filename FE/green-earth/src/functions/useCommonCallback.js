@@ -11,8 +11,8 @@ import { useState } from "react";
 
 export const useCommonCallback = () => {
   const navigate = useNavigate();
-  const baseURL = "https://내가그린지구.com/api";
-  // const baseURL = "http://localhost:8881/api";
+  // const baseURL = "https://내가그린지구.com/api";
+  const baseURL = "http://localhost:8881/api";
 
   const [refreshToken, setRefreshToken] = useRecoilState(refreshTokenState);
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
