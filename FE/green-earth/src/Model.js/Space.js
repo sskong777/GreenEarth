@@ -2800,6 +2800,7 @@ function EarthLv7(props) {
 
 function EarthLv8(props) {
   const group = useRef()
+
   const { nodes, materials, animations } = useGLTF('/model/earth33/final_animation.gltf')
   const { actions } = useAnimations(animations, group)
   useEffect(() => {
