@@ -20,7 +20,35 @@ function ParentMainPage() {
     memberInfoCallback();
   }, []);
 
-  return <div>{memberInfo.isParent && <ParentMain data={memberInfo} />}</div>;
+  return (
+    <div>
+      {!memberInfo.isParent && (
+        <ParentMain
+          data={{
+            parentId: 3,
+            email: "ckstjr@kakao.com",
+            nickname: "박찬석",
+            childList: [
+              {
+                childId: 7,
+                realName: "종일짱",
+                nickname: "ssafy123",
+                gender: "MALE",
+                mileage: 0,
+                clearedMission: 0,
+                earthLevel: 1,
+                birthday: "2020-11-10",
+                avatar: 13,
+                parent: "박찬석",
+                isParent: false,
+              },
+            ],
+            isParent: true,
+          }}
+        />
+      )}
+    </div>
+  );
 }
 
 export default ParentMainPage;
