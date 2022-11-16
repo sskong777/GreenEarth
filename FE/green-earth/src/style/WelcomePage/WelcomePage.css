@@ -5,5 +5,5 @@
 /* WelcomePage */
 
 .WelcomePage {
-  @apply w-232 h-[44rem] mx-auto;
+  @apply w-232 h-full mx-auto;
 }

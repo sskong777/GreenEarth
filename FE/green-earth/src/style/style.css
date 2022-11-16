@@ -27,7 +27,7 @@
 /* ProfilePage */
 
 .ProfilePage {
-  @apply w-252 mx-auto;
+  @apply w-252 h-full flex flex-col justify-center mx-auto;
 }
 
 .ProfileHeader {
@@ -321,7 +321,7 @@
 }
 
 .GamePageHeader {
-  @apply flex justify-between items-center mx-6 pb-7;
+  @apply flex justify-between items-center mx-6 pb-10;
 }
 
 .GamePageButton {
@@ -479,4 +479,16 @@
 
 .CardsPairingModalImage {
   @apply w-[8.5rem] mx-1 rounded-md shadow-lg;
+}
+
+/* CardsPairingTutorial */
+
+.CardsPairingTutorial {
+  @apply flex justify-center items-center w-full h-full;
+}
+
+.CardsPairingStartButton {
+  @apply w-60 h-16 rounded-md text-3xl text-light font-medium font-dunggeunmo
+  bg-[#b0e9fb] hover:bg-[#b0e9fb]/50 active:bg-[#b0e9fb]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#b0e9fb]/50 animate-pulse;
 }
