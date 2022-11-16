@@ -47,9 +47,9 @@ public class AuthService {
     }
 
     public String createRefreshToken(int id, Role role) {
-        // 로그인 상태인지 체크
+        // 로그인 상태인지 체크 후 로그아웃 진행
         if (refreshTokenRepository.existsById(new RefreshTokenId(id, role))) {
-            throw new BusinessException(ALREADY_LOGGED_IN);
+            logout(id, role);
         }
         if (!isCurAccountExist(id, role)) {
             throw new BusinessException(NOT_EXIST_ACCOUNT);
