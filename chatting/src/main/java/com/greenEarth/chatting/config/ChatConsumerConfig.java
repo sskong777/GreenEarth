@@ -1,5 +1,6 @@
 package com.greenEarth.chatting.config;
 
+import com.greenEarth.chatting.dto.ChatMessage;
 import com.greenEarth.chatting.dto.ChatNotice;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -41,13 +42,32 @@ public class ChatConsumerConfig {
     }
 
     @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, ChatMessage> messageListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, ChatMessage> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(messageConsumerFactory());
+        return factory;
+    }
+
+    @Bean
     public ConsumerFactory<String, ChatNotice> noticeConsumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(consumerConfiguration(),
+                new StringDeserializer(), new JsonDeserializer<>(ChatNotice.class));
+    }
+
+    @Bean
+    public ConsumerFactory<String, ChatMessage> messageConsumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(consumerConfiguration(),
+                new StringDeserializer(), new JsonDeserializer<>(ChatMessage.class));
+    }
+
+    @Bean
+    public Map<String, Object> consumerConfiguration() {
         Map<String, Object> configMap = new HashMap<>();
         configMap.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, this.KAFKA_BROKER);
         configMap.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configMap.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         configMap.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         configMap.put(ConsumerConfig.GROUP_ID_CONFIG, this.KAFKA_GROUP);
-        return new DefaultKafkaConsumerFactory<>(configMap, new StringDeserializer(), new JsonDeserializer<>(ChatNotice.class));
+        return configMap;
     }
 }

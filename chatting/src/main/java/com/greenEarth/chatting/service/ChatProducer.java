@@ -1,5 +1,6 @@
 package com.greenEarth.chatting.service;
 
+import com.greenEarth.chatting.dto.ChatMessage;
 import com.greenEarth.chatting.dto.ChatNotice;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,13 +14,20 @@ public class ChatProducer {
 
     private final KafkaTemplate<String, ChatNotice> noticeKafkaTemplate;
 
-    public void sendNotice(String topic, ChatNotice chatNotice) {
-        if (chatNotice.getType().equals(ChatNotice.NoticeType.JOIN)) {
-            chatNotice.setJoinNotice();
+    private final KafkaTemplate<String, ChatMessage> messageKafkaTemplate;
+
+    public void sendNotice(String topic, ChatNotice notice) {
+        if (notice.getType().equals(ChatNotice.NoticeType.JOIN)) {
+            notice.setJoinNotice();
         } else {
-            chatNotice.setLeaveNotice();
+            notice.setLeaveNotice();
         }
-        log.info("{}", chatNotice.toString());
-        this.noticeKafkaTemplate.send(topic, chatNotice);
+        log.info("{}", notice.toString());
+        this.noticeKafkaTemplate.send(topic, notice);
+    }
+
+    public void sendMessage(String topic, ChatMessage message) {
+        log.info("{}", message.toString());
+        this.messageKafkaTemplate.send(topic, message);
     }
 }
