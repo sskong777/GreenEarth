@@ -1,10 +1,12 @@
 package com.greenEarth.chatting.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Getter
+@NoArgsConstructor
 public class ChatNotice {
 
     private String notice;         // 내용
