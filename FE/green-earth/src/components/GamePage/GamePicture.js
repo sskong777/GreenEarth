@@ -444,6 +444,7 @@ export const GamePicture = () => {
   return (
     <div>
       <canvas
+        style={{ touchAction: "none" }}
         ref={canvasRef}
         className={classes.mygame}
         width={936}
