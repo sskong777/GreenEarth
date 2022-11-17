@@ -2,11 +2,11 @@
 export const useChatCallback = () => {
 
 	const onConnected = () => {
-    console.log("Connection Successfully!");
+    console.log("Connect Successfully!");
   };
 
   const onDisconnected = () => {
-    console.log("Connection Failed!");
+    console.log("Connection Stop!");
   };
 
 	const joinCallback = (username, clientRef) => {
@@ -25,6 +25,7 @@ export const useChatCallback = () => {
       content: sendText,
       roomId: roomId
     }
+		console.log(send_message);
     clientRef.current.sendMessage("/pub/message", JSON.stringify(send_message));
 	};
 

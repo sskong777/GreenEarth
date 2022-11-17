@@ -1,6 +1,7 @@
 import "../style/ChattingPage/Chatting.css";
 
 import { useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import SockJsClient from "react-stomp";
 
 import { useChatCallback } from "./../functions/useChatCallback";
@@ -8,21 +9,20 @@ import { useChatCallback } from "./../functions/useChatCallback";
 import MessageList from "../components/ChattingPage/MessageList";
 import InputForm from "../components/ChattingPage/InputForm";
 
-function ChattingPage(props) {
-	
+function ChattingPage() {
 	const [messages, setMessage] = useState([]);
-
+	
 	const clientRef = useRef(null);
-
-	const username = "이름";
-
-	const roomId = "이름";
+	
+	const location = useLocation();
+	const username = location.state.username;
+	const roomId = location.state.roomId;
 
 	const endPointUrl = "http://localhost:8882/api/chat";
 
 	const topic = "/room/" + roomId;
 
-	const { sendMessage } = useChatCallback();
+	const { onConnected, onDisconnected, sendMessage } = useChatCallback();
 
 	const handleSendMessage = (sendText) => {
     sendMessage(username, roomId, sendText, clientRef);
@@ -37,10 +37,10 @@ function ChattingPage(props) {
 			<SockJsClient
 				 url={endPointUrl}
 				 topics={[topic]} 
-				 onConnect={useChatCallback.onConnect}
-				 onDisConnect={useChatCallback.onDisConnect}
+				 onConnect={onConnected}
+				 onDisConnect={onDisconnected}
 				 onMessage={handleReceiveMessage}
-				 ref={clientRef}/>
+				 ref={clientRef} />
 			<MessageList messages={messages} currentUser={username} />
 			<InputForm handleOnSendMessage={handleSendMessage} />
 		</div>
