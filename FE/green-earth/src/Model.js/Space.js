@@ -3772,5 +3772,6 @@ function EarthLv8(props) {
   )
 }
 
+useGLTF.preload('/model/earth33/final_ani333.gltf')
 
 export { Model0, Model00, EarthLv2, EarthLv3, EarthLv4, EarthLv5, EarthLv6, EarthLv7, EarthLv8}
