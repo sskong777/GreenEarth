@@ -2800,7 +2800,6 @@ function EarthLv7(props) {
 
 function EarthLv8(props) {
   const group = useRef()
-
   const { nodes, materials, animations } = useGLTF('/model/earth33/final_animation.gltf')
   const { actions } = useAnimations(animations, group)
   useEffect(() => {
@@ -2809,7 +2808,7 @@ function EarthLv8(props) {
    });
    }, []);
   return (
-    <group ref={group} {...props} dispose={null} >
+    <group ref={group} {...props} dispose={null} setSize={[window.innerWidth/2, window.innerHeight/2, false]} >
       <group name="Scene"position={[-0.1, -0.15, -0.5]} rotation={[Math.PI / 0.1, 1.7, -0.2]} scale={1.7}>
       <group name="Planet" position={[0.03, 0.07, -0.04]} rotation={[Math.PI / 2, 0, -0.27]} scale={0.01}>
       <group name="Bushes" position={[-59.56, 45.9, -11.47]}>
@@ -3761,4 +3760,5 @@ function EarthLv8(props) {
     </group>
   )
 }
+
   export { Model0, Model00, EarthLv2, EarthLv3, EarthLv4, EarthLv5, EarthLv6, EarthLv7, EarthLv8}
