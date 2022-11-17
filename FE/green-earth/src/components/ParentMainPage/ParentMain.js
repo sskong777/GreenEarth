@@ -2417,7 +2417,7 @@ function ParentMain(props) {
         </div>
 
         <div className="canvasEarth">
-          <Canvas id="person" width="10" height="10">
+          <Canvas id="person" width="10" height="15" style="width: 1000px; height: 100%;">
             <Suspense fallback={null}>
               <ambientLight />
               <spotLight
