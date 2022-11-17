@@ -5,29 +5,24 @@
 /* Fonts */
 
 @font-face {
-  font-family: "CookieRun";
-  src: url("./../../public/assets/fonts/CookieRun-Regular.ttf");
-}
-
-@font-face {
   font-family: "BinggraeBold";
-  src: url("./../../public/assets/fonts/Binggrae-Bold.ttf");
+  src: url("./../../public/assets/fonts/Binggrae-Bold.woff2");
 }
 
 @font-face {
   font-family: "Binggrae";
-  src: url("./../../public/assets/fonts/Binggrae.ttf");
+  src: url("./../../public/assets/fonts/Binggrae.woff2");
 }
 
 @font-face {
   font-family: "DungGeunMo";
-  src: url("./../../public/assets/fonts/DungGeunMo.ttf");
+  src: url("./../../public/assets/fonts/DungGeunMo.woff2");
 }
 
 /* ProfilePage */
 
 .ProfilePage {
-  @apply w-252 h-full flex flex-col justify-center mx-auto;
+  @apply w-252 h-full flex flex-col justify-start mx-auto;
 }
 
 .ProfileHeader {
