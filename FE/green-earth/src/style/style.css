@@ -487,3 +487,17 @@
   bg-[#b0e9fb] hover:bg-[#b0e9fb]/50 active:bg-[#b0e9fb]/70
   outline outline-offset-2 outline-1 shadow-lg shadow-[#b0e9fb]/50 animate-pulse;
 }
+
+/* ParentMainPage */
+
+.TutorialModal {
+  @apply flex justify-center items-center h-screen w-full z-20 fixed left-0 top-0 text-center bg-black bg-opacity-70;
+}
+
+.TutorialImage {
+}
+
+.TutorialNextButton {
+  @apply absolute bottom-10 right-10 z-30 text-light text-5xl font-bold rounded-md 
+  animate-bounce;
+}
