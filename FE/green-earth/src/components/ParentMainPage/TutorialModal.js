@@ -20,7 +20,7 @@ const TutorialModal = ({ setModalOpen }) => {
     <>
       <div className="TutorialModal">
         <img
-          src={`/assets/tutorial/Tutorial${imageNumber}.png`}
+          src={`/assets/tutorial/tutorial${imageNumber}.png`}
           className="tutorialImage"
         />
         {imageNumber > 14 ? (
