@@ -4,6 +4,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   margin: 0px;
   font-family: "BinggraeBold", "Arial", "sans-serif";
   overscroll-behavior-y: none;
@@ -21,13 +23,13 @@ body {
   }
 }
 
-@media (min-height: 720px) {
+@media (min-height: 740px) {
   .App {
-    height: 710px;
+    height: 730px;
   }
 }
 
-@media (max-height: 720px) {
+@media (max-height: 740px) {
   .App {
     height: 98vh;
   }

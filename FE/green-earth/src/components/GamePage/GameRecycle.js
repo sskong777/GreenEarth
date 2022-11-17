@@ -8,7 +8,7 @@ import swal from "sweetalert";
 
 const useStyles = makeStyles((theme) => ({
   mygame: {
-    border: "10px solid #E9FBD2",
+    border: "4px solid #E9FBD2",
     margin: "10px",
     borderRadius: "10px",
   },
@@ -267,7 +267,6 @@ export const GameRecycle = () => {
       }
     };
     canvas.onpointerup = (e) => {
-      console.log(e.offsetX, e.offsetY);
       if (selected != -1) {
         const _selected = selected;
         let items_tmp = items;

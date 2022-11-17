@@ -3,7 +3,7 @@
 }
 
 .Earth {
-  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-184 rounded-lg;
 }
 
 .Earth::before {
@@ -101,7 +101,6 @@ progress::before {
 }
 .canvasEarth {
   /* background-color: black; */
-  /* background-image: url('/public/galaxy.jpg'); */
   width: 100%;
   height: 1000px;
   position: relative;
@@ -109,7 +108,6 @@ progress::before {
 }
 .canvasAstronaut {
   /* background-color: black; */
-  /* background-image: url('/public/galaxy.jpg'); */
   width: 18%;
   height: 54%;
   position: absolute;
@@ -174,14 +172,15 @@ progress::before {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  /* background-color: blue; */
-  /* background-image: url('/public/galaxy.jpg'); */
-  padding: 120px;
+  padding-top: 95px;
+  padding-bottom: 110px;
+  padding-left: 95px;
+  padding-right: 95px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
-  margin-top: 2%;
+  margin-top: 3%;
 }
 
 .info::before {
@@ -193,7 +192,7 @@ progress::before {
   right: 0px;
   bottom: 0px;
   background-color: white;
-  margin: 7%;
+  margin: 6.5%;
   border-radius: 10px;
 }
 
@@ -201,10 +200,10 @@ progress::before {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-right: 5%;
 }
 .badges {
   display: flex;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   width: 50%;
@@ -227,14 +226,17 @@ progress::before {
   border-radius: 5px;
 }
 .badgeImg_unlocked {
-  width: 90%;
-  height: 100%;
-  margin: 5px;
+  width: 80px;
+  height: 80px;
+  left: 50%;
+  margin-left: -40px;
+  top: 50%;
+  margin-top: -40px;
   position: relative;
 }
 .badgeImg_unlock {
-  width: 22.1%;
   height: 100px;
+  width: 100px;
   margin: 5px;
   padding: 5px;
   position: relative;
@@ -251,15 +253,16 @@ progress::before {
   border-radius: 5px;
 }
 .badgeImage {
-  height: 100%;
+  height: 80px;
+  width: 80px;
+  padding-top: 10px;
   margin: auto;
 }
 
 .badgeImg {
-  width: 22.1%;
   height: 100px;
+  width: 100px;
   margin: 5px;
-  padding: 5px;
   position: relative;
 }
 .badgeImg::before {
@@ -277,7 +280,8 @@ progress::before {
 
 .lockImg {
   margin-left: 15%;
-  width: 70%;
+  width: 65px;
+  height: 65px;
   position: absolute;
   top: 6px;
   left: 0px;
@@ -309,7 +313,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth2 {
-  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-184 rounded-lg;
 }
 .Earth2::before {
   content: "";
@@ -411,13 +415,15 @@ progress::before {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-
-  padding: 120px;
+  padding-top: 95px;
+  padding-bottom: 110px;
+  padding-left: 95px;
+  padding-right: 95px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
-  margin-top: 2%;
+  margin-top: 3%;
 }
 
 .info2::before {
@@ -429,14 +435,14 @@ progress::before {
   right: 0px;
   bottom: 0px;
   background-color: white;
-  margin: 7%;
+  margin: 6.5%;
+  border-radius: 10px;
 }
 
 .infogroup2 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-right: 5%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -446,7 +452,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth3 {
-  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-184 rounded-lg;
 }
 .Earth3::before {
   content: "";
@@ -494,14 +500,15 @@ progress::before {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  /* background-color: blue; */
-  /* background-image: url('/public/galaxy.jpg'); */
-  padding: 120px;
+  padding-top: 95px;
+  padding-bottom: 110px;
+  padding-left: 95px;
+  padding-right: 95px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
-  margin-top: 2%;
+  margin-top: 3%;
 }
 
 .info3::before {
@@ -513,14 +520,14 @@ progress::before {
   right: 0px;
   bottom: 0px;
   background-color: white;
-  margin: 7%;
+  margin: 6.5%;
+  border-radius: 10px;
 }
 
 .infogroup3 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-right: 5%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -530,7 +537,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth4 {
-  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-184 rounded-lg;
 }
 .Earth4::before {
   content: "";
@@ -578,14 +585,15 @@ progress::before {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  /* background-color: blue; */
-  /* background-image: url('/public/galaxy.jpg'); */
-  padding: 120px;
+  padding-top: 95px;
+  padding-bottom: 110px;
+  padding-left: 95px;
+  padding-right: 95px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
-  margin-top: 2%;
+  margin-top: 3%;
 }
 
 .info4::before {
@@ -597,14 +605,14 @@ progress::before {
   right: 0px;
   bottom: 0px;
   background-color: white;
-  margin: 7%;
+  margin: 6.5%;
+  border-radius: 10px;
 }
 
 .infogroup4 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-right: 5%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -614,7 +622,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth5 {
-  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-184 rounded-lg;
 }
 .Earth5::before {
   content: "";
@@ -663,14 +671,15 @@ progress::before {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  /* background-color: blue; */
-  /* background-image: url('/public/galaxy.jpg'); */
-  padding: 120px;
+  padding-top: 95px;
+  padding-bottom: 110px;
+  padding-left: 95px;
+  padding-right: 95px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
-  margin-top: 2%;
+  margin-top: 3%;
 }
 
 .info5::before {
@@ -682,14 +691,14 @@ progress::before {
   right: 0px;
   bottom: 0px;
   background-color: white;
-  margin: 7%;
+  margin: 6.5%;
+  border-radius: 10px;
 }
 
 .infogroup5 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-right: 5%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -699,7 +708,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth6 {
-  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-184 rounded-lg;
 }
 .Earth6::before {
   content: "";
@@ -747,14 +756,15 @@ progress::before {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  /* background-color: blue; */
-  /* background-image: url('/public/galaxy.jpg'); */
-  padding: 120px;
+  padding-top: 95px;
+  padding-bottom: 110px;
+  padding-left: 95px;
+  padding-right: 95px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
-  margin-top: 2%;
+  margin-top: 3%;
 }
 
 .info6::before {
@@ -766,14 +776,14 @@ progress::before {
   right: 0px;
   bottom: 0px;
   background-color: white;
-  margin: 7%;
+  margin: 6.5%;
+  border-radius: 10px;
 }
 
 .infogroup6 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-right: 5%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -783,7 +793,7 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth7 {
-  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-184 rounded-lg;
 }
 .Earth7::before {
   content: "";
@@ -831,14 +841,15 @@ progress::before {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  /* background-color: blue; */
-  /* background-image: url('/public/galaxy.jpg'); */
-  padding: 120px;
+  padding-top: 95px;
+  padding-bottom: 110px;
+  padding-left: 95px;
+  padding-right: 95px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
-  margin-top: 2%;
+  margin-top: 3%;
 }
 
 .info7::before {
@@ -850,14 +861,14 @@ progress::before {
   right: 0px;
   bottom: 0px;
   background-color: white;
-  margin: 7%;
+  margin: 6.5%;
+  border-radius: 10px;
 }
 
 .infogroup7 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-right: 5%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -867,8 +878,9 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth8 {
-  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-178 rounded-lg;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-184 rounded-lg;
 }
+
 .Earth8::before {
   content: "";
   opacity: 0.5;
@@ -915,14 +927,15 @@ progress::before {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  /* background-color: blue; */
-  /* background-image: url('/public/galaxy.jpg'); */
-  padding: 120px;
+  padding-top: 95px;
+  padding-bottom: 110px;
+  padding-left: 95px;
+  padding-right: 95px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
-  margin-top: 2%;
+  margin-top: 3%;
 }
 
 .info8::before {
@@ -934,14 +947,14 @@ progress::before {
   right: 0px;
   bottom: 0px;
   background-color: white;
-  margin: 7%;
+  margin: 6.5%;
+  border-radius: 10px;
 }
 
 .infogroup8 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-right: 5%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
