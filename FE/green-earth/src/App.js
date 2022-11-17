@@ -14,7 +14,6 @@ import GamePage from "./pages/GamePage";
 import MissionInfoPage from "./pages/MissionInfoPage";
 import OauthRedirectPage from "./pages/OauthRedirectPage";
 
-import {useGLTF} from '@react-three/drei'
 
 const App = () => {
   return (
@@ -44,5 +43,5 @@ const App = () => {
     </BrowserRouter>
   );
 };
-useGLTF.preload('/final_ani333.gltf')
+
 export default App;
