@@ -12,14 +12,14 @@ export const useChatCallback = () => {
     console.log("Connection Stop!");
   };
 
-	const joinCallback = (username, clientRef) => {
-		console.log(username);
-		let join_notice = {
-			username: username,
-			type: "JOIN",
-			roomId: username
+	const sendNotice = (chatInfo, noticeType, clientRef) => {
+		let send_notice = {
+			username: chatInfo.sender,
+			type: noticeType,
+			roomId: chatInfo.roomId
 		};
-		clientRef.current.sendMessage("/pub/notice", JSON.stringify(join_notice));
+		console.log(send_notice);
+		clientRef.current.sendMessage("/pub/notice", JSON.stringify(send_notice));
 	};
 
 	const sendMessage = (chatInfo, sendText, clientRef) => {
@@ -36,7 +36,7 @@ export const useChatCallback = () => {
 		randomColor,
 		onConnected,
 		onDisconnected,
-		joinCallback,
+		sendNotice,
 		sendMessage
 	};
 };

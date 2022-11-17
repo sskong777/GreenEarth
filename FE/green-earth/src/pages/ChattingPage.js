@@ -14,6 +14,8 @@ function ChattingPage() {
 	const { randomColor } = useChatCallback();
 
 	const [messages, setMessage] = useState([]);
+
+	// const [notice, setNotice] = useState([]);
 	
 	const clientRef = useRef(null);
 	
@@ -29,7 +31,7 @@ function ChattingPage() {
 
 	const topic = "/room/" + chatInfo.roomId;
 
-	const { onConnected, onDisconnected, sendMessage } = useChatCallback();
+	const { onConnected, onDisconnected, sendNotice, sendMessage } = useChatCallback();
 
 	const handleSendMessage = (sendText) => {
 		// console.log(chatInfo);
@@ -37,16 +39,21 @@ function ChattingPage() {
   };
 
   const handleReceiveMessage = (receivedMsg) => {
-		// console.log(receivedMsg);
+		console.log(receivedMsg);
     setMessage(messages.concat(receivedMsg));
   };
+
+	const handleOnConncted = () => {
+		onConnected();
+		sendNotice(chatInfo, "JOIN", clientRef);
+	};
 
 	return (
 		<div className="chat-container">
 			<SockJsClient
 				 url={endPointUrl}
 				 topics={[topic]} 
-				 onConnect={onConnected}
+				 onConnect={handleOnConncted}
 				 onDisConnect={onDisconnected}
 				 onMessage={handleReceiveMessage}
 				 ref={clientRef} />
