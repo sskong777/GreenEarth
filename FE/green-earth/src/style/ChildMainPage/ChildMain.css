@@ -108,7 +108,7 @@ progress::before {
   width: 100%;
   height: 1000px;
   position: relative;
-  z-index: 100;
+  z-index: 1;
 }
 .canvasAstronaut {
   /* background-color: black; */
@@ -867,7 +867,8 @@ progress::before {
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .Earth8 {
-  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-184 rounded-lg;
+  @apply bg-[url("/public/assets/images/galaxybg.png")] relative h-184 rounded-lg ;
+  
 }
 
 .Earth8::before {
