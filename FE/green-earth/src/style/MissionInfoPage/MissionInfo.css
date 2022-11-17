@@ -3,13 +3,13 @@
 @import "tailwindcss/utilities";
 
 .MissionInfoPage {
-  @apply bg-blue-100  p-2 h-full w-full rounded-md;
+  @apply bg-blue-100  px-2 h-full w-full rounded-md;
 }
 .MissionForm {
   @apply flex flex-col justify-center h-full w-252 mx-auto;
 }
 .MissionTitle {
-  @apply h-[4.5rem] flex flex-col  justify-center items-center mt-1 border-4 border-black bg-light text-[#05173d] rounded-md text-4xl;
+  @apply h-16 flex flex-col  justify-center items-center border-4 border-black bg-light text-[#05173d] rounded-md py-1 text-3xl;
 }
 
 .Info {
@@ -36,9 +36,9 @@
 }
 
 .Select1 {
-  @apply border-4 border-black bg-light rounded-md h-16 text-3xl text-[#05173d] text-center mx-2 px-6;
+  @apply border-4 border-black bg-light rounded-md h-14 text-2xl text-[#05173d] text-center mx-2 px-6;
 }
 
 .Select2 {
-  @apply border-4 border-black bg-light rounded-md h-16 text-3xl text-[#05173d] mx-2 px-6;
+  @apply border-4 border-black bg-light rounded-md h-14 text-2xl text-[#05173d] mx-2 px-6;
 }
