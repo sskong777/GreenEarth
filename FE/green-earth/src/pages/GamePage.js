@@ -608,14 +608,32 @@ const GamePage = () => {
         </div>
 
         {/* 게임 실제 화면 */}
-        <div className="flex items-center">
-          <div className="GamePagePlaySpace">
-            {isTab === 0 && <GameTutorial />}
-            {isTab === 1 && <CardsPairing />}
-            {isTab === 2 && <GameRecycle />}
-            {isTab === 3 && <GamePicture />}
-            {isTab === 4 && <KidsSong songValue={videosInfo[songValue]} />}
-          </div>
+        <div className="flex items-center select-auto">
+          {isTab === 0 && (
+            <div className="GamePagePlaySpace">
+              <GameTutorial />
+            </div>
+          )}
+          {isTab === 1 && (
+            <div className="GamePagePlaySpace outline outline-light outline-4">
+              {/* <CardsPairingTutorial /> */}
+            </div>
+          )}
+          {isTab === 2 && (
+            <div className="GamePagePlaySpace select-auto">
+              <GameRecycle />
+            </div>
+          )}
+          {isTab === 3 && (
+            <div className="GamePagePlaySpace select-auto">
+              <GamePicture />
+            </div>
+          )}
+          {isTab === 4 && (
+            <div className="GamePagePlaySpace">
+              <KidsSong songValue={videosInfo[songValue]} />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -83,7 +83,6 @@ export const GameRecycle = () => {
       success: false,
     },
   ]);
-
   //지금 잡고있는 아이템 정보
   const [selected, setSelected] = useState(-1);
   //잡을 당시 마우스 좌표
@@ -128,7 +127,7 @@ export const GameRecycle = () => {
     let startButton = new Image();
 
     const canvas = canvasRef.current;
-    canvas.onmousedown = (e) => {
+    canvas.onpointerdown = (e) => {
       console.log(e.offsetX, e.offsetY);
       if (
         e.offsetX > 330 &&
@@ -139,7 +138,7 @@ export const GameRecycle = () => {
         setButtonSrc("/assets/games/gameRecycle/main/clickedButton.png");
       }
     };
-    canvas.onmouseup = (e) => {
+    canvas.onpointerup = (e) => {
       if (buttonSrc == "/assets/games/gameRecycle/main/clickedButton.png") {
         setButtonSrc("/assets/games/gameRecycle/main/startButton.png");
         setnowPage("game");
@@ -240,7 +239,7 @@ export const GameRecycle = () => {
     }
 
     const canvas = canvasRef.current;
-    canvas.onmousedown = (e) => {
+    canvas.onpointerdown = (e) => {
       console.log(e.offsetX, e.offsetY);
       let items_tmp = items;
       let _selected = -1;
@@ -267,7 +266,8 @@ export const GameRecycle = () => {
         ]);
       }
     };
-    canvas.onmouseup = (e) => {
+    canvas.onpointerup = (e) => {
+      console.log(e.offsetX, e.offsetY);
       if (selected != -1) {
         const _selected = selected;
         let items_tmp = items;
@@ -316,7 +316,7 @@ export const GameRecycle = () => {
         }
       }
     };
-    canvas.onmousemove = (e) => {
+    canvas.onpointermove = (e) => {
       let items_tmp = items;
       let _selected = selected;
       let _selectedloc = selectedloc;
@@ -355,7 +355,7 @@ export const GameRecycle = () => {
     ctx.drawImage(descBackg, 0, 0, canvasWidth, canvasHeight);
 
     const canvas = canvasRef.current;
-    canvas.onmousedown = (e) => {
+    canvas.onpointerdown = (e) => {
       //나가기버튼
       if (
         e.offsetX > 760 &&
@@ -407,6 +407,7 @@ export const GameRecycle = () => {
   return (
     <div>
       <canvas
+        style={{ touchAction: "none" }}
         ref={canvasRef}
         className={classes.mygame}
         width={936}
@@ -421,13 +422,7 @@ export const GameRecycle = () => {
         />
       )}
 
-      {nowPage == "success" && (
-        <RecycleSuccessModal
-          setnowPage={setnowPage}
-          setLife={setLife}
-          setLifeCount={setLifeCount}
-        />
-      )}
+      {nowPage == "success" && <RecycleSuccessModal />}
     </div>
   );
 };

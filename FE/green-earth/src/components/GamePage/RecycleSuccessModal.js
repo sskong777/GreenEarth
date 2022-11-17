@@ -2,14 +2,12 @@ import { useNavigate } from "react-router-dom";
 
 import "animate.css";
 
-const RecycleSuccessModal = ({ setnowPage, setLife, setLifeCount }) => {
+const RecycleSuccessModal = () => {
   const navigate = useNavigate();
 
   // 게임 다시하기 버튼
   const handleClickCardsPairingButton = (e) => {
-    setnowPage("main");
-    setLife(3);
-    setLifeCount("/assets/games/gameRecycle/heart_full.png");
+    navigate(0);
   };
 
   // 게임 홈화면 이동 버튼
