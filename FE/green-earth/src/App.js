@@ -43,5 +43,5 @@ const App = () => {
     </BrowserRouter>
   );
 };
-useGLTF.preload('/final_ani333.gltf')
+
 export default App;
