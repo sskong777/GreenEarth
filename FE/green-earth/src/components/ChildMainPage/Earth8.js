@@ -306,5 +306,6 @@ function Earth8() {
     </div>
   )
 }
+useGLTF.preload(EarthLv8)
 export {Earth8}
 
