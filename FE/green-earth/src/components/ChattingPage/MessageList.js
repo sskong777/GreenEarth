@@ -2,8 +2,6 @@ import { useChatCallback } from "../../functions/useChatCallback";
 
 function MessageList({ messages, curUserChatInfo }) {
 
-  const { randomColor } = useChatCallback();
-
   const renderNotice = (msg) => {
     console.log(msg);
     return (
@@ -12,24 +10,24 @@ function MessageList({ messages, curUserChatInfo }) {
   };
   
   const renderMessage = (msg) => {
-    const { sender, content, sendAt } = msg;
+    const { sender, content, sendAt, color } = msg;
     const className = (curUserChatInfo.sender === msg.sender) ? "Messages-message currentUser" : "Messages-message";
     const divStyle = {
-      backgroundColor: (curUserChatInfo.sender === msg.sender) ? curUserChatInfo.color : "#94d8ff"
+      backgroundColor: (curUserChatInfo.sender === msg.sender) ? curUserChatInfo.color : color
     };
     return (
       <li className={ className } key={ msg.sendAt }>
         <div className="Message-content">
-          <div className="username">{ sender }</div>
-          <div className="text">{ content }</div>
-          {/* <div className="text" style={divStyle}>{ content }</div> */}
+          <div className="sender">{ sender }</div>
+          <div className="text" style={ divStyle }>{ content }</div>
+          <div className="sendAt">{ sendAt }</div>
         </div>
       </li>
     );
   };
 
   return (
-    <ul className='message-list'>
+    <ul className='messages-list'>
       { messages.map((msg) => renderMessage(msg)) }
     </ul>
   );

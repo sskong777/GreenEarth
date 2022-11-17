@@ -1,6 +1,8 @@
 import "../style/ChattingPage/Chatting.css";
 
 import { useState, useRef } from "react";
+import { useRecoilState } from "recoil";
+import { chatMessageListState } from "../store/atoms";
 import { useLocation } from "react-router-dom";
 import SockJsClient from "react-stomp";
 
@@ -13,9 +15,8 @@ function ChattingPage() {
 
 	const { randomColor } = useChatCallback();
 
-	const [messages, setMessage] = useState([]);
-
-	// const [notice, setNotice] = useState([]);
+	// 채팅 내역 유지를 위해 recoil 로 저장
+	const [messages, setMessage] = useRecoilState(chatMessageListState);
 	
 	const clientRef = useRef(null);
 	
@@ -24,7 +25,7 @@ function ChattingPage() {
 	// 현재 사용자 채팅 정보
 	const [chatInfo] = useState({
 		sender: location.state.sender,
-		roomId: location.state.roomId, 
+		roomId: location.state.roomId,
 		color: randomColor() });
 
 	const endPointUrl = "http://localhost:8882/api/chat";
@@ -34,7 +35,6 @@ function ChattingPage() {
 	const { onConnected, onDisconnected, sendNotice, sendMessage } = useChatCallback();
 
 	const handleSendMessage = (sendText) => {
-		// console.log(chatInfo);
     sendMessage(chatInfo, sendText, clientRef);
   };
 
