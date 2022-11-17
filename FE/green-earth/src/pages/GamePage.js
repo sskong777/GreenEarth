@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import { memberInfoState } from "../store/atoms";
 
 import KidsSong from "../components/GamePage/KidsSong";
-import CardsPairing from "../components/GamePage/CardsPairing";
+import CardsPairingTutorial from "../components/GamePage/CardsPairingTutorial";
 import GameTutorial from "../components/GamePage/GameTutorial";
 import GameRecycle from "../components/GamePage/GameRecycle";
 import GamePicture from "../components/GamePage/GamePicture";
@@ -13,6 +13,7 @@ import GamePicture from "../components/GamePage/GamePicture";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { OrbitControls } from "@react-three/drei";
+import ReactHowler from "react-howler";
 
 import {
   Child1,
@@ -112,6 +113,16 @@ const GamePage = () => {
     navigate(`/profile/${memberInfo.childId}`);
   };
 
+  const handleClickSongButton = () => {
+    setIsTab(4);
+    window.Howler.mute(true);
+  };
+
+  const handleClickHomeButton = () => {
+    setIsTab(0);
+    window.Howler.mute(false);
+  };
+
   return (
     <div className="GamePage pt-8 pb-5">
       <div className="GamePageHeader">
@@ -125,7 +136,7 @@ const GamePage = () => {
         {isTab === 4 ? (
           <button
             className="GamePageButtonBack animate__animated animate__fadeIn mr-2"
-            onClick={() => setIsTab(0)}
+            onClick={handleClickHomeButton}
           >
             뒤로 가기
           </button>
@@ -598,7 +609,7 @@ const GamePage = () => {
                 </button>
                 <button
                   className="GamePageButton mt-5"
-                  onClick={() => setIsTab(4)}
+                  onClick={handleClickSongButton}
                 >
                   동요 세상
                 </button>
@@ -616,7 +627,7 @@ const GamePage = () => {
           )}
           {isTab === 1 && (
             <div className="GamePagePlaySpace outline outline-light outline-4">
-              {/* <CardsPairingTutorial /> */}
+              <CardsPairingTutorial />
             </div>
           )}
           {isTab === 2 && (

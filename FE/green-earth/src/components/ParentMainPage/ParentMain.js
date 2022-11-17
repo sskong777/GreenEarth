@@ -1,6 +1,15 @@
+import { useState, useEffect, useRef, Suspense } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
+
+import { useRecoilState } from "recoil";
+import { memberInfoState } from "../../store/atoms";
+import { useAuthCallback } from "./../../functions/useAuthCallback";
+
+import TutorialModal from "./TutorialModal.js";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
+
 import "../../style/ParentMainPage/ParentMain.css";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
 import {
   Card,
   CardHeader,
@@ -8,18 +17,7 @@ import {
   CardFooter,
   Typography,
 } from "@material-tailwind/react";
-// import Home from "./pages/Home";
-import { useRef } from "react";
-//import {useState} from 'react'
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
-import { useNavigate, useParams } from "react-router-dom";
 
-import { useState, useEffect } from "react";
-import { useRecoilState } from "recoil";
-import { memberInfoState } from "../../store/atoms";
-import { useAuthCallback } from "./../../functions/useAuthCallback";
 
 import {
   Model3,
@@ -100,6 +98,9 @@ function ParentMain(props) {
   // 로그아웃 버튼
   const { logoutcallback } = useAuthCallback();
 
+  // 모달 전환을 위해 상태 확인
+  const [modalOpen, setModalOpen] = useState(false);
+
   // 아이 회원 프로필 페이지 이동 함수
   const handleClickChildProfile1 = () => {
     navigate(`/profile/${props.data.childList["0"].childId}`);
@@ -117,13 +118,20 @@ function ParentMain(props) {
     navigate(`/profile/${props.data.childList["4"].childId}`);
   };
 
+  // 도움말 이동 함수
+
+  const handleClickTutorialButton = () => {
+    setModalOpen(true);
+  };
+
   // const location = useLocation();
   // const memberInfoProp = location.state.value;
   // 페이지에 접근하면 해당 유저 정보Axios 요청
-  useEffect(() => {}, []);
 
   return (
     <div>
+      {/* 보상 설정 모달 */}
+      {modalOpen && <TutorialModal setModalOpen={setModalOpen} />}
       <div className="Earth2">
         <div className="GamePageHeader px-16 pt-3">
           {/* 내가 Green 지구 로고 */}
@@ -132,9 +140,20 @@ function ParentMain(props) {
             className="w-64 cursor-pointer"
             onClick={() => navigate("/child")}
           />
-          <button className="ParentMainLogoutButton" onClick={logoutcallback}>
-            로그아웃
-          </button>
+          <div className="z-10">
+            <button
+              className="ParentMainLogoutButton text-[#f7e600] animate-pulse mr-10"
+              onClick={handleClickTutorialButton}
+            >
+              도움말
+            </button>
+            <button
+              className="ParentMainLogoutButton text-light"
+              onClick={logoutcallback}
+            >
+              로그아웃
+            </button>
+          </div>
         </div>
         <div className="peoplelist">
           <div className="people">
@@ -145,7 +164,7 @@ function ParentMain(props) {
                     <Typography>
                       <div className="canvasPerson">
                         {props.data.childList["0"].avatar === 1 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -165,7 +184,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 2 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -185,7 +204,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 3 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -205,7 +224,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 4 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -225,7 +244,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 5 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -245,7 +264,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 6 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -265,7 +284,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 7 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -285,7 +304,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 8 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -305,7 +324,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 9 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -325,7 +344,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 10 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -345,7 +364,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 11 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -365,7 +384,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 12 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -385,7 +404,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 13 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -405,7 +424,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 14 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -425,7 +444,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 15 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -445,7 +464,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 16 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -465,7 +484,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 17 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -485,7 +504,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 18 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -505,7 +524,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 19 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -525,7 +544,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["0"].avatar === 20 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -563,7 +582,7 @@ function ParentMain(props) {
                     <CardHeader>
                       <Typography>
                         <div className="canvasPerson">
-                          <Canvas id="person1">
+                          <Canvas id="person1" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -595,7 +614,7 @@ function ParentMain(props) {
                     <Typography>
                       <div className="canvasPerson">
                         {props.data.childList["1"].avatar === 1 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -615,7 +634,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 2 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -635,7 +654,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 3 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -655,7 +674,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 4 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -675,7 +694,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 5 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -695,7 +714,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 6 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -715,7 +734,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 7 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -735,7 +754,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 8 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -755,7 +774,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 9 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -775,7 +794,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 10 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -795,7 +814,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 11 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -815,7 +834,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 12 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -835,7 +854,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 13 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -855,7 +874,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 14 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -875,7 +894,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 15 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -895,7 +914,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 16 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -915,7 +934,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 17 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -935,7 +954,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 18 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -955,7 +974,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 19 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -975,7 +994,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["1"].avatar === 20 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1013,7 +1032,7 @@ function ParentMain(props) {
                     <CardHeader>
                       <Typography>
                         <div className="canvasPerson">
-                          <Canvas id="person2">
+                          <Canvas id="person2" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1045,7 +1064,7 @@ function ParentMain(props) {
                     <Typography>
                       <div className="canvasPerson">
                         {props.data.childList["2"].avatar === 1 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1065,7 +1084,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 2 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1085,7 +1104,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 3 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1105,7 +1124,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 4 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1125,7 +1144,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 5 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1145,7 +1164,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 6 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1165,7 +1184,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 7 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1185,7 +1204,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 8 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1205,7 +1224,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 9 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1225,7 +1244,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 10 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1245,7 +1264,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 11 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1265,7 +1284,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 12 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1285,7 +1304,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 13 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1305,7 +1324,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 14 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1325,7 +1344,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 15 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1345,7 +1364,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 16 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1365,7 +1384,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 17 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1385,7 +1404,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 18 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1405,7 +1424,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 19 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1425,7 +1444,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["2"].avatar === 20 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1463,7 +1482,7 @@ function ParentMain(props) {
                     <CardHeader>
                       <Typography>
                         <div className="canvasPerson">
-                          <Canvas id="person3">
+                          <Canvas id="person3" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1495,7 +1514,7 @@ function ParentMain(props) {
                     <Typography>
                       <div className="canvasPerson">
                         {props.data.childList["3"].avatar === 1 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1515,7 +1534,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 2 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1535,7 +1554,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 3 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1555,7 +1574,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 4 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1575,7 +1594,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 5 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1595,7 +1614,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 6 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1615,7 +1634,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 7 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1635,7 +1654,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 8 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1655,7 +1674,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 9 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1675,7 +1694,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 10 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1695,7 +1714,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 11 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1715,7 +1734,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 12 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1735,7 +1754,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 13 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1755,7 +1774,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 14 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1775,7 +1794,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 15 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1795,7 +1814,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 16 && (
-                          <Canvas id="person">
+                          <Canvas id="person"width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1815,7 +1834,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 17 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1835,7 +1854,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 18 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1855,7 +1874,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 19 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1875,7 +1894,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 20 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1913,7 +1932,7 @@ function ParentMain(props) {
                     <CardHeader>
                       <Typography>
                         <div className="canvasPerson">
-                          <Canvas id="person4">
+                          <Canvas id="person4" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1945,7 +1964,7 @@ function ParentMain(props) {
                     <Typography>
                       <div className="canvasPerson">
                         {props.data.childList["4"].avatar === 1 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1965,7 +1984,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 2 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -1985,7 +2004,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 3 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10"> 
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2005,7 +2024,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 4 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2025,7 +2044,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 5 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2045,7 +2064,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 6 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2065,7 +2084,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 7 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2085,7 +2104,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 8 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2105,7 +2124,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 9 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2125,7 +2144,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 10 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2145,7 +2164,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 11 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2165,7 +2184,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 12 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2185,7 +2204,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 13 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2205,7 +2224,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 14 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2225,7 +2244,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 15 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2245,7 +2264,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 16 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2265,7 +2284,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 17 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2285,7 +2304,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 18 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2305,7 +2324,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 19 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2325,7 +2344,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 20 && (
-                          <Canvas id="person">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2363,7 +2382,7 @@ function ParentMain(props) {
                     <CardHeader>
                       <Typography>
                         <div className="canvasPerson">
-                          <Canvas id="person5">
+                          <Canvas id="person5" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2392,7 +2411,7 @@ function ParentMain(props) {
         </div>
 
         <div className="canvasEarth">
-          <Canvas id="person">
+          <Canvas id="person" width="10" height="10">
             <Suspense fallback={null}>
               <ambientLight />
               <spotLight

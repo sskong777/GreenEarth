@@ -8,7 +8,7 @@ import swal from "sweetalert";
 
 const useStyles = makeStyles((theme) => ({
   mygame: {
-    border: "10px solid #90C5DE",
+    border: "4px solid #90C5DE",
     margin: "10px",
     borderRadius: "10px",
   },
@@ -460,6 +460,7 @@ export const GamePicture = () => {
   return (
     <div>
       <canvas
+        style={{ touchAction: "none" }}
         ref={canvasRef}
         className={classes.mygame}
         width={936}

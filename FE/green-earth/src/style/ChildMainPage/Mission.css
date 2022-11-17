@@ -19,7 +19,7 @@
    */
 
 .Missions {
-  width: 120%;
+  width: 270px;
   position: relative;
   justify-content: center;
   text-align: center;
@@ -32,6 +32,7 @@
   text-align: center;
   font-weight: bold;
   font-size: 30px;
+  margin-bottom: 5px;
   justify-content: center;
   text-align: center;
 }
@@ -47,16 +48,31 @@
   text-align: center;
 }
 .Mission1 h1 {
-  color: #0a0083;
+  color: #fdfdfd;
   text-align: center;
-  font-size: 18px;
-  width: 100%;
+  font-size: 16px;
+  width: 275px;
   font-weight: bold;
   background-color: rgb(36, 190, 36);
-  margin-top: 10px;
+  margin-bottom: 10px;
   z-index: 2;
   justify-content: center;
   text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+}
+
+.Mission2 h1 {
+  color: black;
+  text-align: center;
+  width: 270px;
+  font-weight: bold;
+  background-color: gray;
+  margin-bottom: 10px;
+  justify-content: center;
+  text-align: center;
+  text-decoration: line-through;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 3px;
@@ -64,22 +80,12 @@
   border-radius: 5px;
 }
 
-.Mission2 h1 {
-  color: black;
-  text-align: center;
-  width: 100%;
-  font-weight: bold;
-  background-color: gray;
-  margin-top: 10px;
-  justify-content: center;
-  text-align: center;
-  text-decoration: line-through;
-}
-
 .Mission3 h1 {
-  color: white;
-  margin-top: 10px;
+  color: #fdfdfd;
+  margin-bottom: 10px;
   background-color: rgb(12, 12, 13);
   height: 60px;
   line-height: 60px;
+  border-radius: 5px;
+  font-size: 18px;
 }
