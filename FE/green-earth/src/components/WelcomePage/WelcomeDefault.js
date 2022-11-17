@@ -34,7 +34,7 @@ const WelcomeDefault = (props) => {
           {/* WelcomeDescription 컴포넌트로 이동 */}
           <div className="WelcomeButton mb-5">
             <button onClick={onClick} className="Btn">
-              지구를 살리는 방법
+              지구를 구하는 방법
             </button>
           </div>
 
