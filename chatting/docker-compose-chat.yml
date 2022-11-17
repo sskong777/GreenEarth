@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  backend:
+    container_name: "greenearth_chatting"
+    image: greenearth_chatting:0.1
+    build:
+      context: chatting/
+      dockerfile: Dockerfile
+    ports:
+      - "8882:8882"
+    # [인증서 파일 저장 경로]:/root
+    volumes:
+      - /etc/letsencrypt/live/k7d2061.p.ssafy.io/:/root
+    environment:
+      - TZ=Asia/Seoul
