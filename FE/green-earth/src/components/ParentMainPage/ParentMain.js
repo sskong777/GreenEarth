@@ -145,10 +145,6 @@ function ParentMain(props) {
           />
 
 
-          <button className="ParentMainLogoutButton" onClick={logoutcallback}>
-            로그아웃
-          </button>
-
           <div className="z-10">
             <button
               className="ParentMainLogoutButton text-[#f7e600] animate-pulse mr-10"
