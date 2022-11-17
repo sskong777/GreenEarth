@@ -631,12 +631,12 @@ const GamePage = () => {
             </div>
           )}
           {isTab === 2 && (
-            <div className="GamePagePlaySpace">
+            <div className="GamePagePlaySpace select-auto">
               <GameRecycle />
             </div>
           )}
           {isTab === 3 && (
-            <div className="GamePagePlaySpace">
+            <div className="GamePagePlaySpace select-auto">
               <GamePicture />
             </div>
           )}
