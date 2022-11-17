@@ -2,6 +2,8 @@
 
 DOCKER_APP_BACK_NAME="greenearth_backend"
 DOCKER_APP_FRONT_NAME="greenearth_frontend"
+DOCKER_APP_CHAT_NAME="greenearth_chatting"
+
 
 # backend 컨테이너 down
 echo "Backend down"
