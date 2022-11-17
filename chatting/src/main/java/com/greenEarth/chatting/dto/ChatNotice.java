@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 @NoArgsConstructor
 public class ChatNotice implements Serializable {
 
-    private NoticeType type;
+    private ChatType type;
 
     private String username;
 
@@ -20,10 +20,6 @@ public class ChatNotice implements Serializable {
     private String notice;
 
     private final LocalDateTime sendAt = LocalDateTime.now();
-
-    public enum NoticeType {
-        JOIN, LEAVE
-    }
 
     public void setJoinNotice() {
         this.notice = username + "님이 뛰어들어왔어요!";
@@ -35,7 +31,7 @@ public class ChatNotice implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("{ %s: %s [%s] }", username, notice,
+        return String.format("[%s] { %s: %s [%s] }", type, username, notice,
                 sendAt.format(DateTimeFormatter.ofPattern("yy-MM-dd(EEE) hh:mm:ss a")));
     }
 
