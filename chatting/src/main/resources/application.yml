@@ -29,9 +29,9 @@ spring:
   # Kafka 통신 설정
   kafka:
     producer:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: kafka:9092
     consumer:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: kafka:9092
       group-id: testGroup1
     template:
       default-topic: testTopic
