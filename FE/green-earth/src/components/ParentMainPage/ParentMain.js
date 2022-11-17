@@ -19,6 +19,7 @@ import {
 } from "@material-tailwind/react";
 
 
+
 import {
   Model3,
   Model,
@@ -98,8 +99,10 @@ function ParentMain(props) {
   // 로그아웃 버튼
   const { logoutcallback } = useAuthCallback();
 
+
   // 모달 전환을 위해 상태 확인
   const [modalOpen, setModalOpen] = useState(false);
+
 
   // 아이 회원 프로필 페이지 이동 함수
   const handleClickChildProfile1 = () => {
@@ -140,6 +143,12 @@ function ParentMain(props) {
             className="w-64 cursor-pointer"
             onClick={() => navigate("/child")}
           />
+
+
+          <button className="ParentMainLogoutButton" onClick={logoutcallback}>
+            로그아웃
+          </button>
+
           <div className="z-10">
             <button
               className="ParentMainLogoutButton text-[#f7e600] animate-pulse mr-10"
@@ -154,6 +163,7 @@ function ParentMain(props) {
               로그아웃
             </button>
           </div>
+
         </div>
         <div className="peoplelist">
           <div className="people">
