@@ -86,6 +86,6 @@
     left:450px;
   } */
 
-.ParentMainLogoutButton {
+.TutorialButton {
   @apply h-12 z-10 text-3xl text-light font-semibold cursor-pointer;
 }
