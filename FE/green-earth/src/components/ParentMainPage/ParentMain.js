@@ -1,6 +1,15 @@
+import { useState, useEffect, useRef, Suspense } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
+
+import { useRecoilState } from "recoil";
+import { memberInfoState } from "../../store/atoms";
+import { useAuthCallback } from "./../../functions/useAuthCallback";
+
+import TutorialModal from "./TutorialModal.js";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
+
 import "../../style/ParentMainPage/ParentMain.css";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
 import {
   Card,
   CardHeader,
@@ -8,18 +17,6 @@ import {
   CardFooter,
   Typography,
 } from "@material-tailwind/react";
-// import Home from "./pages/Home";
-import { useRef } from "react";
-//import {useState} from 'react'
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
-import { useNavigate, useParams } from "react-router-dom";
-
-import { useState, useEffect } from "react";
-import { useRecoilState } from "recoil";
-import { memberInfoState } from "../../store/atoms";
-import { useAuthCallback } from "./../../functions/useAuthCallback";
 
 
 import {
@@ -101,6 +98,8 @@ function ParentMain(props) {
   // 로그아웃 버튼
   const { logoutcallback } = useAuthCallback();
 
+  // 모달 전환을 위해 상태 확인
+  const [modalOpen, setModalOpen] = useState(false);
 
   // 아이 회원 프로필 페이지 이동 함수
   const handleClickChildProfile1 = () => {
@@ -119,13 +118,20 @@ function ParentMain(props) {
     navigate(`/profile/${props.data.childList["4"].childId}`);
   };
 
+  // 도움말 이동 함수
+
+  const handleClickTutorialButton = () => {
+    setModalOpen(true);
+  };
+
   // const location = useLocation();
   // const memberInfoProp = location.state.value;
   // 페이지에 접근하면 해당 유저 정보Axios 요청
-  useEffect(() => {}, []);
 
   return (
     <div>
+      {/* 보상 설정 모달 */}
+      {modalOpen && <TutorialModal setModalOpen={setModalOpen} />}
       <div className="Earth2">
         <div className="GamePageHeader px-16 pt-3">
           {/* 내가 Green 지구 로고 */}
@@ -134,10 +140,20 @@ function ParentMain(props) {
             className="w-64 cursor-pointer"
             onClick={() => navigate("/child")}
           />
-
-          <button className="ParentMainLogoutButton" onClick={logoutcallback}>
-            로그아웃
-          </button>
+          <div className="z-10">
+            <button
+              className="ParentMainLogoutButton text-[#f7e600] animate-pulse mr-10"
+              onClick={handleClickTutorialButton}
+            >
+              도움말
+            </button>
+            <button
+              className="ParentMainLogoutButton text-light"
+              onClick={logoutcallback}
+            >
+              로그아웃
+            </button>
+          </div>
         </div>
         <div className="peoplelist">
           <div className="people">
