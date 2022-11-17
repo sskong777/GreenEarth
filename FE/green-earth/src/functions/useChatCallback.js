@@ -1,5 +1,8 @@
-
 export const useChatCallback = () => {
+
+	const randomColor = () => {
+    return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+  }; 
 
 	const onConnected = () => {
     console.log("Connect Successfully!");
@@ -19,17 +22,18 @@ export const useChatCallback = () => {
 		clientRef.current.sendMessage("/pub/notice", JSON.stringify(join_notice));
 	};
 
-	const sendMessage = (username, roomId, sendText, clientRef) => {
+	const sendMessage = (chatInfo, sendText, clientRef) => {
     let send_message = {
-      sender: username,
+      sender: chatInfo.sender,
       content: sendText,
-      roomId: roomId
+      roomId: chatInfo.roomId
     }
 		console.log(send_message);
     clientRef.current.sendMessage("/pub/message", JSON.stringify(send_message));
 	};
 
 	return {
+		randomColor,
 		onConnected,
 		onDisconnected,
 		joinCallback,
