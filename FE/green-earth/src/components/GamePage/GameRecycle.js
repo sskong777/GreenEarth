@@ -142,7 +142,7 @@ export const GameRecycle = () => {
     let startButton = new Image();
 
     const canvas = canvasRef.current;
-    canvas.onmousedown = (e) => {
+    canvas.onpointerdown = (e) => {
       console.log(e.offsetX, e.offsetY);
       if (
         e.offsetX > 330 &&
@@ -153,7 +153,7 @@ export const GameRecycle = () => {
         setButtonSrc("/assets/games/main/clickedButton.png");
       }
     };
-    canvas.onmouseup = (e) => {
+    canvas.onpointerup = (e) => {
       if (buttonSrc == "/assets/games/main/clickedButton.png") {
         setButtonSrc("/assets/games/main/startButton.png");
         setnowPage("game");
@@ -298,7 +298,7 @@ export const GameRecycle = () => {
     }
 
     const canvas = canvasRef.current;
-    canvas.onmousedown = (e) => {
+    canvas.onpointerdown = (e) => {
       console.log(e.offsetX, e.offsetY);
       let items_tmp = items;
       let _selected = -1;
@@ -325,7 +325,7 @@ export const GameRecycle = () => {
         ]);
       }
     };
-    canvas.onmouseup = (e) => {
+    canvas.onpointerup = (e) => {
       //분리수거 하기
       //197 , 292
       //409 , 431
@@ -382,7 +382,7 @@ export const GameRecycle = () => {
         }
       }
     };
-    canvas.onmousemove = (e) => {
+    canvas.onpointermove = (e) => {
       let items_tmp = items;
       let _selected = selected;
       let _selectedloc = selectedloc;
@@ -422,7 +422,7 @@ export const GameRecycle = () => {
     ctx.drawImage(descBackg, 0, 0, canvasWidth, canvasHeight);
 
     const canvas = canvasRef.current;
-    canvas.onmousedown = (e) => {
+    canvas.onpointerdown = (e) => {
       //나가기버튼
       //738 , 387
       //801 , 448
@@ -471,6 +471,7 @@ export const GameRecycle = () => {
   return (
     <div>
       <canvas
+        style={{ touchAction: "none" }}
         ref={canvasRef}
         className={classes.mygame}
         width={936}
