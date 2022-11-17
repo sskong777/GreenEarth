@@ -27,7 +27,7 @@
 /* ProfilePage */
 
 .ProfilePage {
-  @apply w-252 h-full flex flex-col justify-center mx-auto;
+  @apply w-252 h-full flex flex-col justify-start mx-auto;
 }
 
 .ProfileHeader {
