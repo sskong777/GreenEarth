@@ -101,7 +101,6 @@ progress::before {
 }
 .canvasEarth {
   /* background-color: black; */
-  /* background-image: url('/public/galaxy.jpg'); */
   width: 100%;
   height: 1000px;
   position: relative;
@@ -109,7 +108,6 @@ progress::before {
 }
 .canvasAstronaut {
   /* background-color: black; */
-  /* background-image: url('/public/galaxy.jpg'); */
   width: 18%;
   height: 54%;
   position: absolute;
@@ -205,6 +203,7 @@ progress::before {
 }
 .badges {
   display: flex;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   width: 50%;

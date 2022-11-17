@@ -569,7 +569,7 @@ const ProfilePage = () => {
         <div className="ProfileInfo">
           <div className="text-2xl">
             <div>이름</div>
-            <div>닉네임</div>
+            <div>아이디</div>
             <div>생년월일</div>
             <div>마일리지</div>
           </div>
