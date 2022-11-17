@@ -20,6 +20,7 @@ import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { memberInfoState } from "../../store/atoms";
 import { useAuthCallback } from "./../../functions/useAuthCallback";
+import ChatButton from "../ChattingPage/ChatButton";
 
 import {
   Model3,
@@ -133,10 +134,7 @@ function ParentMain(props) {
             className="w-64 cursor-pointer"
             onClick={() => navigate("/child")}
           />
-          <button className="ParentMainLogoutButton" 
-            onClick={() => navigate("/chat", { state: { sender: memberInfo.nickname, roomId: memberInfo.nickname } })}>
-            채팅방
-          </button>
+          <ChatButton />
           <button className="ParentMainLogoutButton" onClick={logoutcallback}>
             로그아웃
           </button>
