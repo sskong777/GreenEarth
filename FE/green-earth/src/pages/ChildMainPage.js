@@ -19,6 +19,10 @@ import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { memberInfoState, childInfoState } from "../store/atoms";
 import { useAuthCallback } from "./../functions/useAuthCallback";
+import { useGLTF} from "@react-three/drei";
+
+import { Model0, EarthLv8} from "../Model.js/Space"
+
 
 function ChildMainPage() {
   
@@ -98,6 +102,5 @@ function ChildMainPage() {
   );}
 
   }
-
-
+useGLTF.preload(EarthLv8)
 export default ChildMainPage;
