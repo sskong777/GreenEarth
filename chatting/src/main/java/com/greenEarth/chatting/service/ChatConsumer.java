@@ -24,7 +24,7 @@ public class ChatConsumer {
         messagingTemplate.convertAndSend("/room/" + notice.getRoomId(), notice);
     }
 
-    @KafkaListener(
+    @KafkaListener (
             topics = "${spring.kafka.template.default-topic}",
             containerFactory = "messageListenerContainerFactory"
     )
