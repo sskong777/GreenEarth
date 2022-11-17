@@ -5,7 +5,7 @@ services:
     container_name: "greenearth_chatting"
     image: greenearth_chatting:0.1
     build:
-      context: chatting/
+      context: ./
       dockerfile: Dockerfile
     ports:
       - "8882:8882"
