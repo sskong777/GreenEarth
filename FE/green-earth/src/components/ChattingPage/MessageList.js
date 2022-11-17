@@ -1,17 +1,17 @@
-function MessageList({ messages, currentUser }) {
+import { useChatCallback } from "../../functions/useChatCallback";
 
-  const randomColor = () => {
-    return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
-  }; 
+function MessageList({ messages, curUserChatInfo }) {
+
+  const { randomColor } = useChatCallback();
   
   const renderMessage = (msg) => {
+    console.log(msg, curUserChatInfo);
     const { sender, content, sendAt } = msg;
-    const className = (currentUser.name === msg.sender) ? "Messages-message currentUser" : "Messages-message";
-    const color = (currentUser.name === msg.sender) ? currentUser.color : randomColor();
+    const className = (curUserChatInfo.sender === msg.sender) ? "Messages-message currentUser" : "Messages-message";
+    const color = (curUserChatInfo.sender === msg.sender) ? curUserChatInfo.color : randomColor();
     
     return (
-      <li className={ className }>
-        <span className="avatar" style={{ backgroundColor: color }}></span>
+      <li className={ className } key={ msg.sendAt }>
         <div className="Message-content">
           <div className="username">{ sender }</div>
           <div className="text">{ content }</div>
