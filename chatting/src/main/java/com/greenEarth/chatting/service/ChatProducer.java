@@ -2,6 +2,7 @@ package com.greenEarth.chatting.service;
 
 import com.greenEarth.chatting.dto.ChatMessage;
 import com.greenEarth.chatting.dto.ChatNotice;
+import com.greenEarth.chatting.dto.ChatType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -17,7 +18,7 @@ public class ChatProducer {
     private final KafkaTemplate<String, ChatMessage> messageKafkaTemplate;
 
     public void sendNotice(String topic, ChatNotice notice) {
-        if (notice.getType().equals(ChatNotice.NoticeType.JOIN)) {
+        if (notice.getType().equals(ChatType.JOIN)) {
             notice.setJoinNotice();
         } else {
             notice.setLeaveNotice();
