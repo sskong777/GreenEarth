@@ -2441,5 +2441,5 @@ function ParentMain(props) {
     </div>
   );
 }
-
+useGLTF.preload(EarthLv8)
 export { ParentMain };
