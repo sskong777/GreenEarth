@@ -619,7 +619,7 @@ const GamePage = () => {
         </div>
 
         {/* 게임 실제 화면 */}
-        <div className="flex items-center">
+        <div className="flex items-center select-auto">
           {isTab === 0 && (
             <div className="GamePagePlaySpace">
               <GameTutorial />
