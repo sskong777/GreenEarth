@@ -7,7 +7,7 @@ import { useAuthCallback } from "./../functions/useAuthCallback";
 import { ParentMain } from "../components/ParentMainPage/ParentMain";
 import { useGLTF } from "@react-three/drei";
 
-import { Model0, EarthLv8_2} from "../Model.js/Space"
+import { Model0, EarthLv8} from "../Model.js/Space"
 
 
 function ParentMainPage() {
@@ -26,5 +26,5 @@ function ParentMainPage() {
 
   return <div>{memberInfo.isParent && <ParentMain data={memberInfo} />}</div>;
 }
-useGLTF.preload(EarthLv8_2)
+useGLTF.preload(EarthLv8)
 export default ParentMainPage;
