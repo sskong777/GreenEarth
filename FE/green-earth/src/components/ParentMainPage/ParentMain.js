@@ -14,20 +14,14 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Typography,
 } from "@material-tailwind/react";
 
 
 
 import {
-  Model3,
-  Model,
-  Model0,
-  Model00,
-  Model000,
   EarthLv8,
-  Test4,
+
 } from "../../Model.js/Space";
 
 import {
@@ -39,27 +33,8 @@ import {
   Child6,
   Child7,
   Child8,
-  Child9,
   Child10,
-  Child11,
-  Child12,
-  Child13,
-  Child14,
   Child15,
-  Child16,
-  Child17,
-  Child18,
-  Child19,
-  Child20,
-  Child21,
-  Child22,
-  Child23,
-  Child24,
-  Child25,
-  Child26,
-  Child27,
-  Child28,
-  Child29,
   Child30,
   Child31,
   Child32,
@@ -70,22 +45,6 @@ import {
   Child37,
   Child38,
   Child39,
-  Child40,
-  Child41,
-  Child42,
-  Child43,
-  Child44,
-  Child45,
-  Child46,
-  Child47,
-  Child48,
-  Child49,
-  Child50,
-  Child51,
-  Child52,
-  Child53,
-  Child54,
-  Child55,
   Plus,
 } from "../../Model.js/Child";
 
@@ -2429,7 +2388,6 @@ function ParentMain(props) {
                 castShadow
               />
               <EarthLv8/>
-              <Test4/>
               <OrbitControls
                 enablePan={true}
                 enableZoom={true}
