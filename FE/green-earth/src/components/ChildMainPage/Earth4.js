@@ -97,7 +97,10 @@ function Earth4() {
 
       <div className="info4">
         <div className="infogroup4">
-          <div className="canvasProfile4" onClick={handleClickChildProfile}>
+          <div
+            className="canvasProfile4 cursor-pointer"
+            onClick={handleClickChildProfile}
+          >
             {memberInfo.avatar === 1 && (
               <Canvas id="person">
                 <Suspense fallback={null}>
