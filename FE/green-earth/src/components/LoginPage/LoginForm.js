@@ -15,8 +15,8 @@ const LoginForm = () => {
 
   // KAKAO LOGIN
   const REST_API_KEY = `2045a52f644e0bfc27a039cf2bef8568`;
-  const REDIRECT_URI = `http://localhost:3000/oauth/redirect`;
-  // const REDIRECT_URI = `https://내가그린지구.com/oauth/redirect`;
+  // const REDIRECT_URI = `http://localhost:3000/oauth/redirect`;
+  const REDIRECT_URI = `https://내가그린지구.com/oauth/redirect`;
 
   const url = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 

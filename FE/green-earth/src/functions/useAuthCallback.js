@@ -11,8 +11,8 @@ import { memberInfoState, childInfoState } from "../store/atoms";
 export const useAuthCallback = () => {
   const navigate = useNavigate();
 
-  // const baseURL = "https://내가그린지구.com/api";
-  const baseURL = "http://localhost:8881/api";
+  const baseURL = "https://내가그린지구.com/api";
+  // const baseURL = "http://localhost:8881/api";
 
   const { api } = useCommonCallback();
 

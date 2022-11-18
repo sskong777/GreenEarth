@@ -45,7 +45,7 @@ function ChattingPage() {
 
 	const handleOnConncted = () => {
 		onConnected();
-		sendNotice(chatInfo, "JOIN", clientRef);
+		// sendNotice(chatInfo, "JOIN", clientRef);
 	};
 
 	return (
