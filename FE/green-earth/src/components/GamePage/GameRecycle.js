@@ -128,7 +128,6 @@ export const GameRecycle = () => {
 
     const canvas = canvasRef.current;
     canvas.onpointerdown = (e) => {
-      console.log(e.offsetX, e.offsetY);
       if (
         e.offsetX > 330 &&
         e.offsetX < 590 &&
@@ -240,7 +239,6 @@ export const GameRecycle = () => {
 
     const canvas = canvasRef.current;
     canvas.onpointerdown = (e) => {
-      console.log(e.offsetX, e.offsetY);
       let items_tmp = items;
       let _selected = -1;
       for (let i = 0; i < 5; i++) {
