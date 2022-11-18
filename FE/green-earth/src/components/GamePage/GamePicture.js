@@ -314,15 +314,15 @@ export const GamePicture = () => {
           setBathroom_ans_1("/assets/games/gamePictures/answerCircle.png");
         });
       } else if (
-        e.offsetX > 15 &&
-        e.offsetX < 260 &&
-        e.offsetY > 310 &&
-        e.offsetY < 460 &&
+        e.offsetX > 810 &&
+        e.offsetX < 905 &&
+        e.offsetY > 270 &&
+        e.offsetY < 330 &&
         bathroom_ans_2 == "/assets/games/gamePictures/blank.png"
       ) {
         swal({
           title: "정답입니다!",
-          text: "음식은 먹을만큼만 적당히!",
+          text: "종이타올 대신 수건을 사용해 보아요!",
           icon: "success",
           button: "계속",
         }).then(() => {
@@ -341,7 +341,7 @@ export const GamePicture = () => {
 
     let answer_2 = new Image();
     answer_2.src = bathroom_ans_2;
-    ctx.drawImage(answer_2, -350, 50, canvasWidth, canvasHeight);
+    ctx.drawImage(answer_2, 370, -30, canvasWidth, canvasHeight);
 
     // 남은 정답 수 그리기
     let answerCnt = new Image();
@@ -365,15 +365,15 @@ export const GamePicture = () => {
     canvas.onpointerdown = (e) => {
       console.log(e.offsetX, e.offsetY);
       if (
-        e.offsetX > 355 &&
-        e.offsetX < 590 &&
-        e.offsetY > 240 &&
-        e.offsetY < 430 &&
+        e.offsetX > 660 &&
+        e.offsetX < 770 &&
+        e.offsetY > 450 &&
+        e.offsetY < 510 &&
         bedroom_ans_1 == "/assets/games/gamePictures/blank.png"
       ) {
         swal({
           title: "정답입니다!",
-          text: "물을 계속 틀어놓지 않아요",
+          text: "일회용 컵 대신 텀블러는 어떨까요?",
           icon: "success",
           button: "계속",
         }).then(() => {
@@ -381,15 +381,15 @@ export const GamePicture = () => {
           setBedroom_ans_1("/assets/games/gamePictures/answerCircle.png");
         });
       } else if (
-        e.offsetX > 15 &&
-        e.offsetX < 260 &&
-        e.offsetY > 310 &&
-        e.offsetY < 460 &&
+        e.offsetX > 635 &&
+        e.offsetX < 735 &&
+        e.offsetY > 240 &&
+        e.offsetY < 320 &&
         bedroom_ans_2 == "/assets/games/gamePictures/blank.png"
       ) {
         swal({
           title: "정답입니다!",
-          text: "음식은 먹을만큼만 적당히!",
+          text: "사용하지 않는 전등은 꺼주세요!",
           icon: "success",
           button: "계속",
         }).then(() => {
@@ -404,11 +404,11 @@ export const GamePicture = () => {
     // 정답 그리기
     let answer_1 = new Image();
     answer_1.src = bedroom_ans_1;
-    ctx.drawImage(answer_1, 0, 0, canvasWidth, canvasHeight);
+    ctx.drawImage(answer_1, 260, 150, canvasWidth, canvasHeight);
 
     let answer_2 = new Image();
     answer_2.src = bedroom_ans_2;
-    ctx.drawImage(answer_2, -350, 50, canvasWidth, canvasHeight);
+    ctx.drawImage(answer_2, 220, -50, canvasWidth, canvasHeight);
 
     // 남은 정답 수 그리기
     let answerCnt = new Image();
