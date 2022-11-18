@@ -9,8 +9,6 @@ import { Earth6 } from "../components/ChildMainPage/Earth6";
 import { Earth7 } from "../components/ChildMainPage/Earth7";
 import { Earth8 } from "../components/ChildMainPage/Earth8";
 
-import ChatButton from "../components/ChattingPage/ChatButton";
-
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
@@ -40,56 +38,48 @@ function ChildMainPage() {
   if (memberInfo.isParent === false && memberInfo.earthLevel === 1) {
     return (
       <div>
-        <ChatButton />
         <Earth1 />
       </div>
     );
   } else if (memberInfo.isParent === false && memberInfo.earthLevel === 2) {
     return (
       <div>
-        <ChatButton />
         <Earth2 />
       </div>
     );
   } else if (memberInfo.isParent === false && memberInfo.earthLevel === 3) {
     return (
       <div>
-        <ChatButton />
         <Earth3 />
       </div>
     );
   } else if (memberInfo.isParent === false && memberInfo.earthLevel === 4) {
     return (
       <div>
-        <ChatButton />
         <Earth4 />
       </div>
     );
   } else if (memberInfo.isParent === false && memberInfo.earthLevel === 5) {
     return (
       <div>
-        <ChatButton />
         <Earth5 />
       </div>
     );
   } else if (memberInfo.isParent === false && memberInfo.earthLevel === 6) {
     return (
       <div>
-        <ChatButton />
         <Earth6 />
       </div>
     );
   } else if (memberInfo.isParent === false && memberInfo.earthLevel === 7) {
     return (
       <div>
-        <ChatButton />
         <Earth7 />
       </div>
     );
   } else if (memberInfo.isParent === false && memberInfo.earthLevel === 8) {
     return (
       <div>
-        <ChatButton />
         <Earth8 />
       </div>
     );
