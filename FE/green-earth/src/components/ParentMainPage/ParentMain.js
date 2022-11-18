@@ -2431,7 +2431,7 @@ function ParentMain(props) {
                 position={[10, 15, 10]}
                 castShadow
               />
-              {/* <EarthLv8/> */}
+              <EarthLv8/>
               <Test4/>
               <OrbitControls
                 enablePan={true}
@@ -2446,5 +2446,5 @@ function ParentMain(props) {
     </div>
   );
 }
-// useGLTF.preload(EarthLv8)
+useGLTF.preload(EarthLv8)
 export { ParentMain };
