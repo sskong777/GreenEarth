@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { useGameCallback } from "./../../functions/useGameCallback";
-
 import CardsPairingModal from "./CardsPairingModal";
 
 import "./../../style/style.css";
@@ -17,8 +15,6 @@ const cardImages = [
 ];
 
 function CardsPairing() {
-  const { gameSuccessCallback } = useGameCallback();
-
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
@@ -73,7 +69,6 @@ function CardsPairing() {
         return card.matched;
       })
     ) {
-      gameSuccessCallback(10);
       setModalCardOpen(true);
     }
   }, [cards]);
