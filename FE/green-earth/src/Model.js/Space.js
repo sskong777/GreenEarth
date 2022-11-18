@@ -3777,10 +3777,24 @@ function Test4(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/model/earth33/test4.gltf')
   const { actions } = useAnimations(animations, group)
+  
+  const scale = useAspect(
+    0.1,                     // Pixel-width
+    0.1,                      // Pixel-height
+    0.11                      // Optional scaling factor
+  )
+
+  useEffect(() => {
+    Object.keys(actions).forEach((key) => {
+   actions[key].play();
+   });
+   }, []);
+
+
   return (
-    <group ref={group} {...props} dispose={null}>
-      <group name="Scene">
-        <group name="Planet" position={[0.03, 0.07, -0.04]} rotation={[Math.PI / 2, 0, -0.27]} scale={0.01}>
+    <group ref={group} {...props} dispose={null} scale={scale} >
+      <group name="Scene"position={[-0.1, -0.15, -0.5]} rotation={[Math.PI / 0.1, 1.7, -0.2]} scale={1.7}>
+      <group name="Planet" position={[0.03, 0.07, -0.04]} rotation={[Math.PI / 2, 0, -0.27]} scale={0.01}>
         <group name="Bushes" position={[-59.56, 45.9, -11.47]}>
             <mesh name="Bushes_1" geometry={nodes.Bushes_1.geometry} material={materials['World ap.521']} position={[-41.31, -32.46, -18.97]} rotation={[-Math.PI, 0, 0]} />
             <mesh name="Bushes_10" geometry={nodes.Bushes_10.geometry} material={materials['World ap.512']} position={[-30.32, 15.49, 4.64]} rotation={[-2.19, 0, 0]} />
@@ -4360,16 +4374,78 @@ function Test4(props) {
           <mesh name="Plane" geometry={nodes.Plane.geometry} material={materials['World ap']} position={[-1.39, 8.5, 7.63]} rotation={[1.88, 0, 0]} />
         </group>
         <group name="Camera" position={[0.01, -3.26, 0.09]} rotation={[3.14, 1, 0]} scale={0.01} />
-        <group name="Rig" position={[-0.9, 0.29, 0.43]} rotation={[0, 0, 0.93]} scale={0.05}>
+        <group name="Rig002" position={[-0.09, 0.16, 1.03]} rotation={[-0.45, 1.22, 2.2]} scale={0.05}>
+          <group name="root_3">
+            <group name="body_3" position={[0, 0.72, -0.12]} rotation={[Math.PI / 2, 0, 0]}>
+              <group name="earL_3" position={[0.17, 0.7, -0.06]} rotation={[-0.02, 0, 0]} />
+              <group name="earR_3" position={[-0.17, 0.7, -0.06]} rotation={[-0.02, 0, 0]} />
+              <group name="tail01_3" position={[0, -0.49, 0.11]} rotation={[-1.76, 0, Math.PI]} />
+              <group name="legFL_3" position={[-0.26, 0.34, 0.22]} rotation={[2.8, 0, -Math.PI]} />
+              <group name="legBL_3" position={[0.46, -0.25, 0.31]} rotation={[-Math.PI, 0, Math.PI]} />
+              <group name="legFR_3" position={[0.26, 0.34, 0.22]} rotation={[2.8, 0, -Math.PI]} />
+              <group name="legBR_3" position={[-0.46, -0.25, 0.31]} rotation={[-Math.PI, 0, Math.PI]} />
+            </group>
+          </group>
+          <mesh name="Hare_LOD0002" geometry={nodes.Hare_LOD0002.geometry} material={materials['M_Hare.002']} morphTargetDictionary={nodes.Hare_LOD0002.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD0002.morphTargetInfluences} />
+          <mesh name="Hare_LOD1002" geometry={nodes.Hare_LOD1002.geometry} material={materials['M_Hare.002']} morphTargetDictionary={nodes.Hare_LOD1002.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD1002.morphTargetInfluences} />
+          <mesh name="Hare_LOD2002" geometry={nodes.Hare_LOD2002.geometry} material={materials['M_Hare.002']} morphTargetDictionary={nodes.Hare_LOD2002.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD2002.morphTargetInfluences} />
+          <mesh name="Hare_LOD3002" geometry={nodes.Hare_LOD3002.geometry} material={materials['M_Hare.002']} morphTargetDictionary={nodes.Hare_LOD3002.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD3002.morphTargetInfluences} />
+        </group>
+        <group name="Rig004" position={[-1.06, 0.02, -0.26]} rotation={[-0.22, -0.47, 0.71]} scale={0.05}>
           <group name="root">
             <group name="body" position={[0, 0.72, -0.12]} rotation={[Math.PI / 2, 0, 0]}>
-              <group name="earL" position={[0.17, 0.7, -0.06]} rotation={[-0.02, 0, 0]} />
-              <group name="earR" position={[-0.17, 0.7, -0.06]} rotation={[-0.02, 0, 0]} />
-              <group name="tail01" position={[0, -0.49, 0.11]} rotation={[-1.76, 0, Math.PI]} />
+              <group name="earL" position={[0.17, 0.7, -0.06]} rotation={[0.07, 0.01, -0.01]} />
+              <group name="earR" position={[-0.17, 0.7, -0.06]} rotation={[0.07, -0.01, 0.01]} />
+              <group name="tail01" position={[0, -0.49, 0.11]} rotation={[-1.14, 0, Math.PI]} />
               <group name="legFL" position={[-0.26, 0.34, 0.22]} rotation={[2.8, 0, -Math.PI]} />
               <group name="legBL" position={[0.46, -0.25, 0.31]} rotation={[-Math.PI, 0, Math.PI]} />
               <group name="legFR" position={[0.26, 0.34, 0.22]} rotation={[2.8, 0, -Math.PI]} />
               <group name="legBR" position={[-0.46, -0.25, 0.31]} rotation={[-Math.PI, 0, Math.PI]} />
+            </group>
+          </group>
+          <mesh name="Hare" geometry={nodes.Hare.geometry} material={materials['M_Hare.003']} morphTargetDictionary={nodes.Hare.morphTargetDictionary} morphTargetInfluences={nodes.Hare.morphTargetInfluences} />
+        </group>
+        <group name="Rig001" position={[-1.09, -0.01, -0.26]} rotation={[-0.17, -0.47, 0.89]} scale={0.03}>
+          <group name="root_1">
+            <group name="body_1" position={[0, 0.72, -0.12]} rotation={[Math.PI / 2, 0, 0]}>
+              <group name="earL_1" position={[0.17, 0.7, -0.06]} rotation={[0.07, 0.01, -0.01]} />
+              <group name="earR_1" position={[-0.17, 0.7, -0.06]} rotation={[0.07, -0.01, 0.01]} />
+              <group name="tail01_1" position={[0, -0.49, 0.11]} rotation={[-1.14, 0, Math.PI]} />
+              <group name="legFL_1" position={[-0.26, 0.34, 0.22]} rotation={[2.8, 0, -Math.PI]} />
+              <group name="legBL_1" position={[0.46, -0.25, 0.31]} rotation={[-Math.PI, 0, Math.PI]} />
+              <group name="legFR_1" position={[0.26, 0.34, 0.22]} rotation={[2.8, 0, -Math.PI]} />
+              <group name="legBR_1" position={[-0.46, -0.25, 0.31]} rotation={[-Math.PI, 0, Math.PI]} />
+            </group>
+          </group>
+          <mesh name="Hare001" geometry={nodes.Hare001.geometry} material={materials['M_Hare.001']} morphTargetDictionary={nodes.Hare001.morphTargetDictionary} morphTargetInfluences={nodes.Hare001.morphTargetInfluences} />
+        </group>
+        <group name="Rig003" position={[-0.56, 0.12, -0.9]} rotation={[-0.86, -0.58, 0.22]} scale={0.05}>
+          <group name="root_4">
+            <group name="body_4" position={[0, 0.72, -0.12]} rotation={[Math.PI / 2, 0, 0]}>
+              <group name="earL_4" position={[0.17, 0.7, -0.06]} rotation={[-0.02, 0, 0]} />
+              <group name="earR_4" position={[-0.17, 0.7, -0.06]} rotation={[-0.02, 0, 0]} />
+              <group name="tail01_4" position={[0, -0.49, 0.11]} rotation={[-1.76, 0, Math.PI]} />
+              <group name="legFL_4" position={[-0.26, 0.34, 0.22]} rotation={[2.8, 0, -Math.PI]} />
+              <group name="legBL_4" position={[0.46, -0.25, 0.31]} rotation={[-Math.PI, 0, Math.PI]} />
+              <group name="legFR_4" position={[0.26, 0.34, 0.22]} rotation={[2.8, 0, -Math.PI]} />
+              <group name="legBR_4" position={[-0.46, -0.25, 0.31]} rotation={[-Math.PI, 0, Math.PI]} />
+            </group>
+          </group>
+          <mesh name="Hare_LOD0001" geometry={nodes.Hare_LOD0001.geometry} material={materials['M_Hare.004']} morphTargetDictionary={nodes.Hare_LOD0001.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD0001.morphTargetInfluences} />
+          <mesh name="Hare_LOD1001" geometry={nodes.Hare_LOD1001.geometry} material={materials['M_Hare.004']} morphTargetDictionary={nodes.Hare_LOD1001.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD1001.morphTargetInfluences} />
+          <mesh name="Hare_LOD2001" geometry={nodes.Hare_LOD2001.geometry} material={materials['M_Hare.004']} morphTargetDictionary={nodes.Hare_LOD2001.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD2001.morphTargetInfluences} />
+          <mesh name="Hare_LOD3001" geometry={nodes.Hare_LOD3001.geometry} material={materials['M_Hare.004']} morphTargetDictionary={nodes.Hare_LOD3001.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD3001.morphTargetInfluences} />
+        </group>
+        <group name="Rig" position={[-0.9, 0.29, 0.43]} rotation={[0, 0, 0.93]} scale={0.05}>
+          <group name="root_5">
+            <group name="body_5" position={[0, 0.72, -0.12]} rotation={[Math.PI / 2, 0, 0]}>
+              <group name="earL_5" position={[0.17, 0.7, -0.06]} rotation={[-0.02, 0, 0]} />
+              <group name="earR_5" position={[-0.17, 0.7, -0.06]} rotation={[-0.02, 0, 0]} />
+              <group name="tail01_5" position={[0, -0.49, 0.11]} rotation={[-1.76, 0, Math.PI]} />
+              <group name="legFL_5" position={[-0.26, 0.34, 0.22]} rotation={[2.8, 0, -Math.PI]} />
+              <group name="legBL_5" position={[0.46, -0.25, 0.31]} rotation={[-Math.PI, 0, Math.PI]} />
+              <group name="legFR_5" position={[0.26, 0.34, 0.22]} rotation={[2.8, 0, -Math.PI]} />
+              <group name="legBR_5" position={[-0.46, -0.25, 0.31]} rotation={[-Math.PI, 0, Math.PI]} />
             </group>
           </group>
           <mesh name="Hare_LOD0" geometry={nodes.Hare_LOD0.geometry} material={materials.M_Hare} morphTargetDictionary={nodes.Hare_LOD0.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD0.morphTargetInfluences} />
@@ -4377,11 +4453,47 @@ function Test4(props) {
           <mesh name="Hare_LOD2" geometry={nodes.Hare_LOD2.geometry} material={materials.M_Hare} morphTargetDictionary={nodes.Hare_LOD2.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD2.morphTargetInfluences} />
           <mesh name="Hare_LOD3" geometry={nodes.Hare_LOD3.geometry} material={materials.M_Hare} morphTargetDictionary={nodes.Hare_LOD3.morphTargetDictionary} morphTargetInfluences={nodes.Hare_LOD3.morphTargetInfluences} />
         </group>
+        <group name="Rig005" position={[0.17, 0.27, -0.97]} rotation={[-0.89, 1.24, -0.4]} scale={0.09}>
+          <group name="root_2">
+            <group name="body_2" position={[0, 1.26, -0.04]} rotation={[Math.PI / 2, 0, 0]}>
+              <group name="earL_2" position={[0.43, 1.04, -0.78]} rotation={[-0.03, -1.43, -0.03]} />
+              <group name="earR_2" position={[-0.43, 1.04, -0.78]} rotation={[-0.03, 1.43, 0.03]} />
+              <group name="tail01_2" position={[0, -1.01, -0.48]} rotation={[-0.74, 0, -Math.PI]}>
+                <group name="tail02" position={[0, 0.53, 0]} rotation={[-0.44, 0.07, 0]} />
+              </group>
+              <group name="legFL_2" position={[0.44, 0.59, 0.39]} rotation={[-Math.PI, 0, Math.PI]} />
+              <group name="legBL_2" position={[0.44, -0.77, 0.39]} rotation={[-Math.PI, 0, Math.PI]} />
+              <group name="legFR_2" position={[-0.44, 0.59, 0.39]} rotation={[-Math.PI, 0, Math.PI]} />
+              <group name="legBR_2" position={[-0.44, -0.77, 0.39]} rotation={[-Math.PI, 0, Math.PI]} />
+            </group>
+          </group>
+          <mesh name="Bull001" geometry={nodes.Bull001.geometry} material={materials['M_Bull.001']} morphTargetDictionary={nodes.Bull001.morphTargetDictionary} morphTargetInfluences={nodes.Bull001.morphTargetInfluences} />
+        </group>
+        <group name="Rig006" position={[-1.06, -0.02, 0.15]} rotation={[2.8, -0.51, 1.88]} scale={0.07}>
+          <group name="root_6">
+            <group name="body_6" position={[0, 0.99, -0.11]}>
+              <group name="earL_6" position={[0.3, 0.81, 1.16]} rotation={[-0.17, 0.15, -0.72]} />
+              <group name="earR_6" position={[-0.3, 0.81, 1.16]} rotation={[-0.17, -0.15, 0.72]} />
+              <group name="tail01_6" position={[0, 0.27, -0.94]} rotation={[0.77, 0, -Math.PI]}>
+                <group name="tail02_1" position={[0, 0.47, 0]} rotation={[-0.53, 0.07, 0]} />
+              </group>
+              <group name="legFL_6" position={[0.26, -0.03, 0.59]} rotation={[0, 0, -Math.PI]} />
+              <group name="legBL_6" position={[0.26, -0.03, -0.74]} rotation={[0, 0, -Math.PI]} />
+              <group name="legFR_6" position={[-0.26, -0.03, 0.59]} rotation={[0, 0, Math.PI]} />
+              <group name="legBR_6" position={[-0.26, -0.03, -0.74]} rotation={[0, 0, Math.PI]} />
+            </group>
+          </group>
+          <mesh name="Cougar_LOD0" geometry={nodes.Cougar_LOD0.geometry} material={materials.M_Cougar} morphTargetDictionary={nodes.Cougar_LOD0.morphTargetDictionary} morphTargetInfluences={nodes.Cougar_LOD0.morphTargetInfluences} />
+          <mesh name="Cougar_LOD1" geometry={nodes.Cougar_LOD1.geometry} material={materials.M_Cougar} morphTargetDictionary={nodes.Cougar_LOD1.morphTargetDictionary} morphTargetInfluences={nodes.Cougar_LOD1.morphTargetInfluences} />
+          <mesh name="Cougar_LOD2" geometry={nodes.Cougar_LOD2.geometry} material={materials.M_Cougar} morphTargetDictionary={nodes.Cougar_LOD2.morphTargetDictionary} morphTargetInfluences={nodes.Cougar_LOD2.morphTargetInfluences} />
+          <mesh name="Cougar_LOD3" geometry={nodes.Cougar_LOD3.geometry} material={materials.M_Cougar} morphTargetDictionary={nodes.Cougar_LOD3.morphTargetDictionary} morphTargetInfluences={nodes.Cougar_LOD3.morphTargetInfluences} />
+        </group>
         <mesh name="Clouds_2" geometry={nodes.Clouds_2.geometry} material={materials['World ap.1']} position={[0.02, 0.17, -0.05]} rotation={[-Math.PI / 2, 0, 0]} scale={0.01} />
       </group>
     </group>
   )
 }
+
 useGLTF.preload('/model/earth33/final_ani333.gltf')
 
 export { Model0, Model00, EarthLv2, EarthLv3, EarthLv4, EarthLv5, EarthLv6, EarthLv7, EarthLv8, Test4}
