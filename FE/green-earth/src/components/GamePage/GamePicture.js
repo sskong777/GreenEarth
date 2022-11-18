@@ -152,7 +152,6 @@ export const GamePicture = () => {
     const canvas = canvasRef.current;
 
     canvas.onpointerdown = (e) => {
-      console.log(e.offsetX, e.offsetY);
       // 게임 1 - 부엌
       if (
         e.offsetX > 80 &&
@@ -229,7 +228,6 @@ export const GamePicture = () => {
 
     const canvas = canvasRef.current;
     canvas.onpointerdown = (e) => {
-      console.log(e.offsetX, e.offsetY);
       if (
         e.offsetX > 355 &&
         e.offsetX < 590 &&
@@ -296,7 +294,6 @@ export const GamePicture = () => {
 
     const canvas = canvasRef.current;
     canvas.onpointerdown = (e) => {
-      console.log(e.offsetX, e.offsetY);
       if (
         e.offsetX > 355 &&
         e.offsetX < 590 &&
@@ -363,7 +360,6 @@ export const GamePicture = () => {
 
     const canvas = canvasRef.current;
     canvas.onpointerdown = (e) => {
-      console.log(e.offsetX, e.offsetY);
       if (
         e.offsetX > 660 &&
         e.offsetX < 770 &&

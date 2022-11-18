@@ -16,11 +16,11 @@ export const useGameCallback = () => {
       .then((response) => {
         if (response.data) {
           console.log("게임 마일리지가 적립되었습니다.");
-          console.log("mileage :", response.data);
+          // console.log("mileage :", response.data);
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
       });
   };
 

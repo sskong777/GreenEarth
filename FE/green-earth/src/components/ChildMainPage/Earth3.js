@@ -6,9 +6,6 @@ import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Mission from "../../components/ChildMainPage/Mission.js";
-import rocket from "../../image/rocket.png";
-import start from "../../image/start.png";
-import end from "../../image/end.png";
 import { useEffect } from "react";
 import ChatButton from "../../components/ChattingPage/ChatButton";
 
@@ -38,9 +35,9 @@ import {
   Child37,
   Child38,
   Child39,
-} from "../../Model.js/Child";
+} from "../../Model/Child";
 
-import { Model0, EarthLv3 } from "../../Model.js/Space";
+import { Model0, EarthLv3 } from "../../Model/Space";
 
 function Earth3() {
   const navigate = useNavigate();
@@ -69,10 +66,10 @@ function Earth3() {
     <div className="Earth3">
       <div>
         <div className="start">
-          <img src={start} className="start" alt="React" />
+          <img src={"assets/images/start.png"} className="start" alt="React" />
         </div>
         <div className="end">
-          <img src={end} className="end" alt="React" />
+          <img src={"assets/images/end.png"} className="end" alt="React" />
         </div>
         <progress className="pgbar" max="110" value={value - 2}>
           {" "}
@@ -81,7 +78,11 @@ function Earth3() {
       </div>
 
       <div className="Rocket" style={{ left: mileage }}>
-        <img src={rocket} className="gageRocket" alt="React" />
+        <img
+          src={"assets/images/rocket.png"}
+          className="gageRocket"
+          alt="React"
+        />
       </div>
 
       <div className="info3">
