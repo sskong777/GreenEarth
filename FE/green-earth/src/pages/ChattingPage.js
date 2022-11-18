@@ -30,7 +30,7 @@ function ChattingPage() {
     color: randomColor(),
   });
 
-  const endPointUrl = "http://localhost:8882/api/chat";
+  const endPointUrl = "https://k7d2061.p.ssafy.io/api/chat";
 
   const topic = "/room/" + chatInfo.roomId;
 

@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import Mission from "../../components/ChildMainPage/Mission.js";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { memberInfoState, childInfoState } from "../../store/atoms";
+import { memberInfoState } from "../../store/atoms";
 import { useAuthCallback } from "./../../functions/useAuthCallback";
 
 import {
