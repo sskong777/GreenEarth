@@ -6,7 +6,7 @@ import WelcomeDefault from "./../components/WelcomePage/WelcomeDefault";
 import "../style/WelcomePage/WelcomePage.css";
 
 import { useGLTF } from "@react-three/drei";
-import { EarthLv8_2, EarthLv8} from "../Model.js/Space"
+import { EarthLv8} from "../Model.js/Space"
 
 
 const WelcomePage = () => {
@@ -24,5 +24,5 @@ const WelcomePage = () => {
 };
 
 useGLTF.preload(EarthLv8)
-useGLTF.preload(EarthLv8_2)
+
 export default WelcomePage;
