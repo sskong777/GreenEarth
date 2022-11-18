@@ -15,8 +15,6 @@ import MissionInfoPage from "./pages/MissionInfoPage";
 import ChattingPage from "./pages/ChattingPage";
 import OauthRedirectPage from "./pages/OauthRedirectPage";
 
-
-
 const App = () => {
   return (
     <BrowserRouter>
@@ -42,6 +40,7 @@ const App = () => {
         src="assets/sounds/toypiano.mp3"
         playing={true}
         loop={true}
+        volume={0.5}
       />
     </BrowserRouter>
   );
