@@ -94,7 +94,7 @@ const TodayMissionItem = ({ data }) => {
   // 미션 종류 Axios 요청
   useEffect(() => {
     missionOptionListCallback();
-    console.log(data);
+    // console.log(data);
   }, []);
 
   // 만약 data가 있다면 아래 조건문 실행
@@ -118,7 +118,7 @@ const TodayMissionItem = ({ data }) => {
   const handleClickMissionSubmit = () => {
     if (window.confirm("미션을 설정하시겠습니까?")) {
       saveMissionCallback(childId, selected.missionId);
-      console.log("미션 설정 완료");
+      // console.log("미션 설정 완료");
     }
   };
 
@@ -126,7 +126,7 @@ const TodayMissionItem = ({ data }) => {
   const handleClickMissionEdit = () => {
     if (window.confirm("미션을 수정하시겠습니까?")) {
       editMissionCallback(data.id, selected.missionId);
-      console.log("미션 수정 완료");
+      // console.log("미션 수정 완료");
     }
   };
 
@@ -134,7 +134,7 @@ const TodayMissionItem = ({ data }) => {
   const handleClickMissionPermit = () => {
     if (window.confirm("미션을 승인하시겠습니까?")) {
       permitMissionCallback(data.id);
-      console.log("미션 승인 완료");
+      // console.log("미션 승인 완료");
     }
   };
 
@@ -142,7 +142,7 @@ const TodayMissionItem = ({ data }) => {
   const handleClickMissionReject = () => {
     if (window.confirm("미션을 거절하시겠습니까?")) {
       rejectMissionCallback(data.id);
-      console.log("미션 거절 완료");
+      // console.log("미션 거절 완료");
     }
   };
 

@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useGameCallback } from "./../../functions/useGameCallback";
+
 import "animate.css";
 
 const CardsPairingModal = ({ setModalCardOpen, shuffleCards, turns }) => {
   const navigate = useNavigate();
+  const { gameSuccessCallback } = useGameCallback();
 
   // 게임 다시하기 버튼
   const handleClickCardsPairingButton = (e) => {
@@ -17,6 +20,10 @@ const CardsPairingModal = ({ setModalCardOpen, shuffleCards, turns }) => {
     setModalCardOpen(false);
     navigate(0);
   };
+
+  useEffect(() => {
+    gameSuccessCallback(10);
+  }, []);
 
   return (
     <>

@@ -48,7 +48,7 @@ const MissionInfo = () => {
   const handleClickMissionClear = () => {
     if (window.confirm("미션을 완료하시겠습니까?")) {
       clearMissionCallback(log_id);
-      console.log("미션 완료");
+      // console.log("미션 완료");
     }
   };
   const script = [

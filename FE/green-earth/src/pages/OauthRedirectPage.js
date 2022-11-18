@@ -10,7 +10,7 @@ const OauthRedirectPage = () => {
   const code = params.get("code");
 
   useEffect(() => {
-    console.log(code);
+    // console.log(code);
     kakaoLoginCallback(code);
   }, []);
 
