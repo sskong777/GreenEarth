@@ -28,6 +28,7 @@ import {
   Model00,
   Model000,
   EarthLv8,
+  Test4,
 } from "../../Model.js/Space";
 
 import {
@@ -2430,7 +2431,8 @@ function ParentMain(props) {
                 position={[10, 15, 10]}
                 castShadow
               />
-              <EarthLv8/>
+              {/* <EarthLv8/> */}
+              <Test4/>
               <OrbitControls
                 enablePan={true}
                 enableZoom={true}
@@ -2444,5 +2446,5 @@ function ParentMain(props) {
     </div>
   );
 }
-useGLTF.preload(EarthLv8)
+// useGLTF.preload(EarthLv8)
 export { ParentMain };
