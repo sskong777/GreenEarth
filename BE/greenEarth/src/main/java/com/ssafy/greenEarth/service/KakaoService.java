@@ -26,6 +26,7 @@ public class KakaoService {
 
         String REST_API_KEY = "2045a52f644e0bfc27a039cf2bef8568";
         String REDIRECT_URI = "https://내가그린지구.com/oauth/redirect";
+//        String REDIRECT_URI = "http://localhost:3000/oauth/redirect";
 
         // POST방식으로 key=value 데이터 요청
         RestTemplate restTemplate = new RestTemplate();
