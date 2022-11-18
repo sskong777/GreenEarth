@@ -2430,7 +2430,7 @@ function ParentMain(props) {
                 position={[10, 15, 10]}
                 castShadow
               />
-              <EarthLv8 />
+              <EarthLv8/>
               <OrbitControls
                 enablePan={true}
                 enableZoom={true}
