@@ -1,5 +1,6 @@
 package com.greenEarth.chatting.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 
 import java.io.Serializable;
@@ -19,11 +20,10 @@ public class ChatMessage implements Serializable {
 
     private String color;
 
-    private final LocalDateTime sendAt = LocalDateTime.now();   // 전송 시각
+    private String sendAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM-dd(EEE) HH:mm"));   // 전송 시각
 
     @Override
     public String toString() {
-        return String.format("[%s] { %s: %s [%s] (%s) }", type, sender, content,
-                sendAt.format(DateTimeFormatter.ofPattern("yy-MM-dd(EEE) hh:mm:ss a")), roomId);
+        return String.format("[%s] { %s: %s [%s] (%s) }", type, sender, content, sendAt, roomId);
     }
 }
