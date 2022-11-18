@@ -309,7 +309,6 @@ function Earth4() {
                 <ambientLight />
                 <spotLight intensity={0.1} angle={0.1} penumbra={1} position={[100, 100,100]} castShadow />
                 <EarthLv4 />
-    
                 <OrbitControls enablePan={true} enableZoom={true} rotateSpeed = {0.2} enableRotate={true} />
                 </Suspense> 
             </Canvas>
