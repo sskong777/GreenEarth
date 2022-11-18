@@ -35,19 +35,31 @@ export const GamePicture = () => {
   );
 
   // 부엌 정답 1
-  const [kicthen_ans_1, setKicthen_ans_1] = useState("");
+  const [kicthen_ans_1, setKicthen_ans_1] = useState(
+    "/assets/games/gamePictures/blank.png"
+  );
   // 부엌 정답 2
-  const [kicthen_ans_2, setKicthen_ans_2] = useState("");
+  const [kicthen_ans_2, setKicthen_ans_2] = useState(
+    "/assets/games/gamePictures/blank.png"
+  );
 
   // 화장실 정답 1
-  const [bathroom_ans_1, setBathroom_ans_1] = useState("");
+  const [bathroom_ans_1, setBathroom_ans_1] = useState(
+    "/assets/games/gamePictures/blank.png"
+  );
   // 화장실 정답 2
-  const [bathroom_ans_2, setBathroom_ans_2] = useState("");
+  const [bathroom_ans_2, setBathroom_ans_2] = useState(
+    "/assets/games/gamePictures/blank.png"
+  );
 
   // 침실 정답 1
-  const [bedroom_ans_1, setBedroom_ans_1] = useState("");
+  const [bedroom_ans_1, setBedroom_ans_1] = useState(
+    "/assets/games/gamePictures/blank.png"
+  );
   // 침실 정답 2
-  const [bedroom_ans_2, setBedroom_ans_2] = useState("");
+  const [bedroom_ans_2, setBedroom_ans_2] = useState(
+    "/assets/games/gamePictures/blank.png"
+  );
 
   //캔버스 관련 변수
 
@@ -139,7 +151,7 @@ export const GamePicture = () => {
 
     const canvas = canvasRef.current;
 
-    canvas.onmousedown = (e) => {
+    canvas.onpointerdown = (e) => {
       console.log(e.offsetX, e.offsetY);
       // 게임 1 - 부엌
       if (
@@ -178,7 +190,7 @@ export const GamePicture = () => {
       }
     };
 
-    canvas.onmouseup = (e) => {
+    canvas.onpointerup = (e) => {
       // 게임 1 - 부엌
       if (
         kicthenButtonSrc ==
@@ -216,14 +228,14 @@ export const GamePicture = () => {
     ctx.drawImage(kicthen, 0, 0, canvasWidth, canvasHeight);
 
     const canvas = canvasRef.current;
-    canvas.onmousedown = (e) => {
+    canvas.onpointerdown = (e) => {
       console.log(e.offsetX, e.offsetY);
       if (
         e.offsetX > 355 &&
         e.offsetX < 590 &&
         e.offsetY > 240 &&
         e.offsetY < 430 &&
-        !kicthen_ans_1
+        kicthen_ans_1 == "/assets/games/gamePictures/blank.png"
       ) {
         swal({
           title: "정답입니다!",
@@ -239,7 +251,7 @@ export const GamePicture = () => {
         e.offsetX < 260 &&
         e.offsetY > 310 &&
         e.offsetY < 460 &&
-        !kicthen_ans_2
+        kicthen_ans_2 == "/assets/games/gamePictures/blank.png"
       ) {
         swal({
           title: "정답입니다!",
@@ -271,7 +283,7 @@ export const GamePicture = () => {
 
     // 라이프 그리기
     let lifeImage = new Image();
-    lifeImage.src = `${lifeCount}`;
+    lifeImage.src = lifeCount;
     ctx.drawImage(lifeImage, 0, 0, canvasWidth, canvasHeight);
   };
 
@@ -283,28 +295,40 @@ export const GamePicture = () => {
     ctx.drawImage(bathroom, 0, 0, canvasWidth, canvasHeight);
 
     const canvas = canvasRef.current;
-    canvas.onmousedown = (e) => {
+    canvas.onpointerdown = (e) => {
       console.log(e.offsetX, e.offsetY);
       if (
         e.offsetX > 355 &&
         e.offsetX < 590 &&
         e.offsetY > 240 &&
         e.offsetY < 430 &&
-        !bathroom_ans_1
+        bathroom_ans_1 == "/assets/games/gamePictures/blank.png"
       ) {
-        alert("정답입니다!!");
-        setPassCount(passCount + 1);
-        setBathroom_ans_1("/assets/games/gamePictures/answerCircle.png");
+        swal({
+          title: "정답입니다!",
+          text: "물을 계속 틀어놓지 않아요",
+          icon: "success",
+          button: "계속",
+        }).then(() => {
+          setPassCount(passCount + 1);
+          setBathroom_ans_1("/assets/games/gamePictures/answerCircle.png");
+        });
       } else if (
-        e.offsetX > 15 &&
-        e.offsetX < 260 &&
-        e.offsetY > 310 &&
-        e.offsetY < 460 &&
-        !bathroom_ans_2
+        e.offsetX > 810 &&
+        e.offsetX < 905 &&
+        e.offsetY > 270 &&
+        e.offsetY < 330 &&
+        bathroom_ans_2 == "/assets/games/gamePictures/blank.png"
       ) {
-        alert("정답입니다!!");
-        setPassCount(passCount + 1);
-        setBathroom_ans_2("/assets/games/gamePictures/answerCircle.png");
+        swal({
+          title: "정답입니다!",
+          text: "종이타올 대신 수건을 사용해 보아요!",
+          icon: "success",
+          button: "계속",
+        }).then(() => {
+          setPassCount(passCount + 1);
+          setBathroom_ans_2("/assets/games/gamePictures/answerCircle.png");
+        });
       } else {
         setLife(life - 1);
       }
@@ -317,7 +341,7 @@ export const GamePicture = () => {
 
     let answer_2 = new Image();
     answer_2.src = bathroom_ans_2;
-    ctx.drawImage(answer_2, -350, 50, canvasWidth, canvasHeight);
+    ctx.drawImage(answer_2, 370, -30, canvasWidth, canvasHeight);
 
     // 남은 정답 수 그리기
     let answerCnt = new Image();
@@ -326,7 +350,7 @@ export const GamePicture = () => {
 
     // 라이프 그리기
     let lifeImage = new Image();
-    lifeImage.src = `${lifeCount}`;
+    lifeImage.src = lifeCount;
     ctx.drawImage(lifeImage, 0, 0, canvasWidth, canvasHeight);
   };
 
@@ -338,28 +362,40 @@ export const GamePicture = () => {
     ctx.drawImage(bedroom, 0, 0, canvasWidth, canvasHeight);
 
     const canvas = canvasRef.current;
-    canvas.onmousedown = (e) => {
+    canvas.onpointerdown = (e) => {
       console.log(e.offsetX, e.offsetY);
       if (
-        e.offsetX > 355 &&
-        e.offsetX < 590 &&
-        e.offsetY > 240 &&
-        e.offsetY < 430 &&
-        !bedroom_ans_1
+        e.offsetX > 660 &&
+        e.offsetX < 770 &&
+        e.offsetY > 450 &&
+        e.offsetY < 510 &&
+        bedroom_ans_1 == "/assets/games/gamePictures/blank.png"
       ) {
-        alert("정답입니다!!");
-        setPassCount(passCount + 1);
-        setBedroom_ans_1("/assets/games/gamePictures/answerCircle.png");
+        swal({
+          title: "정답입니다!",
+          text: "일회용 컵 대신 텀블러는 어떨까요?",
+          icon: "success",
+          button: "계속",
+        }).then(() => {
+          setPassCount(passCount + 1);
+          setBedroom_ans_1("/assets/games/gamePictures/answerCircle.png");
+        });
       } else if (
-        e.offsetX > 15 &&
-        e.offsetX < 260 &&
-        e.offsetY > 310 &&
-        e.offsetY < 460 &&
-        !bedroom_ans_2
+        e.offsetX > 635 &&
+        e.offsetX < 735 &&
+        e.offsetY > 240 &&
+        e.offsetY < 320 &&
+        bedroom_ans_2 == "/assets/games/gamePictures/blank.png"
       ) {
-        alert("정답입니다!!");
-        setPassCount(passCount + 1);
-        setBedroom_ans_2("/assets/games/gamePictures/answerCircle.png");
+        swal({
+          title: "정답입니다!",
+          text: "사용하지 않는 전등은 꺼주세요!",
+          icon: "success",
+          button: "계속",
+        }).then(() => {
+          setPassCount(passCount + 1);
+          setBedroom_ans_2("/assets/games/gamePictures/answerCircle.png");
+        });
       } else {
         setLife(life - 1);
       }
@@ -368,11 +404,11 @@ export const GamePicture = () => {
     // 정답 그리기
     let answer_1 = new Image();
     answer_1.src = bedroom_ans_1;
-    ctx.drawImage(answer_1, 0, 0, canvasWidth, canvasHeight);
+    ctx.drawImage(answer_1, 260, 150, canvasWidth, canvasHeight);
 
     let answer_2 = new Image();
     answer_2.src = bedroom_ans_2;
-    ctx.drawImage(answer_2, -350, 50, canvasWidth, canvasHeight);
+    ctx.drawImage(answer_2, 220, -50, canvasWidth, canvasHeight);
 
     // 남은 정답 수 그리기
     let answerCnt = new Image();
@@ -381,13 +417,13 @@ export const GamePicture = () => {
 
     // 라이프 그리기
     let lifeImage = new Image();
-    lifeImage.src = `${lifeCount}`;
+    lifeImage.src = lifeCount;
     ctx.drawImage(lifeImage, 0, 0, canvasWidth, canvasHeight);
   };
 
   const successPage = (ctx) => {
     let successBackg = new Image();
-    successBackg.src = "/assets/games/success/success.png";
+    successBackg.src = "/assets/games/gamePictures/blank.png";
     ctx.drawImage(successBackg, 0, 0, canvasWidth, canvasHeight);
   };
 
@@ -413,14 +449,14 @@ export const GamePicture = () => {
     if (passCount == 2) {
       setPassCount(0);
 
-      setKicthen_ans_1("");
-      setKicthen_ans_2("");
+      setKicthen_ans_1("/assets/games/gamePictures/blank.png");
+      setKicthen_ans_2("/assets/games/gamePictures/blank.png");
 
-      setBathroom_ans_1("");
-      setBathroom_ans_2("");
+      setBathroom_ans_1("/assets/games/gamePictures/blank.png");
+      setBathroom_ans_2("/assets/games/gamePictures/blank.png");
 
-      setBedroom_ans_1("");
-      setBedroom_ans_2("");
+      setBedroom_ans_1("/assets/games/gamePictures/blank.png");
+      setBedroom_ans_2("/assets/games/gamePictures/blank.png");
 
       setAnswerCount("/assets/games/gamePictures/answerCount_2.png");
       setLifeCount("/assets/games/gamePictures/pictureHeart_full.png");
@@ -434,14 +470,14 @@ export const GamePicture = () => {
   useEffect(() => {
     if (life == 0) {
       setPassCount(0);
-      setKicthen_ans_1("");
-      setKicthen_ans_2("");
+      setKicthen_ans_1("/assets/games/gamePictures/blank.png");
+      setKicthen_ans_2("/assets/games/gamePictures/blank.png");
 
-      setBathroom_ans_1("");
-      setBathroom_ans_2("");
+      setBathroom_ans_1("/assets/games/gamePictures/blank.png");
+      setBathroom_ans_2("/assets/games/gamePictures/blank.png");
 
-      setBedroom_ans_1("");
-      setBedroom_ans_2("");
+      setBedroom_ans_1("/assets/games/gamePictures/blank.png");
+      setBedroom_ans_2("/assets/games/gamePictures/blank.png");
 
       setAnswerCount("/assets/games/gamePictures/answerCount_2.png");
       setLifeCount("/assets/games/gamePictures/pictureHeart_full.png");

@@ -10,6 +10,8 @@ import { getMonth, getYear } from "date-fns";
 
 import "../../style/SignUpPage/SignUpForm.css";
 
+import swal from "sweetalert";
+
 const SignUpForm = () => {
   const navigate = useNavigate();
 
@@ -59,36 +61,68 @@ const SignUpForm = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (!nickname.trim()) {
-      alert("아이디를 입력해주세요");
+      swal({
+        title: "아이디를 입력해 주세요!",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     }
     if (!password.trim()) {
-      alert("비밀번호를 입력해주세요");
+      swal({
+        title: "비밀번호를 입력해주세요!",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     }
     if (!regex.test(password)) {
       setPassword("");
-      alert("비밀번호는 4자리의 숫자만 가능합니다.");
+      swal({
+        title: "비밀번호는 4자리의 숫자만 가능합니다.",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     }
     if (!password2.trim()) {
-      alert("비밀번호를 한번 더 입력해주세요");
-      return;
-    }
-    if (!realName.trim()) {
-      alert("이름을 입력해주세요");
-      return;
-    }
-    if (gender === "성별을 설정해 주세요.") {
-      alert("성별을 입력해주세요");
+      swal({
+        title: "비밀번호를 한번 더 입력해 주세요.",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     }
     if (password !== password2) {
-      alert("비밀번호가 일치하지 않습니다");
+      swal({
+        title: "비밀번호가 일치하지 않습니다!",
+        icon: "warning",
+        button: "확인",
+      });
+      return;
+    }
+    if (!realName.trim()) {
+      swal({
+        title: "이름을 입력해 주세요!",
+        icon: "warning",
+        button: "확인",
+      });
+      return;
+    }
+    if (gender === "성별을 설정해 주세요.") {
+      swal({
+        title: "성별을 설정해 주세요!.",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     }
     if (check) {
-      alert("닉네임 중복 체크를 해주세요");
+      swal({
+        title: "닉네임 중복 체크를 해 주세요!",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     } else if (window.confirm("회원가입을 하시겠습니까?")) {
       if (gender === "왕자님") {
@@ -103,17 +137,29 @@ const SignUpForm = () => {
   const nicknameCheckHandler = (e) => {
     e.preventDefault();
     if (!nickname.trim()) {
-      alert("아이디를 입력해주세요");
+      swal({
+        title: "아이디를 입력해 주세요!",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     }
     nickNameCheckCallback(nickname).then((response) => {
       const text = response.data;
       if (text === "사용할 수 있는 닉네임입니다.") {
-        alert("사용할 수 있는 아이디입니다");
+        swal({
+          title: "사용할 수 있는 닉네임 입니다!",
+          icon: "success",
+          button: "확인",
+        });
         setCheck(false);
         return;
       } else if (text === "이미 존재하는 닉네임입니다.") {
-        alert("사용할 수 없는 아이디입니다.");
+        swal({
+          title: "사용할 수 없는 닉네임 입니다!",
+          icon: "error",
+          button: "확인",
+        });
         setNickname("");
         return;
       }

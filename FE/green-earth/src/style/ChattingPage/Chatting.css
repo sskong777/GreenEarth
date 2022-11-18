@@ -1,0 +1,91 @@
+.chat-button {
+  @apply absolute w-16 z-20 bottom-6 right-6 cursor-pointer animate-bounce;
+}
+
+.messages-list {
+  padding: 20px 0;
+  max-width: 900px;
+  width: 100%;
+  height: 90%;
+  margin: 0 auto;
+  list-style: none;
+  padding-left: 0;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.Messages-message {
+  display: flex;
+  margin-top: 10px;
+}
+
+.Messages-message.currentUser {
+  /justify-content: flex-end;
+  /flex-direction: row-reverse;
+  text-align: right;
+}
+
+.Message-content {
+  display: inline-block;
+}
+
+.currentUser > .Message-content {
+  align-items: flex-end;
+}
+
+.Message-content > .sender {
+  display: block;
+  color: #d8bfd8;
+  font-size: 14px;
+  padding-bottom: 4px;
+}
+
+.Message-content > .text {
+  padding: 10px;
+  max-width: 400px;
+  margin: 0;
+  border-radius: 1.2rem;
+  border-width: 0.5rem;
+  background-color: whitesmoke;
+  color: rgb(5, 5, 5);
+  display: inline-block;
+}
+
+.Message-content > .sendAt {
+  display: block;
+  color: gray;
+  font-size: 12px;
+  padding-top: 4px;
+}
+
+.message-input {
+  @apply flex w-full;
+}
+
+.inputField {
+  @apply text-xl text-blackBrown h-14 w-full rounded-md mr-2 px-3
+  outline outline-lightGray
+  hover:bg-light/90 active:bg-light/70;
+}
+
+.chat-container {
+  @apply w-[28rem] h-full bg-[#9bbbd4] 
+  p-2 rounded-md flex flex-col justify-between items-center 
+  shadow-lg shadow-[#9bbbd4]/50
+  overscroll-y-auto;
+}
+
+.ChattingButtonBack {
+  @apply w-48 h-[3.5rem] rounded-md text-3xl text-light
+  bg-[#3a1d1d] hover:bg-[#3a1d1d]/90 active:bg-[#3a1d1d]/70
+  outline outline-offset-2 outline-1 shadow-lg shadow-[#3a1d1d]/70;
+}
+
+.messageSendButton {
+  @apply w-24 h-14 rounded-md text-xl text-blackBrown
+  bg-[#fef01b] hover:bg-[#fef01b]/90 active:bg-[#fef01b]/70;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

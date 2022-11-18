@@ -29,12 +29,12 @@ spring:
   # Kafka 통신 설정
   kafka:
     producer:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: 3.36.115.229:9092
     consumer:
-      bootstrap-servers: localhost:9092
-      group-id: testGroup1
+      bootstrap-servers: 3.36.115.229:9092
+      group-id: greenUsGroup
     template:
-      default-topic: testTopic
+      default-topic: greenUsChat
 
 logging:
   level:
