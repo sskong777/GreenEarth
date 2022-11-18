@@ -19,6 +19,7 @@ import {
 } from "@material-tailwind/react";
 
 
+import ChatButton from "../ChattingPage/ChatButton";
 
 import {
   Model3,
@@ -90,9 +91,10 @@ import {
 
 function ParentMain(props) {
   const navigate = useNavigate();
+
   // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
-
+  
   // 회원정보, 아이정보 Axios 요청
   const { memberInfoCallback } = useAuthCallback();
 
@@ -146,7 +148,8 @@ function ParentMain(props) {
 
 
           <div className="z-10">
-            <button
+          <ChatButton />
+          <button
               className="ParentMainLogoutButton text-[#f7e600] animate-pulse mr-10"
               onClick={handleClickTutorialButton}
             >
