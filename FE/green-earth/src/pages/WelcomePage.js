@@ -5,6 +5,10 @@ import WelcomeDefault from "./../components/WelcomePage/WelcomeDefault";
 
 import "../style/WelcomePage/WelcomePage.css";
 
+import { useGLTF } from "@react-three/drei";
+import { Model0, EarthLv8} from "../Model.js/Space"
+
+
 const WelcomePage = () => {
   // 컴포넌트 구분을 위한 상태
   const [description, setDescription] = useState(false);
@@ -19,4 +23,5 @@ const WelcomePage = () => {
   );
 };
 
+useGLTF.preload(EarthLv8)
 export default WelcomePage;
