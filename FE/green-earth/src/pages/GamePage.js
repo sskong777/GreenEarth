@@ -13,7 +13,8 @@ import GamePicture from "../components/GamePage/GamePicture";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { OrbitControls } from "@react-three/drei";
-import ReactHowler from "react-howler";
+
+import swal from "sweetalert";
 
 import {
   Child1,
@@ -104,7 +105,11 @@ const GamePage = () => {
 
   useEffect(() => {
     if (memberInfo.isParent) {
-      alert("아이 회원만 이용 가능합니다.");
+      swal({
+        title: "아이 회원만 이용 가능합니다.",
+        icon: "warning",
+        button: "확인",
+      });
       navigate("/parent", { replace: true });
     }
   }, []);
