@@ -37,7 +37,7 @@ import {
   Child37,
   Child38,
   Child39,
-} from "./../Model.js/Child";
+} from "./../Model/Child";
 
 import "animate.css";
 

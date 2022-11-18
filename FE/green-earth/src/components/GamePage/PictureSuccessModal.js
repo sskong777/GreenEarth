@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
+import { useGameCallback } from "./../../functions/useGameCallback";
+
 import "animate.css";
+import { useEffect } from "react";
 
 const PictureSuccessModal = ({ setnowPage, setLife }) => {
   const navigate = useNavigate();
+  const { gameSuccessCallback } = useGameCallback();
 
   // 게임 다시하기 버튼
   const handleClickCardsPairingButton = (e) => {
@@ -15,6 +19,10 @@ const PictureSuccessModal = ({ setnowPage, setLife }) => {
   const handleClickGameLandButton = (e) => {
     navigate(0);
   };
+
+  useEffect(() => {
+    gameSuccessCallback(10);
+  }, []);
 
   return (
     <>
