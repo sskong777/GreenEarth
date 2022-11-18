@@ -36,9 +36,9 @@ import {
   Child37,
   Child38,
   Child39,
-} from "../../Model.js/Child";
+} from "../../Model/Child";
 
-import { Model0, EarthLv5 } from "../../Model.js/Space";
+import { Model0, EarthLv5 } from "../../Model/Space";
 
 function Earth5() {
   const navigate = useNavigate();
@@ -79,10 +79,10 @@ function Earth5() {
     <div className="Earth5">
       <div>
         <div className="start">
-          <img src={start} className="start" alt="React" />
+          <img src={"assets/images/start.png"} className="start" alt="React" />
         </div>
         <div className="end">
-          <img src={end} className="end" alt="React" />
+          <img src={"assets/images/end.png"} className="end" alt="React" />
         </div>
         <progress className="pgbar" max="110" value={value - 2}>
           {" "}
@@ -91,7 +91,11 @@ function Earth5() {
       </div>
 
       <div className="Rocket" style={{ left: mileage }}>
-        <img src={rocket} className="gageRocket" alt="React" />
+        <img
+          src={"assets/images/rocket.png"}
+          className="gageRocket"
+          alt="React"
+        />
       </div>
 
       <div className="info5">
