@@ -6,9 +6,6 @@ import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
 import Mission from "../../components/ChildMainPage/Mission.js";
-import rocket from "../../image/rocket.png";
-import start from "../../image/start.png";
-import end from "../../image/end.png";
 import { useEffect, useState } from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
@@ -68,10 +65,10 @@ function Earth5() {
     <div className="Earth5">
       <div>
         <div className="start">
-          <img src={start} className="start" alt="React" />
+          <img src={"assets/images/start.png"} className="start" alt="React" />
         </div>
         <div className="end">
-          <img src={end} className="end" alt="React" />
+          <img src={"assets/images/end.png"} className="end" alt="React" />
         </div>
         <progress className="pgbar" max="110" value={value - 2}>
           {" "}
@@ -80,7 +77,11 @@ function Earth5() {
       </div>
 
       <div className="Rocket" style={{ left: mileage }}>
-        <img src={rocket} className="gageRocket" alt="React" />
+        <img
+          src={"assets/images/rocket.png"}
+          className="gageRocket"
+          alt="React"
+        />
       </div>
 
       <div className="info5">
