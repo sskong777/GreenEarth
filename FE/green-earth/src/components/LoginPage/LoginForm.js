@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 import "../../style/LoginPage/LoginForm.css";
 
+import swal from "sweetalert";
+
 const LoginForm = () => {
   const navigate = useNavigate();
 
@@ -24,13 +26,25 @@ const LoginForm = () => {
     e.preventDefault();
 
     if (!id.trim() && !password.trim()) {
-      alert("아이디와 비밀번호를 입력해주세요");
+      swal({
+        title: "아이디와 비밀번호를 입력해 주세요!",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     } else if (!id.trim()) {
-      alert("아이디를 입력해주세요");
+      swal({
+        title: "아이디를 입력해 주세요!",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     } else if (!password.trim()) {
-      alert("비밀번호를 입력해주세요");
+      swal({
+        title: "비밀번호를 입력해 주세요!",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     } else {
       loginCallback(id, password);
