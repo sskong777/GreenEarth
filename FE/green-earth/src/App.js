@@ -11,12 +11,11 @@ import ChildMainPage from "./pages/ChildMainPage";
 import ParentMainPage from "./pages/ParentMainPage";
 import ProfilePage from "./pages/ProfilePage";
 import GamePage from "./pages/GamePage";
-import GamePicturePage from "./pages/GamePicturePage";
-import GameRecyclePage from "./pages/GameRecyclePage";
 import MissionInfoPage from "./pages/MissionInfoPage";
 import ChattingPage from "./pages/ChattingPage";
-
 import OauthRedirectPage from "./pages/OauthRedirectPage";
+
+
 
 const App = () => {
   return (
@@ -31,8 +30,6 @@ const App = () => {
           <Route path="/parent" element={<ParentMainPage />} />
           <Route path="/profile/:childId" element={<ProfilePage />} />
           <Route path="/game" element={<GamePage />} />
-          <Route path="/game/picture" element={<GamePicturePage />} />
-          <Route path="/game/recycle" element={<GameRecyclePage />} />
           <Route path="/oauth/redirect" element={<OauthRedirectPage />} />
           <Route path="/mission/:missionId" element={<MissionInfoPage />} />
           <Route path="/chat" element={<ChattingPage />} />

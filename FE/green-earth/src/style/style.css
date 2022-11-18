@@ -5,29 +5,24 @@
 /* Fonts */
 
 @font-face {
-  font-family: "CookieRun";
-  src: url("./../../public/assets/fonts/CookieRun-Regular.ttf");
-}
-
-@font-face {
   font-family: "BinggraeBold";
-  src: url("./../../public/assets/fonts/Binggrae-Bold.ttf");
+  src: url("./../../public/assets/fonts/Binggrae-Bold.woff2");
 }
 
 @font-face {
   font-family: "Binggrae";
-  src: url("./../../public/assets/fonts/Binggrae.ttf");
+  src: url("./../../public/assets/fonts/Binggrae.woff2");
 }
 
 @font-face {
   font-family: "DungGeunMo";
-  src: url("./../../public/assets/fonts/DungGeunMo.ttf");
+  src: url("./../../public/assets/fonts/DungGeunMo.woff2");
 }
 
 /* ProfilePage */
 
 .ProfilePage {
-  @apply w-252 h-full flex flex-col justify-center mx-auto;
+  @apply w-252 h-full flex flex-col justify-start mx-auto;
 }
 
 .ProfileHeader {
@@ -491,4 +486,15 @@
   @apply w-60 h-16 rounded-md text-3xl text-light font-medium font-dunggeunmo
   bg-[#b0e9fb] hover:bg-[#b0e9fb]/50 active:bg-[#b0e9fb]/70
   outline outline-offset-2 outline-1 shadow-lg shadow-[#b0e9fb]/50 animate-pulse;
+}
+
+/* ParentMainPage */
+
+.TutorialModal {
+  @apply flex justify-center items-center h-screen w-full z-20 fixed left-0 top-0 text-center bg-black bg-opacity-70;
+}
+
+.TutorialNextButton {
+  @apply absolute bottom-10 right-10 z-30 text-light text-5xl font-bold rounded-md 
+  animate-bounce;
 }

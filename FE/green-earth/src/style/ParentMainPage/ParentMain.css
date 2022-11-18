@@ -11,7 +11,6 @@
   flex-wrap: wrap;
   width: 100%;
   /* background-color: blue; */
-  /* background-image: url('/public/galaxy.jpg'); */
   padding: 100px;
   position: absolute;
   top: 0;
@@ -88,5 +87,5 @@
   } */
 
 .ParentMainLogoutButton {
-  @apply h-12 z-10 text-3xl text-light font-semibold cursor-pointer;
+  @apply h-12 text-3xl font-semibold cursor-pointer;
 }

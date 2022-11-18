@@ -50,10 +50,9 @@ function Earth8() {
     }, []);
 
 
-  const level = 8
-  const value = level*14
-  const mileage = level*119+12
- 
+    const level = 8
+    const value = level*14
+    const mileage = level*119+12
 
   return (
    
@@ -281,7 +280,7 @@ function Earth8() {
             <div className="balloon">
                 지구를 구하러가자
             </div>
-            <Canvas id="astronaut" >
+            <Canvas id="astronaut" width="10" height="10">
                 <Suspense fallback={null}>
                 <ambientLight />
                 <spotLight intensity={1} angle={0.1} penumbra={1} position={[100, 100,100]} castShadow />
@@ -293,12 +292,11 @@ function Earth8() {
         </div>
         </Link>
         <div className = "canvasEarth">
-            <Canvas id="earth" width="100" height="100">
+            <Canvas id="earth" width="10" height="10">
                 <Suspense fallback={null}>
                 <ambientLight />
                 <spotLight intensity={0.1} angle={0.1} penumbra={1} position={[100, 100,100]} castShadow />
                 <EarthLv8 />
-              
                 <OrbitControls enablePan={true} enableZoom={true} rotateSpeed = {0.2} enableRotate={true} />
                 </Suspense> 
             </Canvas>
@@ -308,4 +306,6 @@ function Earth8() {
     </div>
   )
 }
+useGLTF.preload(EarthLv8)
 export {Earth8}
+
