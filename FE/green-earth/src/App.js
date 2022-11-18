@@ -36,12 +36,12 @@ const App = () => {
         </Routes>
       </div>
       {/* 내가Green지구 BGM */}
-      <ReactHowler
+      {/* <ReactHowler
         src="assets/sounds/toypiano.mp3"
         playing={true}
         loop={true}
         volume={0.5}
-      />
+      /> */}
     </BrowserRouter>
   );
 };
