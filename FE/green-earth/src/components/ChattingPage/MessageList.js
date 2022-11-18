@@ -6,33 +6,27 @@ function MessageList({ messages, curUserChatInfo }) {
     return <div className="chat-notice">{msg.notice}</div>;
   };
 
-  const renderMessage = (msg) => {
-    const { sender, content, sendAt, color } = msg;
+  const renderMessage = (msg, idx) => {
+    const { sender, content, sendAt } = msg;
     const className =
       curUserChatInfo.sender === msg.sender
-        ? "Messages-message currentUser"
+        ? "Messages-message-currentUser"
         : "Messages-message";
-    const divStyle = {
-      borderColor:
-        curUserChatInfo.sender === msg.sender ? curUserChatInfo.color : color,
-    };
     return (
-      <li className={className} key={msg.sendAt}>
+      <div className={className} key={idx}>
         <div className="Message-content">
           <div className="sender">{sender}</div>
-          <div className="text" style={divStyle}>
-            {content}
-          </div>
+          <div className="text">{content}</div>
           <div className="sendAt">{sendAt}</div>
         </div>
-      </li>
+      </div>
     );
   };
 
   return (
-    <ul className="messages-list">
-      {messages.map((msg) => renderMessage(msg))}
-    </ul>
+    <div className="messages-list">
+      {messages.map((msg, idx) => renderMessage(msg, idx))}
+    </div>
   );
 }
 
