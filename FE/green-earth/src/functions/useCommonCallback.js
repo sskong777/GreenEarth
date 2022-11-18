@@ -6,11 +6,8 @@ import {
 } from "../store/LoginStore";
 
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 export const useCommonCallback = () => {
-  const navigate = useNavigate();
   const baseURL = "https://내가그린지구.com/api";
   // const baseURL = "http://localhost:8881/api";
 
@@ -49,7 +46,6 @@ export const useCommonCallback = () => {
 
   api.interceptors.response.use(
     (response) => {
-      console.log("response", accessToken);
       return response;
     },
     async (error) => {
@@ -58,13 +54,10 @@ export const useCommonCallback = () => {
 
       if (isRetry) {
         setIsRetry(false);
-        console.log("isRetry1", isRetry);
         return Promise.reject(error);
       }
 
       if (code === 401 && !isRetry) {
-        console.log("isRetry2", isRetry);
-
         const access = await reissueAccessTokenCallback(
           accessToken,
           refreshToken
@@ -83,7 +76,6 @@ export const useCommonCallback = () => {
   );
 
   const reissueAccessTokenCallback = async (accessToken, refreshToken) => {
-    console.log("액세스 토큰 재발급");
     const res = await axios({
       method: "post",
       url: `${baseURL}/member/token/reissue`,

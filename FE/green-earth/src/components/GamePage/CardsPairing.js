@@ -66,7 +66,7 @@ function CardsPairing() {
 
   // 모든 카드 맞췄을 경우 실행
   useEffect(() => {
-    console.log(cards);
+    // console.log(cards);
     if (
       cards.length > 0 &&
       cards.every((card) => {
