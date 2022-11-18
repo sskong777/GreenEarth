@@ -18,7 +18,6 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-
 import ChatButton from "../ChattingPage/ChatButton";
 
 import {
@@ -95,17 +94,15 @@ function ParentMain(props) {
 
   // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
-  
+
   // 회원정보, 아이정보 Axios 요청
   const { memberInfoCallback } = useAuthCallback();
 
   // 로그아웃 버튼
   const { logoutcallback } = useAuthCallback();
 
-
   // 모달 전환을 위해 상태 확인
   const [modalOpen, setModalOpen] = useState(false);
-
 
   // 아이 회원 프로필 페이지 이동 함수
   const handleClickChildProfile1 = () => {
@@ -136,7 +133,7 @@ function ParentMain(props) {
 
   return (
     <div>
-      {/* 보상 설정 모달 */}
+      {/* 튜토리얼 모달 */}
       {modalOpen && <TutorialModal setModalOpen={setModalOpen} />}
       <div className="Earth2">
         <div className="GamePageHeader px-16 pt-3">
@@ -147,10 +144,8 @@ function ParentMain(props) {
             onClick={() => navigate("/child")}
           />
 
-
           <div className="z-10">
-          <ChatButton />
-          <button
+            <button
               className="ParentMainLogoutButton text-[#f7e600] animate-pulse mr-10"
               onClick={handleClickTutorialButton}
             >
@@ -163,7 +158,6 @@ function ParentMain(props) {
               로그아웃
             </button>
           </div>
-
         </div>
         <div className="peoplelist">
           <div className="people">
@@ -1824,7 +1818,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["3"].avatar === 16 && (
-                          <Canvas id="person"width="10" height="10">
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2014,7 +2008,7 @@ function ParentMain(props) {
                           </Canvas>
                         )}
                         {props.data.childList["4"].avatar === 3 && (
-                          <Canvas id="person" width="10" height="10"> 
+                          <Canvas id="person" width="10" height="10">
                             <Suspense fallback={null}>
                               <ambientLight />
                               <spotLight
@@ -2421,7 +2415,7 @@ function ParentMain(props) {
         </div>
 
         <div className="canvasEarth">
-          <Canvas id="person" width="10" height="15" >
+          <Canvas id="person" width="10" height="15">
             <Suspense fallback={null}>
               <ambientLight />
               <spotLight
@@ -2431,8 +2425,7 @@ function ParentMain(props) {
                 position={[10, 15, 10]}
                 castShadow
               />
-              <EarthLv8/>
-              <Test4/>
+              <EarthLv8 />
               <OrbitControls
                 enablePan={true}
                 enableZoom={true}
@@ -2442,9 +2435,10 @@ function ParentMain(props) {
             </Suspense>
           </Canvas>
         </div>
+        <ChatButton />
       </div>
     </div>
   );
 }
-useGLTF.preload(EarthLv8)
+useGLTF.preload(EarthLv8);
 export { ParentMain };
