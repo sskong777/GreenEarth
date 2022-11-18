@@ -14,21 +14,12 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Typography,
 } from "@material-tailwind/react";
 
 import ChatButton from "../ChattingPage/ChatButton";
 
-import {
-  Model3,
-  Model,
-  Model0,
-  Model00,
-  Model000,
-  EarthLv8,
-  Test4,
-} from "../../Model/Space";
+import { EarthLv8 } from "../../Model/Space";
 
 import {
   Child1,

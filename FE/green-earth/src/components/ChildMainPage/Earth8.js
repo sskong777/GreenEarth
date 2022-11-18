@@ -3,15 +3,14 @@ import "../../style/ChildMainPage/ChildMain.css";
 import { Link } from "react-router-dom";
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import Mission from "../../components/ChildMainPage/Mission.js";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { memberInfoState, childInfoState } from "../../store/atoms";
+import { memberInfoState } from "../../store/atoms";
 import { useAuthCallback } from "./../../functions/useAuthCallback";
-
 import {
   Child1,
   Child2,
@@ -34,8 +33,7 @@ import {
   Child38,
   Child39,
 } from "../../Model/Child";
-
-import { Model0, EarthLv8, Test4 } from "../../Model/Space";
+import { Model0, EarthLv8 } from "../../Model/Space";
 
 function Earth8() {
   const navigate = useNavigate();
@@ -594,8 +592,8 @@ function Earth8() {
               position={[100, 100, 100]}
               castShadow
             />
-            {/* <EarthLv8 /> */}
-            <Test4 />
+            <EarthLv8 />
+
             <OrbitControls
               enablePan={true}
               enableZoom={true}
@@ -608,5 +606,5 @@ function Earth8() {
     </div>
   );
 }
-// useGLTF.preload(EarthLv8)
+useGLTF.preload(EarthLv8);
 export { Earth8 };
