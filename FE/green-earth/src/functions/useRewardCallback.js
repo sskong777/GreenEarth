@@ -19,11 +19,11 @@ export const useRewardCallback = () => {
         if (response.data) {
           setRewardList(response.data);
           console.log("보상 정보가 조회되었습니다.");
-          console.log("rewardList :", response.data);
+          // console.log("rewardList :", response.data);
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
       });
   };
 
@@ -34,7 +34,7 @@ export const useRewardCallback = () => {
     childId,
     parentNickname
   ) => {
-    console.log(name, rewardCondition, childId, parentNickname);
+    // console.log(name, rewardCondition, childId, parentNickname);
     api
       .post(`/reward/child/${childId}`, {
         name: name,
@@ -45,12 +45,12 @@ export const useRewardCallback = () => {
       .then((response) => {
         if (response.data) {
           console.log("보상이 등록 되었습니다.");
-          console.log("reward :", response.data);
+          // console.log("reward :", response.data);
           setRewardList(response.data);
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
       });
   };
 
@@ -61,7 +61,7 @@ export const useRewardCallback = () => {
     rewardCondition,
     childId
   ) => {
-    console.log(rewardId, rewardName, rewardCondition, childId);
+    // console.log(rewardId, rewardName, rewardCondition, childId);
     api
       .put(`/reward/${rewardId}`, {
         rewardId: rewardId,
@@ -72,12 +72,12 @@ export const useRewardCallback = () => {
       .then((response) => {
         if (response.data) {
           console.log("보상이 수정 되었습니다.");
-          console.log("reward :", response.data);
+          // console.log("reward :", response.data);
           setRewardList(response.data);
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
       });
   };
 
@@ -88,12 +88,12 @@ export const useRewardCallback = () => {
       .then((response) => {
         if (response.data) {
           console.log("보상이 지급되었습니다.");
-          console.log("reward :", response.data);
+          // console.log("reward :", response.data);
           setRewardList(response.data);
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
       });
   };
 
