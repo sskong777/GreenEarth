@@ -1,12 +1,10 @@
 import "../../style/ChildMainPage/ChildMain.css";
 
 import { Link } from "react-router-dom";
-
-import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import Mission from "../../components/ChildMainPage/Mission.js";
-import { useEffect } from "react";
+import { useEffect, useState, Suspense } from "react";
 import ChatButton from "../../components/ChattingPage/ChatButton";
 
 import { useNavigate } from "react-router-dom";
@@ -46,11 +44,23 @@ function Earth4() {
   // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 
+  const [isMute, setIsMute] = useState(false);
+
   // 회원정보, 아이정보 Axios 요청
   const { memberInfoCallback } = useAuthCallback();
 
   const handleClickChildProfile = () => {
     navigate(`/profile/${memberInfo.childId}`);
+  };
+
+  const handleClickMuteButton = () => {
+    if (isMute) {
+      setIsMute(false);
+      window.Howler.mute(false);
+    } else {
+      setIsMute(true);
+      window.Howler.mute(true);
+    }
   };
 
   // 프로필 페이지에 접근하면 해당 아이정보 Axios 요청
@@ -635,6 +645,15 @@ function Earth4() {
         </Canvas>
       </div>
       <ChatButton />
+      {isMute ? (
+        <div className="SoundMuteButton" onClick={handleClickMuteButton}>
+          <img src="/assets/images/mute.png" />
+        </div>
+      ) : (
+        <div className="SoundMuteButton" onClick={handleClickMuteButton}>
+          <img src="/assets/images/volume.png" />
+        </div>
+      )}
     </div>
   );
 }
