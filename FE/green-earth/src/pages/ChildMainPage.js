@@ -16,7 +16,7 @@ import { memberInfoState, childInfoState } from "../store/atoms";
 import { useAuthCallback } from "./../functions/useAuthCallback";
 import { useGLTF } from "@react-three/drei";
 
-import { Model0, EarthLv8 } from "../Model.js/Space";
+import { Model0, EarthLv8 } from "../Model/Space";
 
 function ChildMainPage() {
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ function ChildMainPage() {
   // 페이지에 접근하면 해당 아이정보 Axios 요청
   useEffect(() => {
     memberInfoCallback();
-    console.log(memberInfo);
+    // console.log(memberInfo)
   }, []);
 
   if (memberInfo.isParent === false && memberInfo.earthLevel === 1) {

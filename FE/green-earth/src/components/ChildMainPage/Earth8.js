@@ -35,8 +35,9 @@ import {
   Child37,
   Child38,
   Child39,
-} from "../../Model.js/Child";
-import { Model0, EarthLv8 } from "../../Model.js/Space";
+} from "../../Model/Child";
+import { Model0, EarthLv8 } from "../../Model/Space";
+import ChatButton from "../ChattingPage/ChatButton";
 
 function Earth8() {
   const navigate = useNavigate();
@@ -77,10 +78,10 @@ function Earth8() {
     <div className="Earth8">
       <div>
         <div className="start">
-          <img src={start} className="start" alt="React" />
+          <img src={"assets/images/start.png"} className="start" alt="React" />
         </div>
         <div className="end">
-          <img src={end} className="end" alt="React" />
+          <img src={"assets/images/end.png"} className="end" alt="React" />
         </div>
         <progress className="pgbar" max="110" value={value - 2}>
           {" "}
@@ -89,7 +90,11 @@ function Earth8() {
       </div>
 
       <div className="Rocket" style={{ left: mileage }}>
-        <img src={rocket} className="gageRocket" alt="React" />
+        <img
+          src={"assets/images/rocket.png"}
+          className="gageRocket"
+          alt="React"
+        />
       </div>
 
       <div className="info8">

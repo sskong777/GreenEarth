@@ -36,9 +36,9 @@ import {
   Child37,
   Child38,
   Child39,
-} from "../../Model.js/Child";
+} from "../../Model/Child";
 
-import { Model0, Model00 } from "../../Model.js/Space";
+import { Model0, Model00 } from "../../Model/Space";
 
 function Earth1() {
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ function Earth1() {
   // 프로필 페이지에 접근하면 해당 아이정보 Axios 요청
   useEffect(() => {
     memberInfoCallback();
-    console.log(memberInfo);
+    // console.log(memberInfo)
   }, []);
 
   const level = 1;
@@ -79,10 +79,10 @@ function Earth1() {
     <div className="Earth">
       <div>
         <div className="start">
-          <img src={start} className="start" alt="React" />
+          <img src={"assets/images/start.png"} className="start" alt="React" />
         </div>
         <div className="end">
-          <img src={end} className="end" alt="React" />
+          <img src={"assets/images/end.png"} className="end" alt="React" />
         </div>
         <progress className="pgbar" max="100" value={value - 3.2}>
           {" "}
@@ -91,7 +91,11 @@ function Earth1() {
       </div>
 
       <div className="Rocket" style={{ left: mileage }}>
-        <img src={rocket} className="gageRocket" alt="React" />
+        <img
+          src={"assets/images/rocket.png"}
+          className="gageRocket"
+          alt="React"
+        />
       </div>
 
       <div className="info">

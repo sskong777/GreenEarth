@@ -18,27 +18,7 @@ import {
   Child6,
   Child7,
   Child8,
-  Child9,
   Child10,
-  Child11,
-  Child12,
-  Child13,
-  Child14,
-  Child15,
-  Child16,
-  Child17,
-  Child18,
-  Child19,
-  Child20,
-  Child21,
-  Child22,
-  Child23,
-  Child24,
-  Child25,
-  Child26,
-  Child27,
-  Child28,
-  Child29,
   Child30,
   Child31,
   Child32,
@@ -49,23 +29,7 @@ import {
   Child37,
   Child38,
   Child39,
-  Child40,
-  Child41,
-  Child42,
-  Child43,
-  Child44,
-  Child45,
-  Child46,
-  Child47,
-  Child48,
-  Child49,
-  Child50,
-  Child51,
-  Child52,
-  Child53,
-  Child54,
-  Child55,
-} from "./../../Model.js/Child";
+} from "./../../Model/Child";
 
 const RewardModal = ({ setModalOpen, childInfo }) => {
   const [rewardList, setRewardList] = useRecoilState(rewardListState);
@@ -302,26 +266,6 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
                             castShadow
                           />
                           <Child8 />
-                          <OrbitControls
-                            enablePan={false}
-                            enableZoom={false}
-                            enableRotate={false}
-                          />
-                        </Suspense>
-                      </Canvas>
-                    )}
-                    {childInfo.avatar === 9 && (
-                      <Canvas id="person">
-                        <Suspense fallback={null}>
-                          <ambientLight />
-                          <spotLight
-                            intensity={5}
-                            angle={0.1}
-                            penumbra={5}
-                            position={[500, 500, 500]}
-                            castShadow
-                          />
-                          <Child9 />
                           <OrbitControls
                             enablePan={false}
                             enableZoom={false}
