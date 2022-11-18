@@ -50,3 +50,9 @@ export const missionInfoState = atom({
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
+
+export const chatMessageListState = atom({
+  key: "chatMessageListState",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});
