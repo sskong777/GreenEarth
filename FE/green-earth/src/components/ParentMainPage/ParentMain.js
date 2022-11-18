@@ -148,7 +148,7 @@ function ParentMain(props) {
 
 
           <div className="z-10">
-            <ChatButton />
+          <ChatButton />
           <button
               className="ParentMainLogoutButton text-[#f7e600] animate-pulse mr-10"
               onClick={handleClickTutorialButton}

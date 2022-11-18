@@ -14,6 +14,12 @@
   color: white;
 } */
 
+.chat-button {
+  position: absolute;
+  right: 1rem;
+  color: white;
+}
+
 .messages-list {
   padding: 20px 0;
   max-width: 900px;

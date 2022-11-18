@@ -11,7 +11,7 @@ const ChatButton = () => {
   const [memberInfo] = useRecoilState(memberInfoState);
   
   return (
-    <button className="ParentMainLogoutButton" 
+    <button className="chat-button" 
       onClick={() => navigate("/chat", { state: { sender: memberInfo.nickname, roomId: (memberInfo.isParent ? memberInfo.nickname : memberInfo.parent) } })}>
       채팅방
     </button>
