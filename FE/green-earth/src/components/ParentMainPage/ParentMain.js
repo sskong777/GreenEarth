@@ -19,10 +19,7 @@ import {
 
 import ChatButton from "../ChattingPage/ChatButton";
 
-import {
-  EarthLv8,
-
-} from "../../Model.js/Space";
+import { EarthLv8 } from "../../Model.js/Space";
 
 import {
   Child1,
@@ -54,6 +51,8 @@ function ParentMain(props) {
   // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기
   const [memberInfo, setMemberInfo] = useRecoilState(memberInfoState);
 
+  const [isMute, setIsMute] = useState(false);
+
   // 회원정보, 아이정보 Axios 요청
   const { memberInfoCallback } = useAuthCallback();
 
@@ -78,6 +77,16 @@ function ParentMain(props) {
   };
   const handleClickChildProfile5 = () => {
     navigate(`/profile/${props.data.childList["4"].childId}`);
+  };
+
+  const handleClickMuteButton = () => {
+    if (isMute) {
+      setIsMute(false);
+      window.Howler.mute(false);
+    } else {
+      setIsMute(true);
+      window.Howler.mute(true);
+    }
   };
 
   // 도움말 이동 함수
@@ -2384,7 +2393,7 @@ function ParentMain(props) {
                 position={[10, 15, 10]}
                 castShadow
               />
-              <EarthLv8/>
+              <EarthLv8 />
               <OrbitControls
                 enablePan={true}
                 enableZoom={true}
@@ -2395,6 +2404,15 @@ function ParentMain(props) {
           </Canvas>
         </div>
         <ChatButton />
+        {isMute ? (
+          <div className="SoundMuteButton" onClick={handleClickMuteButton}>
+            <img src="/assets/images/mute.png" />
+          </div>
+        ) : (
+          <div className="SoundMuteButton" onClick={handleClickMuteButton}>
+            <img src="/assets/images/volume.png" />
+          </div>
+        )}
       </div>
     </div>
   );

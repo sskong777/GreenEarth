@@ -498,3 +498,8 @@
   @apply absolute bottom-10 right-10 z-30 text-light text-5xl font-bold rounded-md 
   animate-bounce;
 }
+
+/* Earth */
+.SoundMuteButton {
+  @apply absolute w-16 z-50 bottom-3 left-3 cursor-pointer animate-pulse;
+}
