@@ -34,6 +34,7 @@ import {
   Child39,
 } from "../../Model/Child";
 import { Model0, EarthLv8 } from "../../Model/Space";
+import ChatButton from "../ChattingPage/ChatButton";
 
 function Earth8() {
   const navigate = useNavigate();
@@ -603,6 +604,7 @@ function Earth8() {
           </Suspense>
         </Canvas>
       </div>
+      <ChatButton />
     </div>
   );
 }

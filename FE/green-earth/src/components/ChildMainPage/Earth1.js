@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Mission from "../../components/ChildMainPage/Mission.js";
+import ChatButton from "../../components/ChattingPage/ChatButton";
 
 import { useEffect } from "react";
 
@@ -658,6 +659,7 @@ function Earth1() {
           </Suspense>
         </Canvas>
       </div>
+      <ChatButton />
     </div>
   );
 }

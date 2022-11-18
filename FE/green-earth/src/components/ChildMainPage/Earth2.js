@@ -7,6 +7,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Mission from "../../components/ChildMainPage/Mission.js";
 import { useEffect } from "react";
+import ChatButton from "../../components/ChattingPage/ChatButton";
 
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -652,6 +653,7 @@ function Earth2() {
           </Suspense>
         </Canvas>
       </div>
+      <ChatButton />
     </div>
   );
 }
