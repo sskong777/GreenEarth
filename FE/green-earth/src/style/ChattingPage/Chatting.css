@@ -3,7 +3,7 @@
 }
 
 .messages-list {
-  @apply w-full overscroll-y-auto;
+  @apply w-full h-full py-2 overflow-y-auto;
 }
 
 .Messages-message {
@@ -39,7 +39,7 @@
 }
 
 .inputField {
-  @apply text-xl text-blackBrown h-14 w-full rounded-md mr-2 px-3
+  @apply text-xl text-blackBrown h-14 font-binggrae w-full rounded-md mr-2 px-3
   outline outline-lightGray
   hover:bg-light/90 active:bg-light/70;
 }
@@ -47,8 +47,7 @@
 .chat-container {
   @apply w-[28rem] h-full bg-[#9bbbd4] 
   p-2 rounded-md flex flex-col justify-between items-center 
-  shadow-lg shadow-[#9bbbd4]/50
-  overscroll-y-auto;
+  shadow-lg shadow-[#9bbbd4]/50;
 }
 
 .ChattingButtonBack {
