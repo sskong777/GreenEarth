@@ -26,7 +26,7 @@ import {Child1, Child2, Child3, Child4, Child5, Child6, Child7, Child8, Child9, 
   Child51, Child52, Child53, Child54, Child55} from "../../Model.js/Child"
 
 
-import { Model0, EarthLv8} from "../../Model.js/Space"
+import { Model0, EarthLv8, Test4} from "../../Model.js/Space"
 
 
 function Earth8() {
@@ -296,7 +296,8 @@ function Earth8() {
                 <Suspense fallback={null}>
                 <ambientLight />
                 <spotLight intensity={0.1} angle={0.1} penumbra={1} position={[100, 100,100]} castShadow />
-                <EarthLv8 />
+                {/* <EarthLv8 /> */}
+                <Test4 />
                 <OrbitControls enablePan={true} enableZoom={true} rotateSpeed = {0.2} enableRotate={true} />
                 </Suspense> 
             </Canvas>
@@ -306,6 +307,6 @@ function Earth8() {
     </div>
   )
 }
-useGLTF.preload(EarthLv8)
+// useGLTF.preload(EarthLv8)
 export {Earth8}
 
