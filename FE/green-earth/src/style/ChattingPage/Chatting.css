@@ -1,61 +1,37 @@
 .chat-button {
-  @apply absolute w-16 z-20 bottom-6 right-6 cursor-pointer animate-bounce;
+  @apply absolute w-16 z-50 bottom-3 right-3 cursor-pointer animate-bounce;
 }
 
 .messages-list {
-  padding: 20px 0;
-  max-width: 900px;
-  width: 100%;
-  height: 90%;
-  margin: 0 auto;
-  list-style: none;
-  padding-left: 0;
-  flex-grow: 1;
-  overflow: auto;
+  @apply w-full overscroll-y-auto;
 }
 
 .Messages-message {
-  display: flex;
-  margin-top: 10px;
+  @apply flex justify-start;
 }
 
-.Messages-message.currentUser {
-  justify-content: flex-end;
-  flex-direction: row-reverse;
-  text-align: right;
+.Messages-message-currentUser {
+  @apply flex justify-end;
 }
 
-.Message-content {
-  display: inline-block;
+.Messages-message .sender {
+  @apply text-slate-800 pl-1 mb-1;
 }
 
-.currentUser > .Message-content {
-  align-items: flex-end;
+.Messages-message-currentUser .sender {
+  @apply text-neutral-800 text-right pr-1 mb-1;
 }
 
-.Message-content > .sender {
-  display: block;
-  color: #d8bfd8;
-  font-size: 14px;
-  padding-bottom: 4px;
+.Messages-message .text {
+  @apply w-auto h-auto bg-light p-2 rounded-md leading-relaxed;
 }
 
-.Message-content > .text {
-  padding: 10px;
-  max-width: 400px;
-  margin: 0;
-  border-radius: 1.2rem;
-  border-width: 0.5rem;
-  background-color: whitesmoke;
-  color: rgb(5, 5, 5);
-  display: inline-block;
+.Messages-message-currentUser .text {
+  @apply w-auto h-auto bg-[#fef01b] p-2 rounded-md leading-relaxed;
 }
 
 .Message-content > .sendAt {
-  display: block;
-  color: gray;
-  font-size: 12px;
-  padding-top: 4px;
+  @apply text-sm text-slate-600 my-1;
 }
 
 .message-input {

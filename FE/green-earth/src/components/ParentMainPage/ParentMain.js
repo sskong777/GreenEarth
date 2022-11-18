@@ -19,10 +19,7 @@ import {
 
 import ChatButton from "../ChattingPage/ChatButton";
 
-import {
-  EarthLv8,
-
-} from "../../Model.js/Space";
+import { EarthLv8 } from "../../Model/Space";
 
 import {
   Child1,
@@ -46,7 +43,7 @@ import {
   Child38,
   Child39,
   Plus,
-} from "../../Model.js/Child";
+} from "../../Model/Child";
 
 function ParentMain(props) {
   const navigate = useNavigate();
@@ -2384,7 +2381,7 @@ function ParentMain(props) {
                 position={[10, 15, 10]}
                 castShadow
               />
-              <EarthLv8/>
+              <EarthLv8 />
               <OrbitControls
                 enablePan={true}
                 enableZoom={true}
