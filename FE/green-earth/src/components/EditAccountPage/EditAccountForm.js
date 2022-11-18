@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 import "../../style/SignUpPage/SignUpForm.css";
 
+import swal from "sweetalert";
+
 const EditAccountForm = ({ childInfo }) => {
   const navigate = useNavigate();
 
@@ -40,11 +42,19 @@ const EditAccountForm = ({ childInfo }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (!nickname.trim()) {
-      alert("아이디를 입력해주세요");
+      swal({
+        title: "아이디를 입력해 주세요!",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     }
     if (check) {
-      alert("아이디 중복 체크를 해주세요");
+      swal({
+        title: "아이디 중복 체크를 해주세요!",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     } else if (window.confirm("아이디를 수정하시겠습니까?")) {
       accountEditCallback(childInfo.childId, nickname);
@@ -55,17 +65,29 @@ const EditAccountForm = ({ childInfo }) => {
   const nicknameCheckHandler = (e) => {
     e.preventDefault();
     if (!nickname.trim()) {
-      alert("아이디를 입력해주세요");
+      swal({
+        title: "아이디를 입력해 주세요!",
+        icon: "warning",
+        button: "확인",
+      });
       return;
     }
     nickNameCheckCallback(nickname).then((response) => {
       const text = response.data;
       if (text === "사용할 수 있는 닉네임입니다.") {
-        alert("사용할 수 있는 아이디입니다");
+        swal({
+          title: "사용할 수 있는 아이디입니다!",
+          icon: "success",
+          button: "확인",
+        });
         setCheck(false);
         return;
       } else if (text === "이미 존재하는 닉네임입니다.") {
-        alert("사용할 수 없는 아이디입니다.");
+        swal({
+          title: "사용할 수 없는 아이디입니다!",
+          icon: "error",
+          button: "확인",
+        });
         setNickname("");
         return;
       }
