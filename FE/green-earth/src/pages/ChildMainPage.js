@@ -18,7 +18,7 @@ import { memberInfoState, childInfoState } from "../store/atoms";
 import { useAuthCallback } from "./../functions/useAuthCallback";
 import { useGLTF } from "@react-three/drei";
 
-import { Model0, EarthLv8 } from "../Model.js/Space";
+import { Model0, EarthLv8 } from "../Model/Space";
 
 function ChildMainPage() {
   const navigate = useNavigate();

@@ -7,7 +7,7 @@ import { useAuthCallback } from "./../functions/useAuthCallback";
 import { ParentMain } from "../components/ParentMainPage/ParentMain";
 import { useGLTF } from "@react-three/drei";
 
-import { Model0, EarthLv8 } from "../Model.js/Space";
+import { Model0, EarthLv8 } from "../Model/Space";
 
 function ParentMainPage() {
   // Recoil에 저장되어 있는 아이정보, 회원정보, 로그인토큰 불러오기

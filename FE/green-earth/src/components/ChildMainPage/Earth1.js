@@ -38,9 +38,9 @@ import {
   Child37,
   Child38,
   Child39,
-} from "../../Model.js/Child";
+} from "../../Model/Child";
 
-import { Model0, Model00 } from "../../Model.js/Space";
+import { Model0, Model00 } from "../../Model/Space";
 
 function Earth1() {
   const navigate = useNavigate();
