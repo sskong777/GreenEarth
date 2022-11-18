@@ -23,35 +23,7 @@ function ParentMainPage() {
     memberInfoCallback();
   }, []);
 
-  return (
-    <div>
-      {!memberInfo.isParent && (
-        <ParentMain
-          data={{
-            parentId: 3,
-            email: "ckstjr@kakao.com",
-            nickname: "박찬석",
-            childList: [
-              {
-                childId: 7,
-                realName: "종일짱",
-                nickname: "ssafy123",
-                gender: "MALE",
-                mileage: 28,
-                clearedMission: 1,
-                earthLevel: 8,
-                birthday: "2020-11-10",
-                avatar: 13,
-                parent: "박찬석",
-                isParent: false,
-              },
-            ],
-            isParent: true,
-          }}
-        />
-      )}
-    </div>
-  );
+  return <div>{memberInfo.isParent && <ParentMain data={memberInfo} />}</div>;
 }
 useGLTF.preload(EarthLv8);
 export default ParentMainPage;
