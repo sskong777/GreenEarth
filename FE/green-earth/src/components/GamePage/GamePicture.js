@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import PictureFailModal from "./PictureFailModal";
 import PictureSuccessModal from "./PictureSuccessModal";
 
+import swal from "sweetalert";
+
 const useStyles = makeStyles((theme) => ({
   mygame: {
     border: "4px solid #90C5DE",
@@ -223,9 +225,15 @@ export const GamePicture = () => {
         e.offsetY < 430 &&
         !kicthen_ans_1
       ) {
-        alert("정답입니다!!");
-        setPassCount(passCount + 1);
-        setKicthen_ans_1("/assets/games/gamePictures/answerCircle.png");
+        swal({
+          title: "정답입니다!",
+          text: "물을 계속 틀어놓지 않아요",
+          icon: "success",
+          button: "계속",
+        }).then(() => {
+          setPassCount(passCount + 1);
+          setKicthen_ans_1("/assets/games/gamePictures/answerCircle.png");
+        });
       } else if (
         e.offsetX > 15 &&
         e.offsetX < 260 &&
@@ -233,11 +241,16 @@ export const GamePicture = () => {
         e.offsetY < 460 &&
         !kicthen_ans_2
       ) {
-        alert("정답입니다!!");
-        setPassCount(passCount + 1);
-        setKicthen_ans_2("/assets/games/gamePictures/answerCircle.png");
+        swal({
+          title: "정답입니다!",
+          text: "음식은 먹을만큼만 적당히!",
+          icon: "success",
+          button: "계속",
+        }).then(() => {
+          setPassCount(passCount + 1);
+          setKicthen_ans_2("/assets/games/gamePictures/answerCircle.png");
+        });
       } else {
-        alert("틀렸습니다!!");
         setLife(life - 1);
       }
     };
@@ -293,7 +306,6 @@ export const GamePicture = () => {
         setPassCount(passCount + 1);
         setBathroom_ans_2("/assets/games/gamePictures/answerCircle.png");
       } else {
-        alert("틀렸습니다!!");
         setLife(life - 1);
       }
     };
@@ -349,7 +361,6 @@ export const GamePicture = () => {
         setPassCount(passCount + 1);
         setBedroom_ans_2("/assets/games/gamePictures/answerCircle.png");
       } else {
-        alert("틀렸습니다!!");
         setLife(life - 1);
       }
     };
@@ -437,13 +448,19 @@ export const GamePicture = () => {
       setnowPage("fail");
     } else if (life == 2 || life == 1) {
       setLifeCount(`/assets/games/gamePictures/pictureHeart_${life}.png`);
-      alert("라이프가 감소하였습니다!");
+      swal({
+        title: "라이프가 감소하였습니다!",
+        text: "다시 생각해 보세요!",
+        icon: "warning",
+        button: "돌아가기",
+      });
     }
   }, [life]);
 
   return (
     <div>
       <canvas
+        style={{ touchAction: "none" }}
         ref={canvasRef}
         className={classes.mygame}
         width={936}

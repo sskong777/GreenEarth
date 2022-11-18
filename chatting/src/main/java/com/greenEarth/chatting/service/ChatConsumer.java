@@ -33,3 +33,4 @@ public class ChatConsumer {
         messagingTemplate.convertAndSend("/room/" + message.getRoomId(), message);
     }
 }
+
