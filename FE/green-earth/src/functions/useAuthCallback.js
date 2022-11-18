@@ -30,7 +30,7 @@ export const useAuthCallback = () => {
       })
       .then((response) => {
         if (response) {
-          console.log(response.data);
+          // console.log(response.data);
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
@@ -39,7 +39,7 @@ export const useAuthCallback = () => {
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
       });
   };
 
@@ -58,7 +58,7 @@ export const useAuthCallback = () => {
     })
       .then(async (response) => {
         if (response.data) {
-          console.log(response.data);
+          // console.log(response.data);
           console.log("로그인되었습니다.");
           setRefreshToken(response.data.refreshToken);
           setAccessToken(response.data.accessToken);
@@ -67,12 +67,12 @@ export const useAuthCallback = () => {
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
       });
   };
 
   const signUpCallback = (nickname, password, realName, gender, birthday) => {
-    console.log(nickname, password, realName, gender, birthday);
+    // console.log(nickname, password, realName, gender, birthday);
     api
       .post(`/member/signup`, {
         nickname: nickname,
@@ -88,7 +88,7 @@ export const useAuthCallback = () => {
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
         if (error.response.data.code === "T001") {
           console.log("엑세스 토큰이 만료되었습니다.");
         }
@@ -118,11 +118,11 @@ export const useAuthCallback = () => {
         if (response.data) {
           setMemberInfo(response.data);
           console.log("회원 정보가 조회되었습니다.");
-          console.log("memberInfo :", response.data);
+          // console.log("memberInfo :", response.data);
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
       });
   };
 
@@ -134,11 +134,11 @@ export const useAuthCallback = () => {
         if (response.data) {
           setChildInfo(response.data);
           console.log("아이 정보가 조회되었습니다.");
-          console.log("childInfo :", response.data);
+          // console.log("childInfo :", response.data);
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
       });
   };
 
@@ -152,11 +152,11 @@ export const useAuthCallback = () => {
         if (response.data) {
           setChildInfo(response.data);
           console.log("아이 정보가 수정되었습니다.");
-          console.log("childInfo :", response.data);
+          // console.log("childInfo :", response.data);
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
       });
   };
 

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { useGameCallback } from "./../../functions/useGameCallback";
-
 import CardsPairingModal from "./CardsPairingModal";
 
 import "./../../style/style.css";
@@ -17,8 +15,6 @@ const cardImages = [
 ];
 
 function CardsPairing() {
-  const { gameSuccessCallback } = useGameCallback();
-
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
@@ -66,14 +62,13 @@ function CardsPairing() {
 
   // 모든 카드 맞췄을 경우 실행
   useEffect(() => {
-    console.log(cards);
+    // console.log(cards);
     if (
       cards.length > 0 &&
       cards.every((card) => {
         return card.matched;
       })
     ) {
-      gameSuccessCallback(10);
       setModalCardOpen(true);
     }
   }, [cards]);
