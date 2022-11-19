@@ -101,11 +101,8 @@
 
 ***
 
-![](assets/d3e0b54cfc6d39c753668b9fd5ad0c016c401fee.jpg)
-
-![스크린샷.png](assets/7a29909399b165b90e28ef6c2bf7218ad4e2addd.png)
-
-
+| ![](assets/a8b6a978fa354ace4b7249dbfc97f69a5f7c89d9.jpg) | ![](assets/53aafa1e42e986ea62dd43b94c5aab9d35843f09.png) |
+| -------------------------------------------------------- | -------------------------------------------------------- |
 
 <br/>
 
@@ -188,7 +185,7 @@
 
 ---
 
-<img title="" src="assets/1a6103b5e00bd5fd0e3b2b63b2af98899f228c89.png" alt="" width="543" data-align="center">
+![Ewk8vTAXFb5D5zGBp.png](assets/162584f6575176a13187a343bd2651414b1eaf79.png)
 
 <br/>
 
@@ -196,7 +193,7 @@
 
 ---
 
-<img title="" src="assets/0a81a8db3cba785f9bbb5f5e433a7c8a23b34430.png" alt="" width="471" data-align="center">
+<img title="" src="assets/0a81a8db3cba785f9bbb5f5e433a7c8a23b34430.png" alt="" width="666" data-align="inline">
 
 - **GitLab** : 형상 관리
 - **Jira** : 이슈 관리
