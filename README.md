@@ -95,6 +95,79 @@
 
 ***
 
+##### 시스템 아키텍쳐
+
+##### 디렉토리 구조
+
+1. **Front-End**
+   
+   ```bash
+   📦src
+    ├─📁Model
+    ├─📁components
+    │  ├─📂ChattingPage
+    │  ├─📂ChildMainPage
+    │  ├─📂EditAccountPage
+    │  ├─📂GamePage
+    │  ├─📂LoginPage
+    │  ├─📂ParentMainPage
+    │  ├─📂ProfilePage
+    │  ├─📂SignUpPage
+    │  └─📂WelcomePage
+    ├─📁functions
+    ├─📁pages
+    ├─📁store
+    └─📁style
+    │  ├─📂ChattingPage
+    │  ├─📂ChildMainPage
+    │  ├─📂LoginPage
+    │  ├─📂MissionInfoPage
+    │  ├─📂ParentMainPage
+    │  ├─📂SignUpPage
+    │  └─📂WelcomePage
+   ```
+
+2. Back-End
+   
+   ```bash
+   📦main
+    ├─📁java
+    │ └─📁com
+    │   └─📁ssafy
+    │     └─📁greenEarth
+    │        ├─📂config
+    │        ├─📂controller
+    │        ├─📂domain
+    │        ├─📂dto
+    │        │   ├─📂Auth
+    │        │   ├─📂Game
+    │        │   ├─📂Member
+    │        │   ├─📂Mission
+    │        │   └─📂Reward
+    │        ├─📂exception
+    │        ├─📂interceptor
+    │        ├─📂jwt
+    │        ├─📂repository
+    │        ├─📂security
+    │        └─📂service
+    └─📁resources
+   ```
+
+3. Chatting
+   
+   ```bash
+   📦main
+    ├─📁java
+    │ └─📁com
+    │   └─📁greenEarth
+    │     └─📁chatting
+    │        ├─📂config
+    │        ├─📂controller
+    │        ├─📂dto
+    │        └─📂service
+    └─📁resources
+   ```
+
 <br/>
 
 ### 🎨 개발 설계
@@ -108,8 +181,6 @@
 ##### Mock Up
 
 ...
-
-
 
 <br/>
 
