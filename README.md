@@ -63,7 +63,7 @@
  <td height="140px" align="center"> <a href="https://github.com/Gyeong10">
  <img src="https://avatars.githubusercontent.com/u/97589661?v=4" width="140px" /> <br>박경열</a> <br> </td>
  <td height="140px" align="center"> <a href="https://github.com/rainbow77777">
- <img src="https://avatars.githubusercontent.com/u/97655755?v=4" width="140px" /> <br>강지명</a> <br> </td>
+ <img src="https://avatars.githubusercontent.com/u/97589858?v=4" width="140px" /> <br>강지명</a> <br> </td>
  <td height="140px" align="center"> <a href="https://github.com/ict-cspark/">
  <img src="https://avatars.githubusercontent.com/u/97655714?v=4" width="140px" /> <br>박찬석</a> <br> </td>
  <td height="140px" align="center"> <a href="https://github.com/3jieun3">
