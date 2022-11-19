@@ -111,9 +111,9 @@
 ***
 
 <table>
-    <th>Front-End</th>
-    <th>Back-End</th>
-    <th>Chatting</th>
+    <th width="280px" align="center">Front-End</th>
+    <th width="280px" align="center">Back-End</th>
+    <th width="280px" align="center">Chatting</th>
     <tr>
         <td>
 <pre><code>📦src
@@ -162,8 +162,6 @@
  │        ├─📂security
  │        └─📂service
  └─📁resources
-
-
 </code></pre>
         </td>
         <td>
@@ -177,19 +175,6 @@
  │        ├─📂dto
  │        └─📂service
  └─📁resources
-
-
-
-
-
-
-
-
-
-
-
-
-
 </code></pre>
 </table>
 
