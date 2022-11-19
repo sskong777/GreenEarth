@@ -131,7 +131,10 @@ function ParentMain(props) {
           <div className="people">
             {props.data.childList["0"] && (
               <header>
-                <Card className="PersonCard" onClick={handleClickChildProfile1}>
+                <Card
+                  className="PersonCard cursor-pointer"
+                  onClick={handleClickChildProfile1}
+                >
                   <CardHeader>
                     <Typography>
                       <div className="canvasPerson">
@@ -581,7 +584,10 @@ function ParentMain(props) {
             )}
             {props.data.childList["1"] && (
               <header>
-                <Card className="PersonCard" onClick={handleClickChildProfile2}>
+                <Card
+                  className="PersonCard cursor-pointer"
+                  onClick={handleClickChildProfile2}
+                >
                   <CardHeader>
                     <Typography>
                       <div className="canvasPerson">
@@ -1031,7 +1037,10 @@ function ParentMain(props) {
             )}
             {props.data.childList["2"] && (
               <header>
-                <Card className="PersonCard" onClick={handleClickChildProfile3}>
+                <Card
+                  className="PersonCard cursor-pointer"
+                  onClick={handleClickChildProfile3}
+                >
                   <CardHeader>
                     <Typography>
                       <div className="canvasPerson">
@@ -1481,7 +1490,10 @@ function ParentMain(props) {
             )}
             {props.data.childList["3"] && (
               <header>
-                <Card className="PersonCard" onClick={handleClickChildProfile4}>
+                <Card
+                  className="PersonCard cursor-pointer"
+                  onClick={handleClickChildProfile4}
+                >
                   <CardHeader>
                     <Typography>
                       <div className="canvasPerson">
@@ -1931,7 +1943,10 @@ function ParentMain(props) {
             )}
             {props.data.childList["4"] && (
               <header>
-                <Card className="PersonCard" onClick={handleClickChildProfile5}>
+                <Card
+                  className="PersonCard cursor-pointer"
+                  onClick={handleClickChildProfile5}
+                >
                   <CardHeader>
                     <Typography>
                       <div className="canvasPerson">
