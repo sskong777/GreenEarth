@@ -9,6 +9,8 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { OrbitControls } from "@react-three/drei";
 
+import swal from "sweetalert";
+
 import {
   Child1,
   Child2,
@@ -58,7 +60,7 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
       setRewardGoal(parseInt(rewardList[0].rewardCondition));
       setRewardGift(rewardList[0].rewardName);
     }
-  }, [rewardList]);
+  }, []);
 
   // 목표 보상갯수 설정 함수
   const handleClickRewardGoal = (e) => {
@@ -72,36 +74,78 @@ const RewardModal = ({ setModalOpen, childInfo }) => {
 
   // 보상 설정 요청 함수
   const handleClickRewardSubmit = () => {
-    if (window.confirm("보상을 설정하시겠습니까?")) {
-      rewardSubmitCallback(
-        rewardGift,
-        rewardGoal,
-        childInfo.childId,
-        childInfo.parent
-      );
-      setModalOpen(false);
-    }
+    swal({
+      title: "보상을 설정하시겠습니까?",
+      icon: "info",
+      buttons: ["네", "아니요"],
+    }).then((e) => {
+      if (!e) {
+        swal({
+          title: "보상을 설정하였습니다",
+          icon: "success",
+          button: "확인",
+        }).then(() => {
+          rewardSubmitCallback(
+            rewardGift,
+            rewardGoal,
+            childInfo.childId,
+            childInfo.parent
+          );
+          setModalOpen(false);
+        });
+      } else {
+        swal({ title: "보상 설정을 취소하였습니다.", button: "확인" });
+      }
+    });
   };
 
   // 보상 수정 요청 함수
   const handleClickRewardEdit = () => {
-    if (window.confirm("보상을 수정하시겠습니까?")) {
-      rewardEditCallback(
-        rewardList[0].id,
-        rewardGift,
-        rewardGoal,
-        childInfo.childId
-      );
-      setModalOpen(false);
-    }
+    swal({
+      title: "보상을 수정하시겠습니까?",
+      icon: "info",
+      buttons: ["네", "아니요"],
+    }).then((e) => {
+      if (!e) {
+        swal({
+          title: "보상을 설정하였습니다",
+          icon: "success",
+          button: "확인",
+        }).then(() => {
+          rewardEditCallback(
+            rewardList[0].id,
+            rewardGift,
+            rewardGoal,
+            childInfo.childId
+          );
+          setModalOpen(false);
+        });
+      } else {
+        swal({ title: "보상 수정을 취소하였습니다.", button: "확인" });
+      }
+    });
   };
 
   // 보상 지급 완료 함수
   const handleClickRewardPay = () => {
-    if (window.confirm("보상을 지급하시겠습니까?")) {
-      rewardPayCallback(rewardList[0].id);
-      setModalOpen(false);
-    }
+    swal({
+      title: "보상을 지급하시겠습니까?",
+      icon: "info",
+      buttons: ["네", "아니요"],
+    }).then((e) => {
+      if (!e) {
+        swal({
+          title: "보상을 지급하였습니다",
+          icon: "success",
+          button: "확인",
+        }).then(() => {
+          rewardPayCallback(rewardList[0].id);
+          setModalOpen(false);
+        });
+      } else {
+        swal({ title: "보상 지급을 취소하였습니다.", button: "확인" });
+      }
+    });
   };
 
   return (
