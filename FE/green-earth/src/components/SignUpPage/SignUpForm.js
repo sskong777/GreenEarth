@@ -124,12 +124,28 @@ const SignUpForm = () => {
         button: "확인",
       });
       return;
-    } else if (window.confirm("회원가입을 하시겠습니까?")) {
-      if (gender === "왕자님") {
-        signUpCallback(nickname, password, realName, "MALE", birthday);
-      } else {
-        signUpCallback(nickname, password, realName, "FEMALE", birthday);
-      }
+    } else {
+      swal({
+        title: "회원가입을 완료하시겠습니까?",
+        icon: "info",
+        buttons: ["네", "아니요"],
+      }).then((e) => {
+        if (!e) {
+          swal({
+            title: "회원가입을 완료하였습니다",
+            icon: "success",
+            button: "확인",
+          }).then(() => {
+            if (gender === "왕자님") {
+              signUpCallback(nickname, password, realName, "MALE", birthday);
+            } else {
+              signUpCallback(nickname, password, realName, "FEMALE", birthday);
+            }
+          });
+        } else {
+          swal({ title: "회원가입을 취소하였습니다.", button: "확인" });
+        }
+      });
     }
   };
 
