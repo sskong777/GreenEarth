@@ -148,7 +148,7 @@ const SignUpForm = () => {
       const text = response.data;
       if (text === "사용할 수 있는 닉네임입니다.") {
         swal({
-          title: "사용할 수 있는 닉네임 입니다!",
+          title: "사용할 수 있는 아이디 입니다!",
           icon: "success",
           button: "확인",
         });
@@ -156,7 +156,7 @@ const SignUpForm = () => {
         return;
       } else if (text === "이미 존재하는 닉네임입니다.") {
         swal({
-          title: "사용할 수 없는 닉네임 입니다!",
+          title: "사용할 수 없는 아이디 입니다!",
           icon: "error",
           button: "확인",
         });
