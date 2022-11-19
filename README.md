@@ -110,74 +110,90 @@
 
 ***
 
-1. **Front-End**
-   
-   ```bash
-   📦src
-    ├─📁Model
-    ├─📁components
-    │  ├─📂ChattingPage
-    │  ├─📂ChildMainPage
-    │  ├─📂EditAccountPage
-    │  ├─📂GamePage
-    │  ├─📂LoginPage
-    │  ├─📂ParentMainPage
-    │  ├─📂ProfilePage
-    │  ├─📂SignUpPage
-    │  └─📂WelcomePage
-    ├─📁functions
-    ├─📁pages
-    ├─📁store
-    └─📁style
-    │  ├─📂ChattingPage
-    │  ├─📂ChildMainPage
-    │  ├─📂LoginPage
-    │  ├─📂MissionInfoPage
-    │  ├─📂ParentMainPage
-    │  ├─📂SignUpPage
-    │  └─📂WelcomePage
-   ```
+<table>
+    <th>Front-End</th>
+    <th>Back-End</th>
+    <th>Chatting</th>
+    <tr>
+        <td>
+<pre><code>📦src
+ ├─📁Model
+ ├─📁components
+ │  ├─📂ChattingPage
+ │  ├─📂ChildMainPage
+ │  ├─📂EditAccountPage
+ │  ├─📂GamePage
+ │  ├─📂LoginPage
+ │  ├─📂ParentMainPage
+ │  ├─📂ProfilePage
+ │  ├─📂SignUpPage
+ │  └─📂WelcomePage
+ ├─📁functions
+ ├─📁pages
+ ├─📁store
+ └─📁style
+ │  ├─📂ChattingPage
+ │  ├─📂ChildMainPage
+ │  ├─📂LoginPage
+ │  ├─📂MissionInfoPage
+ │  ├─📂ParentMainPage
+ │  ├─📂SignUpPage
+ │  └─📂WelcomePage</code></pre>
+        </td>
+        <td>
+<pre><code>📦main
+ ├─📁java
+ │ └─📁com
+ │   └─📁ssafy
+ │     └─📁greenEarth
+ │        ├─📂config
+ │        ├─📂controller
+ │        ├─📂domain
+ │        ├─📂dto
+ │        │   ├─📂Auth
+ │        │   ├─📂Game
+ │        │   ├─📂Member
+ │        │   ├─📂Mission
+ │        │   └─📂Reward
+ │        ├─📂exception
+ │        ├─📂interceptor
+ │        ├─📂jwt
+ │        ├─📂repository
+ │        ├─📂security
+ │        └─📂service
+ └─📁resources
 
-2. Back-End
-   
-   ```bash
-   📦main
-    ├─📁java
-    │ └─📁com
-    │   └─📁ssafy
-    │     └─📁greenEarth
-    │        ├─📂config
-    │        ├─📂controller
-    │        ├─📂domain
-    │        ├─📂dto
-    │        │   ├─📂Auth
-    │        │   ├─📂Game
-    │        │   ├─📂Member
-    │        │   ├─📂Mission
-    │        │   └─📂Reward
-    │        ├─📂exception
-    │        ├─📂interceptor
-    │        ├─📂jwt
-    │        ├─📂repository
-    │        ├─📂security
-    │        └─📂service
-    └─📁resources
-   ```
 
-3. Chatting
-   
-   ```bash
-   📦main
-    ├─📁java
-    │ └─📁com
-    │   └─📁greenEarth
-    │     └─📁chatting
-    │        ├─📂config
-    │        ├─📂controller
-    │        ├─📂dto
-    │        └─📂service
-    └─📁resources
-   ```
+</code></pre>
+        </td>
+        <td>
+<pre><code>📦main
+ ├─📁java
+ │ └─📁com
+ │   └─📁greenEarth
+ │     └─📁chatting
+ │        ├─📂config
+ │        ├─📂controller
+ │        ├─📂dto
+ │        └─📂service
+ └─📁resources
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+        </td>
+    </tr>
+</table>
 
 <br/>
 
@@ -193,7 +209,7 @@
 
 ---
 
-<img title="" src="assets/0a81a8db3cba785f9bbb5f5e433a7c8a23b34430.png" alt="" width="666" data-align="inline">
+<img title="" src="assets/281d5284dd34e1a743c6f8decc78df45ad248746.png" alt="" width="666" data-align="inline">
 
 - **GitLab** : 형상 관리
 - **Jira** : 이슈 관리
