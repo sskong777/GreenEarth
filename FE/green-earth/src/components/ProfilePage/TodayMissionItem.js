@@ -12,6 +12,8 @@ import { useMissionCallback } from "./../../functions/useMissionCallback";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
+import swal from "sweetalert";
+
 // 미션 설정 드롭다운 함수
 const ControlMenu = React.memo(({ data, onChange, optionList }) => {
   const [isActive, setIsActive] = useState(false);
@@ -116,34 +118,86 @@ const TodayMissionItem = ({ data }) => {
 
   // 미션 설정 함수
   const handleClickMissionSubmit = () => {
-    if (window.confirm("미션을 설정하시겠습니까?")) {
-      saveMissionCallback(childId, selected.missionId);
-      // console.log("미션 설정 완료");
-    }
+    swal({
+      title: "미션을 설정하시겠습니까?",
+      icon: "info",
+      buttons: ["네", "아니요"],
+    }).then((e) => {
+      if (!e) {
+        swal({
+          title: "미션을 설정하였습니다",
+          icon: "success",
+          button: "확인",
+        }).then(() => {
+          saveMissionCallback(childId, selected.missionId);
+        });
+      } else {
+        swal({ title: "미션 설정을 취소하였습니다.", button: "확인" });
+      }
+    });
   };
 
   // 미션 수정 함수
   const handleClickMissionEdit = () => {
-    if (window.confirm("미션을 수정하시겠습니까?")) {
-      editMissionCallback(data.id, selected.missionId);
-      // console.log("미션 수정 완료");
-    }
+    swal({
+      title: "미션을 수정하시겠습니까?",
+      icon: "info",
+      buttons: ["네", "아니요"],
+    }).then((e) => {
+      if (!e) {
+        swal({
+          title: "미션을 수정하였습니다",
+          icon: "success",
+          button: "확인",
+        }).then(() => {
+          editMissionCallback(data.id, selected.missionId);
+        });
+      } else {
+        swal({ title: "미션 수정을 취소하였습니다.", button: "확인" });
+      }
+    });
   };
 
   // 미션 승인 함수
   const handleClickMissionPermit = () => {
-    if (window.confirm("미션을 승인하시겠습니까?")) {
-      permitMissionCallback(data.id);
-      // console.log("미션 승인 완료");
-    }
+    swal({
+      title: "미션을 승인하시겠습니까?",
+      icon: "info",
+      buttons: ["네", "아니요"],
+    }).then((e) => {
+      if (!e) {
+        swal({
+          title: "미션을 승인하였습니다",
+          icon: "success",
+          button: "확인",
+        }).then(() => {
+          permitMissionCallback(data.id);
+        });
+      } else {
+        swal({ title: "미션 승인을 취소하였습니다.", button: "확인" });
+      }
+    });
   };
 
   // 미션 거절 함수
   const handleClickMissionReject = () => {
-    if (window.confirm("미션을 거절하시겠습니까?")) {
-      rejectMissionCallback(data.id);
-      // console.log("미션 거절 완료");
-    }
+    swal({
+      title: "미션을 거절하시겠습니까?",
+      icon: "info",
+      buttons: ["네", "아니요"],
+    }).then((e) => {
+      if (!e) {
+        swal({
+          title: "미션을 거절하였습니다",
+          icon: "success",
+          button: "확인",
+        }).then(() => {
+          rejectMissionCallback(data.id);
+        });
+      } else {
+        swal({ title: "미션 거절을 취소하였습니다.", button: "확인" });
+      }
+    });
   };
 
   return (
