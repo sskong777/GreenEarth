@@ -18,9 +18,11 @@
 
 - [💻 사용 예시](#-사용-예시)
 
-- [🔎 아키텍쳐](#-아키텍쳐)
+- [🔎 시스템 아키텍쳐](#-시스템-아키텍쳐)
 
-- [🎨 개발 설계](#-개발-설계)
+- [📚 디렉터리 구조](#-디렉터리-구조)
+
+- [🎨 ERD](#-ERD)
 
 - [📅 협업 관리](#-협업-관리)
 
@@ -47,6 +49,10 @@
 ### 🛠 기술 스택
 
 ***
+
+| Front-End                                 | Back-End                                  |
+|:-----------------------------------------:|:-----------------------------------------:|
+| ![](assets/2022-11-19-22-49-29-image.png) | ![](assets/2022-11-19-22-49-24-image.png) |
 
 <br/>
 
@@ -91,25 +97,97 @@
 
 <br/>
 
-### 🔎 아키텍쳐
+### 🔎시스템 아키텍쳐
 
 ***
 
+| ![](assets/a8b6a978fa354ace4b7249dbfc97f69a5f7c89d9.jpg) | ![](assets/53aafa1e42e986ea62dd43b94c5aab9d35843f09.png) |
+| -------------------------------------------------------- | -------------------------------------------------------- |
+
 <br/>
 
-### 🎨 개발 설계
+### 📚 디렉터리 구조
+
+***
+
+<table>
+<tr>
+<th>Front-End</th>
+<th>Back-End</th>
+<th>Chatting</th>
+</tr>
+<tr>
+<td>
+<pre><code>📦src
+ ├─📁Model
+ ├─📁components
+ │  ├─📂ChattingPage
+ │  ├─📂ChildMainPage
+ │  ├─📂EditAccountPage
+ │  ├─📂GamePage
+ │  ├─📂LoginPage
+ │  ├─📂ParentMainPage
+ │  ├─📂ProfilePage
+ │  ├─📂SignUpPage
+ │  └─📂WelcomePage
+ ├─📁functions
+ ├─📁pages
+ ├─📁store
+ └─📁style
+ │  ├─📂ChattingPage
+ │  ├─📂ChildMainPage
+ │  ├─📂LoginPage
+ │  ├─📂MissionInfoPage
+ │  ├─📂ParentMainPage
+ │  ├─📂SignUpPage
+ │  └─📂WelcomePage</code></pre>
+</td>
+<td>
+<pre><code>📦main
+ ├─📁java
+ │ └─📁com
+ │   └─📁ssafy
+ │     └─📁greenEarth
+ │        ├─📂config
+ │        ├─📂controller
+ │        ├─📂domain
+ │        ├─📂dto
+ │        │   ├─📂Auth
+ │        │   ├─📂Game
+ │        │   ├─📂Member
+ │        │   ├─📂Mission
+ │        │   └─📂Reward
+ │        ├─📂exception
+ │        ├─📂interceptor
+ │        ├─📂jwt
+ │        ├─📂repository
+ │        ├─📂security
+ │        └─📂service
+ └─📁resources
+</code></pre>
+</td>
+<td>
+<pre><code>📦main
+ ├─📁java
+ │ └─📁com
+ │   └─📁greenEarth
+ │     └─📁chatting
+ │        ├─📂config
+ │        ├─📂controller
+ │        ├─📂dto
+ │        └─📂service
+ └─📁resources
+</code></pre>
+</td>
+</table>
+
+<br/>
+
+### 🎨 ERD
 
 ---
 
-##### ERD
-
-![](assets/1a6103b5e00bd5fd0e3b2b63b2af98899f228c89.png)
-
-##### Mock Up
-
-...
-
-
+![Ewk8vTAXFb5D5zGBp.png](assets/162584f6575176a13187a343bd2651414b1eaf79.png)
 
 <br/>
 
@@ -117,7 +195,7 @@
 
 ---
 
-![](assets/0a81a8db3cba785f9bbb5f5e433a7c8a23b34430.png)
+<img title="" src="assets/281d5284dd34e1a743c6f8decc78df45ad248746.png" alt="" width="666" data-align="inline">
 
 - **GitLab** : 형상 관리
 - **Jira** : 이슈 관리
