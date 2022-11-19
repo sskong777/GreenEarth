@@ -111,11 +111,13 @@
 ***
 
 <table>
-    <th width="280px" align="center">Front-End</th>
-    <th width="280px" align="center">Back-End</th>
-    <th width="280px" align="center">Chatting</th>
-    <tr>
-        <td>
+<tr align="center">
+<th>Front-End</th>
+<th>Back-End</th>
+<th>Chatting</th>
+</tr>
+<tr>
+<td>
 <pre><code>📦src
  ├─📁Model
  ├─📁components
@@ -139,8 +141,8 @@
  │  ├─📂ParentMainPage
  │  ├─📂SignUpPage
  │  └─📂WelcomePage</code></pre>
-        </td>
-        <td>
+</td>
+<td>
 <pre><code>📦main
  ├─📁java
  │ └─📁com
@@ -163,8 +165,8 @@
  │        └─📂service
  └─📁resources
 </code></pre>
-        </td>
-        <td>
+</td>
+<td>
 <pre><code>📦main
  ├─📁java
  │ └─📁com
@@ -176,6 +178,7 @@
  │        └─📂service
  └─📁resources
 </code></pre>
+</td>
 </table>
 
 <br/>
