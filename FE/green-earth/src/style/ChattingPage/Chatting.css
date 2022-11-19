@@ -1,5 +1,5 @@
 .chat-button {
-  @apply absolute w-16 z-50 bottom-3 right-3 cursor-pointer animate-bounce;
+  @apply absolute w-16 z-40 bottom-3 right-3 cursor-pointer animate-bounce;
 }
 
 .messages-list {
