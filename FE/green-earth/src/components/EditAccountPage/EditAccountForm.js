@@ -56,8 +56,24 @@ const EditAccountForm = ({ childInfo }) => {
         button: "확인",
       });
       return;
-    } else if (window.confirm("아이디를 수정하시겠습니까?")) {
-      accountEditCallback(childInfo.childId, nickname);
+    } else {
+      swal({
+        title: "아이디를 수정하시겠습니까?",
+        icon: "info",
+        buttons: ["네", "아니요"],
+      }).then((e) => {
+        if (!e) {
+          swal({
+            title: "아이디가 수정되었습니다",
+            icon: "success",
+            button: "확인",
+          }).then(() => {
+            accountEditCallback(childInfo.childId, nickname);
+          });
+        } else {
+          swal({ title: "아이디 수정을 취소하였습니다.", button: "확인" });
+        }
+      });
     }
   };
 

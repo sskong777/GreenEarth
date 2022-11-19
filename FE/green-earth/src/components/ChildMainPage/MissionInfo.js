@@ -10,6 +10,8 @@ import {
   missionInfoState,
 } from "../../store/atoms";
 
+import swal from "sweetalert";
+
 import { useMissionCallback } from "./../../functions/useMissionCallback";
 import { useAuthCallback } from "./../../functions/useAuthCallback";
 
@@ -46,10 +48,23 @@ const MissionInfo = () => {
 
   // 미션 완료 함수
   const handleClickMissionClear = () => {
-    if (window.confirm("미션을 완료하시겠습니까?")) {
-      clearMissionCallback(log_id);
-      // console.log("미션 완료");
-    }
+    swal({
+      title: "미션을 완료했나요?",
+      icon: "info",
+      buttons: ["네", "아니요"],
+    }).then((e) => {
+      if (!e) {
+        swal({
+          title: "잘 했어요!",
+          icon: "success",
+          button: "넵!",
+        }).then(() => {
+          clearMissionCallback(log_id);
+        });
+      } else {
+        swal({ title: "조금 더 노력해 보아요!", button: "넵!" });
+      }
+    });
   };
   const script = [
     {
