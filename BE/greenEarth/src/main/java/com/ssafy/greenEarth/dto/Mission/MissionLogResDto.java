@@ -1,12 +1,11 @@
 package com.ssafy.greenEarth.dto.Mission;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.greenEarth.domain.Mission;
 import com.ssafy.greenEarth.domain.MissionLog;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
@@ -15,6 +14,7 @@ public class MissionLogResDto {
     @Schema(description = "미션 로그 PK")
     private int id;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy년 MM월 dd일 hh시 mm분", timezone = "Asia/seoul")
     @Schema(description = "미션 완료 시간")
     private LocalDateTime clearedAt;
 
