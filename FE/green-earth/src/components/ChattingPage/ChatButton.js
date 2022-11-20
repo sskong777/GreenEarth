@@ -15,7 +15,7 @@ const ChatButton = () => {
       onClick={() =>
         navigate("/chat", {
           state: {
-            sender: memberInfo.nickname,
+            sender: memberInfo.isParent ? memberInfo.nickname : memberInfo.realName,
             roomId: memberInfo.isParent
               ? memberInfo.nickname
               : memberInfo.parent,
