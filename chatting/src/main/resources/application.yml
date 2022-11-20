@@ -35,6 +35,14 @@ spring:
       group-id: greenUsGroup
     template:
       default-topic: greenUsChat
+#  kafka:
+#    producer:
+#      bootstrap-servers: localhost:9092
+#    consumer:
+#      bootstrap-servers: localhost:9092
+#      group-id: greenUsGroup
+#    template:
+#      default-topic: greenUsChat
 
 logging:
   level:
