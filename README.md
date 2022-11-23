@@ -22,9 +22,9 @@
 
 - [📚 디렉터리 구조](#-디렉터리-구조)
 
-- [🎨 ERD](#-erd)
+- [🎨 개발 설계](#-개발-설계)
 
-- [📅 협업 관리](#-협업-관리)
+- [📅 산출물](#-산출물)
 
 - [👨‍👩‍👦 팀원](#-팀원)
 
@@ -50,7 +50,47 @@
 
 ***
 
-![](assets/2022-11-20-22-58-50-image.png)
+1. 이슈 관리 : Jira
+
+2. 형상 관리 : Gitlab
+
+3. 커뮤니케이션 : Mattermost, Notionm Webex
+
+4. 개발 환경
+   
+   - OS : Window 10
+   
+   - DB : Mysql 8.0.31
+   
+   - Server : AWS EC2, Ubuntu 20.04.5, Jenkins 2.375, nginx 1.18.0
+
+5. Front-End 상세
+   
+   - React 18.2.0
+   
+   - Recoil 0.7.6, React-stomp 5.1.0
+   
+   - Three.js 0.145.0
+
+6. Back-End 상세
+   
+   - Java 11
+   
+   - Spring Boot Gradle 7.5
+   
+   - Lombok 1.18.20, Swagger2 3.0, jjwt 0.9.1
+   
+   - STOMP, Kafka 2.11-2.1.0
+
+7- IDE & Tool
+   
+   - IntelliJ 22.1.3
+   
+   - Visual Strudio Code 1.70.1
+   
+   - MobaXterm 22.1
+
+![](assets/ba414c46c07ae842cf0c0c49084c45e30f0b6042.png)
 
 <br/>
 
@@ -123,7 +163,7 @@
 
 ***
 
-| ![loading-ag-566](assets/7c4335f446a0d9d13ebaf76233aadaf68d357c00.png) | ![](assets/53aafa1e42e986ea62dd43b94c5aab9d35843f09.png) |
+| ![loading-ag-566](assets/09759f984f080e2079a1315705426bc7940a4f92.png) | ![](assets/53aafa1e42e986ea62dd43b94c5aab9d35843f09.png) |
 | ---------------------------------------------------------------------- | -------------------------------------------------------- |
 
 <br/>
@@ -205,24 +245,15 @@
 
 <br/>
 
-### 🎨 ERD
+### 🎨 개발 설계
 
 ---
+
+1. ERD
 
 ![Ewk8vTAXFb5D5zGBp.png](assets/162584f6575176a13187a343bd2651414b1eaf79.png)
 
-<br/>
-
-### 📅 협업 관리
-
----
-
-<img title="" src="assets/281d5284dd34e1a743c6f8decc78df45ad248746.png" alt="" width="666" data-align="inline">
-
-- **GitLab** : 형상 관리
-- **Jira** : 이슈 관리
-- **MatterMost** : 소통
-- **Notion** : 전체적인 일정 및 학습자료, 문서 관리
+2. [API docs](https://grandiose-latency-d37.notion.site/API-8e42ccd250bd464ea9d3a6c3a701b299)
 
 <br/>
 
