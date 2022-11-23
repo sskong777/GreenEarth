@@ -54,7 +54,7 @@
 
 2. 형상 관리 : Gitlab
 
-3. 커뮤니케이션 : Mattermost, Notionm Webex
+3. 커뮤니케이션 : Mattermost, Notion, Webex
 
 4. 개발 환경
    
@@ -89,6 +89,8 @@
    - Visual Strudio Code 1.70.1
    
    - MobaXterm 22.1
+
+   - Figma
 
 ![](assets/ba414c46c07ae842cf0c0c49084c45e30f0b6042.png)
 
