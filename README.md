@@ -82,7 +82,7 @@
    
    - STOMP, Kafka 2.11-2.1.0
 
-7- IDE & Tool
+7. IDE & Tool
    
    - IntelliJ 22.1.3
    
