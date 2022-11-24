@@ -18,7 +18,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("mission")
+@RequestMapping("/mission")
 public class MissionController {
 
     private final MissionService missionService;
