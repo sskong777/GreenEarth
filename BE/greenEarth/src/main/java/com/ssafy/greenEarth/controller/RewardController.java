@@ -15,7 +15,7 @@ import java.util.List;
 @Api("RewardController")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("reward")
+@RequestMapping("/reward")
 @Slf4j
 public class RewardController {
 
