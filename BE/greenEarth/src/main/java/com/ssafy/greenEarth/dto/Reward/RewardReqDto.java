@@ -3,12 +3,14 @@ package com.ssafy.greenEarth.dto.Reward;
 import com.ssafy.greenEarth.domain.Child;
 import com.ssafy.greenEarth.domain.Reward;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Data
+@Getter
 public class RewardReqDto {
 
     @NotBlank(message = "보상 이름을 입력해주세요")

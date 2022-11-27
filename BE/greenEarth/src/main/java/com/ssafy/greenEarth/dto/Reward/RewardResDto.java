@@ -3,11 +3,12 @@ package com.ssafy.greenEarth.dto.Reward;
 import com.ssafy.greenEarth.domain.Reward;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Data
+@Getter
 public class RewardResDto {
 
     @Schema(description = "보상 PK")
