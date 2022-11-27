@@ -1,12 +1,13 @@
 package com.ssafy.greenEarth.domain;
 
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class GreenEarthLogId implements Serializable {
 
     private int childId;
